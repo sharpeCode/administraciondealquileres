@@ -1,0 +1,60 @@
+<form role="form" id="variableAdd">
+    <div class="contenedorAgregarPersona" style="margin: 3rem;">
+
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-3 nombreCampo">
+                <h3 align="left"class="miTitulo1">Ajustar Variable</h3>
+            </div>
+            <div class="col-md-7"></div>
+        </div>
+
+        <br>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-2" style="width: 195px;">
+                <label>
+                    <select id="idVariable" name='idVariable' class="inputTextConSombra" style="width: 192px;">
+                    </select>
+                </label>
+            </div>
+            <div class="col-md-8"></div>
+        </div>
+
+        <br>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-2">
+                <input  type="number" min="1" max="100" class="inputTextConSombra" id="porcentaje" name="porcentaje" placeholder="Porcentaje">
+            </div>
+            <div class="col-md-8"></div>
+        </div>
+
+        <br>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-2">
+                <input  type="datetime" min="1" max="100" class="inputTextConSombra" id="fecha" name="fecha" value="<?php echo date('Y-m-d-G-i');?>" hidden="true">
+            </div>
+            <div class="col-md-8"></div>
+        </div>
+
+        <br><br>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-1" style="width:100px">
+                <button type="button" class="miBoton-chico" onclick="guardarVariable()" name="enviar" id="enviar">
+                    Guardar
+                </button>
+            </div>
+            <div class="col-md-1" style="width:100px">
+                <a><input class="miBoton-chico" type="button" onclick="mostrarFormInmueblePpal()" value="Atras"></a>
+            </div>
+            <div class="col-md-7"></div>
+        </div>
+        <br>
+    </div>
+</form>
+</div> <!-- Closing base page div (background) -->
+</body>
+</html>

@@ -1,0 +1,320 @@
+/*====================================================================================*/
+/* SIN BORDES AL SELECCIONAR INPUT (me ponia un recuadro negro al seleccionar el textbox o boton) */
+/*====================================================================================*/
+input:focus, input.form-control:focus, button:focus, select:focus {
+
+    outline: none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+/*====================================================================================*/
+/* Titulos */
+/*====================================================================================*/
+.miTitulo1 {
+    color: #3a5ba0;
+    font: bold 22px "Product Sans";
+}
+
+/*====================================================================================*/
+/* Subtitulos */
+/*====================================================================================*/
+.miSubtitulo {
+    color: #3a5ba0;
+    font: bold 16px "Product Sans";
+}
+
+/*====================================================================================
+ Cabecera de las tablas
+====================================================================================*/
+.cabeceraTabla {
+    background-color: #3a5ba0;
+    color: white;
+    font: normal 16px "Product Sans";
+    text-align: center;
+}
+
+/*====================================================================================
+ Boton chiquito solo con icono
+====================================================================================*/
+.miBoton-icon { /*color petroleo*/
+    width: 40px; /**/
+    height: 35px; /**/
+    border: #008add 1px solid;
+    background: none;
+    font: normal 14px "Product Sans";
+    color: #3a5ba0; /*color a lo que escriba el usuario*/
+    box-shadow: 0 0 6px #99cef4; /* Sombreado */
+    border-radius: 4px 4px 4px 4px; /*esquinas redondeadas*/
+}
+
+/*====================================================================================
+ Boton chiquito solo con icono color ROJO
+====================================================================================*/
+.miBoton-icon-rojo { /*color petroleo*/
+    width: 40px; /**/
+    height: 35px; /**/
+    border: red 1px solid;
+    background: none;
+    font: normal 14px "Product Sans";
+    color: red; /*color a lo que escriba el usuario*/
+    box-shadow: 0 0 6px #99cef4; /* Sombreado */
+    border-radius: 4px 4px 4px 4px; /*esquinas redondeadas*/
+}
+
+/*====================================================================================
+ Boton chiquito solo con icono color GRIS
+====================================================================================*/
+.miBoton-icon-gris { /*color petroleo*/
+    width: 40px; /**/
+    height: 35px; /**/
+    border: #877c77 1px solid;
+    background: none;
+    font: normal 14px "Product Sans";
+    color: #877c77; /*color a lo que escriba el usuario*/
+    box-shadow: 0 0 6px #877c77; /* Sombreado */
+    border-radius: 4px 4px 4px 4px; /*esquinas redondeadas*/
+}
+
+
+/*====================================================================================
+ Boton chico bordes redondeados
+====================================================================================*/
+.miBoton-chico {
+    width: 90px;
+    height: 35px;
+    background-color: #3a5ba0;
+    color: white;
+    font: normal 14px "Product Sans";
+    border-radius: 10px 10px 10px 10px; /*esquinas redondeadas*/
+    border: transparent;
+}
+
+/*====================================================================================
+ Input tipo Text con sombras (resplandor)
+====================================================================================*/
+.inputTextConSombra {
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    border: #3a5ba0 1px solid;
+    background: none;
+    /*border-bottom: 2px solid #06B1B8; para que se vea el borde VERDE*/
+    color: #877c77; /*color a lo que escriba el usuario*/
+    box-shadow: 0 0 6px #99cef4; /* Sombreado */
+    border-radius: 4px 4px 4px 4px; /*esquinas redondeadas*/
+}
+
+/*====================================================================================
+ Input tipo Text con sombras (resplandor color naranja)
+====================================================================================*/
+.inputTextConSombraNaranja {
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    border: #F42E0C 1px solid;
+    background: none;
+    /*border-bottom: 2px solid #06B1B8; para que se vea el borde VERDE*/
+    color: #877c77; /*color a lo que escriba el usuario*/
+    box-shadow: 0 0 6px #F46240; /* Sombreado */
+    border-radius: 4px 4px 4px 4px; /*esquinas redondeadas*/
+}
+
+/*====================================================================================
+ Modificar color y letra de los Placeholder
+====================================================================================*/
+::placeholder {
+    color: #877c77;
+    font: normal 14px "Product Sans";
+}
+
+/*====================================================================================
+ ipunt tipo Text BUSCADOR
+====================================================================================*/
+.inputTextConSombraBuscador {
+    width: 150px;
+    height: 35px;
+    margin: 0px;
+    padding: 10px;
+    border: #3a5ba0 1px solid;
+    background: none;
+    color: #877c77; /*color a lo que escriba el usuario*/
+    box-shadow: 0 0 6px #99cef4; /* Sombreado */
+    border-radius: 10px 0px 0px 10px; /*esquinas redondeadas*/
+}
+
+.botonBuscadorLupa {
+    width: 40px;
+    height: 35px;
+    margin: 0px;
+    padding: 5px;
+    border: #3a5ba0 1px solid;
+    background: #3a5ba0;
+    /*border-bottom: 2px solid #06B1B8; para que se vea el borde VERDE*/
+    color: white; /*color a lo que escriba el usuario*/
+    /*box-shadow: 0 0 6px #99cef4; Sombreado */
+    border-radius: 0px 10px 10px 0px; /*esquinas redondeadas*/
+}
+
+/*====================================================================================
+ para OCULTAR inputs
+====================================================================================*/
+.inputOculto {
+    visibility: hidden;
+    display: none;
+}
+
+/*====================================================================================
+ Labels negrita
+====================================================================================*/
+.labelSubtitulo {
+    color: #3a5ba0;
+    background-color: transparent;
+    font: bold 18px "Product Sans";
+    border-style: none;
+}
+
+/*====================================================================================
+ Labels normal
+====================================================================================*/
+.labelSubtituloNormal {
+    color: #3a5ba0;
+    background-color: transparent;
+    font: normal 18px "Product Sans";
+    border-style: none;
+}
+
+/*====================================================================================
+ Input tipo text que se vea como label
+====================================================================================*/
+.inputTextLabel {
+    font-size: 18px;
+    font-weight: bold;
+    font: normal 16px "Product Sans";
+    width: 100%;
+    /*padding: .7em;*/
+    border: none;
+    background: none;
+    outline: 0; /*para que no se vea el borde al seleccionar la caja de texto*/
+    color: #3a5ba0; /*color a lo que escriba el usuario*/
+}
+
+/*====================================================================================
+ Input tipo text que se vea como label fondo ovalado
+====================================================================================*/
+.inputTextLabelFondoOvalado {
+    font-size: 18px;
+    font-weight: bold;
+    font: normal 16px "Product Sans";
+    width: 100%;
+    outline: 0; /*para que no se vea el borde al seleccionar la caja de texto*/
+    height: 35px;
+    /*padding: 10px;*/
+    border: #3a5ba0 1px solid;
+    background: #3a5ba0;
+    color: white; /*color a lo que escriba el usuario*/
+    box-shadow: 0 0 6px #99cef4; /* Sombreado */
+    border-radius: 28px 28px 28px 28px; /*esquinas redondeadas*/
+}
+
+/*====================================================================================
+ Input tipo text que se vea como label CENTRADO
+====================================================================================*/
+.inputTextLabelCentrado {
+    font-size: 18px;
+    font: bold 16px "Product Sans";
+    width: 100%;
+    /*padding: .7em;*/
+    border: none;
+    background: none;
+    outline: 0; /*para que no se vea el borde al seleccionar la caja de texto*/
+    color: #3a5ba0; /*color a lo que escriba el usuario*/
+    text-align: center;
+}
+
+/*====================================================================================
+ Fondo Comprobante de pago - Marca de agua - Recibo Oficial - Con firma digital
+====================================================================================*/
+.fondoMarcaDeAguaConFirmaDigital {
+    background-image: url("../../resources/images/fondoHomeMarcaAgua.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+/*====================================================================================
+ Fondo Comprobante de pago - Marca de agua - Sin firma digital
+====================================================================================*/
+.fondoMarcaDeAguaReiboSinFirmaDigital {
+    background-image: url("../../resources/images/fondoHomeMarcaAguaSinFirmaDigital.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+/*====================================================================================*/
+/* Titulos Recibo */
+/*====================================================================================*/
+.miTituloRecibo {
+    color: #3a5ba0;
+    font: normal 60px "Brush Script MT";
+    text-align: center;
+}
+
+/*====================================================================================*/
+/* Centrar Titulos Recibo */
+/*====================================================================================*/
+.centrarMiTituloRecibo{
+    line-height:100px;
+    text-align:center;
+}
+.centrarMiTituloRecibo>label {
+    display:inline-block;
+    vertical-align:middle;
+    line-height:normal;
+}
+
+/*====================================================================================
+  Fondo Comprobante de pago - Marca de agua
+====================================================================================*/
+.imagenCabeceraRecibo {
+    background-image: url("../../resources/images/encabezadoRecibo.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 130px;
+    border-radius: 25px 25px 25px 25px; /*esquinas redondeadas*/
+}
+
+/*====================================================================================
+  Container con borde y puntas redondeadas
+====================================================================================*/
+.miContainer {
+    background: none;
+    border: #3a5ba0 2px solid;
+    box-shadow: 0 0 6px #99cef4; /* Sombreado */
+    border-radius: 20px 20px 20px 20px; /*esquinas redondeadas*/
+}
+
+/*====================================================================================
+  Container con borde con puntas cuadradas
+====================================================================================*/
+.miContainer2 {
+    background: none;
+    border: #3a5ba0 1px solid;
+    box-shadow: 0 0 6px #99cef4; /* Sombreado */
+    /*border-radius: 20px 20px 20px 20px; /*esquinas redondeadas*/
+}
+
+.miTituloDetail {
+    color: #3a5ba0;
+    font: bold 12px "Product Sans";
+}
+
+
+
+
+
+

@@ -1,0 +1,90 @@
+<form role="form" id="clienteEdit">
+    <div class="contenedorAgregarPersona" style="margin: 3rem;">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-4">
+                <h3 align="left" class="miTitulo1">Editar Locatario</h3>
+            </div>
+            <div class="col-md-6"></div>
+        </div>
+
+        <br>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-2">
+                <input type="text" class="inputTextConSombra" id="editNombres" name="editNombres" placeholder="Nombres" title="Nombres">
+            </div>
+            <div class="col-md-8"></div>
+        </div>
+
+        <br>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-2">
+                <input type="text" class="inputTextConSombra" id="editApellidos" name="editApellidos" placeholder="Apellidos" title="Apellidos">
+            </div>
+            <div class="col-md-8"></div>
+        </div>
+
+        <br>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-2">
+                <input class="inputTextConSombra" type="text" readonly id="editDni" name="editDni" placeholder="Dni" title="Dni">
+            </div>
+            <div class="col-md-8"></div>
+        </div>
+
+        <br>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-2">
+                <input class="inputTextConSombra" type="text" id="editCelular" name="editCelular" placeholder="Celular" title="Celular">
+            </div>
+            <div class="col-md-8"></div>
+        </div>
+
+        <br>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-2">
+                <input class="inputTextConSombra" type="text" id="editEmail" name="editEmail" placeholder="Email" title="Email">
+            </div>
+            <div class="col-md-8"></div>
+        </div>
+
+        <br>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-2">
+                <input class="inputTextConSombra" type="date" id="editFechaNacimiento"  name="editFechaNacimiento" title="Fecha Nacimiento" placeholder="Fecha Nacimiento">
+            </div>
+            <div class="col-md-5"></div>
+        </div>
+
+        <br>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-2">
+                <textarea class="inputTextConSombra" id="editDatosGarante"  name="editDatosGarante" placeholder="Datos del Garante"
+                          style="margin: 0px; height: 66px; width: 193px;"></textarea>
+            </div>
+            <div class="col-md-5"></div>
+        </div>
+
+        <br><br><br>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-2">
+                <button type="button" class="miBoton-chico" onclick="guardarLocatarioEditado()" name="enviar" id="enviar">
+                    Guardar
+                </button>
+                <a><input class="miBoton-chico" type="button" onclick="showListContainer()" value="Atras"></a>
+            </div>
+            <div class="col-md-8"></div>
+        </div>
+
+    </div>
+</form>
+
+<!-- END - User Form Content -->

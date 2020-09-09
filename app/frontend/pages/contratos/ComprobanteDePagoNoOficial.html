@@ -1,0 +1,244 @@
+<body>
+<div class="container" id="comprobanteDePagoNoOficial">
+    <br>
+    <div  class="miContainer">
+        <br>
+        <div class="row">
+            <!-- COLUMNA 1 -->
+            <div class="col-md-6">
+                <!-- DATOS DE WALTER BENTANCOR -->
+                <p class="inputTextLabelCentrado">
+                    De Walter Bentancor <br>
+                    Primera Junta 979 1°, San Miguel, Bs. <br>
+                    Tel. 011 15-3849-3619
+                </p>
+            </div>
+            <!-- COLUMNA 2 -->
+            <div class="col-md-6">
+                <!-- FECHA-->
+                <div class="col-md-4"></div>
+                <div class="col-md-2">
+                    <label class="labelSubtitulo">Fecha</label>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" class="inputTextLabel" name="reciboNoOfiFechaHoy"
+                           id="reciboNoOfiFechaHoy" readonly="readonly">
+                </div>
+            </div>
+        </div>
+        <br>
+        <div>
+            <br>
+            <div class="miContainer2">
+                <br>
+            <div class="row">
+                <!-- NUMERO DE COMPROBANTE-->
+                <div class="col-md-1"></div>
+                <div class="col-md-1" style="width: 110px">
+                    <label class="labelSubtitulo">Recibo N°</label>
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="inputTextLabel" name="reciboNoOfiNumeroComprobante"
+                           id="reciboNoOfiNumeroComprobante" readonly="readonly">
+                </div>
+
+                <!-- UNIDAD FUNCIONAL-->
+                <div class="col-md-2" style="width: 175px">
+                    <label class="labelSubtitulo">Unidad Funcional</label>
+                </div>
+                <div class="col-md-1">
+                    <input type="text" class="inputTextLabel" name="reciboNoOfiUnidadFuncional"
+                           id="reciboNoOfiUnidadFuncional" readonly="readonly">
+                </div>
+                <!-- EL PAGO CORRESPONDE AL MES Y AÑO: -->
+                <div class="col-md-1" style="width: 115px">
+                    <label class="labelSubtitulo">Mes y Año</label>
+                </div>
+                <div class="col-md-1" style="width: 50px">
+                    <input type="text" class="inputTextLabel" name="reciboNoOfiCorrespondienteMes"
+                           id="reciboNoOfiCorrespondienteMes" readonly="readonly" style="width: 50px">
+                </div>
+                <div class="col-md-1" style="width: 20px">
+                    <label class="labelSubtitulo">/</label>
+                </div>
+                <div class="col-md-1">
+                    <input type="text" class="inputTextLabel" name="reciboNoOfiCorrespondienteAnio"
+                           id="reciboNoOfiCorrespondienteAnio" readonly="readonly">
+                </div>
+                <div class="col-md-1"></div>
+
+            </div>
+            <div class="row">
+                <!-- INMUEBLE-->
+                <div class="col-md-1"></div>
+                <div class="col-md-1" style="width: 110px">
+                    <label class="labelSubtitulo">Inmueble</label>
+                </div>
+                <div class="col-md-9">
+                    <input type="text" class="inputTextLabel" name="reciboNoOfiDomicilio"
+                           id="reciboNoOfiDomicilio" readonly="readonly">
+                </div>
+            </div>
+            <div class="row">
+                <!-- LOCATARIO-->
+                <div class="col-md-1"></div>
+                <div class="col-md-1" style="width: 110px">
+                    <label class="labelSubtitulo">Recibi de</label>
+                </div>
+                <div class="col-md-6" style="width: 490px">
+                    <input type="text" class="inputTextLabel" name="reciboNoOficialCliente"
+                           id="reciboNoOficialCliente" readonly="readonly">
+                </div>
+                <!-- ID REGISTRO DE PAGO - ESTA OCULTO-->
+                <div class="col-md-1">
+                    <input type="text" class="inputTextLabel inputOculto" name="reciboNoOfiIdRegistroPago"
+                           id="reciboNoOfiIdRegistroPago" readonly="readonly">
+                </div>
+                <!-- ID CONTRATO - ESTA OCULTO-->
+                <div class="col-md-1">
+                    <input type="text" class="inputTextLabel inputOculto" name="reciboNoOfiIdContrato"
+                           id="reciboNoOfiIdContrato" readonly="readonly">
+                </div>
+                <!-- TIPO COMPROBANTE - ESTA OCULTO-->
+                <div class="col-md-1">
+                    <input type="text" class="inputTextLabel inputOculto" name="reciboNoOfiTipoComprobante"
+                           id="reciboNoOfiTipoComprobante" readonly="readonly">
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+            </div>
+            <br><br>
+
+            <!-- CONCEPTOS DE PAGOS----------------------------------------------------------------------->
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-11">
+                    <label class="labelSubtitulo">En concepto de pago</label>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <!-- ALQUILER MENSUAL-->
+                <div class="col-md-1"></div>
+                <div class="col-md-2">
+                    <label class="labelSubtituloNormal">Alquiler Mensual</label>
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="inputTextConSombra" name="reciboNoOfiAlquilerMensual"
+                           id="reciboNoOfiAlquilerMensual" readonly="readonly">
+                </div>
+                <div class="col-md-7"></div>
+            </div>
+            <br>
+
+            <!-- SUB TOTAL IMPORTE A PAGAR-------------------------------------------------------------------->
+            <div class="row">
+                <div class="col-md-7"></div>
+                <div class="col-md-2">
+                    <label class="labelSubtitulo">Sub Total</label>
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="inputTextConSombra" name="reciboNoOfiSubTotal"
+                           id="reciboNoOfiSubTotal" readonly="readonly">
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+
+            <!-- INTERES POR MORA-->
+            <div class="row">
+                <div class="col-md-7"></div>
+                <div class="col-md-1">
+                    <label class="labelSubtituloNormal">Int. Dias</label>
+                </div>
+                <div class="col-md-1">
+                    <input type="text" class="inputTextLabel" name="reciboNoOfiTotalDias"
+                           id="reciboNoOfiTotalDias">
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="inputTextConSombra" name="reciboNoOfiInteresPorMora"
+                           id="reciboNoOfiInteresPorMora" onchange="EditarValoresReciboNoOficial();">
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+            <!-- OTROS CONCEPTOS-->
+            <div class="row">
+                <div class="col-md-7"></div>
+                <div class="col-md-2">
+                    <label class="labelSubtituloNormal">Otros Conceptos</label>
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="inputTextConSombra" name="reciboNoOfiOtrosConceptos"
+                           id="reciboNoOfiOtrosConceptos" onchange="EditarValoresReciboNoOficial();">
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+            <!-- SALDO ANTERIOR-->
+            <div class="row">
+                <div class="col-md-7"></div>
+                <div class="col-md-2">
+                    <label class="labelSubtituloNormal">Saldo Anterior</label>
+                </div>
+                <div class="col-md-2">
+                    <label>
+                        <select class="inputTextConSombra" id="reciboNoOfiSaldoAnterior" name='reciboNoOfiSaldoAnterior'
+                                style="width: 164px;"
+                                onchange="EditarValoresReciboOficial();">
+                        </select>
+                    </label>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+            <!-- TOTAL-->
+            <div class="row">
+                <div class="col-md-7"></div>
+                <div class="col-md-2">
+                    <label class="labelSubtitulo">Total</label>
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="inputTextConSombra" name="reciboNoOfiTotal"
+                           id="reciboNoOfiTotal" readonly="readonly">
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+            <!-- IMPORTE RECIBIDO-->
+            <div class="row">
+                <div class="col-md-7"></div>
+                <div class="col-md-2">
+                    <label class="labelSubtitulo">Imp. Recibido</label>
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="inputTextConSombra" name="reciboNoOfiImporteRecibido"
+                           id="reciboNoOfiImporteRecibido" onchange="EditarValoresReciboNoOficial();">
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+
+            <br><br>
+
+            <!-- SALDO PENDIENTE-->
+            <div class="row">
+
+                <div class="col-md-1"></div>
+                <div class="col-md-2">
+                    <label class="labelSubtitulo">Saldo Pendiente</label>
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="inputTextConSombra" name="reciboNoOfiSaldoPendiente"
+                           id="reciboNoOfiSaldoPendiente" readonly="readonly">
+                </div>
+                <div class="col-md-4"></div>
+                <div class="col-md-3">
+                    <a><input class="miBoton-chico" type="button" onclick="ListadoDeRegistrosDePago()"
+                              value="Atras"></a>
+                    <a><input class="miBoton-chico" type="button" onclick="GuardarComprobanteDePago()" value="Guardar"></a>
+                </div>
+            </div>
+            <br><br>
+        </div>
+    </div>
+</div>
+
+</body>
+
+
+

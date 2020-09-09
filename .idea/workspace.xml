@@ -1,0 +1,763 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="53ab48f9-28da-4f25-a97d-79acfbd8f837" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/frontend/pages/clientes/cliente.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="13" column="29" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
+              <folding>
+                <element signature="n#!!block;n#getAll#0" />
+                <element signature="n#!!block;n#fillLocatariosGrid#0" />
+                <element signature="n#!!block;n#guardarLocatarioEditado#0" />
+                <element signature="n#!!block;n#limpiarObjetosFormAddLocatario#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/frontend/pages/clientes/cliente.page.php">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/frontend/pages/clientes/cliente.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" column="34" lean-forward="true" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/frontend/pages/clientes/clienteDetail.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="43" column="44" selection-start-line="43" selection-start-column="44" selection-end-line="43" selection-end-column="44" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#form#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/frontend/resources/css/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="274">
+              <caret line="191" column="15" selection-start-line="191" selection-start-column="1" selection-end-line="191" selection-end-column="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/frontend/pages/clientes/clienteEdit.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1377">
+              <caret line="81" column="71" selection-start-line="81" selection-start-column="71" selection-end-line="81" selection-end-column="71" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/frontend/pages/inmuebles/InmuebleAdd.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="16" column="123" selection-start-line="16" selection-start-column="123" selection-end-line="16" selection-end-column="123" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#form#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#select#0;n#label#0;n#div#1;n#div#1;n#div#0;n#form#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#select#0;n#label#0;n#div#1;n#div#6;n#div#0;n#form#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#div#1;n#div#6;n#div#0;n#form#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/frontend/pages/inmuebles/InmuebleEdit.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1258">
+              <caret line="74" column="98" selection-start-line="74" selection-start-column="98" selection-end-line="74" selection-end-column="98" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/frontend/resources/css/bootstrap.min.css">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/frontend/pages/clientes/clienteAdd.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="765">
+              <caret line="45" column="14" lean-forward="true" selection-start-line="38" selection-start-column="8" selection-end-line="45" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>locatario</find>
+      <find>cargarSelectConLocatario</find>
+      <find>llenarDomLocatarios</find>
+      <find>guardarLocalidad</find>
+      <find>locatarios</find>
+      <find>llenarRegistroDePagoGrilla</find>
+      <find>listarRegistrosDePaso(</find>
+      <find>guardarContrato()</find>
+      <find>bodyReciboOficial</find>
+      <find>responsive</find>
+      <find>showListContainer</find>
+      <find>locatarioEditEstado</find>
+      <find>locatarioDatosCompletos</find>
+      <find>showEditForm</find>
+      <find>miTitulo1</find>
+      <find>.inputTextLabel</find>
+    </findStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/app/frontend/pages/contratos/visualizarReciboNoOficial.html" />
+        <option value="$PROJECT_DIR$/app/frontend/pages/contratos/ComprobanteDePagoSaldo.html" />
+        <option value="$PROJECT_DIR$/app/frontend/pages/contratos/registroDePagoList.html" />
+        <option value="$PROJECT_DIR$/app/frontend/pages/contratos/ComprobanteDePago.html" />
+        <option value="$PROJECT_DIR$/app/backend/entity/ArmadoRegistroPagoParaConfeccionar.php" />
+        <option value="$PROJECT_DIR$/app/backend/entity/Saldos.php" />
+        <option value="$PROJECT_DIR$/app/backend/entity/ComprobanteDePago.php" />
+        <option value="$PROJECT_DIR$/app/repository/RegistroPagoRepositorio.php" />
+        <option value="$PROJECT_DIR$/app/frontend/pages/contratos/ComprobantesDePagoList.html" />
+        <option value="$PROJECT_DIR$/app/frontend/pages/recibos/recibos.js" />
+        <option value="$PROJECT_DIR$/app/frontend/pages/recibos/recibosList.html" />
+        <option value="$PROJECT_DIR$/app/frontend/pages/contratos/recibosList.html" />
+        <option value="$PROJECT_DIR$/app/frontend/pages/recibos/recibo.page.php" />
+        <option value="$PROJECT_DIR$/app/frontend/pages/recibos/visualizarReciboSaldos.html" />
+        <option value="$PROJECT_DIR$/app/frontend/pages/recibos/visualizarReciboSaldosOficial.html" />
+        <option value="$PROJECT_DIR$/app/backend/controller/RecibosController.php" />
+        <option value="$PROJECT_DIR$/app/frontend/pages/contratos/ComprobanteDePagoOficial.html" />
+        <option value="$PROJECT_DIR$/app/frontend/pages/contratos/ComprobanteDePagoSaldoOficial.html" />
+        <option value="$PROJECT_DIR$/app/backend/controller/ComprobanteDePagoController.php" />
+        <option value="$PROJECT_DIR$/app/frontend/pages/contratos/ComprobanteDePagoSaldoNoOficial.html" />
+        <option value="$PROJECT_DIR$/app/frontend/pages/recibos/visualizarReciboSaldoOficial.html" />
+        <option value="$PROJECT_DIR$/app/frontend/pages/recibos/visualizarReciboSaldoNoOficial.html" />
+        <option value="$PROJECT_DIR$/app/frontend/pages/recibos/recibo.php" />
+        <option value="$PROJECT_DIR$/app/repository/ComprobanteDePagoRepositorio.php" />
+        <option value="$PROJECT_DIR$/app/frontend/pages/recibos/visualizarReciboNoOficial.html" />
+        <option value="$PROJECT_DIR$/app/frontend/pages/inmuebles/inmueble.php" />
+        <option value="$PROJECT_DIR$/app/frontend/pages/inmuebles/inmuebleList.html" />
+        <option value="$PROJECT_DIR$/app/frontend/pages/inmuebles/jsPDF-master/PruebaPDF.html" />
+        <option value="$PROJECT_DIR$/app/frontend/pages/inmuebles/PruebaPDF.html" />
+        <option value="$PROJECT_DIR$/app/frontend/pages/inmuebles/inmueble.js" />
+        <option value="$PROJECT_DIR$/app/frontend/pages/recibos/recibo.js" />
+        <option value="$PROJECT_DIR$/app/frontend/pages/recibos/listarRecibos.html" />
+        <option value="$PROJECT_DIR$/app/frontend/pages/principal/menuPrincipal.html" />
+        <option value="$PROJECT_DIR$/app/frontend/pages/contratos/ComprobanteDePagoNoOficial.html" />
+        <option value="$PROJECT_DIR$/app/frontend/pages/recibos/visualizarReciboOficial.html" />
+        <option value="$PROJECT_DIR$/app/frontend/pages/contratos/visualizarReciboOficialCantidadDos.html" />
+        <option value="$PROJECT_DIR$/app/backend/entity/Cliente.php" />
+        <option value="$PROJECT_DIR$/app/frontend/pages/contratos/contrato.php" />
+        <option value="$PROJECT_DIR$/app/frontend/pages/contratos/PruebaHTMLPDF.html" />
+        <option value="$PROJECT_DIR$/app/frontend/pages/contratos/contrato.js" />
+        <option value="$PROJECT_DIR$/app/frontend/pages/contratos/visualizarReciboOficialCantidadUno.html" />
+        <option value="$PROJECT_DIR$/app/frontend/pages/contratos/contratoList.html" />
+        <option value="$PROJECT_DIR$/app/frontend/pages/clientes/clienteEdit.html" />
+        <option value="$PROJECT_DIR$/app/frontend/pages/clientes/clienteList.html" />
+        <option value="$PROJECT_DIR$/app/frontend/pages/clientes/cliente.php" />
+        <option value="$PROJECT_DIR$/app/frontend/pages/clientes/clienteAdd.html" />
+        <option value="$PROJECT_DIR$/app/frontend/pages/inmuebles/InmuebleEdit.html" />
+        <option value="$PROJECT_DIR$/app/frontend/pages/inmuebles/InmuebleAdd.html" />
+        <option value="$PROJECT_DIR$/app/frontend/pages/clientes/cliente.js" />
+        <option value="$PROJECT_DIR$/app/frontend/resources/css/style.css" />
+        <option value="$PROJECT_DIR$/app/frontend/pages/clientes/clienteDetail.html" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-7" />
+    <option name="width" value="1380" />
+    <option name="height" value="735" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="administracion_de_alquileres" type="b2602c69:ProjectViewProjectNode" />
+              <item name="administracion_de_alquileres" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="administracion_de_alquileres" type="b2602c69:ProjectViewProjectNode" />
+              <item name="administracion_de_alquileres" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="administracion_de_alquileres" type="b2602c69:ProjectViewProjectNode" />
+              <item name="administracion_de_alquileres" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="administracion_de_alquileres" type="b2602c69:ProjectViewProjectNode" />
+              <item name="administracion_de_alquileres" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="frontend" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="administracion_de_alquileres" type="b2602c69:ProjectViewProjectNode" />
+              <item name="administracion_de_alquileres" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="administracion_de_alquileres" type="b2602c69:ProjectViewProjectNode" />
+              <item name="administracion_de_alquileres" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="clientes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="administracion_de_alquileres" type="b2602c69:ProjectViewProjectNode" />
+              <item name="administracion_de_alquileres" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="administracion_de_alquileres" type="b2602c69:ProjectViewProjectNode" />
+              <item name="administracion_de_alquileres" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/frontend/pages/clientes" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Sharp_Code\administracion_de_alquileres\app\frontend\pages\contratos\jsPDF-master" />
+      <recent name="C:\xampp\htdocs\Sharp_Code\administracion_de_alquileres\app\frontend\pages\contratos" />
+      <recent name="C:\xampp\htdocs\Sharp_Code\administracion_de_alquileres\app\frontend\pages\inmuebles" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Sharp_Code\administracion_de_alquileres\app\frontend\pages\clientes" />
+      <recent name="C:\xampp\htdocs\Sharp_Code\administracion_de_alquileres\app\frontend\pages\inmuebles\jsPDF-master\dist" />
+      <recent name="C:\xampp\htdocs\Sharp_Code\administracion_de_alquileres\app\backend\entity" />
+      <recent name="C:\xampp\htdocs\Sharp_Code\administracion_de_alquileres\app\frontend\pages\contratos" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="53ab48f9-28da-4f25-a97d-79acfbd8f837" name="Default Changelist" comment="" />
+      <created>1598383950727</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1598383950727</updated>
+      <workItem from="1598383956056" duration="8353000" />
+      <workItem from="1598411245324" duration="22359000" />
+      <workItem from="1598540178307" duration="5341000" />
+      <workItem from="1598646010549" duration="45476000" />
+      <workItem from="1598806868752" duration="17927000" />
+      <workItem from="1599003368940" duration="636000" />
+      <workItem from="1599004034363" duration="12461000" />
+      <workItem from="1599064175828" duration="1169000" />
+      <workItem from="1599070845706" duration="11828000" />
+      <workItem from="1599340275726" duration="6186000" />
+      <workItem from="1599519181197" duration="2477000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="153102000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21860817" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3289689" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/recibos/visualizarReciboSaldoOficial.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="55" selection-start-line="1" selection-start-column="27" selection-end-line="1" selection-end-column="55" />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#div#2;n#div#1;n#div#1;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#2;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#div#0;n#div#2;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#5;n#div#0;n#div#2;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#6;n#div#0;n#div#2;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#6;n#div#0;n#div#2;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#7;n#div#0;n#div#2;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#2;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#2;n#div#2;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#2;n#div#2;n#div#0;n#body#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/recibos/recibo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="49" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/backend/controller/ComprobanteDePagoController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="377" column="55" selection-start-line="377" selection-start-column="55" selection-end-line="377" selection-end-column="55" />
+          <folding>
+            <element signature="n#cargarComprobanteDePago#0;n#!!top" />
+            <element signature="n#sumarSaldoAnteriores#0;n#!!top" />
+            <element signature="n#guardarComprobanteDePago#0;n#!!top" />
+            <element signature="n#editarElImporteRecibidoDelReciboPreCargado#0;n#!!top" />
+            <element signature="n#EditarValoresReciboOficial#0;n#!!top" />
+            <element signature="n#EditarValoresReciboNoOficial#0;n#!!top" />
+            <element signature="n#cargarComprobanteDePagoSoloSaldo#0;n#!!top" />
+            <element signature="n#buscarCuantosRecibosTieneEsteRegistro#0;n#!!top" />
+            <element signature="n#listarRecibosDeUnMismoRegistro#0;n#!!top" />
+            <element signature="n#visualizarReciboOficialSoloSaldo#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/repository/ComprobanteDePagoRepositorio.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="250" column="130" selection-start-line="250" selection-start-column="130" selection-end-line="250" selection-end-column="130" />
+          <folding>
+            <element signature="n#guardarComprobanteDePago#0;n#ComprobanteDePagoRepositorio#0;n#!!top" />
+            <element signature="n#mostrarUltimoComprobanteCargado#0;n#ComprobanteDePagoRepositorio#0;n#!!top" />
+            <element signature="n#mostrarUltimoComprobanteDePagoDeUnContrato#0;n#ComprobanteDePagoRepositorio#0;n#!!top" />
+            <element signature="n#sumarSaldosPendientesAnteriores#0;n#ComprobanteDePagoRepositorio#0;n#!!top" />
+            <element signature="n#listarComprobantesDePago#0;n#ComprobanteDePagoRepositorio#0;n#!!top" />
+            <element signature="n#buscarComprobanteDePagoSoloSaldo#0;n#ComprobanteDePagoRepositorio#0;n#!!top" />
+            <element signature="n#contarCuantosRecibosTieneUnMismoRegistro#0;n#ComprobanteDePagoRepositorio#0;n#!!top" />
+            <element signature="n#listarRecibosDeUnMismoRegistro#0;n#ComprobanteDePagoRepositorio#0;n#!!top" />
+            <element signature="n#visualizarReciboOficialSoloSaldo#0;n#ComprobanteDePagoRepositorio#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/recibos/visualizarReciboNoOficial.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="29" column="36" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/principal/menuPrincipal.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/backend/controller/InmuebleController.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/contratos/jsPDF-master/dist/html2canvas.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/inmuebles/localidadEdit.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/inmuebles/inmueble.page.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/inmuebles/inmuebleList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/recibos/listarRecibos.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="33" column="102" selection-start-line="33" selection-start-column="102" selection-end-line="33" selection-end-column="102" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/inmuebles/PruebaPDF.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="14" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/inmuebles/inmueble.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1666">
+          <caret line="255" selection-start-line="255" selection-end-line="287" selection-end-column="1" />
+          <folding>
+            <element signature="n#!!block;n#CargarListadoInmueble#0" />
+            <element signature="n#!!block;n#obtenerInmuebles#0" />
+            <element signature="n#!!block;n#llenarTablaInmuebles#0" />
+            <element signature="n#!!block;n#construirFilaDeInmueble#0" />
+            <element signature="n#!!block;n#guardarInmueble#0" />
+            <element signature="n#!!block;n#loadInmuebleData#0" />
+            <element signature="n#!!block;n#fillEditionForm#0" />
+            <element signature="n#!!block;n#llenarSelectConLocalidadesParaEditar#0" />
+            <element signature="n#!!block;n#fillDomEdit#0" />
+            <element signature="n#!!block;n#guardarInmuebleEditado#0" />
+            <element signature="n#!!block;n#demoFromHTML#0" />
+            <element signature="n#!!block;n#mostrarFormLocalidadAdd#0" />
+            <element signature="n#!!block;n#llenarSelectConProvincias#0" />
+            <element signature="n#!!block;n#fillDomProvincia#0" />
+            <element signature="n#!!block;n#optionsProvincia#0" />
+            <element signature="n#!!block;n#guardarLocalidad#0" />
+            <element signature="n#!!block;n#mostrarFormLocalidadEditar#0" />
+            <element signature="n#!!block;n#llenarSelectConProvinciasParaEditar#0" />
+            <element signature="n#!!block;n#fillDomEditProvincia#0" />
+            <element signature="n#!!block;n#cargarLocalidadParaEditar#0" />
+            <element signature="n#!!block;n#llenarFormConLocalidad#0" />
+            <element signature="n#!!block;n#guardarLocalidadEditada#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/principal/menuPrincipal.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="9" column="113" selection-start-line="9" selection-start-column="113" selection-end-line="9" selection-end-column="113" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/registrosDePagos/registroDePagoList.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/recibos/visualizarReciboOficial.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="21" lean-forward="true" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/recibos/recibo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
+          <caret line="207" selection-start-line="207" selection-end-line="207" />
+          <folding>
+            <element signature="n#!!block;n#listarRecibos#0" />
+            <element signature="n#!!block;n#listadoCompDePago#0" />
+            <element signature="n#!!block;n#llenarComprobantesDePagosGrilla#0" />
+            <element signature="n#!!block;n#cargarDatosDeRecibo#0" />
+            <element signature="n#!!block;n#demoFromHTML#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="6024" column="4" selection-start-line="6024" selection-start-column="4" selection-end-line="6024" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/platform-impl.jar!/resources/html5-schema/html5/common.rnc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="106" column="26" lean-forward="true" selection-start-line="106" selection-start-column="26" selection-end-line="106" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/inmuebles/inmueble.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="94" lean-forward="true" selection-start-line="5" selection-start-column="3" selection-end-line="7" selection-end-column="94" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/contratos/visualizarReciboOficialSoloSaldo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="159" lean-forward="true" selection-start-line="159" selection-end-line="159" />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#div#2;n#div#1;n#div#1;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#2;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#div#0;n#div#2;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#5;n#div#0;n#div#2;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#6;n#div#0;n#div#2;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#6;n#div#0;n#div#2;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#7;n#div#0;n#div#2;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#2;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#2;n#div#2;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#2;n#div#2;n#div#0;n#body#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/contratos/visualizarReciboNoOficial.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-41">
+          <caret line="188" column="85" lean-forward="true" selection-start-line="188" selection-start-column="85" selection-end-line="188" selection-end-column="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/contratos/registroDePagoList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="157" column="79" selection-start-line="157" selection-start-column="79" selection-end-line="157" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/contratos/ComprobanteDePagoNoOficial.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="232" column="123" selection-start-line="232" selection-start-column="123" selection-end-line="232" selection-end-column="123" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/contratos/ComprobanteDePagoOficial.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="276" lean-forward="true" selection-start-line="217" selection-start-column="7" selection-end-line="276" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/contratos/contratoAdd.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/contratos/contratoDatosCompletos.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/contratos/ComprobanteDePagoSaldoNoOficial.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="21" column="75" selection-end-line="174" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/contratos/ComprobanteDePagoSaldoOficial.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="153" lean-forward="true" selection-start-line="106" selection-start-column="6" selection-end-line="153" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/contratos/contrato.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/contratos/PruebaHTMLPDF.html" />
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/contratos/contrato.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="28169">
+          <caret line="1657" column="17" selection-start-line="1657" selection-start-column="9" selection-end-line="1657" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/contratos/visualizarReciboOficialCantidadUno.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="1" selection-start-column="1" selection-end-column="1" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#body#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/contratos/visualizarReciboOficialCantidadDos.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="5" selection-start-column="5" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/contratos/contratoList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="102" selection-start-line="32" selection-start-column="102" selection-end-line="32" selection-end-column="102" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/contratos/contrato.page.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="4" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/contratos/contrato.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/backend/entity/Cliente.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="15" selection-start-line="24" selection-start-column="15" selection-end-line="24" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/clientes/clienteList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="6" lean-forward="true" selection-start-column="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/contratos/jsPDF-master/examples/bootstrap/css/bootstrap-responsive.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="103" column="3" selection-start-line="103" selection-start-column="3" selection-end-line="103" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/clientes/cliente.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="29" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
+          <folding>
+            <element signature="n#!!block;n#getAll#0" />
+            <element signature="n#!!block;n#fillLocatariosGrid#0" />
+            <element signature="n#!!block;n#guardarLocatarioEditado#0" />
+            <element signature="n#!!block;n#limpiarObjetosFormAddLocatario#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/clientes/cliente.page.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/clientes/cliente.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="34" lean-forward="true" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/clientes/clienteEdit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1377">
+          <caret line="81" column="71" selection-start-line="81" selection-start-column="71" selection-end-line="81" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/inmuebles/InmuebleAdd.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="123" selection-start-line="16" selection-start-column="123" selection-end-line="16" selection-end-column="123" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#form#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#0;n#label#0;n#div#1;n#div#1;n#div#0;n#form#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#0;n#label#0;n#div#1;n#div#6;n#div#0;n#form#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#div#1;n#div#6;n#div#0;n#form#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/inmuebles/InmuebleEdit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1258">
+          <caret line="74" column="98" selection-start-line="74" selection-start-column="98" selection-end-line="74" selection-end-column="98" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/resources/css/bootstrap.min.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/clientes/clienteAdd.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="45" column="14" lean-forward="true" selection-start-line="38" selection-start-column="8" selection-end-line="45" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/resources/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="191" column="15" selection-start-line="191" selection-start-column="1" selection-end-line="191" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/clientes/clienteDetail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="43" column="44" selection-start-line="43" selection-start-column="44" selection-end-line="43" selection-end-column="44" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#form#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

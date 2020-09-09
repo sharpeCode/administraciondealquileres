@@ -1,0 +1,65 @@
+<!-- START - User Form Content -->
+<form role="form" id="localidadEdit">
+    <div class="contenedorAgregarPersona" style="margin: 3rem;">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-5 nombreCampo">
+                <h3 align="left" class="miTitulo1">Editar Localidad</h3>
+            </div>
+            <div class="col-md-5"></div>
+        </div>
+
+        <br>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-2"><input type="text" class="inputTextConSombra" id="editIdLocalidad" name="editIdLocalidad"placeholder="" hidden="true"></div>
+            <div class="col-md-8"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-2">
+                <input type="text" class="inputTextConSombra" id="editLocalidad" name="editLocalidad" placeholder="Localidad"
+                       title="Localidad">
+            </div>
+            <div class="col-md-8"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-2">
+                <input type="text" class="inputTextConSombra" id="editCp" name="editCp" placeholder="Codigo Postal"
+                       title="Codigo Postal">
+            </div>
+            <div class="col-md-8"></div>
+        </div>
+
+        <br>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-2">
+                <label>
+                    <select id="editIdProvincia" name='editIdProvincia' class="inputTextConSombra">
+                    </select>
+                </label>
+            </div>
+            <div class="col-md-8"></div>
+        </div>
+
+
+        <br><br>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-1" style="width:100px">
+                <button type="button" class="miBoton-chico" onclick="guardarLocalidadEditada()" name="enviar" id="enviar">
+                    Guardar
+                </button>
+            </div>
+            <div class="col-md-1" style="width:100px">
+                <a><input class="miBoton-chico" type="button" onclick="mostrarFormLocalidadPpal()" value="Atras"></a>
+            </div>
+            <div class="col-md-7"></div>
+        </div>
+        <br>
+    </div>
+</form>

@@ -1,0 +1,161 @@
+<!-- START - User Form Content -->
+<form role="form" id="contratoAdd">
+    <div class="contenedorAgregarPersona" style="margin: 3rem;">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-3 nombreCampo">
+                <h3 align="left" class="miTitulo1">Armado de Contrato</h3>
+            </div>
+            <div class="col-md-7"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-4 miSubtitulo"><label class="miSubtitulo" align="left">Fecha de contrato</label>
+            </div>
+            <div class="col-md-6"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-2" style="width: 208px;">
+                <input class="inputTextConSombra" id="fechaInicio" name="fechaInicio"
+                       title="Inicio Contrato" placeholder="Inicio" onfocus="(this.type='date')" style="width: 188px;">
+            </div>
+            <div class="col-md-2">
+                <input class="inputTextConSombra" id="fechaFin" name="fechaFin" title="Fin Contrato"
+                       placeholder="Fin" onfocus="(this.type='date')" style="width: 188px;">
+            </div>
+            <div class="col-md-6"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-4 miSubtitulo"><label class="miSubtitulo" align="left">Datos Cliente e Inmueble</label>
+            </div>
+            <div class="col-md-6"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-3">
+                <label>
+                    <select id="dni" name="dni" class="inputTextConSombra" style="width: 400px;">
+                    </select>
+                </label>
+            </div>
+            <div class="col-md-7"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-3">
+                <label>
+                    <select id="idInmueble" name="idInmueble" class="inputTextConSombra" style="width: 400px;">
+                    </select>
+                </label>
+            </div>
+            <div class="col-md-7"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-4"><label class="miSubtitulo" align="left">Costos</label>
+            </div>
+            <div class="col-md-6"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-2" style="width: 280px;">
+                <input class="inputTextConSombra" type="text" id="valorAlquilerOficial" name="valorAlquilerOficial"
+                       placeholder="Alquiler mens." title="Valor Alquiler Mensual" style="width: 120px;">
+            </div>
+            <div class="col-md-2">
+                <input class="inputTextConSombraNaranja" type="text" id="valorAlquilerNoOficial" name="valorAlquilerNoOficial"
+                       placeholder="Alquiler mens." title="Valor Alquiler Mensual" style="width: 120px;">
+            </div>
+            <div class="col-md-6"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-2">
+                <input class="inputTextConSombra" type="text" id="valorExpensas" name="valorExpensas"
+                       placeholder="Expensas" title="Valor Expensas" style="width: 120px;">
+            </div>
+            <div class="col-md-8"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-2" style="width: 140px;">
+                <input class="inputTextConSombra" type="text" id="valorDeposito" name="valorDeposito"
+                       placeholder="Depósito" title="Depósito" style="width: 120px;">
+            </div>
+            <div class="col-md-1">
+                <label>
+                    <select class="inputTextConSombra" id="cantCuotasDeposito" name="cantCuotasDeposito" title="Cantidad Cuotas"  style="width: 80px;">
+                        <option value="-1">Cuot</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </label>
+            </div>
+
+            <div class="col-md-7"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-2">
+                <input class="inputTextConSombra" type="text" id="gastosAdministrativos" name="gastosAdministrativos"
+                       placeholder="Gastos admin." title="Gastos Administrativos" style="width: 120px;">
+            </div>
+            <div class="col-md-8"></div>
+        </div>
+        <br>
+
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-4 miSubtitulo"><label class="miSubtitulo" align="left">Franja pago alquiler</label>
+            </div>
+            <div class="col-md-6"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-1" style="width: 102px;">
+                <label>
+                    <select class="inputTextConSombra" id="fechaPagoInicio" name='fechaPagoInicio' style="width: 82px;"
+                            title="Inicio">
+                    </select>
+                </label>
+            </div>
+            <div class="col-md-1">
+                <label>
+                    <select class="inputTextConSombra" id="fechaPagoFin" name='fechaPagoFin' style="width: 82px;"
+                            title="Fin">
+                    </select>
+                </label>
+            </div>
+            <div class="col-md-8"></div>
+        </div>
+
+        <br><br>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-1" style="width:110px">
+                <a><input class="miBoton-chico" type="button" onclick="Atras()" value="Atras"></a>
+            </div>
+            <div class="col-md-1" style="width:100px">
+                <button type="button" class="miBoton-chico" onclick="guardarContrato()" name="enviar" id="enviar">
+                    Guardar
+                </button>
+            </div>
+            <div class="col-md-7"></div>
+        </div>
+        <br>
+    </div>
+</form>
+</div> <!-- Closing base page div (background) -->
+</body>
+</html>
+<!-- END - User Form Content -->

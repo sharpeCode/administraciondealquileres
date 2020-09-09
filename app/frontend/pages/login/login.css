@@ -1,0 +1,32 @@
+.centrar{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.panel-encabezado{
+    background-color: white;
+}
+
+.panel-cuerpo{
+    /*background-color: #505D74;*/
+    background-color: #f9fafc;
+}
+
+.fondoBody{
+    background-image: url("../../resources/images/fondoHome.png");
+    /*background-repeat: no-repeat;
+    background-position: center center;*/
+    background-size: cover;
+}
+
+.boton-1{
+    background-color: #3a5ba0;
+    color: white;
+}
+
+
+.fuentePie{
+    font: bold 100% sans-serif;
+    margin: 10px;
+}
+

@@ -1,0 +1,54 @@
+<body class="fondoBody">
+<br><br><br><br><br>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default centrar" style="width: 300px;">
+            <div id="panelRegistro" class="panel-heading text-center" style="background-color: #3a5ba0; color: white">
+                <h3 class="panel-title">
+                    Iniciar Sesion
+                </h3>
+            </div>
+            <div class="panel-body text-right panel-cuerpo">
+
+                <form role="form"  id="formLogin">
+                    <!-- poner controles y etiquetas / form-group esto hace que el espacio entre las etiquetas y los controles sean optimos, tanto en moviles, ordenadores, etc -->
+                    <div class="form-group text-left">
+                        <label>Dni</label>
+                        <!-- pondremos un control el input no tiene etiqueta de cierre / form-control es para q todo este mas espaciado-->
+                        <input type="text" class="form-control" name="dni" id="dni">
+                        <br>
+                        <label>Contraseña</label>
+                        <!-- pondremos un control el input no tiene etiqueta de cierre / form-control es para q todo este mas espaciado-->
+                        <input type="password" class="form-control" name="password"  id="password">
+                        <br>
+                        <br>
+                    </div>
+                    <br>
+                    <div class="align-rigth">
+                        <button type="button" class="btn btn-default boton-1" name="enviar" id="enviar" onclick="validar()">Ingresar</button>
+
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6"></div>
+
+</div>
+
+
+
+<!-- 3)para que termine de incluir bootstrap, para eso necesitamos incluir nuestro archivos java scrip, siempre se incluye al final del body-->
+
+</body>
+
+<footer id="footerInicio" class="navbar-fixed-bottom">
+    <h5 class="fuentePie" align="right">by Sharpe Code</h5>
+    <h5 class="fuentePie" align="right">sharpecode@gmail.com</h5>
+    <h5 class="fuentePie" align="right"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Version 1.0</h5>
+
+
+</footer>
+
