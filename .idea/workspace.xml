@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="53ab48f9-28da-4f25-a97d-79acfbd8f837" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/frontend/pages/login/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/frontend/pages/login/login.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,10 +15,9 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/frontend/pages/login/login.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="30" column="1" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="1" />
+            <state relative-caret-position="493">
+              <caret line="29" column="53" lean-forward="true" selection-start-line="2" selection-start-column="3" selection-end-line="29" selection-end-column="53" />
               <folding>
-                <element signature="n#!!block;n#validar#0" />
                 <element signature="n#!!block;n#ingresarAlSistema#0" />
               </folding>
             </state>
@@ -244,18 +242,18 @@
       <workItem from="1599070845706" duration="11828000" />
       <workItem from="1599340275726" duration="6186000" />
       <workItem from="1599519181197" duration="2477000" />
-      <workItem from="1599688333054" duration="30000" />
+      <workItem from="1599688333054" duration="850000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="153132000" />
+    <option name="totallyTimeSpent" value="153952000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22163388" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21785174" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -666,10 +664,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/frontend/pages/login/login.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="30" column="1" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="1" />
+        <state relative-caret-position="493">
+          <caret line="29" column="53" lean-forward="true" selection-start-line="2" selection-start-column="3" selection-end-line="29" selection-end-column="53" />
           <folding>
-            <element signature="n#!!block;n#validar#0" />
             <element signature="n#!!block;n#ingresarAlSistema#0" />
           </folding>
         </state>
