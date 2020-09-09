@@ -15,13 +15,33 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/frontend/pages/login/login.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="29" selection-end-column="50" />
+            <state relative-caret-position="17">
+              <caret line="1" column="36" lean-forward="true" selection-start-line="1" selection-start-column="36" selection-end-line="1" selection-end-column="36" />
               <folding>
                 <element signature="n#!!block;n#ingresarAlSistema#0" />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/frontend/pages/login/login.page.php">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/frontend/pages/login/login.html">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/frontend/pages/login/login.php">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.html">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -242,12 +262,12 @@
       <workItem from="1599070845706" duration="11828000" />
       <workItem from="1599340275726" duration="6186000" />
       <workItem from="1599519181197" duration="2477000" />
-      <workItem from="1599688333054" duration="1217000" />
+      <workItem from="1599688333054" duration="1723000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="154319000" />
+    <option name="totallyTimeSpent" value="154825000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -278,57 +298,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/frontend/pages/recibos/recibo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="49" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/backend/controller/ComprobanteDePagoController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="377" column="55" selection-start-line="377" selection-start-column="55" selection-end-line="377" selection-end-column="55" />
-          <folding>
-            <element signature="n#cargarComprobanteDePago#0;n#!!top" />
-            <element signature="n#sumarSaldoAnteriores#0;n#!!top" />
-            <element signature="n#guardarComprobanteDePago#0;n#!!top" />
-            <element signature="n#editarElImporteRecibidoDelReciboPreCargado#0;n#!!top" />
-            <element signature="n#EditarValoresReciboOficial#0;n#!!top" />
-            <element signature="n#EditarValoresReciboNoOficial#0;n#!!top" />
-            <element signature="n#cargarComprobanteDePagoSoloSaldo#0;n#!!top" />
-            <element signature="n#buscarCuantosRecibosTieneEsteRegistro#0;n#!!top" />
-            <element signature="n#listarRecibosDeUnMismoRegistro#0;n#!!top" />
-            <element signature="n#visualizarReciboOficialSoloSaldo#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/repository/ComprobanteDePagoRepositorio.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="250" column="130" selection-start-line="250" selection-start-column="130" selection-end-line="250" selection-end-column="130" />
-          <folding>
-            <element signature="n#guardarComprobanteDePago#0;n#ComprobanteDePagoRepositorio#0;n#!!top" />
-            <element signature="n#mostrarUltimoComprobanteCargado#0;n#ComprobanteDePagoRepositorio#0;n#!!top" />
-            <element signature="n#mostrarUltimoComprobanteDePagoDeUnContrato#0;n#ComprobanteDePagoRepositorio#0;n#!!top" />
-            <element signature="n#sumarSaldosPendientesAnteriores#0;n#ComprobanteDePagoRepositorio#0;n#!!top" />
-            <element signature="n#listarComprobantesDePago#0;n#ComprobanteDePagoRepositorio#0;n#!!top" />
-            <element signature="n#buscarComprobanteDePagoSoloSaldo#0;n#ComprobanteDePagoRepositorio#0;n#!!top" />
-            <element signature="n#contarCuantosRecibosTieneUnMismoRegistro#0;n#ComprobanteDePagoRepositorio#0;n#!!top" />
-            <element signature="n#listarRecibosDeUnMismoRegistro#0;n#ComprobanteDePagoRepositorio#0;n#!!top" />
-            <element signature="n#visualizarReciboOficialSoloSaldo#0;n#ComprobanteDePagoRepositorio#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/frontend/pages/recibos/visualizarReciboNoOficial.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="29" column="36" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/frontend/pages/principal/menuPrincipal.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -662,10 +631,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/login/login.page.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/login/login.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/login/login.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/frontend/pages/login/login.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="29" selection-end-column="50" />
+        <state relative-caret-position="17">
+          <caret line="1" column="36" lean-forward="true" selection-start-line="1" selection-start-column="36" selection-end-line="1" selection-end-column="36" />
           <folding>
             <element signature="n#!!block;n#ingresarAlSistema#0" />
           </folding>
