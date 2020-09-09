@@ -4,7 +4,7 @@ function validar() {
     console.log("recibiendo datos de logeo: ", datosLogin);
 
     var funcionAjax = $.ajax({
-        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/LoginController.php",
+        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/LoginController.php",
         method: "POST",
         data: {
             action: "validar",
@@ -18,7 +18,7 @@ function validar() {
         }else if (retorno == "ERROR2") {
             window.alert("el dni o contraseña son incorrectos");
         }else{
-            location.href = "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/frontend/pages/principal/menuPrincipal.page.php";
+            location.href = "http://administraciondealquileres.herokuapp.com/app/frontend/pages/principal/menuPrincipal.page.php";
         }
     });
     funcionAjax.fail(function (retorno) {
