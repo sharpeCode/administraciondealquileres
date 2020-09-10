@@ -27,8 +27,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/frontend/pages/inmuebles/inmueble.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="59" column="39" lean-forward="true" selection-start-line="59" selection-start-column="39" selection-end-line="59" selection-end-column="39" />
+            <state relative-caret-position="289">
+              <caret line="104" column="14" selection-start-line="104" selection-start-column="14" selection-end-line="104" selection-end-column="14" />
               <folding>
                 <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
@@ -284,12 +284,12 @@
       <workItem from="1599070845706" duration="11828000" />
       <workItem from="1599340275726" duration="6186000" />
       <workItem from="1599519181197" duration="2477000" />
-      <workItem from="1599688333054" duration="2793000" />
+      <workItem from="1599688333054" duration="3550000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="155895000" />
+    <option name="totallyTimeSpent" value="156652000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -646,8 +646,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/frontend/pages/inmuebles/inmueble.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="59" column="39" lean-forward="true" selection-start-line="59" selection-start-column="39" selection-end-line="59" selection-end-column="39" />
+        <state relative-caret-position="289">
+          <caret line="104" column="14" selection-start-line="104" selection-start-column="14" selection-end-line="104" selection-end-column="14" />
           <folding>
             <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
