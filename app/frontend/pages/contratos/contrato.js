@@ -289,6 +289,7 @@ function visualizarReciboNoOficialSoloSaldo(idRegistroDePago) {
 
 //TODO: VISUALIZAR UN SOLO RECIBO NO OFICIAL
 function visualizarUnReciboNoOficial(idRegistroDePago) {
+    
     $("#contratoAdd").hide();
     $("#contratoList").hide();
     $("#contratoDatosCompletos").hide();
