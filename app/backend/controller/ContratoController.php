@@ -8,7 +8,6 @@ require_once '../../repository/VariablePorcentajeImpoNoOficialRepositorio.php';
 require_once '../../repository/RegistroPagoRepositorio.php';
 
 $action = $_POST['action'];
-echo '$action';
 
 switch ($action) {
     case "listar":
@@ -33,7 +32,6 @@ switch ($action) {
 
 function listarContratos()
 {
-    echo 'LLego al controler de contrato ';
     $contratos = ContratoRepositorio::listarContratos();
     echo json_encode($contratos);
 }
@@ -42,7 +40,6 @@ function cargarSelectConLocatario()
 {
     $locatarios = ClienteRepository::cargarSelectConClientes();
     echo json_encode($locatarios);
-
 }
 
 function cargarSelectConInmueble()

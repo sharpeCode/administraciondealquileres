@@ -9,7 +9,6 @@ class ContratoRepositorio
 
     public static function listarContratos()
     {
-        echo 'LLego al repository de contrato ';
         $contratos = null;
         try {
             $sql = "SELECT C.id_contrato AS idContrato, C.fecha_inicio AS fechaInicio, C.fecha_fin AS fechaFin, C.dni, L.nombres, L.apellidos, C.id_inmueble AS idInmueble,

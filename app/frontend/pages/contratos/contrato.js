@@ -341,9 +341,6 @@ function traerTodos(doneFunction, data) {
 
 function llenarContratosGrilla(jsonContratos) {
 
-    console.log("retorno js desde el controller: ");
-    console.log(jsonContratos);
-
     jsonContratos = JSON.parse(jsonContratos);
 
     let tableRaws = "";
