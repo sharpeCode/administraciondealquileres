@@ -7,7 +7,7 @@ class InmuebleRepository
 {
     public static function getAllInmuebles()
     {
-        echo 'LLEGO AL CONTROLLER';
+        echo '  LLEGO AL REPOSITORYY';
         $inmuebles = null;
         try {
             $sql = "SELECT idinmuebles as idInmueble, tipo, torre, piso, departamento, domicilio, 
