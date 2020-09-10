@@ -9,7 +9,7 @@ class InmuebleRepository
     {
         $inmuebles = null;
         try {
-            $sql = "SELECT idinmuebles as idInmueble, tipo, torre, piso, departamento, domicilio, 
+            $sql = "SELECT idinmueble as idInmueble, tipo, torre, piso, departamento, domicilio, 
                 id_localidad as idLocalidad
                     FROM inmuebles";
 
