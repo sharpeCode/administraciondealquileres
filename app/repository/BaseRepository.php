@@ -9,10 +9,9 @@ class BaseRepository
     private function __construct()
     {
         try {
-            /* $this->objetoPDO = new PDO('mysql:host=localhost;dbname=u498579747_estac;charset=utf8', 'u498579747_estac', 'estacionamiento', array(PDO::ATTR_EMULATE_PREPARES => false,PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)); */
 
-            $this->connection = new PDO('mysql:host=localhost;dbname=db_administracion_de_alquileres;charset=utf8',
-                'root', '',
+            $this->connection = new PDO('mysql:host=us-cdbr-east-02.cleardb.com;dbname=heroku_0852b66c3d788ad;charset=utf8;charset=utf8',
+                'bc2dc009f0f85e', '052bcdbe',
                 array(PDO::ATTR_EMULATE_PREPARES => false, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 
         } catch (PDOException $e) {
