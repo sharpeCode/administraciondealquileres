@@ -75,7 +75,7 @@ function listadoCompDePago(doneFunction, data) {
     data = data === undefined ? {action: "listadoCompDePago"} : data;
 
     var funcionAjax = $.ajax({
-        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/ComprobanteDePagoController.php",
+        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ComprobanteDePagoController.php",
         method: "POST",
         data: data
     });
@@ -142,7 +142,7 @@ function buscarDatosRecibo(idComprobantesDePago) {
     console.debug("trayendo datos de recibo");
 
     var funcionAjax = $.ajax({
-        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/ComprobanteDePagoController.php",
+        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ComprobanteDePagoController.php",
         method: "POST",
         data: {
             action: "datosRecibo",
@@ -200,7 +200,7 @@ function cargarReciboOficial(idComprobantesDePago) {
     console.debug("trayendo datos de recibo");
 
     var funcionAjax = $.ajax({
-        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/ComprobanteDePagoController.php",
+        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ComprobanteDePagoController.php",
         method: "POST",
         data: {
             action: "visualizarRecibo2",
@@ -262,7 +262,7 @@ function cargarReciboNoOficial(idComprobantesDePago) {
     console.debug("trayendo datos de recibo");
 
     var funcionAjax = $.ajax({
-        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/ComprobanteDePagoController.php",
+        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ComprobanteDePagoController.php",
         method: "POST",
         data: {
             action: "visualizarRecibo2",
@@ -309,7 +309,7 @@ function cargarReciboOficialSoloSaldo(idComprobantesDePago) {
     console.debug("trayendo datos de recibo");
 
     var funcionAjax = $.ajax({
-        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/ComprobanteDePagoController.php",
+        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ComprobanteDePagoController.php",
         method: "POST",
         data: {
             action: "visualizarRecibo2",
@@ -348,7 +348,7 @@ function cargarReciboNoOficialSoloSaldo(idComprobantesDePago) {
     console.debug("trayendo datos de recibo");
 
     var funcionAjax = $.ajax({
-        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/ComprobanteDePagoController.php",
+        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ComprobanteDePagoController.php",
         method: "POST",
         data: {
             action: "visualizarRecibo2",
