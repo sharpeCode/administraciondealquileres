@@ -1,4 +1,4 @@
-var API = "http://localhost:90/Sharp_Code/administracion_de_alquileres";
+var API = "http://administraciondealquileres.herokuapp.com";
 var BACKEND_CONTROLLERS = API + "/app/backend/controller";
 var EndpointsEnum = {
     API: API,

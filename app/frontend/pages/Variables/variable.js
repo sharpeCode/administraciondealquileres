@@ -30,7 +30,7 @@ function obtenerVariables(doneFunction, data) {
     data = data === undefined ? {action: "obtenerVariables"} : data;
 
     var funcionAjax = $.ajax({
-        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/VariableController.php",
+        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/VariableController.php",
         method: "POST",
         data: data
     });
@@ -71,7 +71,7 @@ function construirFilaDeVariable(PorcentajeDeVariable) {
 
 function llenarSelectConVariables() {
     var funcionAjax = $.ajax({
-        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/VariableController.php",
+        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/VariableController.php",
         method: "POST",
         data: {
             action: "cargarSelectConVariables"
@@ -116,7 +116,7 @@ function guardarVariable() {
 
 
     var funcionAjax = $.ajax({
-        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/VariableController.php",
+        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/VariableController.php",
         method: "POST",
         data: {
             action: "guardarVariableNuevo",
@@ -126,7 +126,7 @@ function guardarVariable() {
 
     funcionAjax.done(function (retorno) {
         console.log(retorno);
-        location.href = "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/frontend/pages/variables/variable.page.php";
+        location.href = "http://administraciondealquileres.herokuapp.com/app/frontend/pages/variables/variable.page.php";
     });
 
     funcionAjax.fail(function (retorno) {

@@ -50,7 +50,7 @@ function obtenerInmuebles(doneFunction, data) {
     data = data === undefined ? {action: "obtenerInmuebles"} : data;
 
     var funcionAjax = $.ajax({
-        // url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/InmuebleController.php",
+        // url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/InmuebleController.php",
         url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/InmuebleController.php",
         method: "POST",
         data: data
@@ -101,7 +101,7 @@ function construirFilaDeInmueble(inmueble) {
 
 function llenarSelectConLocalidades() {
     var funcionAjax = $.ajax({
-        // url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/LocalidadController.php",
+        // url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/LocalidadController.php",
         url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/LocalidadController.php",
         method: "POST",
         data: {
@@ -146,7 +146,7 @@ function guardarInmueble() {
     var inmuebleNuevoParaGuardar = mapToJson($('#inmuebleAdd').serializeArray());
 
     var funcionAjax = $.ajax({
-        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/InmuebleController.php",
+        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/InmuebleController.php",
         method: "POST",
         data: {
             action: "guardarInmuebleNuevo",
@@ -156,7 +156,7 @@ function guardarInmueble() {
 
     funcionAjax.done(function (retorno) {
         console.log(retorno);
-         location.href = "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/frontend/pages/inmuebles/inmueble.page.php";
+         location.href = "http://administraciondealquileres.herokuapp.com/app/frontend/pages/inmuebles/inmueble.page.php";
     });
 
     funcionAjax.fail(function (retorno) {
@@ -171,7 +171,7 @@ function guardarInmueble() {
 
 function loadInmuebleData(id) {
     var funcionAjax = $.ajax({
-        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/InmuebleController.php",
+        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/InmuebleController.php",
         method: "POST",
         data: {
             action: "traerInmueblePorId",
@@ -200,7 +200,7 @@ function fillEditionForm(inmueble) {
 
 function llenarSelectConLocalidadesParaEditar() {
     var funcionAjax = $.ajax({
-        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/LocalidadController.php",
+        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/LocalidadController.php",
         method: "POST",
         data: {
             action: "listar"
@@ -233,7 +233,7 @@ function guardarInmuebleEditado() {
     var inmuebleEditado = mapToJson($('#inmuebleEdit').serializeArray());
 
     var funcionAjax = $.ajax({
-        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/InmuebleController.php",
+        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/InmuebleController.php",
         method: "POST",
         data: {
             action: "guardarInmuebleEditado",
@@ -243,7 +243,7 @@ function guardarInmuebleEditado() {
 
     funcionAjax.done(function (retorno) {
         if (retorno != null) {
-             location.href = "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/frontend/pages/inmuebles/inmueble.page.php";
+             location.href = "http://administraciondealquileres.herokuapp.com/app/frontend/pages/inmuebles/inmueble.page.php";
         }
     });
 
@@ -321,7 +321,7 @@ function getAllLocalidades(doneFunction, data) {
     data = data === undefined ? {action: "getAll"} : data;
 
     let funcionAjax = $.ajax({
-        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/LocalidadController.php",
+        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/LocalidadController.php",
         method: "POST",
         data: data
     });
@@ -384,7 +384,7 @@ function mostrarFormLocalidadAdd() {
 
 function llenarSelectConProvincias() {
     var funcionAjax = $.ajax({
-        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/LocalidadController.php",
+        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/LocalidadController.php",
         method: "POST",
         data: {
             action: "cargarSelectConProvincias",
@@ -437,7 +437,7 @@ function guardarLocalidad() {
 
     console.log("Guardando localidad: ", guardarLocalidad);
     var funcionAjax = $.ajax({
-        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/LocalidadController.php",
+        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/LocalidadController.php",
         method: "POST",
         data: {
             action: "datosParaGuardarLocalidad",
@@ -470,7 +470,7 @@ function mostrarFormLocalidadEditar(idLocalidad) {
 
 function llenarSelectConProvinciasParaEditar() {
     var funcionAjax = $.ajax({
-        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/LocalidadController.php",
+        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/LocalidadController.php",
         method: "POST",
         data: {
             action: "cargarSelectConProvincias",
@@ -507,7 +507,7 @@ function fillDomEditProvincia(arrayProvincia) {
 function cargarLocalidadParaEditar(idLocalidad) {
 
     var funcionAjax = $.ajax({
-        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/LocalidadController.php",
+        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/LocalidadController.php",
         method: "POST",
         data: {
             action: "traerLocalidadPorId",
@@ -538,7 +538,7 @@ function guardarLocalidadEditada() {
 
     console.log(localidadEditadaParaGuardar);
     var funcionAjax = $.ajax({
-        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/LocalidadController.php",
+        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/LocalidadController.php",
         method: "POST",
         data: {
             action: "guardarLocalidadEditada",

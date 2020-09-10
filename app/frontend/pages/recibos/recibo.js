@@ -42,7 +42,7 @@ function listadoCompDePago(doneFunction, data) {
     data = data === undefined ? {action: "listadoCompDePago"} : data;
 
     var funcionAjax = $.ajax({
-        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/RecibosController.php",
+        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/RecibosController.php",
         method: "POST",
         data: data
     });
@@ -107,7 +107,7 @@ function buscarDatosRecibo(idRegistroDePago) {
     console.debug("trayendo datos de recibo");
 
     var funcionAjax = $.ajax({
-        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/ComprobanteDePagoController.php",
+        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ComprobanteDePagoController.php",
         method: "POST",
         data: {
             action: "visualizarRecibo",

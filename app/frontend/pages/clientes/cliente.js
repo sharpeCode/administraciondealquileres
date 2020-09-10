@@ -59,7 +59,7 @@ function getAll(doneFunction, data) {
     data = data === undefined ? {action: "getAll"} : data;
 
     var funcionAjax = $.ajax({
-        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/ClienteController.php",
+        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ClienteController.php",
         method: "POST",
         data: data
     });
@@ -130,7 +130,7 @@ function buildRawFromLocatario(cliente){
 function loadLocatarioData(dni) {
 
     var funcionAjax = $.ajax({
-        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/ClienteController.php",
+        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ClienteController.php",
         method: "POST",
         data: {
             action: "traerClienteParaEditar",
@@ -169,7 +169,7 @@ function guardarLocatarioEditado() {
     console.log("Guardando loccatario: ", locatarioParaGuardar);
 
     var funcionAjax = $.ajax({
-        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/ClienteController.php",
+        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ClienteController.php",
         method: "POST",
         data: {
             action: "guardarLocEdit",
@@ -275,7 +275,7 @@ function buscarLocatarioBuscado(doneFunction, data) {
 
 
     var funcionAjax = $.ajax({
-        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/ClienteController.php",
+        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ClienteController.php",
         method: "POST",
         data: data
     });
@@ -300,7 +300,7 @@ function buscarLocatarioPorNombre(doneFunction, data) {
 
 
     var funcionAjax = $.ajax({
-        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/ClienteController.php",
+        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ClienteController.php",
         method: "POST",
         data: data
     });

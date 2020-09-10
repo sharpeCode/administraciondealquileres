@@ -35,7 +35,7 @@ function ingresarAlSistema() {
     console.log("datos correctos para ingresar al sistema: ", datosCorrectos);
 
     var funcionAjax = $.ajax({
-        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/LoginController.php",
+        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/LoginController.php",
         method: "POST",
         data: {
             action: "ingresar",
