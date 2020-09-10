@@ -56,7 +56,8 @@ function obtenerInmuebles(doneFunction, data) {
         data: data
     });
 
-    funcionAjax.done(doneFunction);  //hecho
+    funcionAjax.done(doneFunction)
+    console.log(doneFunction);  //hecho
 
     funcionAjax.fail(function (retorno) { //fallar
         console.log("error al llamar back de usuario")
@@ -67,6 +68,7 @@ function obtenerInmuebles(doneFunction, data) {
 }
 
 function llenarTablaInmuebles(jsonUsers) {
+    console.log(jsonUsers);
     jsonUsers = JSON.parse(jsonUsers);
     let tableRaws = "";
 
