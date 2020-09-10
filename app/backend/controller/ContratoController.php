@@ -8,6 +8,7 @@ require_once '../../repository/VariablePorcentajeImpoNoOficialRepositorio.php';
 require_once '../../repository/RegistroPagoRepositorio.php';
 
 $action = $_POST['action'];
+echo '$action';
 
 switch ($action) {
     case "listar":
@@ -25,7 +26,6 @@ switch ($action) {
     case "guardarContratoNuevo":
         guardarContratoNuevo();
         break;
-
     default:
         console . log("NO SE QUE HACER VIEJA");
         break;

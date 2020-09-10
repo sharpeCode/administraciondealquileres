@@ -322,9 +322,6 @@ function traerTodos(doneFunction, data) {
     };
     data = data === undefined ? {action: "traerTodos"} : data;
 
-    //let uri = EndpointsEnum.LOCATARIO;
-    //console.log("Llamando a controller locatarios = " + uri);
-
     var funcionAjax = $.ajax({
         url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ContratoController.php",
         method: "POST",
