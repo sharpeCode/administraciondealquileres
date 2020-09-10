@@ -7,7 +7,6 @@ class InmuebleRepository
 {
     public static function getAllInmuebles()
     {
-        echo '  LLEGO AL REPOSITORYY';
         $inmuebles = null;
         try {
             $sql = "SELECT idinmuebles as idInmueble, tipo, torre, piso, departamento, domicilio, 
@@ -21,9 +20,7 @@ class InmuebleRepository
         } catch (PDOException $ex) {
             print 'ERROR' . $ex->getMessage();
         }
-
         return $inmuebles;
-
     }
 
     public static function getInmueblesById($idInmueble)

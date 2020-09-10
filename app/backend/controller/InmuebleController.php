@@ -33,7 +33,6 @@ switch ($action) {
 
 function getAllInmuebles()
 {
-    echo 'LLEGO AL CONTROLLER';
     $inmuebles = InmuebleRepository::getAllInmuebles();
     echo json_encode($inmuebles);
 }
