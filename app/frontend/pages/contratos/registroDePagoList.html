@@ -5,28 +5,39 @@
     <br>
 
     <br>
+    <!-- CLIENTE / DOMICILIO -->
     <div class="row">
-        <!-- DATOS CONTRATO-->
+        <div class="col-md-1">
+            <input class="labelSubtitulo" type="text" name="labelNombreApellido" id="labelNombreApellido"
+                   Value="Cliente">
+        </div>
+        <div class="col-md-3"><input type="text" class="inputTextLabel" name="inputNombreApellido"
+                                     id="inputNombreApellido" readonly="readonly"></div>
+        <div class="col-md-1">
+            <input class="labelSubtitulo " type="text" name="labelDomicilio" id="labelDomicilio"
+                   Value="Domicilio">
+        </div>
+        <div class="col-md-7"><input type="text" class="inputTextLabel" name="inputDomicilio" id="inputDomicilio"
+                                     readonly="readonly"></div>
+    </div>
+
+    <div class="row">
+        <!-- FECHA INICIO FIN DE CONTRATO-->
         <div class="col-md-2" style="width: 160px">
             <input class="labelSubtitulo" type="text" name="labelFechaInicio" id="labelFechaInicio"
                    Value="Fecha contrato">
         </div>
-        <div class="col-md-1" style="width: 110px">
-            <input style="width: 105px; text-align: center;" type="text" class="inputTextLabelFondoOvalado" name="inputFechaInicio" id="inputFechaInicio" readonly="readonly" style="width: 80px">
+        <div class="col-md-1" style="width: 100px;">
+            <input style="width: 100px; text-align: center;" type="text" class="inputTextLabel" name="inputFechaInicio" id="inputFechaInicio" readonly="readonly" style="width: 80px">
         </div>
-        <div class="col-md-1" style="width: 110px;">
-            <input style="width: 105px; text-align: center;" type="text" class="inputTextLabelFondoOvalado" name="inputFechaFin" id="inputFechaFin" readonly="readonly">
+        <div class="col-md-1" style="width: 30px;">
+            <label class="labelSubtitulo" style="width: 30px; text-align: center;">al</label>
         </div>
-        <div class="col-md-2 inputOculto">
-            <input class="labelSubtitulo" type="text" name="labelNumeroDeContrato" id="labelNumeroDeContrato"
-                   Value="Numero Contrato">
+        <div class="col-md-1" style="width: 100px;">
+            <input style="width: 100px;" type="text" class="inputTextLabel" name="inputFechaFin" id="inputFechaFin" readonly="readonly">
         </div>
-        <div class="col-md-1 inputOculto">
-            <input type="text" class="inputTextLabel" name="inputNumeroDeContrato"
-                                     id="inputNumeroDeContrato" readonly="readonly">
-        </div>
-        <!-- FECHA DE PAGO-->
-        <div class="col-md-1" style="width: 130px;"></div>
+
+        <!-- VENCIMIENTOS-->
         <div class="col-md-1" style="width: 70px;">
             <input style="width: 70px;" class="labelSubtitulo" type="text" name="labelFechaDePago" id="labelFechaDePago"
                    Value="Vtos.">
@@ -39,92 +50,21 @@
                    Value="al">
         </div>
         <div class="col-md-1" style="width: 60px;">
-            <input type="text" class="inputTextLabel" name="inputHasta"
-                                     id="inputHasta" readonly="readonly">
+            <input type="text" class="inputTextLabel" name="inputHasta" id="inputHasta" readonly="readonly">
+        </div>
+
+        <!-- NUMERO DE CONTRATO - OCULTO-->
+        <div class="col-md-2 inputOculto">
+            <input class="labelSubtitulo" type="text" name="labelNumeroDeContrato" id="labelNumeroDeContrato"
+                   Value="Numero Contrato">
+        </div>
+        <div class="col-md-1 inputOculto">
+            <input type="text" class="inputTextLabel" name="inputNumeroDeContrato"
+                   id="inputNumeroDeContrato" readonly="readonly">
         </div>
     </div>
     <br>
-    <!-- DATOS LOCATARIO-->
-    <!-- NOMBRE Y APELLIDO-->
-    <div class="row">
-        <div class="col-md-2" style="width: 180px">
-            <input class="labelSubtitulo" type="text" name="labelNombreApellido" id="labelNombreApellido"
-                   Value="Nombre y Apellido">
-        </div>
-        <div class="col-md-3" style="width: 332px"><input type="text" class="inputTextLabel" name="inputNombreApellido"
-                                     id="inputNombreApellido"
-                                     readonly="readonly"></div>
-        <!-- DNI-->
-        <div class="col-md-1" style="width: 55px">
-            <input class="labelSubtitulo" type="text" name="labelDni" id="labelDni"
-                   Value="Dni">
-        </div>
-        <div class="col-md-2"><input type="text" class="inputTextLabel" name="inputDni" id="inputDni"
-                                     readonly="readonly"></div>
-        <div class="col-md-4"></div>
 
-    </div>
-    <!-- DATOS INMUEBLE-->
-    <div class="row">
-        <!-- TIPO-->
-        <div class="col-md-1" style="width: 50px">
-            <input class="labelSubtitulo " type="text" name="labelTipo" id="labelTipo"
-                   Value="Tipo">
-        </div>
-        <div class="col-md-2" style="width: 161px">
-            <input type="text" class="inputTextLabel" name="inputTipo" id="inputTipo" readonly="readonly">
-        </div>
-        <!-- DOMICILIO-->
-        <div class="col-md-1">
-            <input class="labelSubtitulo " type="text" name="labelDomicilio" id="labelDomicilio"
-                   Value="Domicilio">
-        </div>
-        <div class="col-md-2" style="width: 203px"><input type="text" class="inputTextLabel" name="inputDomicilio" id="inputDomicilio"
-                                     readonly="readonly"></div>
-        <!-- TORRE-->
-        <div class="col-md-1"  style="width: 120px">
-            <input class="labelSubtitulo " type="text" name="labelTorre" id="labelTorre"
-                   Value="U. Funcional">
-        </div>
-        <div class="col-md-1"><input type="text" class="inputTextLabel" name="inputTorre" id="inputTorre"
-                                     readonly="readonly"></div>
-        <!-- PISO-->
-        <div class="col-md-1" style="width: 60px">
-            <input class="labelSubtitulo " type="text" name="labelPiso" id="labelPiso"
-                   Value="Piso">
-        </div>
-        <div class="col-md-1" style="width: 60px"><input type="text" class="inputTextLabel" name="inputPiso" id="inputPiso"
-                                     readonly="readonly"></div>
-        <!-- DEPARTAMENTO-->
-        <div class="col-md-1" style="width: 60px">
-            <input class="labelSubtitulo" type="text" name="labelDepartamento"
-                   id="labelDepartamento"
-                   Value="Dto">
-        </div>
-        <div class="col-md-1"><input type="text" class="inputTextLabel" name="inputDepartamento"
-                                     id="inputDepartameto" readonly="readonly"></div>
-
-    </div>
-    <div class="row">
-        <!-- LOCALIDAD-->
-        <div class="col-md-1">
-            <input class="labelSubtitulo" type="text" name="labelLocalidad"
-                   id="labelLocalidad"
-                   Value="Localidad">
-        </div>
-        <div class="col-md-1" style="width: 115px"><input type="text" class="inputTextLabel" name="inputLocalidad"
-                                     id="inputLocalidad" readonly="readonly"></div>
-        <div class="col-md-1">
-            <input class="labelSubtitulo" type="text" name="labelProvincia"
-                   id="labelProvincia"
-                   Value="Provincia">
-        </div>
-
-        <div class="col-md-2"><input type="text" class="inputTextLabel" name="inputProvincia"
-                                     id="inputProvincia" readonly="readonly"></div>
-        <div class="col-md-7"></div>
-        <br>
-    </div>
 
     <br>
     <div class="row table-responsive">
@@ -132,9 +72,10 @@
             <table class="table table-striped">
                 <thead class="thead-dark">
                 <tr>
-                    <th class="cabeceraTabla" style='visibility:hidden; display: none;'>Id Reg.Pag</th>
+                    <th class="cabeceraTabla" style="visibility:hidden; display: none;">Id Reg.Pag</th>
                     <th class="cabeceraTabla" style='visibility:hidden; display: none;'>Id Contrato</th>
-                    <th class="cabeceraTabla" style='visibility:hidden; display: none;'>N°</th>
+                    <th class="cabeceraTabla">N°</th>
+                    <th class="cabeceraTabla">Tipo</th>
                     <th class="cabeceraTabla">Mes</th>
                     <th class="cabeceraTabla">Año</th>
                     <th class="cabeceraTabla">Tipo</th>

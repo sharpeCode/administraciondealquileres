@@ -245,6 +245,16 @@ input:focus, input.form-control:focus, button:focus, select:focus {
 }
 
 /*====================================================================================
+ Fondo Comprobante de pago - Marca de agua - Recibo Oficial - Con firma digital
+====================================================================================*/
+.fondoMarcaDeAguaConFirmaDigitalSaldos {
+    background-image: url("../../resources/images/fondoHomeMarcaAguaSaldos.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+/*====================================================================================
  Fondo Comprobante de pago - Marca de agua - Sin firma digital
 ====================================================================================*/
 .fondoMarcaDeAguaReiboSinFirmaDigital {
@@ -308,10 +318,7 @@ input:focus, input.form-control:focus, button:focus, select:focus {
     /*border-radius: 20px 20px 20px 20px; /*esquinas redondeadas*/
 }
 
-.miTituloDetail {
-    color: #3a5ba0;
-    font: bold 12px "Product Sans";
-}
+
 
 
 

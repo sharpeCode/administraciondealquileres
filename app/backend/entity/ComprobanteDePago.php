@@ -5,6 +5,7 @@ class ComprobanteDePago
     public $idComprobantesDePago;
     public $numeroComprobante;
     public $tipoComprobanteDePago;
+    public $tipoRecibo;
     public $fechaComprobante;
     public $idRegistroDePago;
     public $idContrato;
@@ -26,7 +27,7 @@ class ComprobanteDePago
 
 
 
-    public function constructor($idComprobantesDePago,$numeroComprobante, $tipoComprobanteDePago, $fechaComprobante, $idRegistroDePago, $idContrato, $correspondienteMes,
+    public function constructor($idComprobantesDePago,$numeroComprobante, $tipoComprobanteDePago, $tipoRecibo, $fechaComprobante, $idRegistroDePago, $idContrato, $correspondienteMes,
                                 $correspondienteAnio, $valorAlquiler, $valorExpensas, $valorGastosAdm, $valorDeposito,
                                 $cantCuotasDeposito, $numCuotaAPagar, $interesPorMora, $otrosConceptos, $saldoAnterior, $totalImporteAPagar, $totalImporteRecibido, $saldoPendiente, $saldoPendienteSinModificar)
     {
@@ -34,6 +35,7 @@ class ComprobanteDePago
         $this->numeroComprobante = $numeroComprobante;
         $this->tipoComprobanteDePago = $tipoComprobanteDePago;
         $this->fechaComprobante = $fechaComprobante;
+        $this->tipoRecibo = $tipoRecibo;
         $this->idRegistroDePago = $idRegistroDePago;
         $this->idContrato = $idContrato;
         $this->correspondienteMes = $correspondienteMes;

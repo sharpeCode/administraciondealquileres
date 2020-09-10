@@ -5,13 +5,13 @@ $(function () {
     $("#comprobanteDePagoOficial").hide();
     $("#recibosList").hide();
     $("#comprobanteDePagoNoOficial").hide();
-    $("#visualizarReciboOficialCantidadUno").hide();
+    $("#visualizarReciboOficial").hide();
     $("#visualizarReciboOficialCantidadDos").hide();
     $("#comprobDePagoSaldoOficial").hide();
     $("#comprobDePagoSaldoNoOficial").hide();
     $("#visualizarReciboOficialSoloSaldo").hide();
     $("#visualizarReciboNoOficial").hide();
-
+    $("#visualizarReciboNoOficialSoloSaldo").hide();
     cargarContratosGrilla();
 
 });
@@ -25,12 +25,13 @@ function NuevoContrato() {
     $("#comprobanteDePagoOficial").hide();
     $("#recibosList").hide();
     $("#comprobanteDePagoNoOficial").hide();
-    $("#visualizarReciboOficialCantidadUno").hide();
+    $("#visualizarReciboOficial").hide();
     $("#visualizarReciboOficialCantidadDos").hide();
     $("#comprobDePagoSaldoOficial").hide();
     $("#visualizarReciboOficialSoloSaldo").hide();
     $("#visualizarReciboNoOficial").hide();
     $("#comprobDePagoSaldoNoOficial").hide();
+    $("#visualizarReciboNoOficialSoloSaldo").hide();
     llenarSelectConLocatarios();
     llenarSelectConInmuebles();
     llenarSelectFechaInicioFin();
@@ -45,12 +46,13 @@ function Atras() {
     $("#comprobanteDePagoOficial").hide();
     $("#recibosList").hide();
     $("#comprobanteDePagoNoOficial").hide();
-    $("#visualizarReciboOficialCantidadUno").hide();
+    $("#visualizarReciboOficial").hide();
     $("#visualizarReciboOficialCantidadDos").hide();
     $("#comprobDePagoSaldoOficial").hide();
     $("#visualizarReciboOficialSoloSaldo").hide();
     $("#visualizarReciboNoOficial").hide();
     $("#comprobDePagoSaldoNoOficial").hide();
+    $("#visualizarReciboNoOficialSoloSaldo").hide();
 }
 
 // TODO: ATRAS
@@ -77,12 +79,13 @@ function ListadoDeRegistrosDePago() {
     $("#comprobanteDePagoOficial").hide();
     $("#recibosList").hide();
     $("#comprobanteDePagoNoOficial").hide();
-    $("#visualizarReciboOficialCantidadUno").hide();
+    $("#visualizarReciboOficial").hide();
     $("#visualizarReciboOficialCantidadDos").hide();
     $("#comprobDePagoSaldoOficial").hide();
     $("#visualizarReciboOficialSoloSaldo").hide();
     $("#visualizarReciboNoOficial").hide();
     $("#comprobDePagoSaldoNoOficial").hide();
+    $("#visualizarReciboNoOficialSoloSaldo").hide();
     listarRegDePago(idContrato);
     llenarInputs(idContrato);
 
@@ -97,18 +100,21 @@ function listarRegistrosDePaso(idContrato) {
     $("#comprobanteDePagoOficial").hide();
     $("#recibosList").hide();
     $("#comprobanteDePagoNoOficial").hide();
-    $("#visualizarReciboOficialCantidadUno").hide();
+    $("#visualizarReciboOficial").hide();
     $("#visualizarReciboOficialCantidadDos").hide();
     $("#comprobDePagoSaldoOficial").hide();
     $("#visualizarReciboOficialSoloSaldo").hide();
     $("#visualizarReciboNoOficial").hide();
     $("#comprobDePagoSaldoNoOficial").hide();
+    $("#visualizarReciboNoOficialSoloSaldo").hide();
     listarRegDePago(idContrato);
     llenarInputs(idContrato);
 }
 
 //TODO: CARGAR COMPROBANTE DE PAGO OFICIAL
-function CagarReciboOficial(idRegistroDePago) {
+function CagarReciboOficial(idRegistroDePago,ban) {
+
+
     $("#contratoAdd").hide();
     $("#contratoList").hide();
     $("#contratoDatosCompletos").hide();
@@ -116,18 +122,19 @@ function CagarReciboOficial(idRegistroDePago) {
     $("#comprobanteDePagoOficial").show();
     $("#recibosList").hide();
     $("#comprobanteDePagoNoOficial").hide();
-    $("#visualizarReciboOficialCantidadUno").hide();
+    $("#visualizarReciboOficial").hide();
     $("#visualizarReciboOficialCantidadDos").hide();
     $("#comprobDePagoSaldoOficial").hide();
     $("#visualizarReciboOficialSoloSaldo").hide();
     $("#visualizarReciboNoOficial").hide();
     $("#comprobDePagoSaldoNoOficial").hide();
-    llenarInputsRecibo(idRegistroDePago);
+    $("#visualizarReciboNoOficialSoloSaldo").hide();
+    llenarInputsRecibo(idRegistroDePago,ban);
     llenarSelectConOpcionesSaldoAnteriorRecibo(idRegistroDePago);
 }
 
 //TODO: CARGAR COMPROBANTE DE PAGO NO OFICIAL
-function CargarReciboNoOficial(idRegistroDePago) {
+function CargarReciboNoOficial(idRegistroDePago,ban) {
     $("#contratoAdd").hide();
     $("#contratoList").hide();
     $("#contratoDatosCompletos").hide();
@@ -135,13 +142,14 @@ function CargarReciboNoOficial(idRegistroDePago) {
     $("#comprobanteDePagoOficial").hide();
     $("#recibosList").hide();
     $("#comprobanteDePagoNoOficial").show();
-    $("#visualizarReciboOficialCantidadUno").hide();
+    $("#visualizarReciboOficial").hide();
     $("#visualizarReciboOficialCantidadDos").hide();
     $("#comprobDePagoSaldoOficial").hide();
     $("#visualizarReciboOficialSoloSaldo").hide();
     $("#visualizarReciboNoOficial").hide();
     $("#comprobDePagoSaldoNoOficial").hide();
-    llenarInputsRecibo(idRegistroDePago);
+    $("#visualizarReciboNoOficialSoloSaldo").hide();
+    llenarInputsRecibo(idRegistroDePago,ban);
     llenarSelectConOpcionesSaldoAnteriorRecibo(idRegistroDePago);
 }
 
@@ -154,12 +162,13 @@ function ReciboOficialSaldo(idRegistroDePago) {
     $("#comprobanteDePagoOficial").hide();
     $("#recibosList").hide();
     $("#comprobanteDePagoNoOficial").hide();
-    $("#visualizarReciboOficialCantidadUno").hide();
+    $("#visualizarReciboOficial").hide();
     $("#visualizarReciboOficialCantidadDos").hide();
     $("#comprobDePagoSaldoOficial").show();
     $("#visualizarReciboOficialSoloSaldo").hide();
     $("#visualizarReciboNoOficial").hide();
     $("#comprobDePagoSaldoNoOficial").hide();
+    $("#visualizarReciboNoOficialSoloSaldo").hide();
     llenarInputsReciboSoloSaldo(idRegistroDePago);
 }
 
@@ -172,12 +181,13 @@ function ReciboNoOficialSaldo(idRegistroDePago) {
     $("#comprobanteDePagoOficial").hide();
     $("#recibosList").hide();
     $("#comprobanteDePagoNoOficial").hide();
-    $("#visualizarReciboOficialCantidadUno").hide();
+    $("#visualizarReciboOficial").hide();
     $("#visualizarReciboOficialCantidadDos").hide();
     $("#comprobDePagoSaldoOficial").hide();
     $("#visualizarReciboOficialSoloSaldo").hide();
     $("#visualizarReciboNoOficial").hide();
     $("#comprobDePagoSaldoNoOficial").show();
+    $("#visualizarReciboNoOficialSoloSaldo").hide();
     llenarInputsReciboSoloSaldo(idRegistroDePago);
 }
 
@@ -190,16 +200,17 @@ function buscarCuantosRecibosTiene(idRegistroDePago) {
     $("#comprobanteDePagoOficial").hide();
     $("#recibosList").hide();
     $("#comprobanteDePagoNoOficial").hide();
-    $("#visualizarReciboOficialCantidadUno").hide();
+    $("#visualizarReciboOficial").hide();
     $("#visualizarReciboOficialCantidadDos").hide();
     $("#comprobDePagoSaldoOficial").hide();
     $("#visualizarReciboOficialSoloSaldo").hide();
     $("#visualizarReciboNoOficial").hide();
     $("#comprobDePagoSaldoNoOficial").hide();
+    $("#visualizarReciboNoOficialSoloSaldo").hide();
     buscarCuantosRecibosTieneEsteRegistro(idRegistroDePago);
 }
 
-//TODO: VISUALIZAR UN SOLO RECIBO
+//TODO: VISUALIZAR RECIBO OFICIAL
 function visualizarUnRecibo(idRegistroDePago) {
     $("#contratoAdd").hide();
     $("#contratoList").hide();
@@ -208,12 +219,13 @@ function visualizarUnRecibo(idRegistroDePago) {
     $("#comprobanteDePagoOficial").hide();
     $("#recibosList").hide();
     $("#comprobanteDePagoNoOficial").hide();
-    $("#visualizarReciboOficialCantidadUno").show();
+    $("#visualizarReciboOficial").show();
     $("#visualizarReciboOficialCantidadDos").hide();
     $("#comprobDePagoSaldoOficial").hide();
     $("#visualizarReciboOficialSoloSaldo").hide();
     $("#visualizarReciboNoOficial").hide();
     $("#comprobDePagoSaldoNoOficial").hide();
+    $("#visualizarReciboNoOficialSoloSaldo").hide();
     visualizarReciboOficialCantidadUno(idRegistroDePago);
 }
 
@@ -226,12 +238,13 @@ function visualizarDosRecibos(idRegistroDePago) {
     $("#comprobanteDePagoOficial").hide();
     $("#recibosList").hide();
     $("#comprobanteDePagoNoOficial").hide();
-    $("#visualizarReciboOficialCantidadUno").hide();
+    $("#visualizarReciboOficial").hide();
     $("#visualizarReciboOficialCantidadDos").show();
     $("#comprobDePagoSaldoOficial").hide();
     $("#visualizarReciboOficialSoloSaldo").hide();
     $("#visualizarReciboNoOficial").hide();
     $("#comprobDePagoSaldoNoOficial").hide();
+    $("#visualizarReciboNoOficialSoloSaldo").hide();
     cargarRecibosDeUnMismoRegistroGrilla(idRegistroDePago);
 
 }
@@ -245,12 +258,32 @@ function visualizarReciboOficialSoloSaldo(idRegistroDePago) {
     $("#comprobanteDePagoOficial").hide();
     $("#recibosList").hide();
     $("#comprobanteDePagoNoOficial").hide();
-    $("#visualizarReciboOficialCantidadUno").hide();
+    $("#visualizarReciboOficial").hide();
     $("#visualizarReciboOficialCantidadDos").hide();
     $("#comprobDePagoSaldoOficial").hide();
-    $("#visualizarReciboOficialSoloSaldo").show();
     $("#visualizarReciboNoOficial").hide();
     $("#comprobDePagoSaldoNoOficial").hide();
+    $("#visualizarReciboOficialSoloSaldo").show();
+    $("#visualizarReciboNoOficialSoloSaldo").hide();
+    visualizarReciboOficialSaldo(idRegistroDePago);
+}
+
+//TODO: VISUALIZAR RECIBO SOLO SALDO NO OFICIAL
+function visualizarReciboNoOficialSoloSaldo(idRegistroDePago) {
+    $("#contratoAdd").hide();
+    $("#contratoList").hide();
+    $("#contratoDatosCompletos").hide();
+    $("#registroDePagoList").hide();
+    $("#comprobanteDePagoOficial").hide();
+    $("#recibosList").hide();
+    $("#comprobanteDePagoNoOficial").hide();
+    $("#visualizarReciboOficial").hide();
+    $("#visualizarReciboOficialCantidadDos").hide();
+    $("#comprobDePagoSaldoOficial").hide();
+    $("#visualizarReciboNoOficial").hide();
+    $("#comprobDePagoSaldoNoOficial").hide();
+    $("#visualizarReciboOficialSoloSaldo").hide();
+    $("#visualizarReciboNoOficialSoloSaldo").show();
     visualizarReciboOficialSaldo(idRegistroDePago);
 }
 
@@ -263,12 +296,13 @@ function visualizarUnReciboNoOficial(idRegistroDePago) {
     $("#comprobanteDePagoOficial").hide();
     $("#recibosList").hide();
     $("#comprobanteDePagoNoOficial").hide();
-    $("#visualizarReciboOficialCantidadUno").hide();
+    $("#visualizarReciboOficial").hide();
     $("#visualizarReciboOficialCantidadDos").hide();
     $("#comprobDePagoSaldoOficial").hide();
     $("#visualizarReciboOficialSoloSaldo").hide();
     $("#visualizarReciboNoOficial").show();
     $("#comprobDePagoSaldoNoOficial").hide();
+    $("#visualizarReciboNoOficialSoloSaldo").hide();
     visualizarReciboNoOficialCantidadUno(idRegistroDePago);
 }
 
@@ -292,7 +326,7 @@ function traerTodos(doneFunction, data) {
     //console.log("Llamando a controller locatarios = " + uri);
 
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ContratoController.php",
+        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/ContratoController.php",
         method: "POST",
         data: data
     });
@@ -337,12 +371,12 @@ function contruirFilas(Contratos) {
 
 
     let raw = "";
-    raw += "<td>" + Contratos['idContrato'] + "</td>";
+    raw += "<td style='visibility:hidden; display: none;'>" + Contratos['idContrato'] + "</td>";
     raw += "<td>" + fechaInicio + "</td>";
     raw += "<td>" + fechaFin + "</td>";
     raw += "<td>" + Contratos['nombres'] + " " + Contratos['apellidos'] + "</td>";
     raw += "<td>" + Contratos['domicilio'] + " - Piso: " + Contratos['piso'] + " - Dpto: " + Contratos['departamento'] + " - Localidad: " + Contratos['localidad'] + "</td>";
-
+    raw += "<td>" + Contratos['tipo'] + "</td>";
 
     raw += "<td>";
     raw += "<button class='miBoton-icon' title='Registros de pagos' onclick='listarRegistrosDePaso(" + Contratos['idContrato'] + ")'>" +
@@ -353,10 +387,10 @@ function contruirFilas(Contratos) {
 
 }
 
-// LLENAR SELECT CON LOCATARIOS
+// LLENAR SELECT CON CLIENTES
 function llenarSelectConLocatarios() {
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ContratoController.php",
+        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/ContratoController.php",
         method: "POST",
         data: {
             action: "cargarSelectConClientes",
@@ -404,7 +438,7 @@ function optionsLocatarios(locatarios) {
 // LLENAR SELECT CON INMUEBLES
 function llenarSelectConInmuebles() {
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ContratoController.php",
+        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/ContratoController.php",
         method: "POST",
         data: {
             action: "cargarSelectConInmueble",
@@ -448,7 +482,7 @@ function optionsInmuebles(Inmuebles) {
     let option = "";
     option += "<option value='" + Inmuebles['idInmueble'] + "'>" +
         Inmuebles['domicilio'] + ", Piso: " + Inmuebles['piso'] + ", Dto: " + Inmuebles['departamento'] +
-        " - " + Inmuebles['localidad'] + "</option>";
+        ", " + Inmuebles['localidad'] + " - " + Inmuebles['tipo'] + "</option>";
     return option;
 
 }
@@ -456,7 +490,7 @@ function optionsInmuebles(Inmuebles) {
 // LLENAR SELECT CON FECHA INICIO Y FIN
 function llenarSelectFechaInicioFin() {
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ContratoController.php",
+        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/ContratoController.php",
         method: "POST",
         data: {
             action: "cargarSelectConFechaInicio",
@@ -529,7 +563,7 @@ function guardarContrato() {
     console.log("Guardando contrato: ", datosDelContrato);
 
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ContratoController.php",
+        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/ContratoController.php",
         method: "POST",
         data: {
             action: "guardarContratoNuevo",
@@ -555,7 +589,7 @@ function guardarContrato() {
 function guardarRegistrosDePagos() {
     //console.log("ENTRO AL JS de guardarRegistrosDePagos");
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/RegistroDePagoController.php",
+        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/RegistroDePagoController.php",
         method: "POST",
         data: {
             action: "guardarRegistrosDePagos",
@@ -564,7 +598,7 @@ function guardarRegistrosDePagos() {
 
     funcionAjax.done(function (retorno) {
         console.debug("Done: ", retorno);
-        location.href = "http://administraciondealquileres.herokuapp.com/app/frontend/pages/contratos/contrato.page.php";
+        location.href = "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/frontend/pages/contratos/contrato.page.php";
     });
 
     funcionAjax.fail(function (retorno) {
@@ -599,7 +633,7 @@ function traerRegistroDePago(doneFunction, data) {
     //console.log("Llamando a controller locatarios = " + uri);
 
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/RegistroDePagoController.php",
+        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/RegistroDePagoController.php",
         method: "POST",
         data: data
     });
@@ -632,21 +666,63 @@ function llenarRegistroDePagoGrilla(RegPago) {
 
 function contruirFilasRegistroDePagos(RPago) {
 
+    var idCuota = 0;
+    var idCuota = RPago['idCompPorContrato'];
+    var tipo = RPago['tipo'];
+
+    if(idCuota != 1){
+        if(tipo == "Particular"){
+            var resultado = (idCuota - 1) % 12;
+        }else if (tipo == "Comercial"){
+            var resultado = (idCuota - 1) % 6;
+        }
+
+    }
+
     let raw = "";
-    raw += "<td style='visibility:hidden; display: none;'>" + RPago['idRegistroDePago'] + "</td>";
-    raw += "<td style='visibility:hidden; display: none;'>" + RPago['idContrato'] + "</td>";
-    raw += "<td style='visibility:hidden; display: none;'>" + RPago['idCompPorContrato'] + "</td>";
-    raw += "<td>" + RPago['mesCorto'] + "</td>";
-    raw += "<td>" + RPago['correspondienteAnio'] + "</td>";
-    raw += "<td style='font-weight: bold;'>" + RPago['tipoRegistroDePago'] + "</td>";
-    raw += "<td>" + RPago['valorAlquiler'] + "</td>";
-    raw += "<td>" + RPago['valorExpensas'] + "</td>";
-    raw += "<td>" + RPago['gastosAdministrativos'] + "</td>";
-    raw += "<td>" + RPago['valorDeposito'] + "</td>";
-    raw += "<td>" + RPago['cantCuotasDeposito'] + "</td>";
-    raw += "<td>" + RPago['numCuotaAPagar'] + "</td>";
-    raw += "<td>" + RPago['recibo'] + "</td>";
-    raw += "<td>" + RPago['saldoPendiente'] + "</td>";
+
+    if (resultado == 0){ //Que pinte la fila
+
+        var ban = 1;
+
+        raw += "<td style='visibility:hidden; display: none;'>" + RPago['idRegistroDePago'] + "</td>";
+        raw += "<td style='visibility:hidden; display: none;'>" + RPago['idContrato'] + "</td>";
+        raw += "<td style='color: red;'>" + RPago['idCompPorContrato'] + "</td>";
+        raw += "<td style='color: red;'>" + RPago['tipo'] + "</td>";
+        raw += "<td style='color: red;'>" + RPago['mesCorto'] + "</td>";
+        raw += "<td style='color: red;'>" + RPago['correspondienteAnio'] + "</td>";
+        raw += "<td style='font-weight: bold; color: red;'>" + RPago['tipoRegistroDePago'] + "</td>";
+        raw += "<td style='color: red;'>" + RPago['valorAlquiler'] + "</td>";
+        raw += "<td style='color: red;'>" + RPago['valorExpensas'] + "</td>";
+        raw += "<td style='color: red;'>" + RPago['gastosAdministrativos'] + "</td>";
+        raw += "<td style='color: red;'>" + RPago['valorDeposito'] + "</td>";
+        raw += "<td style='color: red;'>" + RPago['cantCuotasDeposito'] + "</td>";
+        raw += "<td style='color: red;'>" + RPago['numCuotaAPagar'] + "</td>";
+        raw += "<td style='color: red;'>" + RPago['recibo'] + "</td>";
+        raw += "<td style='color: red;'>" + RPago['saldoPendiente'] + "</td>";
+
+    }else if (resultado !=0){
+
+        var ban = 2;
+
+        raw += "<td style='visibility:hidden; display: none;'>" + RPago['idRegistroDePago'] + "</td>";
+        raw += "<td style='visibility:hidden; display: none;'>" + RPago['idContrato'] + "</td>";
+        raw += "<td>" + RPago['idCompPorContrato'] + "</td>";
+        raw += "<td>" + RPago['tipo'] + "</td>";
+        raw += "<td>" + RPago['mesCorto'] + "</td>";
+        raw += "<td>" + RPago['correspondienteAnio'] + "</td>";
+        raw += "<td style='font-weight: bold;'>" + RPago['tipoRegistroDePago'] + "</td>";
+        raw += "<td>" + RPago['valorAlquiler'] + "</td>";
+        raw += "<td>" + RPago['valorExpensas'] + "</td>";
+        raw += "<td>" + RPago['gastosAdministrativos'] + "</td>";
+        raw += "<td>" + RPago['valorDeposito'] + "</td>";
+        raw += "<td>" + RPago['cantCuotasDeposito'] + "</td>";
+        raw += "<td>" + RPago['numCuotaAPagar'] + "</td>";
+        raw += "<td>" + RPago['recibo'] + "</td>";
+        raw += "<td>" + RPago['saldoPendiente'] + "</td>";
+    }
+
+
 
 
     if (RPago['tipoRegistroDePago'] == "Oficial") {
@@ -658,7 +734,7 @@ function contruirFilasRegistroDePagos(RPago) {
             raw += "</td> ";
 
             raw += "<td>";                //y que aparezca el boton para generar el recibo
-            raw += "<button class='miBoton-icon' title='Generar Comprobante de pago' onclick='CagarReciboOficial(" + RPago['idRegistroDePago'] + ")'>" +
+            raw += "<button class='miBoton-icon' title='Generar Comprobante de pago' onclick='CagarReciboOficial(" + RPago['idRegistroDePago'] + "," + ban + ")'>" +
                 "<span class='glyphicon glyphicon-share'></span>";
             raw += "</td> ";
 
@@ -694,7 +770,7 @@ function contruirFilasRegistroDePagos(RPago) {
             raw += "</td> ";
 
             raw += "<td>";
-            raw += "<button class='miBoton-icon' title='Generar Comprobante de pago' onclick='CargarReciboNoOficial(" + RPago['idRegistroDePago'] + ")'>" +
+            raw += "<button class='miBoton-icon' title='Generar Comprobante de pago' onclick='CargarReciboNoOficial(" + RPago['idRegistroDePago'] + "," + ban + ")'>" +
                 "<span class='glyphicon glyphicon-share'></span>";
             raw += "</td> ";
         } else if (RPago['recibo'] == "Si") {
@@ -729,7 +805,7 @@ function llenarInputs(idContrato) {
     console.debug("trayendo datos de contrato");
 
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/RegistroDePagoController.php",
+        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/RegistroDePagoController.php",
         method: "POST",
         data: {
             action: "mostrarDatosParaCabeceraDeRegistrosDePago",
@@ -766,23 +842,22 @@ function cargarDatosDeContrato(datosContrato) {
     $("#inputNumeroDeContrato").val(datosContrato["idContrato"]);
     $("#inputDesde").val(datosContrato["fechaPagoInicio"]);
     $("#inputHasta").val(datosContrato["fechaPagoFin"]);
-    $("#inputNombreApellido").val(datosContrato["nombres"] + " " + datosContrato["apellidos"]);
-    $("#inputDni").val(datosContrato["dni"]);
-    $("#inputTipo").val(datosContrato["tipo"]);
-    $("#inputDomicilio").val(datosContrato["domicilio"]);
-    $("#inputTorre").val(datosContrato["torre"]);
-    $("#inputPiso").val(datosContrato["piso"]);
-    $("#inputDepartameto").val(datosContrato["departamento"]);
-    $("#inputLocalidad").val(datosContrato["localidad"]);
-    $("#inputProvincia").val(datosContrato["nombre"]);
+
+
+    $("#inputNombreApellido").val(datosContrato["nombres"] + " " + datosContrato["apellidos"] + ", Dni: " + datosContrato["dni"]);
+
+    $("#inputDomicilio").val(datosContrato["tipo"] +" - " + datosContrato["domicilio"] + ",  Piso: " + datosContrato["piso"] + ",  Dto.: " + datosContrato["departamento"] + ", " + datosContrato["localidad"] + ", " + datosContrato["nombre"]);
+
+
+
 }
 
 // LLENAR INPUTS RECIBOS
-function llenarInputsRecibo(idRegistroDePago) {
+function llenarInputsRecibo(idRegistroDePago,ban) {
     //console.debug("trayendo datos de registro de pago");
 
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ComprobanteDePagoController.php",
+        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/ComprobanteDePagoController.php",
         method: "POST",
         data: {
             action: "cargarComprobanteDePago",
@@ -792,7 +867,7 @@ function llenarInputsRecibo(idRegistroDePago) {
 
     funcionAjax.done(function (retorno) {
         console.debug("Done: ", retorno);
-        cargarDatosEnRecibo(JSON.parse(retorno));
+        cargarDatosEnRecibo(JSON.parse(retorno),ban);
     });
 
     funcionAjax.fail(function (retorno) {
@@ -800,7 +875,16 @@ function llenarInputsRecibo(idRegistroDePago) {
     });
 }
 
-function cargarDatosEnRecibo(datosParaCargarRecibo) {
+function cargarDatosEnRecibo(datosParaCargarRecibo,ban) {
+
+
+    if(ban == 1){
+        console.log("holaaaaaaaaaaa ");
+        console.log(ban);
+        //document.getElementById('reciboOfiAlquilerMensual').setAttribute("readonly", "true");
+        document.getElementById('reciboOfiAlquilerMensual').readOnly = false;
+    }
+
 
     var fecha = new Date();
     var options = {day: 'numeric', month: 'numeric', year: 'numeric'};
@@ -863,7 +947,7 @@ function cargarDatosEnRecibo(datosParaCargarRecibo) {
 // LLENAR SELECT CON OPCIONES SALDO ANTERIOR RECIBO
 function llenarSelectConOpcionesSaldoAnteriorRecibo(idRegistroDePago) {
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ComprobanteDePagoController.php",
+        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/ComprobanteDePagoController.php",
         method: "POST",
         data: {
             action: "sumarSaldoAnteriores",
@@ -945,7 +1029,7 @@ function EditarValoresReciboOficial() {
     }
 
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ComprobanteDePagoController.php",
+        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/ComprobanteDePagoController.php",
         method: "POST",
         data: {
             action: "EditarValoresReciboOficial",
@@ -1006,7 +1090,7 @@ function EditarValoresReciboNoOficial() {
     }
 
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ComprobanteDePagoController.php",
+        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/ComprobanteDePagoController.php",
         method: "POST",
         data: {
             action: "EditarValoresReciboNoOficial",
@@ -1045,7 +1129,6 @@ function GuardarComprobanteDePago() {
 
     if (fechaReciboOficial != "") { //RECIBO OFICIAL
 
-        var fecha = new Date();
         var numeroComprobante = document.getElementById("reciboOfiNumeroComprobante").value;
 
         var correspondienteMes = document.getElementById("reciboOfiCorrespondienteMes").value;
@@ -1053,7 +1136,8 @@ function GuardarComprobanteDePago() {
 
         var idRegistroPago = document.getElementById("reciboOfiIdRegistroPago").value;
         var idContrato = document.getElementById("reciboOfiIdContrato").value;
-        var TipoComprobante = document.getElementById("reciboOfiTipoComprobante").value;
+        var tipoComprobante = document.getElementById("reciboOfiTipoComprobante").value;
+        var tipoRecibo = 'Recibo';
 
         var alquilerMensual = document.getElementById("reciboOfiAlquilerMensual").value;
         var expensas = document.getElementById("reciboOfiExpensas").value;
@@ -1071,7 +1155,6 @@ function GuardarComprobanteDePago() {
 
     } else if (fechaReciboNoOficial != "") {  //RECIBO NO OFICIAL
 
-        var fecha = new Date();
         var numeroComprobante = document.getElementById("reciboNoOfiNumeroComprobante").value;
 
         var correspondienteMes = document.getElementById("reciboNoOfiCorrespondienteMes").value;
@@ -1079,7 +1162,8 @@ function GuardarComprobanteDePago() {
 
         var idRegistroPago = document.getElementById("reciboNoOfiIdRegistroPago").value;
         var idContrato = document.getElementById("reciboNoOfiIdContrato").value;
-        var TipoComprobante = document.getElementById("reciboNoOfiTipoComprobante").value;
+        var tipoComprobante = document.getElementById("reciboNoOfiTipoComprobante").value;
+        var tipoRecibo = 'Recibo';
 
         var alquilerMensual = document.getElementById("reciboNoOfiAlquilerMensual").value;
         var expensas = 0;
@@ -1093,23 +1177,20 @@ function GuardarComprobanteDePago() {
 
         var totalImporteAPagar = document.getElementById("reciboNoOfiTotal").value;
         var totalImporteRecibido = document.getElementById("reciboNoOfiImporteRecibido").value;
-        var saldoPendiente = totalImporteAPagar - totalImporteRecibido;
-
-
     }
 
-    console.log("Guardando contrato: ", fecha, numeroComprobante, idRegistroPago, idContrato, TipoComprobante, correspondienteMes, correspondienteAnio,
-        alquilerMensual, expensas, gastosAdm, deposito, cuotas, numCuota, interesPorMora, otrosConceptos, saldoAnterior, totalImporteAPagar, totalImporteRecibido, saldoPendiente,);
+    console.log("Guardando comprobante de pago: ", numeroComprobante, idRegistroPago, idContrato, tipoComprobante, tipoRecibo, correspondienteMes, correspondienteAnio,
+        alquilerMensual, expensas, gastosAdm, deposito, cuotas, numCuota, interesPorMora, otrosConceptos, saldoAnterior, totalImporteAPagar, totalImporteRecibido);
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ComprobanteDePagoController.php",
+        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/ComprobanteDePagoController.php",
         method: "POST",
         data: {
             action: "guardarComprobanteDePago",
-            fecha: fecha,
             numeroComprobante: numeroComprobante,
             idRegistroPago: idRegistroPago,
             idContrato: idContrato,
-            TipoComprobante: TipoComprobante,
+            tipoComprobante: tipoComprobante,
+            tipoRecibo: tipoRecibo,
             correspondienteMes: correspondienteMes,
             correspondienteAnio: correspondienteAnio,
             alquilerMensual: alquilerMensual,
@@ -1123,7 +1204,6 @@ function GuardarComprobanteDePago() {
             saldoAnterior: saldoAnterior,
             totalImporteAPagar: totalImporteAPagar,
             totalImporteRecibido: totalImporteRecibido,
-            saldoPendiente: saldoPendiente,
 
         }
     });
@@ -1149,7 +1229,7 @@ function buscarCuantosRecibosTieneEsteRegistro(idRegistroDePago) {
 
     console.log("buscar id registro de pago: ", idRegistroDePago);
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ComprobanteDePagoController.php",
+        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/ComprobanteDePagoController.php",
         method: "POST",
         data: {
             action: "buscarCuantosRecibosTieneEsteRegistro",
@@ -1187,8 +1267,6 @@ function visualizarRecibo(retorno) {
         }
     } else if (cant == 2) {
         visualizarDosRecibos(idRegistroDePago);
-
-
     }
 
 }
@@ -1198,7 +1276,7 @@ function visualizarReciboOficialCantidadUno(idRegistroDePago) {
     //console.debug("trayendo datos de registro de pago");
 
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ComprobanteDePagoController.php",
+        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/ComprobanteDePagoController.php",
         method: "POST",
         data: {
             action: "visualizarRecibo",
@@ -1222,15 +1300,18 @@ function cargarVisualizacionRecibo(datosParaCargarRecibo) {
     let expensas = datosParaCargarRecibo["valorExpensas"];
     let gasAdm = datosParaCargarRecibo["valorGastosAdm"];
     let deposito = datosParaCargarRecibo["valorDeposito"];
+    let tipoComprobante = datosParaCargarRecibo["tipoComprobanteDePago"];
+
 
     let subTotal = alquilerMensual + expensas + gasAdm + deposito;
-
 
     var fecha = new Date();
     var options = {day: 'numeric', month: 'numeric', year: 'numeric'};
     var fechaHoy = fecha.toLocaleDateString("es-ES", options);
 
-    //if(datosParaCargarRecibo["tipoRegistroDePago"] == "Oficial"){
+
+    //0============================
+
 
     $("#visualizacionFecha").val(fechaHoy);
     $("#visualizacionNumeroComprobante").val(datosParaCargarRecibo["numeroComprobante"]);
@@ -1252,31 +1333,10 @@ function cargarVisualizacionRecibo(datosParaCargarRecibo) {
     $("#visualizacionInteresPorMora").val("$ " + datosParaCargarRecibo["interesPorMora"]);
     $("#visualizacionTotalDias").val(datosParaCargarRecibo["diasMora"]);
     $("#visualizacionOtrosConceptos").val("$ " + datosParaCargarRecibo["otrosConceptos"]);
+    $("#visualizacionSaldoAnterior").val("$ " + datosParaCargarRecibo["saldoAnterior"]);
     $("#visualizacionTotal").val("$ " + datosParaCargarRecibo["totalImporteAPagar"]);
     $("#visualizacionImporteRecibido").val("$ " + datosParaCargarRecibo["totalImporteRecibido"]);
-    $("#visualizacionSaldoPendiente").val("$ " + datosParaCargarRecibo["saldoPendiente"]);
-
-    // }else if(datosParaCargarRecibo["tipoRegistroDePago"] == "No Oficial"){
-    //
-    //     $("#comprobanteFecha").val(fechaHoy);
-    //     $("#comprobanteNumeroComprobante").val(datosParaCargarRecibo["numeroComprobante"]);
-    //     $("#comprobanteUnidadFuncional").val(datosParaCargarRecibo["torre"]);
-    //     $("#comprobanteIdRegistroPago").val(datosParaCargarRecibo["idRegistroDePago"]);
-    //     $("#comprobanteIdContrato ").val(datosParaCargarRecibo["idContrato"]);
-    //     $("#comprobanteTipoComprobante ").val(datosParaCargarRecibo["tipoRegistroDePago"]);
-    //     $("#comprobanteDomicilio").val(datosParaCargarRecibo["domicilio"] + ",  Piso: " + datosParaCargarRecibo["piso"] + ",  Dto.: " + datosParaCargarRecibo["departamento"] + ",  Localidad: " + datosParaCargarRecibo["localidad"] + ", " + datosParaCargarRecibo["nombrePais"]);
-    //     $("#comprobanteLocatario").val(datosParaCargarRecibo["nombres"] + " " + datosParaCargarRecibo["apellidos"] + ", DNI: " + datosParaCargarRecibo["dni"]);
-    //     $("#comprobanteCorrespondienteMes").val(datosParaCargarRecibo["mesCorto"]);
-    //     $("#comprobanteCorrespondienteAnio").val(datosParaCargarRecibo["correspondienteAnio"]);
-    //     $("#comprobanteAlquilerMensual").val(datosParaCargarRecibo["valorAlquiler"]);
-    //     $("#comprobanteSubTotal").val(datosParaCargarRecibo["subTotal"]);
-    //     $("#comprobanteInteresPorMora").val(datosParaCargarRecibo["interesPorMora"]);
-    //     $("#comprobanteTotalDias").val(datosParaCargarRecibo["diasMora"]);
-    //     $("#comprobanteOtrosConceptos").val(datosParaCargarRecibo["otrosConceptos"]);
-    //     $("#comprobanteTotal").val(datosParaCargarRecibo["totalImporteAPagar"]);
-    //     $("#comprobanteImporteRecibido").val(datosParaCargarRecibo["totalImporteRecibido"]);
-    //     $("#comprobanteSaldoPendiente").val(datosParaCargarRecibo["saldoAnterior"]);
-    // }
+    $("#visualizacionSaldoPendiente").val("$ " + datosParaCargarRecibo["saldoPendienteSinModificar"]);
 
 }
 
@@ -1300,7 +1360,7 @@ function traerTodosRec(doneFunction, data) {
     data = data === undefined ? {action: "traerTodosRec"} : data;
 
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ComprobanteDePagoController.php",
+        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/ComprobanteDePagoController.php",
         method: "POST",
         data: data
     });
@@ -1334,31 +1394,52 @@ function llenarRecGrilla(jsonRec) {
 function contruirFilasRecibos(Rec) {
 
     let raw = "";
+    raw += "<td>" + Rec['tipoComprobanteDePago'] + "</td>";
+    raw += "<td>" + Rec['tipoRecibo'] + "</td>";
     raw += "<td>" + Rec['numeroComprobante'] + "</td>";
-    raw += "<td>" + Rec['totalImporteAPagar'] + "</td>";
+    raw += "<td style='visibility:hidden; display: none;'>" + Rec['totalImporteAPagar'] + "</td>";
     raw += "<td style='visibility:hidden; display: none;'>" + Rec['valorAlquiler'] + "</td>";
     raw += "<td style='visibility:hidden; display: none;'>" + Rec['idRegistroDePago'] + "</td>";
 
 
-    if (Rec['valorAlquiler'] > 0) {
+    if (Rec['tipoComprobanteDePago'] == "Oficial") {
 
-        raw += "<td>";
-        raw += "<button class='miBoton-icon' title='Visualizar Recibo' onclick='visualizarUnRecibo(" + Rec['idRegistroDePago'] + ")'>" +
-            "<span class='glyphicon glyphicon-ok'></span>";
-        raw += "</td> ";
-        return raw;
+        if (Rec['tipoRecibo'] == "Recibo") {
 
+            raw += "<td>";
+            raw += "<button class='miBoton-icon' title='Visualizar Recibo' onclick='visualizarUnRecibo(" + Rec['idRegistroDePago'] + ")'>" +
+                "<span class='glyphicon glyphicon-ok'></span>";
+            raw += "</td> ";
+            return raw;
+
+        }else if (Rec['tipoRecibo'] == "Saldo"){
+
+            raw += "<td>";
+            raw += "<button class='miBoton-icon' title='Visualizar Recibo Saldo' onclick='visualizarReciboOficialSoloSaldo(" + Rec['idRegistroDePago'] + ")'>" +
+                "<span class='glyphicon glyphicon-ok'></span>";
+            raw += "</td> ";
+            return raw;
+        }
+
+    }else if (Rec['tipoComprobanteDePago'] == "No Oficial") {
+
+        if (Rec['tipoRecibo'] == "Recibo") {
+
+            raw += "<td>";
+            raw += "<button class='miBoton-icon' title='Visualizar Recibo' onclick='visualizarUnReciboNoOficial(" + Rec['idRegistroDePago'] + ")'>" +
+                "<span class='glyphicon glyphicon-ok'></span>";
+            raw += "</td> ";
+            return raw;
+
+        }else if (Rec['tipoRecibo'] == "Saldo"){
+
+            raw += "<td>";
+            raw += "<button class='miBoton-icon' title='Visualizar Recibo Saldo' onclick='visualizarReciboNoOficialSoloSaldo(" + Rec['idRegistroDePago'] + ")'>" +
+                "<span class='glyphicon glyphicon-ok'></span>";
+            raw += "</td> ";
+            return raw;
+        }
     }
-    if (Rec['valorAlquiler'] == 0) {
-
-        raw += "<td>";
-        raw += "<button class='miBoton-icon' title='Visualizar Recibo Saldo' onclick='visualizarReciboOficialSoloSaldo(" + Rec['idRegistroDePago'] + ")'>" +
-            "<span class='glyphicon glyphicon-ok'></span>";
-        raw += "</td> ";
-        return raw;
-    }
-
-
 }
 
 // TODO: VISUALIZAR RECIBO NO OFICIAL CANTIDAD UNO
@@ -1366,7 +1447,7 @@ function visualizarReciboNoOficialCantidadUno(idRegistroDePago) {
     //console.debug("trayendo datos de registro de pago");
 
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ComprobanteDePagoController.php",
+        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/ComprobanteDePagoController.php",
         method: "POST",
         data: {
             action: "visualizarRecibo",
@@ -1417,31 +1498,10 @@ function cargarVisualizacionReciboNoOficial(datosParaCargarRecibo) {
     $("#noOfiInteresPorMora").val("$ " + datosParaCargarRecibo["interesPorMora"]);
     $("#noOfiTotalDias").val(datosParaCargarRecibo["diasMora"]);
     $("#noOfiOtrosConceptos").val("$ " + datosParaCargarRecibo["otrosConceptos"]);
+    $("#noOfiSaldoAnterior").val("$ " + datosParaCargarRecibo["saldoAnterior"]);
     $("#noOfiTotal").val("$ " + datosParaCargarRecibo["totalImporteAPagar"]);
     $("#noOfiImporteRecibido").val("$ " + datosParaCargarRecibo["totalImporteRecibido"]);
-    $("#noOfiSaldoPendiente").val("$ " + datosParaCargarRecibo["saldoPendiente"]);
-
-    // }else if(datosParaCargarRecibo["tipoRegistroDePago"] == "No Oficial"){
-    //
-    //     $("#comprobanteFecha").val(fechaHoy);
-    //     $("#comprobanteNumeroComprobante").val(datosParaCargarRecibo["numeroComprobante"]);
-    //     $("#comprobanteUnidadFuncional").val(datosParaCargarRecibo["torre"]);
-    //     $("#comprobanteIdRegistroPago").val(datosParaCargarRecibo["idRegistroDePago"]);
-    //     $("#comprobanteIdContrato ").val(datosParaCargarRecibo["idContrato"]);
-    //     $("#comprobanteTipoComprobante ").val(datosParaCargarRecibo["tipoRegistroDePago"]);
-    //     $("#comprobanteDomicilio").val(datosParaCargarRecibo["domicilio"] + ",  Piso: " + datosParaCargarRecibo["piso"] + ",  Dto.: " + datosParaCargarRecibo["departamento"] + ",  Localidad: " + datosParaCargarRecibo["localidad"] + ", " + datosParaCargarRecibo["nombrePais"]);
-    //     $("#comprobanteLocatario").val(datosParaCargarRecibo["nombres"] + " " + datosParaCargarRecibo["apellidos"] + ", DNI: " + datosParaCargarRecibo["dni"]);
-    //     $("#comprobanteCorrespondienteMes").val(datosParaCargarRecibo["mesCorto"]);
-    //     $("#comprobanteCorrespondienteAnio").val(datosParaCargarRecibo["correspondienteAnio"]);
-    //     $("#comprobanteAlquilerMensual").val(datosParaCargarRecibo["valorAlquiler"]);
-    //     $("#comprobanteSubTotal").val(datosParaCargarRecibo["subTotal"]);
-    //     $("#comprobanteInteresPorMora").val(datosParaCargarRecibo["interesPorMora"]);
-    //     $("#comprobanteTotalDias").val(datosParaCargarRecibo["diasMora"]);
-    //     $("#comprobanteOtrosConceptos").val(datosParaCargarRecibo["otrosConceptos"]);
-    //     $("#comprobanteTotal").val(datosParaCargarRecibo["totalImporteAPagar"]);
-    //     $("#comprobanteImporteRecibido").val(datosParaCargarRecibo["totalImporteRecibido"]);
-    //     $("#comprobanteSaldoPendiente").val(datosParaCargarRecibo["saldoAnterior"]);
-    // }
+    $("#noOfiSaldoPendiente").val("$ " + datosParaCargarRecibo["saldoPendienteSinModificar"]);
 
 }
 
@@ -1450,7 +1510,7 @@ function llenarInputsReciboSoloSaldo(idRegistroDePago) {
     //console.debug("trayendo datos de registro de pago");
 
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ComprobanteDePagoController.php",
+        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/ComprobanteDePagoController.php",
         method: "POST",
         data: {
             action: "cargarComprobanteDePagoSoloSaldo",
@@ -1516,17 +1576,14 @@ function GuardarComprobanteDePagoSoloSaldo() {
     let fec = document.getElementById("saldoFecha").value;
     let fec2 = document.getElementById("saldo2Fecha").value;
 
-    console.log(fec);
-    console.log(fec2);
-
     if(fec2 == ""){
-        var fecha = document.getElementById("saldoFecha").value;
+
         var numeroComprobante = document.getElementById("saldoNumeroComprobante").value;
 
         var idRegistroPago = document.getElementById("saldoIdRegistroPago").value;
         var idContrato = document.getElementById("saldoIdContrato").value;
-        var TipoComprobante = document.getElementById("saldoTipoComprobante").value;
-
+        var tipoComprobante = document.getElementById("saldoTipoComprobante").value;
+        var tipoRecibo = 'Saldo';
         var correspondienteMes = document.getElementById("saldoCorrespondienteMes").value;
         var correspondienteAnio = document.getElementById("saldoCorrespondienteAnio").value;
         var alquilerMensual = 0;
@@ -1543,13 +1600,12 @@ function GuardarComprobanteDePagoSoloSaldo() {
 
     }else if(fec == ""){
 
-        var fecha = document.getElementById("saldo2Fecha").value;
         var numeroComprobante = document.getElementById("saldo2NumeroComprobante").value;
 
         var idRegistroPago = document.getElementById("saldo2IdRegistroPago").value;
         var idContrato = document.getElementById("saldo2IdContrato").value;
-        var TipoComprobante = document.getElementById("saldo2TipoComprobante").value;
-
+        var tipoComprobante = document.getElementById("saldo2TipoComprobante").value;
+        var tipoRecibo = 'Saldo';
         var correspondienteMes = document.getElementById("saldo2CorrespondienteMes").value;
         var correspondienteAnio = document.getElementById("saldo2CorrespondienteAnio").value;
         var alquilerMensual = 0;
@@ -1566,15 +1622,15 @@ function GuardarComprobanteDePagoSoloSaldo() {
     }
 
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ComprobanteDePagoController.php",
+        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/ComprobanteDePagoController.php",
         method: "POST",
         data: {
             action: "guardarComprobanteDePagoSoloSaldo",
-            fecha: fecha,
             numeroComprobante: numeroComprobante,
             idRegistroPago: idRegistroPago,
             idContrato: idContrato,
-            TipoComprobante: TipoComprobante,
+            tipoComprobante: tipoComprobante,
+            tipoRecibo: tipoRecibo,
             correspondienteMes: correspondienteMes,
             correspondienteAnio: correspondienteAnio,
             alquilerMensual: alquilerMensual,
@@ -1593,7 +1649,7 @@ function GuardarComprobanteDePagoSoloSaldo() {
 
     funcionAjax.done(function (retorno) {
         console.debug("Done: ", retorno);
-        //ListadoDeRegistrosDePago();
+        ListadoDeRegistrosDePago();
     });
 
     funcionAjax.fail(function (retorno) {
@@ -1612,7 +1668,7 @@ function visualizarReciboOficialSaldo(idRegistroDePago) {
     //console.debug("trayendo datos de registro de pago");
 
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ComprobanteDePagoController.php",
+        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/ComprobanteDePagoController.php",
         method: "POST",
         data: {
             action: "visualizarReciboOficialSoloSaldo",
@@ -1636,27 +1692,52 @@ function cargarVisualizacionReciboOficialSaldo(Saldo) {
     var options = {day: 'numeric', month: 'numeric', year: 'numeric'};
     var fechaHoy = fecha.toLocaleDateString("es-ES", options);
 
+    if (Saldo['tipoComprobanteDePago'] == "Oficial") {
 
-    $("#visuFecha").val(fechaHoy);
-    $("#visuNumeroComprobante").val(Saldo["numeroComprobante"]);
-    $("#visuUnidadFuncional").val(Saldo["torre"]);
-    $("#visuIdRegistroPago").val(Saldo["idRegistroDePago"]);
-    $("#visuIdContrato ").val(Saldo["idContrato"]);
-    $("#visuTipoComprobante ").val(Saldo["tipoRegistroDePago"]);
-    $("#visuDomicilio").val(Saldo["domicilio"] + ",  Piso: " + Saldo["piso"] + ",  Dto.: " + Saldo["departamento"] + ",  Localidad: " + Saldo["localidad"] + ", " + Saldo["nombrePais"]);
-    $("#visuLocatario").val(Saldo["nombres"] + " " + Saldo["apellidos"] + ", DNI: " + Saldo["dni"]);
-    $("#visuCorrespondienteMes").val(Saldo["mesCorto"]);
-    $("#visuCorrespondienteAnio").val(Saldo["correspondienteAnio"]);
 
-    $("#visuSaldoPendiente").val(Saldo["totalImporteAPagar"]);
-    $("#visuTotal").val(Saldo["totalImporteAPagar"]);
-    $("#visuTotalImporteRecibido").val(Saldo["totalImporteAPagar"]);
+        $("#visuFecha").val(fechaHoy);
+        $("#visuNumeroComprobante").val(Saldo["numeroComprobante"]);
+        $("#visuUnidadFuncional").val(Saldo["torre"]);
+        $("#visuIdRegistroPago").val(Saldo["idRegistroDePago"]);
+        $("#visuIdContrato ").val(Saldo["idContrato"]);
+        $("#visuTipoComprobante ").val(Saldo["tipoRegistroDePago"]);
+        $("#visuDomicilio").val(Saldo["domicilio"] + ",  Piso: " + Saldo["piso"] + ",  Dto.: " + Saldo["departamento"] + ",  Localidad: " + Saldo["localidad"] + ", " + Saldo["nombrePais"]);
+        $("#visuLocatario").val(Saldo["nombres"] + " " + Saldo["apellidos"] + ", DNI: " + Saldo["dni"]);
+        $("#visuCorrespondienteMes").val(Saldo["mesCorto"]);
+        $("#visuCorrespondienteAnio").val(Saldo["correspondienteAnio"]);
+
+        $("#visuSaldoPendiente").val(Saldo["totalImporteAPagar"]);
+        $("#visuTotal").val(Saldo["totalImporteAPagar"]);
+        $("#visuTotalImporteRecibido").val(Saldo["totalImporteAPagar"]);
+
+    } else  if (Saldo['tipoComprobanteDePago'] == "No Oficial") {
+
+
+        $("#saldo3Fecha").val(fechaHoy);
+        $("#saldo3NumeroComprobante").val(Saldo["numeroComprobante"]);
+        $("#saldo3UnidadFuncional").val(Saldo["torre"]);
+        $("#saldo3IdRegistroPago").val(Saldo["idRegistroDePago"]);
+        $("#saldo3IdContrato ").val(Saldo["idContrato"]);
+        $("#saldo3TipoComprobante ").val(Saldo["tipoRegistroDePago"]);
+        $("#saldo3Domicilio").val(Saldo["domicilio"] + ",  Piso: " + Saldo["piso"] + ",  Dto.: " + Saldo["departamento"] + ",  Localidad: " + Saldo["localidad"] + ", " + Saldo["nombrePais"]);
+        $("#saldo3Locatario").val(Saldo["nombres"] + " " + Saldo["apellidos"] + ", DNI: " + Saldo["dni"]);
+        $("#saldo3CorrespondienteMes").val(Saldo["mesCorto"]);
+        $("#saldo3CorrespondienteAnio").val(Saldo["correspondienteAnio"]);
+
+        $("#saldo3SaldoPendiente").val(Saldo["totalImporteAPagar"]);
+        $("#saldo3Total").val(Saldo["totalImporteAPagar"]);
+        $("#saldo3TotalImporteRecibido").val(Saldo["totalImporteAPagar"]);
+    }
 
 
 }
 
-function printPDF()
-{
+function printPdfReciboOficial() {
+    var numeroComprobante = document.getElementById("visualizacionNumeroComprobante").value;
+
+    var divHeight = $('#bodyReciboOficial').height();
+    var divWidth = $('#bodyReciboOficial').width();
+    var ratio = divHeight / divWidth;
     var body = document.getElementById('bodyReciboOficial');
     html2canvas(body)
         .then(function(canvas){
@@ -1664,8 +1745,73 @@ function printPDF()
             var imgData = canvas.toDataURL('image/png');
 
             var doc = new jsPDF();
+            var width = doc.internal.pageSize.getWidth();
+            var height = doc.internal.pageSize.getHeight();
+            height = ratio * width;
+            doc.addImage(imgData, 'JPEG', 0, 10, width+30, height+50);
+            doc.save('ReciboOficial-' + numeroComprobante + '.pdf');
+        });
+}
 
-            doc.addImage(imgData,'JPG',15, 40, 180, 160);
-            doc.save('Recibo.pdf');
+function printPdfReciboNoOficial() {
+    var numeroComprobante = document.getElementById("noOfiNumeroComprobante").value;
+
+    var divHeight = $('#bodyReciboNoOficial').height();
+    var divWidth = $('#bodyReciboNoOficial').width();
+    var ratio = divHeight / divWidth;
+    var body = document.getElementById('bodyReciboNoOficial');
+    html2canvas(body)
+        .then(function(canvas){
+            document.body.appendChild(canvas);
+            var imgData = canvas.toDataURL('image/png');
+
+            var doc = new jsPDF();
+            var width = doc.internal.pageSize.getWidth();
+            var height = doc.internal.pageSize.getHeight();
+            height = ratio * width;
+            doc.addImage(imgData, 'JPEG', 0, 10, width+30, height+50);
+            doc.save('ReciboNoOficial-' + numeroComprobante + '.pdf');
+        });
+}
+
+function printPdfReciboOficialSoloSaldo() {
+    var numeroComprobante = document.getElementById("visuNumeroComprobante").value;
+
+    var divHeight = $('#bodyReciboOficialSoloSaldo').height();
+    var divWidth = $('#bodyReciboOficialSoloSaldo').width();
+    var ratio = divHeight / divWidth;
+    var body = document.getElementById('bodyReciboOficialSoloSaldo');
+    html2canvas(body)
+        .then(function(canvas){
+            document.body.appendChild(canvas);
+            var imgData = canvas.toDataURL('image/png');
+
+            var doc = new jsPDF();
+            var width = doc.internal.pageSize.getWidth();
+            var height = doc.internal.pageSize.getHeight();
+            height = ratio * width;
+            doc.addImage(imgData, 'JPEG', 0, 10, width+30, height+50);
+            doc.save('ReciboOficialSoloSaldo-' + numeroComprobante + '.pdf');
+        });
+}
+
+function printPdfReciboNoOficialSoloSaldo() {
+    var numeroComprobante = document.getElementById("saldo3NumeroComprobante").value;
+
+    var divHeight = $('#bodyReciboNoOficialSoloSaldo').height();
+    var divWidth = $('#bodyReciboNoOficialSoloSaldo').width();
+    var ratio = divHeight / divWidth;
+    var body = document.getElementById('bodyReciboNoOficialSoloSaldo');
+    html2canvas(body)
+        .then(function(canvas){
+            document.body.appendChild(canvas);
+            var imgData = canvas.toDataURL('image/png');
+
+            var doc = new jsPDF();
+            var width = doc.internal.pageSize.getWidth();
+            var height = doc.internal.pageSize.getHeight();
+            height = ratio * width;
+            doc.addImage(imgData, 'JPEG', 0, 10, width+10, height+40);
+            doc.save('ReciboNoOficialSoloSaldoNumero-' + numeroComprobante + '.pdf');
         });
 }

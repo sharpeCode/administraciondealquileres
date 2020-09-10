@@ -137,6 +137,7 @@ CREATE TABLE comprobantes_de_pagos(
 	numero_comprobante VARCHAR(5) NOT NULL,
 	fecha_comprobante DATE NOT NULL,
 	tipo_comprobante_de_pago VARCHAR(10) NOT NULL,                            # Oficial - No Oficial
+	tipo_recibo VARCHAR(V10),                                                 # Recibo - Saldo
 	id_contrato INT NOT NULL,
 	id_registro_de_pago INT NOT NULL,
 	correspondiente_mes INT NOT NULL,

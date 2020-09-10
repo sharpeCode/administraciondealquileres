@@ -1,7 +1,6 @@
 <body>
 <div class="container" id="visualizarReciboNoOficial">
-    <br><br><br>
-    <div class="miContainer">
+    <div id="bodyReciboNoOficial">
         <br>
         <div class="row">
             <!-- COLUMNA 1 -->
@@ -21,14 +20,13 @@
                     <label class="labelSubtitulo">Fecha</label>
                 </div>
                 <div class="col-md-6">
-                    <input class="inputTextLabel" id="dosFecha" name="dosFecha"
-                           title="Fecha Recibo">
+                    <input type="text" class="inputTextLabel" name="dosFecha"
+                           id="dosFecha" readonly="readonly">
                 </div>
             </div>
         </div>
         <br>
         <div class="fondoMarcaDeAguaReiboNoOficial">
-            <div class="miContainer2">
             <br>
             <div class="row">
                 <!-- NUMERO DE COMPROBANTE-->
@@ -105,9 +103,8 @@
                 </div>
                 <div class="col-md-1"></div>
             </div>
-            <br>
-            </div>
-            <br>
+            <br><br>
+
             <!-- CONCEPTOS DE PAGOS----------------------------------------------------------------------->
             <div class="row">
                 <div class="col-md-1"></div>
@@ -179,7 +176,7 @@
                 </div>
                 <div class="col-md-2">
                     <input type="text" class="inputTextLabel" name="dosSaldoAnterior"
-                           id="dosSaldoAnterior" readonly="readonly">
+                           id="dosSaldoAnterior">
                 </div>
                 <div class="col-md-1"></div>
             </div>
@@ -217,21 +214,22 @@
                 </div>
                 <div class="col-md-2">
                     <input type="text" class="inputTextLabel" name="dosSaldoPendiente"
-                           id="dosSaldoPendiente" readonly="readonly">
+                           id="dosSaldoPendiente">
                 </div>
-                <div class="col-md-4"></div>
-                <div class="col-md-3">
-                    <a><input class="miBoton-chico" type="button" onclick="ListadoDeRegistrosDePago()"
-                              value="Atras"></a>
-                    <a><input class="miBoton-chico" type="button" onclick="GuardarComprobanteDePago()" value="Guardar"></a>
-                </div>
+                <div class="col-md-7"></div>
             </div>
 
-
         </div>
-        <br><br>
     </div>
-
+    <div class="row">
+        <div class="col-md-9"></div>
+        <div class="col-md-3">
+            <a><input class="miBoton-chico" type="button" onclick="Atras()" value="Atras"></a>
+            <a><input class="miBoton-chico" type="button" onclick="printPdfReciboNoOficial()" value="PDF" id="pdf"
+                      name="pdf"></a>
+        </div>
+    </div>
+    <br><br>
 </div>
 </div>
 </body>

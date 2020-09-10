@@ -30,6 +30,9 @@ switch ($action) {
     case "visualizarRecibo":
         visualizarRecibo($_POST['idRegistroDePago']);
         break;
+    case "visualizarRecibo2":
+        visualizarRecibo2($_POST['idComprobantesDePago']);
+        break;
     case "cargarComprobanteDePagoSoloSaldo":
         cargarComprobanteDePagoSoloSaldo($_POST['idRegistroDePago']);
         break;
@@ -44,6 +47,12 @@ switch ($action) {
         break;
     case "sumarSaldoAnteriores":
         sumarSaldoAnteriores($_POST['idRegistroDePago']);
+        break;
+    case "listarRecibos":
+        listarRecibos();
+        break;
+    case "datosRecibo":
+        datosRecibo($_POST['idComprobantesDePago']);
         break;
 
     default:
@@ -252,12 +261,11 @@ function sumarSaldoAnteriores($idRegistroDePago){
 
 function guardarComprobanteDePago()
 {
-
-    $fecha = $_POST['fecha'];
     $numeroComprobante = $_POST['numeroComprobante'];
     $idRegistroPago = $_POST['idRegistroPago'];
     $idContrato = $_POST['idContrato'];
-    $TipoComprobante = $_POST['TipoComprobante'];
+    $tipoComprobante = $_POST['tipoComprobante'];
+    $tipoRecibo = $_POST['tipoRecibo'];
     $correspMes = $_POST['correspondienteMes'];
     $correspondienteAnio = $_POST['correspondienteAnio'];
     $alquilerMensual = $_POST['alquilerMensual'];
@@ -295,25 +303,25 @@ function guardarComprobanteDePago()
 
 
     //guardar el comprobante de pago en la tabla "comprobante_de_pagos"
-    $registroDePago = ComprobanteDePagoRepositorio::guardarComprobanteDePago($numeroComprobante, $fecha, $TipoComprobante, $idContrato, $idRegistroPago, $correspondienteMes, $correspondienteAnio, $alquilerMensual, $expensas, $gastosAdm, $deposito, $cuotas, $numCuota, $interesPorMora, $otrosConceptos, $saldoAnterior, $totalImporteAPagar, $totalImporteRecibido, $saldoPendiente, $saldoPendienteSinModificar);
+    $registroDePago = ComprobanteDePagoRepositorio::guardarComprobanteDePago($numeroComprobante, $tipoComprobante, $tipoRecibo, $idContrato, $idRegistroPago, $correspondienteMes, $correspondienteAnio, $alquilerMensual, $expensas, $gastosAdm, $deposito, $cuotas, $numCuota, $interesPorMora, $otrosConceptos, $saldoAnterior, $totalImporteAPagar, $totalImporteRecibido, $saldoPendiente, $saldoPendienteSinModificar);
     echo json_encode($registroDePago);
 
 
-    //cambiar la accion del recibo generado --> SI en registros de pago
-    RegistroPagoRepositorio::cambiarLaAccionDelRegistroRecibo($idRegistroPago);
+     //cambiar la accion del recibo generado --> SI en registros de pago
+     RegistroPagoRepositorio::cambiarLaAccionDelRegistroRecibo($idRegistroPago);
 
     //voy a cargar la columna SALDO_PENDIENTE de la tabla registros_de_pagos
     RegistroPagoRepositorio::cargarSaldoPendiente($idRegistroPago, $saldoPendiente);
 
     //si pagó saldos anteriores que lo ponga en cero
-    $saldosAnt = RegistroPagoRepositorio::sumarSaldosPendientesMenosActual($idContrato, $TipoComprobante, $idRegistroPago);
-    if ($saldoAnterior == $saldosAnt->saldoPendiente) {
+    $saldosAnt = RegistroPagoRepositorio::sumarSaldosPendientesMenosActual($idContrato, $tipoComprobante, $idRegistroPago);
+    $sandoPend = (int) $saldosAnt->saldoPendiente;
+    if ($saldoAnterior == $sandoPend and $sandoPend > 0) {
         //en la tabla registros de pagos
-        RegistroPagoRepositorio::ponerSaldoCeroEnLosSaldosPendientesAnteriores($idContrato, $idRegistroPago);
+        RegistroPagoRepositorio::ponerSaldoCeroEnLosSaldosPendientesAnteriores($idContrato, $idRegistroPago, $tipoComprobante);
         //en la tabla comprobantes de pagos
-        ComprobanteDePagoRepositorio::ponerSaldoCeroEnLosSaldosPendientes($idContrato, $idRegistroPago);
+        ComprobanteDePagoRepositorio::ponerSaldoCeroEnLosSaldosPendientes($idContrato, $idRegistroPago, $tipoComprobante);
     }
-
 
 }
 
@@ -377,7 +385,12 @@ function visualizarRecibo($idRegistroDePago)
 {
     $visualizar = ComprobanteDePagoRepositorio::visualizarRecibo($idRegistroDePago);
     echo json_encode($visualizar);
+}
 
+function visualizarRecibo2($idComprobantesDePago)
+{
+    $visualizar = ComprobanteDePagoRepositorio::visualizarRecibo2($idComprobantesDePago);
+    echo json_encode($visualizar);
 }
 
 function cargarComprobanteDePagoSoloSaldo($idRegistroDePago)
@@ -436,8 +449,8 @@ function guardarComprobanteDePagoSoloSaldo()
 {
 
     $numeroComprobante = $_POST['numeroComprobante'];
-    $fecha = $_POST['fecha'];
-    $TipoComprobante = $_POST['TipoComprobante'];
+    $tipoComprobante = $_POST['tipoComprobante'];
+    $tipoRecibo = $_POST['tipoRecibo'];
     $idContrato = $_POST['idContrato'];
     $idRegistroPago = $_POST['idRegistroPago'];
     $correspMes = $_POST['correspondienteMes'];
@@ -461,8 +474,8 @@ function guardarComprobanteDePagoSoloSaldo()
     $mes = MesRepositorio::buscarIdMes($nombreMes);
     $correspondienteMes = $mes->idMes;
 
-    $registroDePago = ComprobanteDePagoRepositorio::guardarComprobanteDePago($numeroComprobante, $fecha, $TipoComprobante,
-        $idContrato, $idRegistroPago, $correspondienteMes, $correspondienteAnio, $alquilerMensual, $expensas,
+    $registroDePago = ComprobanteDePagoRepositorio::guardarComprobanteDePago($numeroComprobante, $tipoComprobante,
+        $tipoRecibo, $idContrato, $idRegistroPago, $correspondienteMes, $correspondienteAnio, $alquilerMensual, $expensas,
         $gastosAdm, $deposito, $cuotas, $numCuota, $interesPorMora, $otrosConceptos, $saldoAnterior, $totalImporteAPagar,
         $totalImporteRecibido, $saldoPendiente, $saldoPendienteSinModificar);
 
@@ -497,6 +510,18 @@ function visualizarReciboOficialSoloSaldo($idRegistroDePago)
     $visualizar = ComprobanteDePagoRepositorio::visualizarReciboOficialSoloSaldo($idRegistroDePago);
     echo json_encode($visualizar);
 
+}
+
+function listarRecibos()
+{
+    $listadoCompPagos = ComprobanteDePagoRepositorio::listarComprobantesDePago();
+    echo json_encode($listadoCompPagos);
+}
+
+function datosRecibo($idComprobantesDePago)
+{
+    $datos = ComprobanteDePagoRepositorio::datosRecibo($idComprobantesDePago);
+    echo json_encode($datos);
 }
 
 

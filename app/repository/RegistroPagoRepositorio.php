@@ -196,11 +196,12 @@ class RegistroPagoRepositorio
         return $saldosAnteriores;
     }
 
-    public static function ponerSaldoCeroEnLosSaldosPendientesAnteriores($idContrato,$idRegistroPago){
+    public static function ponerSaldoCeroEnLosSaldosPendientesAnteriores($idContrato,$idRegistroPago, $tipoComprobante){
         $saldos = "";
         try {
             $sql = "UPDATE registros_de_pagos SET saldo_pendiente = 0
-                    WHERE id_contrato = '$idContrato' AND id_registro_de_pago <> '$idRegistroPago'";
+                    WHERE id_contrato = '$idContrato' AND id_registro_de_pago <> '$idRegistroPago' 
+                    AND tipo_registro_de_pago = '$tipoComprobante'";
 
             $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
             $sentencia->execute();

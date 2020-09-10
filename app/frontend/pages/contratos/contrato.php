@@ -21,10 +21,11 @@ require_once 'ComprobanteDePagoOficial.html';
 require_once 'ComprobanteDePagoNoOficial.html';
 require_once 'ComprobanteDePagoSaldoOficial.html';
 require_once 'ComprobanteDePagoSaldoNoOficial.html';
-require_once 'visualizarReciboOficialCantidadUno.html';
+require_once 'visualizarReciboOficial.html';
 require_once 'visualizarReciboOficialCantidadDos.html';
 require_once 'visualizarReciboOficialSoloSaldo.html';
 require_once 'visualizarReciboNoOficial.html';
+require_once 'visualizarReciboNoOficialSoloSaldo.html';
 
 
 ?>
