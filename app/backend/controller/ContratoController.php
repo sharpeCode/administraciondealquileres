@@ -33,6 +33,7 @@ switch ($action) {
 
 function listarContratos()
 {
+    echo 'LLego al controler de contrato ';
     $contratos = ContratoRepositorio::listarContratos();
     echo json_encode($contratos);
 }

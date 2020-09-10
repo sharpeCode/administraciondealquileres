@@ -343,6 +343,7 @@ function traerTodos(doneFunction, data) {
 }
 
 function llenarContratosGrilla(jsonContratos) {
+    console.log("Lo que trajo jsonContratos ");
     console.log(jsonContratos);
     jsonContratos = JSON.parse(jsonContratos);
 
