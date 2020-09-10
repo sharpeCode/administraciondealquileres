@@ -331,7 +331,9 @@ function traerTodos(doneFunction, data) {
         data: data
     });
 
-    funcionAjax.done(doneFunction);
+    funcionAjax.done(doneFunction)
+    console.log("retorno js desde el controller: ");
+    console.log(doneFunction);
 
     funcionAjax.fail(function (retorno) {
         console.log("error al llamar back de locatarios")
@@ -343,8 +345,7 @@ function traerTodos(doneFunction, data) {
 }
 
 function llenarContratosGrilla(jsonContratos) {
-    console.log("Lo que trajo jsonContratos ");
-    console.log(jsonContratos);
+
     jsonContratos = JSON.parse(jsonContratos);
 
     let tableRaws = "";
