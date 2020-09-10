@@ -9,11 +9,9 @@ class InmuebleRepository
     {
         $inmuebles = null;
         try {
-            $sql = "SELECT I.id_inmueble as idInmueble, I.tipo, I.torre, I.piso, I.departamento, I.domicilio, 
-                I.id_localidad as idLocalidad, L.localidad 
-                    FROM inmuebles as I
-                    INNER JOIN localidades as L 
-                    ON I.id_localidad = L.id_localidad";
+            $sql = "SELECT idinmuebles as idInmueble, tipo, torre, piso, departamento, domicilio, 
+                id_localidad as idLocalidad
+                    FROM inmuebles";
 
             $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
             $sentencia->execute();
