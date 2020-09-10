@@ -50,7 +50,8 @@ function obtenerInmuebles(doneFunction, data) {
     data = data === undefined ? {action: "obtenerInmuebles"} : data;
 
     var funcionAjax = $.ajax({
-        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/InmuebleController.php",
+        // url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/InmuebleController.php",
+        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/InmuebleController.php",
         method: "POST",
         data: data
     });
@@ -98,7 +99,8 @@ function construirFilaDeInmueble(inmueble) {
 
 function llenarSelectConLocalidades() {
     var funcionAjax = $.ajax({
-        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/LocalidadController.php",
+        // url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/LocalidadController.php",
+        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/LocalidadController.php",
         method: "POST",
         data: {
             action: "listar"

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="53ab48f9-28da-4f25-a97d-79acfbd8f837" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/frontend/pages/login/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/frontend/pages/login/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/frontend/pages/inmuebles/inmueble.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/frontend/pages/inmuebles/inmueble.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,13 +12,50 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/frontend/pages/login/login.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="36" lean-forward="true" selection-start-line="1" selection-start-column="36" selection-end-line="1" selection-end-column="36" />
+            <state relative-caret-position="102">
+              <caret line="6" column="64" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="64" />
               <folding>
                 <element signature="n#!!block;n#ingresarAlSistema#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/frontend/pages/inmuebles/inmueble.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-576">
+              <caret line="53" column="61" selection-start-line="53" selection-start-column="61" selection-end-line="53" selection-end-column="61" />
+              <folding>
+                <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+                <element signature="n#!!block;n#guardarInmueble#0" />
+                <element signature="n#!!block;n#loadInmuebleData#0" />
+                <element signature="n#!!block;n#fillEditionForm#0" />
+                <element signature="n#!!block;n#llenarSelectConLocalidadesParaEditar#0" />
+                <element signature="n#!!block;n#fillDomEdit#0" />
+                <element signature="n#!!block;n#guardarInmuebleEditado#0" />
+                <element signature="n#!!block;n#demoFromHTML#0" />
+                <element signature="n#!!block;n#mostrarFormLocalidadAdd#0" />
+                <element signature="n#!!block;n#llenarSelectConProvincias#0" />
+                <element signature="n#!!block;n#fillDomProvincia#0" />
+                <element signature="n#!!block;n#optionsProvincia#0" />
+                <element signature="n#!!block;n#guardarLocalidad#0" />
+                <element signature="n#!!block;n#mostrarFormLocalidadEditar#0" />
+                <element signature="n#!!block;n#llenarSelectConProvinciasParaEditar#0" />
+                <element signature="n#!!block;n#fillDomEditProvincia#0" />
+                <element signature="n#!!block;n#cargarLocalidadParaEditar#0" />
+                <element signature="n#!!block;n#llenarFormConLocalidad#0" />
+                <element signature="n#!!block;n#guardarLocalidadEditada#0" />
               </folding>
             </state>
           </provider>
@@ -107,7 +144,6 @@
         <option value="$PROJECT_DIR$/app/frontend/pages/inmuebles/inmuebleList.html" />
         <option value="$PROJECT_DIR$/app/frontend/pages/inmuebles/jsPDF-master/PruebaPDF.html" />
         <option value="$PROJECT_DIR$/app/frontend/pages/inmuebles/PruebaPDF.html" />
-        <option value="$PROJECT_DIR$/app/frontend/pages/inmuebles/inmueble.js" />
         <option value="$PROJECT_DIR$/app/frontend/pages/recibos/recibo.js" />
         <option value="$PROJECT_DIR$/app/frontend/pages/recibos/listarRecibos.html" />
         <option value="$PROJECT_DIR$/app/frontend/pages/principal/menuPrincipal.html" />
@@ -130,6 +166,7 @@
         <option value="$PROJECT_DIR$/app/frontend/resources/css/style.css" />
         <option value="$PROJECT_DIR$/app/frontend/pages/clientes/clienteDetail.html" />
         <option value="$PROJECT_DIR$/app/frontend/pages/login/login.js" />
+        <option value="$PROJECT_DIR$/app/frontend/pages/inmuebles/inmueble.js" />
       </list>
     </option>
   </component>
@@ -180,22 +217,7 @@
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="frontend" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="login" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="administracion_de_alquileres" type="b2602c69:ProjectViewProjectNode" />
-              <item name="administracion_de_alquileres" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="administracion_de_alquileres" type="b2602c69:ProjectViewProjectNode" />
-              <item name="administracion_de_alquileres" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
+              <item name="inmuebles" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -262,18 +284,18 @@
       <workItem from="1599070845706" duration="11828000" />
       <workItem from="1599340275726" duration="6186000" />
       <workItem from="1599519181197" duration="2477000" />
-      <workItem from="1599688333054" duration="1723000" />
+      <workItem from="1599688333054" duration="2524000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="154825000" />
+    <option name="totallyTimeSpent" value="155626000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21785174" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1633888" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -331,37 +353,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="14" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/frontend/pages/inmuebles/inmueble.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1666">
-          <caret line="255" selection-start-line="255" selection-end-line="287" selection-end-column="1" />
-          <folding>
-            <element signature="n#!!block;n#CargarListadoInmueble#0" />
-            <element signature="n#!!block;n#obtenerInmuebles#0" />
-            <element signature="n#!!block;n#llenarTablaInmuebles#0" />
-            <element signature="n#!!block;n#construirFilaDeInmueble#0" />
-            <element signature="n#!!block;n#guardarInmueble#0" />
-            <element signature="n#!!block;n#loadInmuebleData#0" />
-            <element signature="n#!!block;n#fillEditionForm#0" />
-            <element signature="n#!!block;n#llenarSelectConLocalidadesParaEditar#0" />
-            <element signature="n#!!block;n#fillDomEdit#0" />
-            <element signature="n#!!block;n#guardarInmuebleEditado#0" />
-            <element signature="n#!!block;n#demoFromHTML#0" />
-            <element signature="n#!!block;n#mostrarFormLocalidadAdd#0" />
-            <element signature="n#!!block;n#llenarSelectConProvincias#0" />
-            <element signature="n#!!block;n#fillDomProvincia#0" />
-            <element signature="n#!!block;n#optionsProvincia#0" />
-            <element signature="n#!!block;n#guardarLocalidad#0" />
-            <element signature="n#!!block;n#mostrarFormLocalidadEditar#0" />
-            <element signature="n#!!block;n#llenarSelectConProvinciasParaEditar#0" />
-            <element signature="n#!!block;n#fillDomEditProvincia#0" />
-            <element signature="n#!!block;n#cargarLocalidadParaEditar#0" />
-            <element signature="n#!!block;n#llenarFormConLocalidad#0" />
-            <element signature="n#!!block;n#guardarLocalidadEditada#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -631,24 +622,59 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/frontend/pages/login/login.page.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/frontend/pages/login/login.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/frontend/pages/login/login.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/frontend/pages/login/login.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="36" lean-forward="true" selection-start-line="1" selection-start-column="36" selection-end-line="1" selection-end-column="36" />
+        <state relative-caret-position="102">
+          <caret line="6" column="64" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="64" />
           <folding>
             <element signature="n#!!block;n#ingresarAlSistema#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/login/login.page.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend/pages/inmuebles/inmueble.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-576">
+          <caret line="53" column="61" selection-start-line="53" selection-start-column="61" selection-end-line="53" selection-end-column="61" />
+          <folding>
+            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="n#!!block;n#guardarInmueble#0" />
+            <element signature="n#!!block;n#loadInmuebleData#0" />
+            <element signature="n#!!block;n#fillEditionForm#0" />
+            <element signature="n#!!block;n#llenarSelectConLocalidadesParaEditar#0" />
+            <element signature="n#!!block;n#fillDomEdit#0" />
+            <element signature="n#!!block;n#guardarInmuebleEditado#0" />
+            <element signature="n#!!block;n#demoFromHTML#0" />
+            <element signature="n#!!block;n#mostrarFormLocalidadAdd#0" />
+            <element signature="n#!!block;n#llenarSelectConProvincias#0" />
+            <element signature="n#!!block;n#fillDomProvincia#0" />
+            <element signature="n#!!block;n#optionsProvincia#0" />
+            <element signature="n#!!block;n#guardarLocalidad#0" />
+            <element signature="n#!!block;n#mostrarFormLocalidadEditar#0" />
+            <element signature="n#!!block;n#llenarSelectConProvinciasParaEditar#0" />
+            <element signature="n#!!block;n#fillDomEditProvincia#0" />
+            <element signature="n#!!block;n#cargarLocalidadParaEditar#0" />
+            <element signature="n#!!block;n#llenarFormConLocalidad#0" />
+            <element signature="n#!!block;n#guardarLocalidadEditada#0" />
           </folding>
         </state>
       </provider>
