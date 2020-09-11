@@ -3,11 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+	<link href="app/frontend/resources/css/bootstrap.min.css" rel="stylesheet">
+	<link href="app/frontend/resources/css/style.css" rel="stylesheet">
+
+	<script src="app/frontend/resources/js/jquery.min.js"></script>
+	<script src="app/frontend/resources/js/bootstrap.min.js"></script>
+	<script src="app/frontend/resources/js/commons.js"></script>
+	<style type="text/css">
+
+		.fondoBody{
+			background-image: url("app/frontend/resources/images/fondoHome.png");
+			/*background-repeat: no-repeat;
+            background-position: center center;*/
+			background-size: cover;
+		}
+	</style>
+
+	<script type="javascript">
+
+		function login() {
+			location.href = "app/frontend/pages/login/login.page.php";
+			href=
+		}
+	</script>
+
+
+
+
 </head>
-<body>
-	<h1>HOLAAAAAAAAAAAAAAAAAA</h1>
-	<div >
-		<a href="app/frontend/pages/login/login.page.php"><input type="button" value="Login"></a>
+<body class="fondoBody">
+<br>
+<br>
+<br>
+	<div class="row">
+		<div class="col-md-9"></div>
+		<div class="col-md-3">
+			<div class="panel panel-default centrar" style="width: 300px;">
+				<div id="panelRegistro" class="panel-heading text-center" style="background-color: #3a5ba0; color: white">
+					<h3 class="panel-title">
+						Iniciar Sesion
+					</h3>
+				</div>
+				<div class="panel-body text-right panel-cuerpo">
+					<div class="align-rigth">
+<!--						<input type="button" value="Login" class="btn btn-default boton-1"></input>-->
+						<a href="app/frontend/pages/login/login.page.php"><input type="button" value="Login"></a>
+					</div>
+
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
+<footer id="footerInicio" class="navbar-fixed-bottom">
+	<h5 class="fuentePie" align="right">by Sharpe Code</h5>
+	<h5 class="fuentePie" align="right">sharpecode@gmail.com</h5>
+	<h5 class="fuentePie" align="right"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Version 1.0</h5>
+
+
+</footer>
 </html>

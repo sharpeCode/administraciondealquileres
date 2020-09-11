@@ -5,13 +5,13 @@ require_once '../entity/Cliente.php';
 $action = $_POST['action'];
 
 switch ($action) {
-    case "listar":
+    case "listarClientes":
         listarClientes();
         break;
-    case "guardarLocNuevo":
+    case "guardarClienteNuevo":
         guardarClienteNuevo();
         break;
-    case "guardarLocEdit":
+    case "guardarClienteEdit":
         guardarClienteEditado();
         break;
     case "traerClientesPorDni":

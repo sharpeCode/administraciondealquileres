@@ -1,99 +1,34 @@
-// TODO: LISTAR LOCATARIOS
+// TODO: FORM PPAL
 $(function () {
     $("#clienteAdd").hide();
     $("#clienteEdit").hide();
     $("#clienteDetail").hide();
-    loadLocatariosGrid();
+    loadClienteGrid();
 });
 
-// TODO: DAR DE ALTA UN CLIENTE NUEVO
-function showCreateForm() {
-    $("#clienteAdd").show();
-    $("#locatarioEdit").hide();
-    $("#clienteDetail").hide();
-    $("#clienteList").hide();
-}
-
-// TODO: EDITAR CLIENTE
-function showEditForm(dni) {
-    $("#clienteAdd").hide();
-    $("#clienteEdit").show();
-    $("#clienteDetail").hide();
-    $("#clienteList").hide();
-
-    loadLocatarioData(dni);
-}
-
-// TODO: DETALLE CLIENTE
-function showDetailForm(dni) {
-    $("#clienteAdd").hide();
-    $("#clienteEdit").hide();
-    $("#clienteDetail").show();
-    $("#clienteList").hide();
-
-    //loadLocatarioData(dni);
-}
-
-// TODO: MOSTRAR FORMULARIO QUE LISTA LOS LOCATARIOS
-function showListContainer() {
-    $("#clienteAdd").hide();
-    $("#clienteEdit").hide();
-    $("#colatarioList").show();
-    $("#clienteDetail").hide();
-    $("#clienteList").show();
-}
-
-// LISTAR LOCATARIOS
-function loadLocatariosGrid() {
-    getAll(fillLocatariosGrid,
+function loadClienteGrid() {
+    getAll(fillClienteGrid,
         {
-            action: "listar",
+            action: "listarClientes",
         }
     );
 }
 
-function getAll(doneFunction, data) {
-
-    doneFunction = doneFunction instanceof Function ? doneFunction : function (data) {
-        console.log(data)
-    };
-    data = data === undefined ? {action: "getAll"} : data;
-
-    let uri = EndpointsEnum.CLIENTE;
-    console.log("Llamando a controller locatarios = " + uri);
-
-    var funcionAjax = $.ajax({
-        url: uri,
-        method: "POST",
-        data: data
-    });
-
-    funcionAjax.done(doneFunction);
-
-    funcionAjax.fail(function (retorno) {
-        console.log("error al llamar back de clientes")
-    });
-
-    funcionAjax.always(function (retorno) {
-        console.log("always de promise clientes")
-    });
-}
-
-function fillLocatariosGrid(jsonLocatarios) {
+function fillClienteGrid(jsonLocatarios) {
     jsonLocatarios = JSON.parse(jsonLocatarios);
 
     let tableRaws = "";
 
     for (var i = 0, l = jsonLocatarios.length; i < l; i++) {
         tableRaws += "<tr>";
-        tableRaws += buildRawFromLocatario(jsonLocatarios[i]);
+        tableRaws += buildRawFromCliente(jsonLocatarios[i]);
         tableRaws += "</tr>";
     }
 
     $("#listado").html(tableRaws);
 }
 
-function buildRawFromLocatario(cliente){
+function buildRawFromCliente(cliente){
     //cambiar formato fecha de AAAA-MM-DD a DD-MM-AAAA
     let fe = cliente['fechaNacimiento'];
     var fecha = new Date(fe);
@@ -115,12 +50,12 @@ function buildRawFromLocatario(cliente){
         "<span class='glyphicon glyphicon-list-alt'></span>";
 
     raw += "<td style = 'text-align: center;'>";
-    raw += "<button class='miBoton-icon' title='Editar Cliente' onclick='showEditForm(" + cliente['dni'] + ")'>" +
-            "<span class='glyphicon glyphicon-pencil'></span>";
+    raw += "<button class='miBoton-icon' title='Editar Cliente' onclick='showFormEdit(" + cliente['dni'] + ")'>" +
+        "<span class='glyphicon glyphicon-pencil'></span>";
     raw += "</td> ";
 
     raw += "<td style = 'text-align: center;'>";
-    raw += "<button class='miBoton-icon' title='Eliminar Cliente' onclick='showEditForm(" + cliente['dni'] + ")'>" +
+    raw += "<button class='miBoton-icon' title='Eliminar Cliente' onclick='showFormEdit(" + cliente['dni'] + ")'>" +
         "<span class='glyphicon glyphicon-remove'></span>";
     raw += "</td> ";
 
@@ -130,8 +65,92 @@ function buildRawFromLocatario(cliente){
 
 }
 
-// EDITAR LOCATARIO
-function loadLocatarioData(dni) {
+function getAll(doneFunction, data) {
+
+    doneFunction = doneFunction instanceof Function ? doneFunction : function (data) {
+        console.log(data)
+    };
+    data = data === undefined ? {action: "getAll"} : data;
+
+    let uri = EndpointsEnum.CLIENTE;
+    console.log("Llamando a controller clientes = " + uri);
+
+    var funcionAjax = $.ajax({
+        url: uri,
+        method: "POST",
+        data: data
+    });
+
+    funcionAjax.done(doneFunction);
+
+    funcionAjax.fail(function (retorno) {
+        console.log("error al llamar back de clientes")
+    });
+
+    funcionAjax.always(function (retorno) {
+        console.log("always de promise clientes")
+    });
+}
+
+// TODO: ALTA CLIENTE
+function showFormAdd() {
+    $("#clienteAdd").show();
+    $("#locatarioEdit").hide();
+    $("#clienteDetail").hide();
+    $("#clienteList").hide();
+}
+
+function guardarCliente() {
+
+    var clienteNuevoParaGuardar = mapToJson($('#locatarioAdd').serializeArray());
+
+    console.log("Guardando locatario: ", clienteNuevoParaGuardar);
+
+    let uri = EndpointsEnum.CLIENTE;
+    console.log("Llamando a controller cliente = " + uri);
+
+    var funcionAjax = $.ajax({
+        url: uri,
+        method: "POST",
+        data: {
+            action: "guardarLocNuevo",
+            cliente: clienteNuevoParaGuardar
+        }
+    });
+
+    funcionAjax.done(function (retorno) {
+        console.debug("Done: ", retorno);
+
+        if (retorno == "ERROR") {
+            location.href = uri;
+            window.alert("El locatario que desea ingresar ya existe");
+
+        } else{
+            location.href = uri;
+        }
+    });
+
+    funcionAjax.fail(function (retorno) {
+        console.log("error al guardar cliente")
+    });
+
+    funcionAjax.always(function (retorno) {
+        console.log("volvi de guardar el cliente")
+    });
+    console.log("Fin llamada controller cliente");
+}
+
+// TODO: EDITAR CLIENTE
+function showFormEdit(dni) {
+    $("#clienteAdd").hide();
+    $("#clienteEdit").show();
+    $("#clienteDetail").hide();
+    $("#clienteList").hide();
+
+    loadClienteDataEdit(dni);
+}
+
+function loadClienteDataEdit(dni) {
 
     let uri = EndpointsEnum.CLIENTE;
     console.log("Llamando a controller locatarios = " + uri);
@@ -147,7 +166,7 @@ function loadLocatarioData(dni) {
 
     funcionAjax.done(function (retorno) {
         console.log(retorno);
-        fillEditionForm(JSON.parse(retorno));
+        fillFormEdit(JSON.parse(retorno));
     });
 
     funcionAjax.fail(function (retorno) {
@@ -155,45 +174,39 @@ function loadLocatarioData(dni) {
     });
 }
 
-function fillEditionForm(locatario) {
-     var fecha = locatario["fechaNacimiento"];
-     var fechaNac=fecha.split(" ")[0].split("/").reverse().join("/");
+function fillFormEdit(cliente) {
+    var fecha = cliente["fechaNacimiento"];
+    var fechaNac=fecha.split(" ")[0].split("/").reverse().join("/");
 
-    $("#editNombres").val(locatario["nombres"]);
-    $("#editApellidos").val(locatario["apellidos"]);
-    $("#editDni").val(locatario["dni"]);
-    $("#editCelular").val(locatario["celular"]);
-    $("#editEmail").val(locatario["email"]);
+    $("#editNombres").val(cliente["nombres"]);
+    $("#editApellidos").val(cliente["apellidos"]);
+    $("#editDni").val(cliente["dni"]);
+    $("#editCelular").val(cliente["celular"]);
+    $("#editEmail").val(cliente["email"]);
     $("#editFechaNacimiento").val(fechaNac);
-    $("#editDatosGarante").val(locatario["datosGarante"]);
+    $("#editDatosGarante").val(cliente["datosGarante"]);
 }
 
-// GUARDAR LOCATARIO EDITADO
-function guardarLocatarioEditado() {
+function guardarClienteEditado() {
 
-    var locatarioParaGuardar = mapToJson($('#locatarioEdit').serializeArray());
+    var clienteParaGuardar = mapToJson($('#clienteEdit').serializeArray());
 
-    console.log("Guardando loccatario: ", locatarioParaGuardar);
+    console.log("Guardando cliente: ", clienteParaGuardar);
 
     let uri = EndpointsEnum.CLIENTE;
-    console.log("Llamando a controller locatarios = " + uri);
+    console.log("Llamando a controller cliente = " + uri);
 
     var funcionAjax = $.ajax({
         url: uri,
         method: "POST",
         data: {
-            action: "guardarLocEdit",
-            clienteParaGuardar: locatarioParaGuardar
+            action: "guardarClienteEdit",
+            clienteParaGuardar: clienteParaGuardar
         }
     });
 
     funcionAjax.done(function (retorno) {
-
-         location.href = "cliente.page.php";
-
-        // if (retorno != null) {
-        //     location.href = "/cliente.page.php";
-        // }
+        location.href = uri;
     });
 
     funcionAjax.fail(function (retorno) {
@@ -206,63 +219,65 @@ function guardarLocatarioEditado() {
     console.log("Fin llamada controller usuario");
 }
 
-//LIMPIAR OBJETOS ADD LOCATARIO
-function limpiarObjetosFormAddLocatario() {
+// TODO: DETALLE CLIENTE
+function showDetailForm(dni) {
+    $("#clienteAdd").hide();
+    $("#clienteEdit").hide();
+    $("#clienteDetail").show();
+    $("#clienteList").hide();
 
-    document.getElementById('nombres').value = "";
-    document.getElementById('apellidos').value = "";
-    document.getElementById('dni').value = "";
-    document.getElementById('celular').value = "";
-    document.getElementById('email').value = "";
-    document.getElementById('fechaNacimiento').value = "";
-    document.getElementById('fechaRegistro').value = "";
-
+    loadClienteDataDetail(dni);
 }
 
-// GUARDAR NUEVO LOCATARIO
-function guardarLocatario() {
+function loadClienteDataDetail(dni) {
 
-    var clienteNuevoParaGuardar = mapToJson($('#locatarioAdd').serializeArray());
-
-    console.log("Guardando locatario: ", clienteNuevoParaGuardar);
-
-    let uri = EndpointsEnum.LOCATARIO;
-    console.log("Llamando a controller locatarios = " + uri);
+    let uri = EndpointsEnum.CLIENTE;
+    console.log("Llamando a controller cliente = " + uri);
 
     var funcionAjax = $.ajax({
         url: uri,
         method: "POST",
         data: {
-            action: "guardarLocNuevo",
-            cliente: clienteNuevoParaGuardar
+            action: "traerClienteParaEditar",
+            dni: dni
         }
     });
 
     funcionAjax.done(function (retorno) {
-        console.debug("Done: ", retorno);
-
-        if (retorno == "ERROR") {
-            location.href = "/cliente.page.php";
-            window.alert("El locatario que desea ingresar ya existe");
-
-        } else{
-             location.href = "cliente.page.php";
-        }
+        console.log(retorno);
+        fillFormDetail(JSON.parse(retorno));
     });
 
     funcionAjax.fail(function (retorno) {
-        console.log("error al guardar user")
+        console.error(retorno);
     });
-
-    funcionAjax.always(function (retorno) {
-        console.log("volvi de guardar el user")
-    });
-    console.log("Fin llamada controller usuario");
 }
 
-// FILTRAR, USA ESTAS DOS FUNCIONES Y LUEGO PARA LISTAR USARIA LAS DOS ULTIMAS FUNCIONES DEL LISTAR LOCATARIOS
+function fillFormDetail(cliente) {
+    var fecha = cliente["fechaNacimiento"];
+    var fechaNac=fecha.split(" ")[0].split("/").reverse().join("/");
+
+    $("#detailNombres").val(cliente["nombres"]);
+    $("#detailApellidos").val(cliente["apellidos"]);
+    $("#detailDni").val(cliente["dni"]);
+    $("#detailCelular").val(cliente["celular"]);
+    $("#detailEmail").val(cliente["email"]);
+    $("#detailFechaNacimiento").val(fechaNac);
+    $("#detailDatosGarante").val(cliente["datosGarante"]);
+}
+
+// TODO: FORM PPAL
+function showListContainer() {
+    $("#clienteAdd").hide();
+    $("#clienteEdit").hide();
+    $("#colatarioList").show();
+    $("#clienteDetail").hide();
+    $("#clienteList").show();
+}
+
+// TODO: FILTROS
 function buscarPorDni() {
-    buscarLocatarioBuscado(fillLocatariosGrid,
+    locatarioFilter(fillClienteGrid,
         {
             action: "traerClientesPorDni",
             dni: $("#buscar").val()
@@ -271,7 +286,7 @@ function buscarPorDni() {
 }
 
 function buscarPorNombre() {
-    buscarLocatarioPorNombre(fillLocatariosGrid,
+    buscarLocatarioPorNombre(fillClienteGrid,
         {
             action: "traerClientePorNombre",
             nombre: $("#buscarPorNombre").val()
@@ -279,15 +294,15 @@ function buscarPorNombre() {
     );
 }
 
-function buscarLocatarioBuscado(doneFunction, data) {
+function buscarLocatarioPorNombre(doneFunction, data) {
 
     doneFunction = doneFunction instanceof Function ? doneFunction : function (data) {
         console.log(data)
     };
-    data = data === undefined ? {action: "buscarLocatarioBuscado"} : data;
+    data = data === undefined ? {action: "traerClientePorNombre"} : data;
 
     let uri = EndpointsEnum.CLIENTE;
-    console.log("Llamando a controller locatarios = " + uri);
+    console.log("Llamando a controller cliente = " + uri);
 
     var funcionAjax = $.ajax({
         url: uri,
@@ -306,15 +321,15 @@ function buscarLocatarioBuscado(doneFunction, data) {
     });
 }
 
-function buscarLocatarioPorNombre(doneFunction, data) {
+function locatarioFilter(doneFunction, data) {
 
     doneFunction = doneFunction instanceof Function ? doneFunction : function (data) {
         console.log(data)
     };
-    data = data === undefined ? {action: "traerClientePorNombre"} : data;
+    data = data === undefined ? {action: "locatarioFilter"} : data;
 
     let uri = EndpointsEnum.CLIENTE;
-    console.log("Llamando a controller locatarios = " + uri);
+    console.log("Llamando a controller cliente = " + uri);
 
     var funcionAjax = $.ajax({
         url: uri,

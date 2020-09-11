@@ -1649,8 +1649,10 @@ function GuardarComprobanteDePagoSoloSaldo() {
         var saldoPendiente = 0;
     }
 
+    let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
+
     var funcionAjax = $.ajax({
-        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/ComprobanteDePagoController.php",
+        url: uri,
         method: "POST",
         data: {
             action: "guardarComprobanteDePagoSoloSaldo",
