@@ -38,6 +38,7 @@ function showDetailForm(dni) {
 function showListContainer() {
     $("#clienteAdd").hide();
     $("#clienteEdit").hide();
+    $("#colatarioList").show();
     $("#clienteDetail").hide();
     $("#clienteList").show();
 }
@@ -58,8 +59,11 @@ function getAll(doneFunction, data) {
     };
     data = data === undefined ? {action: "getAll"} : data;
 
+    let uri = EndpointsEnum.CLIENTE;
+    console.log("Llamando a controller locatarios = " + uri);
+
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ClienteController.php",
+        url: uri,
         method: "POST",
         data: data
     });
@@ -129,8 +133,11 @@ function buildRawFromLocatario(cliente){
 // EDITAR LOCATARIO
 function loadLocatarioData(dni) {
 
+    let uri = EndpointsEnum.CLIENTE;
+    console.log("Llamando a controller locatarios = " + uri);
+
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ClienteController.php",
+        url: uri,
         method: "POST",
         data: {
             action: "traerClienteParaEditar",
@@ -168,8 +175,11 @@ function guardarLocatarioEditado() {
 
     console.log("Guardando loccatario: ", locatarioParaGuardar);
 
+    let uri = EndpointsEnum.CLIENTE;
+    console.log("Llamando a controller locatarios = " + uri);
+
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ClienteController.php",
+        url: uri,
         method: "POST",
         data: {
             action: "guardarLocEdit",
@@ -216,8 +226,11 @@ function guardarLocatario() {
 
     console.log("Guardando locatario: ", clienteNuevoParaGuardar);
 
+    let uri = EndpointsEnum.LOCATARIO;
+    console.log("Llamando a controller locatarios = " + uri);
+
     var funcionAjax = $.ajax({
-        url: EndpointsEnum.LOCATARIO,
+        url: uri,
         method: "POST",
         data: {
             action: "guardarLocNuevo",
@@ -273,9 +286,11 @@ function buscarLocatarioBuscado(doneFunction, data) {
     };
     data = data === undefined ? {action: "buscarLocatarioBuscado"} : data;
 
+    let uri = EndpointsEnum.CLIENTE;
+    console.log("Llamando a controller locatarios = " + uri);
 
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ClienteController.php",
+        url: uri,
         method: "POST",
         data: data
     });
@@ -298,9 +313,11 @@ function buscarLocatarioPorNombre(doneFunction, data) {
     };
     data = data === undefined ? {action: "traerClientePorNombre"} : data;
 
+    let uri = EndpointsEnum.CLIENTE;
+    console.log("Llamando a controller locatarios = " + uri);
 
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ClienteController.php",
+        url: uri,
         method: "POST",
         data: data
     });

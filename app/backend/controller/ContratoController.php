@@ -25,6 +25,7 @@ switch ($action) {
     case "guardarContratoNuevo":
         guardarContratoNuevo();
         break;
+
     default:
         console . log("NO SE QUE HACER VIEJA");
         break;
@@ -40,6 +41,7 @@ function cargarSelectConLocatario()
 {
     $locatarios = ClienteRepository::cargarSelectConClientes();
     echo json_encode($locatarios);
+
 }
 
 function cargarSelectConInmueble()

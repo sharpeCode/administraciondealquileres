@@ -29,8 +29,11 @@ function obtenerVariables(doneFunction, data) {
     };
     data = data === undefined ? {action: "obtenerVariables"} : data;
 
+    let uri = EndpointsEnum.VARIABLES;
+    console.log("Volver al listado de inmuebles = " + uri);
+
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/VariableController.php",
+        url: uri,
         method: "POST",
         data: data
     });
@@ -70,8 +73,12 @@ function construirFilaDeVariable(PorcentajeDeVariable) {
 }
 
 function llenarSelectConVariables() {
+
+    let uri = EndpointsEnum.VARIABLES;
+    console.log("Volver al listado de inmuebles = " + uri);
+
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/VariableController.php",
+        url: uri,
         method: "POST",
         data: {
             action: "cargarSelectConVariables"
@@ -114,9 +121,13 @@ function optionsVariable(variable) {
 function guardarVariable() {
     var variableNuevoParaGuardar = mapToJson($('#variableAdd').serializeArray());
 
+    let uri = EndpointsEnum.VARIABLES;
+    console.log("Volver al listado de inmuebles = " + uri);
+
+    let href = EndpointsEnum.VOLVER_VARIABLES;
 
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/VariableController.php",
+        url: uri,
         method: "POST",
         data: {
             action: "guardarVariableNuevo",
@@ -126,7 +137,7 @@ function guardarVariable() {
 
     funcionAjax.done(function (retorno) {
         console.log(retorno);
-        location.href = "http://administraciondealquileres.herokuapp.com/app/frontend/pages/variables/variable.page.php";
+        location.href = href;
     });
 
     funcionAjax.fail(function (retorno) {

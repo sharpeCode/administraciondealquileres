@@ -261,7 +261,6 @@ function sumarSaldoAnteriores($idRegistroDePago){
 
 function guardarComprobanteDePago()
 {
-    echo ' Entró a guardarComprobanteDePago ';
     $numeroComprobante = $_POST['numeroComprobante'];
     $idRegistroPago = $_POST['idRegistroPago'];
     $idContrato = $_POST['idContrato'];
@@ -303,8 +302,6 @@ function guardarComprobanteDePago()
     $correspondienteMes = $mes->idMes;
 
 
-    var_dump($numeroComprobante);
-    var_dump($tipoComprobante);
     //guardar el comprobante de pago en la tabla "comprobante_de_pagos"
     $registroDePago = ComprobanteDePagoRepositorio::guardarComprobanteDePago($numeroComprobante, $tipoComprobante, $tipoRecibo, $idContrato, $idRegistroPago, $correspondienteMes, $correspondienteAnio, $alquilerMensual, $expensas, $gastosAdm, $deposito, $cuotas, $numCuota, $interesPorMora, $otrosConceptos, $saldoAnterior, $totalImporteAPagar, $totalImporteRecibido, $saldoPendiente, $saldoPendienteSinModificar);
     echo json_encode($registroDePago);

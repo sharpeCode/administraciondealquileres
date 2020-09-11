@@ -74,8 +74,11 @@ function listadoCompDePago(doneFunction, data) {
     };
     data = data === undefined ? {action: "listadoCompDePago"} : data;
 
+    let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
+    console.log("Llamando a controller locatarios = " + uri);
+
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ComprobanteDePagoController.php",
+        url: uri,
         method: "POST",
         data: data
     });
@@ -141,8 +144,11 @@ function contruirFilasComprobantesDePagos(compPagos) {
 function buscarDatosRecibo(idComprobantesDePago) {
     console.debug("trayendo datos de recibo");
 
+    let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
+    console.log("Llamando a controller locatarios = " + uri);
+
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ComprobanteDePagoController.php",
+        url: uri,
         method: "POST",
         data: {
             action: "datosRecibo",
@@ -170,24 +176,18 @@ function cargarDatosDeRecibo(datos) {
     if (tipoComprobante == "Oficial") {
 
         if(tipoRecibo == "Recibo"){
-            console.log('UNOOOOOOOOOOOOOOOOOOO, ');
             visualizarReciboOficial(idComprobantesDePago);
 
         }else if(tipoRecibo == "Saldo"){
-            console.log('DOSSSSSSSSSSSSS ');
             visualizarReciboOficialSoloSaldo(idComprobantesDePago);
-
         }
 
     } else if (tipoComprobante == "No Oficial") {
 
         if(tipoRecibo == "Recibo"){
-            console.log('TRESSSSSSSSSSSSSSSSSSSSSSS ');
             visualizarReciboNoOficial(idComprobantesDePago);
 
-
         }else if(tipoRecibo == "Saldo"){
-            console.log('CUATROOOOOOOOOOOOOOOOOOOOOO ');
             visualizarReciboNoOficialSoloSaldo(idComprobantesDePago);
 
         }
@@ -199,8 +199,11 @@ function cargarDatosDeRecibo(datos) {
 function cargarReciboOficial(idComprobantesDePago) {
     console.debug("trayendo datos de recibo");
 
+    let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
+    console.log("Llamando a controller locatarios = " + uri);
+
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ComprobanteDePagoController.php",
+        url: uri,
         method: "POST",
         data: {
             action: "visualizarRecibo2",
@@ -261,8 +264,11 @@ function verReciboOficial(datosParaCargarRecibo) {
 function cargarReciboNoOficial(idComprobantesDePago) {
     console.debug("trayendo datos de recibo");
 
+    let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
+    console.log("Llamando a controller locatarios = " + uri);
+
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ComprobanteDePagoController.php",
+        url: uri,
         method: "POST",
         data: {
             action: "visualizarRecibo2",
@@ -308,8 +314,11 @@ function verReciboNoOficial(datosParaCargarRecibo) {
 function cargarReciboOficialSoloSaldo(idComprobantesDePago) {
     console.debug("trayendo datos de recibo");
 
+    let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
+    console.log("Llamando a controller locatarios = " + uri);
+
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ComprobanteDePagoController.php",
+        url: uri,
         method: "POST",
         data: {
             action: "visualizarRecibo2",
@@ -347,8 +356,11 @@ function verReciboOficialSoloSaldo(datosParaCargarRecibo) {
 function cargarReciboNoOficialSoloSaldo(idComprobantesDePago) {
     console.debug("trayendo datos de recibo");
 
+    let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
+    console.log("Llamando a controller locatarios = " + uri);
+
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ComprobanteDePagoController.php",
+        url: uri,
         method: "POST",
         data: {
             action: "visualizarRecibo2",
@@ -382,9 +394,7 @@ function verReciboNoOficialSoloSaldo(datosParaCargarRecibo) {
 
 }
 
-
-function printPdfReciboOficial()
-{
+function printPdfReciboOficial() {
     var numeroComprobante = document.getElementById("unoNumeroComprobante").value;
 
     var divHeight = $('#bodyReciboOficial').height();
@@ -405,8 +415,7 @@ function printPdfReciboOficial()
         });
 }
 
-function printPdfReciboNoOficial()
-{
+function printPdfReciboNoOficial() {
     var numeroComprobante = document.getElementById("dosNumeroComprobante").value;
 
     var divHeight = $('#bodyReciboNoOficial').height();
@@ -427,8 +436,7 @@ function printPdfReciboNoOficial()
         });
 }
 
-function printPdfReciboOficialSoloSaldo()
-{
+function printPdfReciboOficialSoloSaldo() {
     var numeroComprobante = document.getElementById("tresNumeroComprobante").value;
 
     var divHeight = $('#bodyReciboOficialSoloSaldo').height();
@@ -449,8 +457,7 @@ function printPdfReciboOficialSoloSaldo()
         });
 }
 
-function printPdfReciboNoOficialSoloSaldo()
-{
+function printPdfReciboNoOficialSoloSaldo() {
     var numeroComprobante = document.getElementById("cuatroNumeroComprobante").value;
 
     var divHeight = $('#bodyReciboNoOficialSoloSaldo').height();

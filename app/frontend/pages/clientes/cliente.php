@@ -8,6 +8,7 @@
 </head>
 
 <?php
+require_once 'clienteList.html';
 require_once 'clienteAdd.html';
 require_once 'clienteEdit.html';
 require_once 'clienteDetail.html';

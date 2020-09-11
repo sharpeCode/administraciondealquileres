@@ -49,9 +49,11 @@ function obtenerInmuebles(doneFunction, data) {
     };
     data = data === undefined ? {action: "obtenerInmuebles"} : data;
 
+    let uri = EndpointsEnum.INMUEBLE;
+    console.log("Llamando a controller Inmueble = " + uri);
+
     var funcionAjax = $.ajax({
-        // url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/InmuebleController.php",
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/InmuebleController.php",
+        url: uri,
         method: "POST",
         data: data
     });
@@ -67,8 +69,6 @@ function obtenerInmuebles(doneFunction, data) {
 }
 
 function llenarTablaInmuebles(jsonUsers) {
-    console.log("  jsonUsers:  ");
-    console.log(jsonUsers);
     jsonUsers = JSON.parse(jsonUsers);
     let tableRaws = "";
 
@@ -100,9 +100,12 @@ function construirFilaDeInmueble(inmueble) {
 }
 
 function llenarSelectConLocalidades() {
+
+    let uri = EndpointsEnum.LOCALIDAD;
+    console.log("Llamando a controller Localidad = " + uri);
+
     var funcionAjax = $.ajax({
-        // url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/LocalidadController.php",
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/LocalidadController.php",
+        url: uri,
         method: "POST",
         data: {
             action: "listar"
@@ -145,8 +148,13 @@ function optionsLocalidad(localidad) {
 function guardarInmueble() {
     var inmuebleNuevoParaGuardar = mapToJson($('#inmuebleAdd').serializeArray());
 
+    let uri = EndpointsEnum.INMUEBLE;
+    console.log("Llamando a controller Inmueble = " + uri);
+    let href = EndpointsEnum.VOLVER_INMUEBLES;
+
+
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/InmuebleController.php",
+        url: uri,
         method: "POST",
         data: {
             action: "guardarInmuebleNuevo",
@@ -156,7 +164,7 @@ function guardarInmueble() {
 
     funcionAjax.done(function (retorno) {
         console.log(retorno);
-         location.href = "http://administraciondealquileres.herokuapp.com/app/frontend/pages/inmuebles/inmueble.page.php";
+         location.href = href;
     });
 
     funcionAjax.fail(function (retorno) {
@@ -170,8 +178,12 @@ function guardarInmueble() {
 }
 
 function loadInmuebleData(id) {
+
+    let uri = EndpointsEnum.INMUEBLE;
+    console.log("Llamando a controller Inmueble = " + uri);
+
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/InmuebleController.php",
+        url: uri,
         method: "POST",
         data: {
             action: "traerInmueblePorId",
@@ -199,8 +211,12 @@ function fillEditionForm(inmueble) {
 }
 
 function llenarSelectConLocalidadesParaEditar() {
+
+    let uri = EndpointsEnum.LOCALIDAD;
+    console.log("Llamando a controller Localidad = " + uri);
+
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/LocalidadController.php",
+        url: uri,
         method: "POST",
         data: {
             action: "listar"
@@ -232,8 +248,12 @@ function guardarInmuebleEditado() {
 
     var inmuebleEditado = mapToJson($('#inmuebleEdit').serializeArray());
 
+    let uri = EndpointsEnum.INMUEBLE;
+    console.log("Llamando a controller Inmueble = " + uri);
+    let href = EndpointsEnum.VOLVER_INMUEBLES;
+
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/InmuebleController.php",
+        url: uri,
         method: "POST",
         data: {
             action: "guardarInmuebleEditado",
@@ -243,7 +263,7 @@ function guardarInmuebleEditado() {
 
     funcionAjax.done(function (retorno) {
         if (retorno != null) {
-             location.href = "http://administraciondealquileres.herokuapp.com/app/frontend/pages/inmuebles/inmueble.page.php";
+             location.href = href;
         }
     });
 
@@ -257,8 +277,7 @@ function guardarInmuebleEditado() {
     console.log("Fin llamada controller usuario");
 }
 
-function demoFromHTML()
-{
+function demoFromHTML() {
     // var doc = new jsPDF();
     // doc.text(20, 20, 'Sharp Code COMPANY!');
     // doc.text(20, 30, 'Esto de imprimir en pdf es una cagada');
@@ -320,8 +339,11 @@ function getAllLocalidades(doneFunction, data) {
     };
     data = data === undefined ? {action: "getAll"} : data;
 
+    let uri = EndpointsEnum.LOCALIDAD;
+    console.log("Llamando a controller Localidad = " + uri);
+
     let funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/LocalidadController.php",
+        url: uri,
         method: "POST",
         data: data
     });
@@ -383,8 +405,12 @@ function mostrarFormLocalidadAdd() {
 }
 
 function llenarSelectConProvincias() {
+
+    let uri = EndpointsEnum.LOCALIDAD;
+    console.log("Llamando a controller Localidad = " + uri);
+
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/LocalidadController.php",
+        url: uri,
         method: "POST",
         data: {
             action: "cargarSelectConProvincias",
@@ -435,9 +461,12 @@ function guardarLocalidad() {
 
     var guardarLocalidad = mapToJson($('#localidadAdd').serializeArray()); //obtener el varlos de todos los input
 
+    let uri = EndpointsEnum.LOCALIDAD;
+    console.log("Llamando a controller Localidad = " + uri);
+
     console.log("Guardando localidad: ", guardarLocalidad);
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/LocalidadController.php",
+        url: uri,
         method: "POST",
         data: {
             action: "datosParaGuardarLocalidad",
@@ -469,8 +498,12 @@ function mostrarFormLocalidadEditar(idLocalidad) {
 }
 
 function llenarSelectConProvinciasParaEditar() {
+
+    let uri = EndpointsEnum.LOCALIDAD;
+    console.log("Llamando a controller Localidad = " + uri);
+
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/LocalidadController.php",
+        url: uri,
         method: "POST",
         data: {
             action: "cargarSelectConProvincias",
@@ -506,8 +539,11 @@ function fillDomEditProvincia(arrayProvincia) {
 
 function cargarLocalidadParaEditar(idLocalidad) {
 
+    let uri = EndpointsEnum.LOCALIDAD;
+    console.log("Llamando a controller Localidad = " + uri);
+
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/LocalidadController.php",
+        url: uri,
         method: "POST",
         data: {
             action: "traerLocalidadPorId",
@@ -536,9 +572,12 @@ function guardarLocalidadEditada() {
 
     var localidadEditadaParaGuardar = mapToJson($('#localidadEdit').serializeArray());
 
+    let uri = EndpointsEnum.LOCALIDAD;
+    console.log("Llamando a controller Localidad = " + uri);
+
     console.log(localidadEditadaParaGuardar);
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/LocalidadController.php",
+        url: uri,
         method: "POST",
         data: {
             action: "guardarLocalidadEditada",

@@ -23,6 +23,9 @@ switch ($action) {
     case "traerClientePorNombre":
         traerClienteFiltradoPorNombre($_POST['nombre']);
         break;
+    case "hola":
+        hola();
+        break;
     default:
         console . log("No se pudo a la acción al controller");
         break;
@@ -51,8 +54,8 @@ function guardarClienteNuevo()
 //        echo 'ERROR';
 //    } else {
 //        echo'entro al DOS';
-        $cliente = ClienteRepository::guardarClienteNuevo($clienteObject);
-        echo json_encode($cliente);
+    $cliente = ClienteRepository::guardarClienteNuevo($clienteObject);
+    echo json_encode($cliente);
 //    }
 
 }

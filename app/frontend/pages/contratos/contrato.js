@@ -289,8 +289,6 @@ function visualizarReciboNoOficialSoloSaldo(idRegistroDePago) {
 
 //TODO: VISUALIZAR UN SOLO RECIBO NO OFICIAL
 function visualizarUnReciboNoOficial(idRegistroDePago) {
-
-    
     $("#contratoAdd").hide();
     $("#contratoList").hide();
     $("#contratoDatosCompletos").hide();
@@ -324,8 +322,11 @@ function traerTodos(doneFunction, data) {
     };
     data = data === undefined ? {action: "traerTodos"} : data;
 
+    let uri = EndpointsEnum.CONTRATO;
+    console.log("Llamando a controller locatarios = " + uri);
+
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ContratoController.php",
+        url: uri,
         method: "POST",
         data: data
     });
@@ -342,7 +343,7 @@ function traerTodos(doneFunction, data) {
 }
 
 function llenarContratosGrilla(jsonContratos) {
-
+    console.log(jsonContratos);
     jsonContratos = JSON.parse(jsonContratos);
 
     let tableRaws = "";
@@ -388,8 +389,12 @@ function contruirFilas(Contratos) {
 
 // LLENAR SELECT CON CLIENTES
 function llenarSelectConLocatarios() {
+
+    let uri = EndpointsEnum.CONTRATO;
+    console.log("Llamando a controller locatarios = " + uri);
+
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ContratoController.php",
+        url: uri,
         method: "POST",
         data: {
             action: "cargarSelectConClientes",
@@ -436,8 +441,12 @@ function optionsLocatarios(locatarios) {
 
 // LLENAR SELECT CON INMUEBLES
 function llenarSelectConInmuebles() {
+
+    let uri = EndpointsEnum.CONTRATO;
+    console.log("Llamando a controller locatarios = " + uri);
+
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ContratoController.php",
+        url: uri,
         method: "POST",
         data: {
             action: "cargarSelectConInmueble",
@@ -488,8 +497,12 @@ function optionsInmuebles(Inmuebles) {
 
 // LLENAR SELECT CON FECHA INICIO Y FIN
 function llenarSelectFechaInicioFin() {
+
+    let uri = EndpointsEnum.CONTRATO;
+    console.log("Llamando a controller locatarios = " + uri);
+
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ContratoController.php",
+        url: uri,
         method: "POST",
         data: {
             action: "cargarSelectConFechaInicio",
@@ -561,8 +574,11 @@ function guardarContrato() {
 
     console.log("Guardando contrato: ", datosDelContrato);
 
+    let uri = EndpointsEnum.CONTRATO;
+    console.log("Llamando a controller locatarios = " + uri);
+
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ContratoController.php",
+        url: uri,
         method: "POST",
         data: {
             action: "guardarContratoNuevo",
@@ -587,8 +603,13 @@ function guardarContrato() {
 
 function guardarRegistrosDePagos() {
     //console.log("ENTRO AL JS de guardarRegistrosDePagos");
+
+    let uri = EndpointsEnum.REGISTRO_DE_PAGO;
+    let href = EndpointsEnum.VOLVER_CONTRATOS;
+    console.log("Llamando a controller locatarios = " + uri);
+
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/RegistroDePagoController.php",
+        url: uri,
         method: "POST",
         data: {
             action: "guardarRegistrosDePagos",
@@ -597,7 +618,7 @@ function guardarRegistrosDePagos() {
 
     funcionAjax.done(function (retorno) {
         console.debug("Done: ", retorno);
-        location.href = "http://administraciondealquileres.herokuapp.com/app/frontend/pages/contratos/contrato.page.php";
+        location.href = href;
     });
 
     funcionAjax.fail(function (retorno) {
@@ -628,11 +649,11 @@ function traerRegistroDePago(doneFunction, data) {
     };
     data = data === undefined ? {action: "traerRegistroDePago"} : data;
 
-    //let uri = EndpointsEnum.LOCATARIO;
-    //console.log("Llamando a controller locatarios = " + uri);
+    let uri = EndpointsEnum.REGISTRO_DE_PAGO;
+    console.log("Llamando a controller locatarios = " + uri);
 
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/RegistroDePagoController.php",
+        url: uri,
         method: "POST",
         data: data
     });
@@ -803,8 +824,12 @@ function contruirFilasRegistroDePagos(RPago) {
 function llenarInputs(idContrato) {
     console.debug("trayendo datos de contrato");
 
+    let uri = EndpointsEnum.REGISTRO_DE_PAGO;
+    console.log("Llamando a controller locatarios = " + uri);
+
+
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/RegistroDePagoController.php",
+        url: uri,
         method: "POST",
         data: {
             action: "mostrarDatosParaCabeceraDeRegistrosDePago",
@@ -823,7 +848,6 @@ function llenarInputs(idContrato) {
 }
 
 function cargarDatosDeContrato(datosContrato) {
-
 
     let fi = datosContrato['fechaInicio'];
     var fechaIni = new Date(fi);
@@ -855,8 +879,11 @@ function cargarDatosDeContrato(datosContrato) {
 function llenarInputsRecibo(idRegistroDePago,ban) {
     //console.debug("trayendo datos de registro de pago");
 
+    let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
+    console.log("Llamando a controller locatarios = " + uri);
+
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ComprobanteDePagoController.php",
+        url: uri,
         method: "POST",
         data: {
             action: "cargarComprobanteDePago",
@@ -945,8 +972,12 @@ function cargarDatosEnRecibo(datosParaCargarRecibo,ban) {
 
 // LLENAR SELECT CON OPCIONES SALDO ANTERIOR RECIBO
 function llenarSelectConOpcionesSaldoAnteriorRecibo(idRegistroDePago) {
+
+    let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
+    console.log("Llamando a controller locatarios = " + uri);
+
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ComprobanteDePagoController.php",
+        url: uri,
         method: "POST",
         data: {
             action: "sumarSaldoAnteriores",
@@ -1028,7 +1059,7 @@ function EditarValoresReciboOficial() {
     }
 
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ComprobanteDePagoController.php",
+        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/ComprobanteDePagoController.php",
         method: "POST",
         data: {
             action: "EditarValoresReciboOficial",
@@ -1089,7 +1120,7 @@ function EditarValoresReciboNoOficial() {
     }
 
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ComprobanteDePagoController.php",
+        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/ComprobanteDePagoController.php",
         method: "POST",
         data: {
             action: "EditarValoresReciboNoOficial",
@@ -1181,7 +1212,7 @@ function GuardarComprobanteDePago() {
     console.log("Guardando comprobante de pago: ", numeroComprobante, idRegistroPago, idContrato, tipoComprobante, tipoRecibo, correspondienteMes, correspondienteAnio,
         alquilerMensual, expensas, gastosAdm, deposito, cuotas, numCuota, interesPorMora, otrosConceptos, saldoAnterior, totalImporteAPagar, totalImporteRecibido);
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ComprobanteDePagoController.php",
+        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/ComprobanteDePagoController.php",
         method: "POST",
         data: {
             action: "guardarComprobanteDePago",
@@ -1227,8 +1258,12 @@ function GuardarComprobanteDePago() {
 function buscarCuantosRecibosTieneEsteRegistro(idRegistroDePago) {
 
     console.log("buscar id registro de pago: ", idRegistroDePago);
+
+    let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
+    console.log("Llamando a controller locatarios = " + uri);
+
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ComprobanteDePagoController.php",
+        url: uri,
         method: "POST",
         data: {
             action: "buscarCuantosRecibosTieneEsteRegistro",
@@ -1237,6 +1272,7 @@ function buscarCuantosRecibosTieneEsteRegistro(idRegistroDePago) {
     });
 
     funcionAjax.done(function (retorno) {
+        console.debug("Done: ", retorno);
         visualizarRecibo(JSON.parse(retorno));
 
     });
@@ -1273,8 +1309,11 @@ function visualizarRecibo(retorno) {
 function visualizarReciboOficialCantidadUno(idRegistroDePago) {
     //console.debug("trayendo datos de registro de pago");
 
+    let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
+    console.log("Llamando a controller locatarios = " + uri);
+
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ComprobanteDePagoController.php",
+        url: uri,
         method: "POST",
         data: {
             action: "visualizarRecibo",
@@ -1341,7 +1380,6 @@ function cargarVisualizacionRecibo(datosParaCargarRecibo) {
 // TODO: VISUALIZAR RECIBO OFICIAL CANTIDAD DOS - LISTAR
 function cargarRecibosDeUnMismoRegistroGrilla(idRegistroDePago) {
 
-
     traerTodosRec(llenarRecGrilla,
         {
             action: "listarRecibosDeUnMismoRegistro",
@@ -1357,8 +1395,11 @@ function traerTodosRec(doneFunction, data) {
     };
     data = data === undefined ? {action: "traerTodosRec"} : data;
 
+    let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
+    console.log("Llamando a controller locatarios = " + uri);
+
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ComprobanteDePagoController.php",
+        url: uri,
         method: "POST",
         data: data
     });
@@ -1444,8 +1485,11 @@ function contruirFilasRecibos(Rec) {
 function visualizarReciboNoOficialCantidadUno(idRegistroDePago) {
     //console.debug("trayendo datos de registro de pago");
 
+    let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
+    console.log("Llamando a controller locatarios = " + uri);
+
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ComprobanteDePagoController.php",
+        url: uri,
         method: "POST",
         data: {
             action: "visualizarRecibo",
@@ -1507,8 +1551,11 @@ function cargarVisualizacionReciboNoOficial(datosParaCargarRecibo) {
 function llenarInputsReciboSoloSaldo(idRegistroDePago) {
     //console.debug("trayendo datos de registro de pago");
 
+    let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
+    console.log("Llamando a controller locatarios = " + uri);
+
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ComprobanteDePagoController.php",
+        url: uri,
         method: "POST",
         data: {
             action: "cargarComprobanteDePagoSoloSaldo",
@@ -1620,7 +1667,7 @@ function GuardarComprobanteDePagoSoloSaldo() {
     }
 
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ComprobanteDePagoController.php",
+        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/ComprobanteDePagoController.php",
         method: "POST",
         data: {
             action: "guardarComprobanteDePagoSoloSaldo",
@@ -1665,8 +1712,11 @@ function GuardarComprobanteDePagoSoloSaldo() {
 function visualizarReciboOficialSaldo(idRegistroDePago) {
     //console.debug("trayendo datos de registro de pago");
 
+    let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
+    console.log("Llamando a controller locatarios = " + uri);
+
     var funcionAjax = $.ajax({
-        url: "http://administraciondealquileres.herokuapp.com/app/backend/controller/ComprobanteDePagoController.php",
+        url: uri,
         method: "POST",
         data: {
             action: "visualizarReciboOficialSoloSaldo",

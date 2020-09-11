@@ -318,6 +318,12 @@ input:focus, input.form-control:focus, button:focus, select:focus {
     /*border-radius: 20px 20px 20px 20px; /*esquinas redondeadas*/
 }
 
+.miTituloDetail {
+    color: #3a5ba0;
+    font: bold 12px "Product Sans";
+}
+
+
 
 
 
