@@ -7,22 +7,23 @@ require_once 'BaseRepository.php';
 class RegistroPagoRepositorio
 {
 
-    public static function ingresarRegistroDePagoNuevo($idContrato, $iCompPorContrato, $tipoRegistroDePago, $correspondienteMes, $correspondienteAnio,
+    public static function ingresarRegistroDePagoNuevo($idRegistroDePago,$idContrato, $iCompPorContrato, $tipoRegistroDePago, $correspondienteMes, $correspondienteAnio,
                                                        $valorAlquiler, $gastosAdministrativos, $valorExpensas, $valorDeposito,
                                                        $cantCuotasDeposito, $numCuotaAPagar, $recibo, $saldoPendiente)
     {
         $resp = false;
         try {
 
-            $sql = "INSERT INTO registros_de_pagos (id_contrato, id_comp_por_contrato, tipo_registro_de_pago,correspondiente_mes, 
+            $sql = "INSERT INTO registros_de_pagos (id_registro_de_pago,id_contrato, id_comp_por_contrato, tipo_registro_de_pago,correspondiente_mes, 
                     correspondiente_anio, valor_alquiler, gastos_administrativos, valor_expensas, valor_deposito, cant_cuotas_deposito, 
                     num_cuota_a_pagar, recibo, saldo_pendiente)
-                    VALUES(:id_contrato, :id_comp_por_contrato, :tipo_registro_de_pago, :correspondiente_mes, :correspondiente_anio, 
+                    VALUES(:id_registro_de_pago,:id_contrato, :id_comp_por_contrato, :tipo_registro_de_pago, :correspondiente_mes, :correspondiente_anio, 
                     :valor_alquiler, :gastos_administrativos, :valor_expensas,:valor_deposito, :cant_cuotas_deposito, :num_cuota_a_pagar, 
                     :recibo, :saldo_pendiente)";
 
             $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
 
+            $sentencia->bindParam(':id_registro_de_pago',$idRegistroDePago, PDO::PARAM_INT);
             $sentencia->bindParam(':id_contrato',$idContrato, PDO::PARAM_INT);
             $sentencia->bindParam(':id_comp_por_contrato',$iCompPorContrato, PDO::PARAM_INT);
             $sentencia->bindParam(':tipo_registro_de_pago', $tipoRegistroDePago, PDO::PARAM_STR);
@@ -252,4 +253,25 @@ class RegistroPagoRepositorio
         }
         return $respuesta;
     }
+
+    public static function traerUltimoIdRegistroDePago()
+    {
+        $registroDePago = null;
+        try {
+            $sql = "SELECT id_registro_de_pago AS idRegistroDePago
+                    FROM registros_de_pagos 
+                    ORDER BY id_registro_de_pago DESC LIMIT 1";
+
+            $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
+            $sentencia->execute();
+            $registroDePago = $sentencia->fetchObject("RegistroPago");
+
+        } catch (PDOException $ex) {
+            print 'ERROR' . $ex->getMessage();
+            $registroDePago = null;
+        }
+
+        return $registroDePago;
+    }
+
 }

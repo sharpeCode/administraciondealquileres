@@ -32,6 +32,7 @@ function NuevoContrato() {
     $("#visualizarReciboNoOficial").hide();
     $("#comprobDePagoSaldoNoOficial").hide();
     $("#visualizarReciboNoOficialSoloSaldo").hide();
+    cargarIdContrato();
     llenarSelectConLocatarios();
     llenarSelectConInmuebles();
     llenarSelectFechaInicioFin();
@@ -385,6 +386,30 @@ function contruirFilas(Contratos) {
 
     return raw;
 
+}
+
+// LLENAR ID CONTRATO
+function cargarIdContrato() {
+
+    let uri = EndpointsEnum.CONTRATO;
+    console.log("Llamando a controller locatarios = " + uri);
+
+    var funcionAjax = $.ajax({
+        url: uri,
+        method: "POST",
+        data: {
+            action: "cargarIdContratoAutomatico",
+        }
+    });
+
+    funcionAjax.done(function (retorno) {
+        console.debug("Done: ", retorno);
+        $("#idContrato").val(retorno);
+    });
+
+    funcionAjax.fail(function (retorno) {
+        console.error(retorno);
+    });
 }
 
 // LLENAR SELECT CON CLIENTES

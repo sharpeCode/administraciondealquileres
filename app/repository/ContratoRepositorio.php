@@ -75,13 +75,14 @@ class ContratoRepositorio
         $registroPago = null;
         try {
 
-            $sql = "INSERT INTO contratos (fecha_inicio, fecha_fin, dni, id_inmueble, valor_alquiler_oficial, valor_alquiler_no_oficial, 
+            $sql = "INSERT INTO contratos (id_contrato, fecha_inicio, fecha_fin, dni, id_inmueble, valor_alquiler_oficial, valor_alquiler_no_oficial, 
                     valor_deposito, gastos_administrativos, valor_expensas, cant_cuotas_deposito, fecha_pago_inicio, fecha_pago_fin)
-                    VALUES(:fecha_inicio, :fecha_fin, :dni, :id_inmueble, :valor_alquiler_oficial, :valor_alquiler_no_oficial, 
+                    VALUES(:id_contrato, :fecha_inicio, :fecha_fin, :dni, :id_inmueble, :valor_alquiler_oficial, :valor_alquiler_no_oficial, 
                     :valor_deposito, :gastos_administrativos, :valor_expensas, :cant_cuotas_deposito, :fecha_pago_inicio, :fecha_pago_fin)";
 
             $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
 
+            $sentencia->bindParam(':id_contrato', $contratoObject->idContrato, PDO::PARAM_INT);
             $sentencia->bindParam(':fecha_inicio', $contratoObject->fechaInicio, PDO::PARAM_STR);
             $sentencia->bindParam(':fecha_fin', $contratoObject->fechaFin, PDO::PARAM_STR);
             $sentencia->bindParam(':dni', $contratoObject->dni, PDO::PARAM_STR);
@@ -152,6 +153,26 @@ class ContratoRepositorio
         }
 
         return $datosContrato;
+    }
+
+    public static function traerUltimoIdContrato()
+    {
+        $contrato = null;
+        try {
+            $sql = "SELECT id_contrato AS idContrato
+                    FROM contratos  
+                    ORDER BY id_contrato DESC LIMIT 1";
+
+            $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
+            $sentencia->execute();
+            $contrato = $sentencia->fetchObject("Contrato");
+
+        } catch (PDOException $ex) {
+            print 'ERROR' . $ex->getMessage();
+            $contrato = null;
+        }
+
+        return $contrato;
     }
 
 }

@@ -28,6 +28,9 @@ switch ($action) {
 
 function generarRegistrosDePagos()
 {
+
+
+
     //va a buscar a la base el ultimo contrato guardado
     $contratoObject = ContratoRepositorio::traerUltimoContratoGuardado();
 
@@ -69,6 +72,11 @@ function generarRegistrosDePagos()
 
 
     for ($i = $conteoMeses; $i <= $mesesTotal; $i++) {
+
+        $registroDePago = RegistroPagoRepositorio::traerUltimoIdRegistroDePago();
+        $id = (int) $registroDePago->idRegistroDePago;
+        $idRegistroDePago = $id + 1;
+
         $idContrato = $contratoObject->idContrato;
         if ($mesInt <= 12) {
 
@@ -112,7 +120,12 @@ function generarRegistrosDePagos()
             $recibo = "No";
             $saldoPendiente = 0;
 
-            $respuesta = RegistroPagoRepositorio::ingresarRegistroDePagoNuevo($idContrato, $idCompPorContrato, $tipoRegistroDePago, $correspondienteMes, $correspondienteAnio, $valorAlquiler, $gastosAdministrativos, $valorExpensasMensual, $valorDeposito, $cantCuotasDeposito, $numCuotaAPagar, $recibo, $saldoPendiente);
+            $respuesta = RegistroPagoRepositorio::ingresarRegistroDePagoNuevo($idRegistroDePago,$idContrato, $idCompPorContrato, $tipoRegistroDePago, $correspondienteMes, $correspondienteAnio, $valorAlquiler, $gastosAdministrativos, $valorExpensasMensual, $valorDeposito, $cantCuotasDeposito, $numCuotaAPagar, $recibo, $saldoPendiente);
+
+            $registroDePago = RegistroPagoRepositorio::traerUltimoIdRegistroDePago();
+            $id = (int) $registroDePago->idRegistroDePago;
+            $idRegistroDePago = $id + 1;
+
 
             //RECIBO NO OFICIAL =============================================================================================
             $tipoRegistroDePago = "No Oficial";
@@ -128,7 +141,7 @@ function generarRegistrosDePagos()
             $recibo = "No";
             $saldoPendiente = 0;
 
-            $respuesta = RegistroPagoRepositorio::ingresarRegistroDePagoNuevo($idContrato, $idCompPorContrato, $tipoRegistroDePago, $correspondienteMes, $correspondienteAnio, $valorAlquiler, $gastosAdministrativos, $valorExpensas, $valorDeposito, $cantCuotasDeposito, $numCuotaAPagar, $recibo, $saldoPendiente);
+            $respuesta = RegistroPagoRepositorio::ingresarRegistroDePagoNuevo($idRegistroDePago,$idContrato, $idCompPorContrato, $tipoRegistroDePago, $correspondienteMes, $correspondienteAnio, $valorAlquiler, $gastosAdministrativos, $valorExpensas, $valorDeposito, $cantCuotasDeposito, $numCuotaAPagar, $recibo, $saldoPendiente);
 
             $mesInt = $mesInt + 1;
         } else {

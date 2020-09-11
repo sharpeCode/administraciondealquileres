@@ -8,23 +8,24 @@ require_once 'BaseRepository.php';
 class ComprobanteDePagoRepositorio
 {
 
-    public static function guardarComprobanteDePago($numeroComprobante, $tipoComprobante, $tipoRecibo, $idContrato, $idRegistroPago, $correspondienteMes, $correspondienteAnio, $alquilerMensual, $expensas, $gastosAdm, $deposito, $cuotas, $numCuota, $interesPorMora, $otrosConceptos, $saldoAnterior, $totalImporteAPagar, $totalImporteRecibido, $saldoPendiente, $saldoPendienteSinModificar)
+    public static function guardarComprobanteDePago($idComprobantesDePago, $numeroComprobante, $tipoComprobante, $tipoRecibo, $idContrato, $idRegistroPago, $correspondienteMes, $correspondienteAnio, $alquilerMensual, $expensas, $gastosAdm, $deposito, $cuotas, $numCuota, $interesPorMora, $otrosConceptos, $saldoAnterior, $totalImporteAPagar, $totalImporteRecibido, $saldoPendiente, $saldoPendienteSinModificar)
     {
 
         $resp = false;
         try {
 
-            $sql = "INSERT INTO comprobantes_de_pagos (numero_comprobante, fecha_comprobante, tipo_comprobante_de_pago, tipo_recibo,  id_contrato, 
+            $sql = "INSERT INTO comprobantes_de_pagos (id_comprobantes_de_pago,numero_comprobante, fecha_comprobante, tipo_comprobante_de_pago, tipo_recibo,  id_contrato, 
                     id_registro_de_pago, correspondiente_mes, correspondiente_anio, valor_alquiler, valor_expensas, valor_gastos_adm, 
                     valor_deposito, cant_cuotas_deposito, num_cuota_a_pagar, interes_por_mora, otros_conceptos, saldo_anterior, total_importe_a_pagar,
                     total_importe_recibido, saldo_pendiente, saldo_pendiente_sin_modificar)
-                    VALUES(:numero_comprobante, NOW(), :tipo_comprobante_de_pago, :tipo_recibo, :id_contrato, :id_registro_de_pago,
+                    VALUES(:id_comprobantes_de_pago,:numero_comprobante, NOW(), :tipo_comprobante_de_pago, :tipo_recibo, :id_contrato, :id_registro_de_pago,
                     :correspondiente_mes, :correspondiente_anio, :valor_alquiler, :valor_expensas, :valor_gastos_adm, :valor_deposito, 
                     :cant_cuotas_deposito, :num_cuota_a_pagar, :interes_por_mora, :otros_conceptos, :saldo_anterior, :total_importe_a_pagar,
                     :total_importe_recibido, :saldo_pendiente, :saldo_pendiente_sin_modificar)";
 
             $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
 
+            $sentencia->bindParam(':id_comprobantes_de_pago', $idComprobantesDePago, PDO::PARAM_STR);
             $sentencia->bindParam(':numero_comprobante', $numeroComprobante, PDO::PARAM_STR);
             $sentencia->bindParam(':tipo_comprobante_de_pago', $tipoComprobante, PDO::PARAM_STR);
             $sentencia->bindParam(':tipo_recibo', $tipoRecibo, PDO::PARAM_STR);
@@ -422,5 +423,24 @@ class ComprobanteDePagoRepositorio
         }
         return $datos;
 
+    }
+
+    public static function buscarUltimoIdComprobanteDePago(){
+        $Comprobante = "";
+        try {
+            $sql = "SELECT id_comprobantes_de_pago AS idComprobantesDePago 
+                    FROM comprobantes_de_pagos
+                    ORDER BY id_comprobantes_de_pago DESC LIMIT 1";
+
+            $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
+            $sentencia->execute();
+            $Comprobante = $sentencia->fetchObject("ComprobanteDePago");
+
+        } catch (PDOException $ex) {
+            print 'ERROR' . $ex->getMessage();
+            $Comprobante = "";
+        }
+
+        return $Comprobante;
     }
 }

@@ -3,7 +3,7 @@ CREATE DATABASE db_administracion_de_alquileres;
 USE db_administracion_de_alquileres;
 
 CREATE TABLE roles(
-	id_rol INT NOT NULL AUTO_INCREMENT,
+	id_rol INT NOT NULL,
 	rol VARCHAR(15) NOT NULL,
 	PRIMARY KEY(id_rol)
 );
@@ -38,7 +38,7 @@ CREATE TABLE clientes(
 );
 
 CREATE TABLE provincias(
-	id_provincia INT NOT NULL AUTO_INCREMENT,
+	id_provincia INT NOT NULL,
 	nombre VARCHAR(30) NOT NULL,
 	PRIMARY KEY (id_provincia)
 );
@@ -66,7 +66,7 @@ CREATE TABLE inmuebles(
 );
 
 CREATE TABLE variables(
-	id_variable INT NOT NULL AUTO_INCREMENT,
+	id_variable INT,
 	variable VARCHAR(30),
 	PRIMARY KEY (id_variable)
 );
@@ -81,20 +81,20 @@ CREATE TABLE porcentaje_de_variables(
 );
 
 CREATE TABLE meses(
-	id_mes INT NOT NULL AUTO_INCREMENT,
+	id_mes INT NOT NULL,
 	mes_largo VARCHAR(10) NOT NULL,
 	mes_corto VARCHAR(3) NOT NULL,
 	PRIMARY KEY(id_mes)
 );
 
 CREATE TABLE anios(
-	id_anio INT NOT NULL AUTO_INCREMENT,
+	id_anio INT NOT NULL,
 	anio INT NOT NULL,
 	PRIMARY KEY(id_anio)
 );
 
 CREATE TABLE contratos(
-	id_contrato INT NOT NULL AUTO_INCREMENT,
+	id_contrato INT NOT NULL,
 	fecha_inicio DATETIME,
 	fecha_fin DATETIME,
 	dni VARCHAR(15) NOT NULL,
@@ -112,7 +112,7 @@ CREATE TABLE contratos(
 );
 
 CREATE TABLE registros_de_pagos(
-	id_registro_de_pago INT NOT NULL AUTO_INCREMENT,
+	id_registro_de_pago INT NOT NULL,
 	id_comp_por_contrato INT NOT NULL,
 	id_contrato INT NOT NULL,
 	tipo_registro_de_pago VARCHAR(10) NOT NULL,                            # Oficial - No Oficial
@@ -133,11 +133,11 @@ CREATE TABLE registros_de_pagos(
 
 # RECIBOS
 CREATE TABLE comprobantes_de_pagos(
-	id_comprobantes_de_pago INT NOT NULL AUTO_INCREMENT,
+	id_comprobantes_de_pago INT NOT NULL,
 	numero_comprobante VARCHAR(5) NOT NULL,
 	fecha_comprobante DATE NOT NULL,
 	tipo_comprobante_de_pago VARCHAR(10) NOT NULL,                            # Oficial - No Oficial
-	tipo_recibo VARCHAR(V10),                                                 # Recibo - Saldo
+	tipo_recibo VARCHAR(10),                                                 # Recibo - Saldo
 	id_contrato INT NOT NULL,
 	id_registro_de_pago INT NOT NULL,
 	correspondiente_mes INT NOT NULL,

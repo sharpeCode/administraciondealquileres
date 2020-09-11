@@ -25,6 +25,9 @@ switch ($action) {
     case "guardarContratoNuevo":
         guardarContratoNuevo();
         break;
+    case "cargarIdContratoAutomatico":
+        cargarIdContratoAutomatico();
+        break;
 
     default:
         console . log("NO SE QUE HACER VIEJA");
@@ -60,6 +63,7 @@ function cargarSelectConFechaInicio()
 
 function guardarContratoNuevo()
 {
+
     $guardarContrato = $_POST["contratoNuevoParaGuardar"];
 
     // Si no casteo no lo paso de array a objeto y no lo puedo usar
@@ -67,6 +71,15 @@ function guardarContratoNuevo()
 
     $registroPago = ContratoRepositorio::guardarContratoNuevo($contratoObject);
     echo json_encode($registroPago);
+
+}
+
+function cargarIdContratoAutomatico()
+{
+    $contrato = ContratoRepositorio::traerUltimoIdContrato();
+    $id = (int) $contrato->idContrato;
+    $id = $id + 1;
+    echo json_encode($id);
 
 }
 

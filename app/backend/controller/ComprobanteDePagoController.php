@@ -261,6 +261,10 @@ function sumarSaldoAnteriores($idRegistroDePago){
 
 function guardarComprobanteDePago()
 {
+    $Comprobante = ComprobanteDePagoRepositorio::buscarUltimoIdComprobanteDePago();
+    $id = $Comprobante->idComprobantesDePago;
+    $idComprobantesDePago = $id + 1;
+
     $numeroComprobante = $_POST['numeroComprobante'];
     $idRegistroPago = $_POST['idRegistroPago'];
     $idContrato = $_POST['idContrato'];
@@ -311,7 +315,7 @@ function guardarComprobanteDePago()
     }
 
     //guardar el comprobante de pago en la tabla "comprobante_de_pagos"
-    $registroDePago = ComprobanteDePagoRepositorio::guardarComprobanteDePago($numeroComprobante, $tipoComprobante, $tipoRecibo, $idContrato, $idRegistroPago, $correspondienteMes, $correspondienteAnio, $alquilerMensual, $expensas, $gastosAdm, $deposito, $cuotas, $numCuota, $interesPorMora, $otrosConceptos, $saldoAnterior, $totalImporteAPagar, $totalImporteRecibido, $saldoPendiente, $saldoPendienteSinModificar);
+    $registroDePago = ComprobanteDePagoRepositorio::guardarComprobanteDePago($idComprobantesDePago,$numeroComprobante, $tipoComprobante, $tipoRecibo, $idContrato, $idRegistroPago, $correspondienteMes, $correspondienteAnio, $alquilerMensual, $expensas, $gastosAdm, $deposito, $cuotas, $numCuota, $interesPorMora, $otrosConceptos, $saldoAnterior, $totalImporteAPagar, $totalImporteRecibido, $saldoPendiente, $saldoPendienteSinModificar);
     echo json_encode($registroDePago);
 
      //cambiar la accion del recibo generado --> SI en registros de pago
