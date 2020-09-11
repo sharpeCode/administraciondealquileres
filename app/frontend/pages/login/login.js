@@ -22,7 +22,7 @@ function validar() {
     //     }else if (retorno == "ERROR2") {
     //         window.alert("el dni o contraseña son incorrectos");
     //     }else{
-    //         location.href = href;
+             location.href = href;
     //     }
     // });
     // funcionAjax.fail(function (retorno) {
