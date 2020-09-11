@@ -1237,7 +1237,6 @@ function buscarCuantosRecibosTieneEsteRegistro(idRegistroDePago) {
     });
 
     funcionAjax.done(function (retorno) {
-        console.debug("Done: ", retorno);
         visualizarRecibo(JSON.parse(retorno));
 
     });
