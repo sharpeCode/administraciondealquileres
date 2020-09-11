@@ -214,4 +214,42 @@ class RegistroPagoRepositorio
         return $saldos;
     }
 
+    public static function buscarValorActualAlquilerMensual($idRegistroDePago)
+    {
+        $valorRegistrado = null;
+        try {
+            $sql = "SELECT valor_alquiler AS valorAlquiler
+            FROM registros_de_pagos 
+            WHERE id_registro_de_pago = $idRegistroDePago";
+
+            $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
+            $sentencia->execute();
+            $valorRegistrado = $sentencia->fetchObject("RegistroPago");
+
+        } catch (PDOException $ex) {
+            print 'ERROR' . $ex->getMessage();
+            $valorRegistrado = null;
+        }
+
+        return $valorRegistrado;
+    }
+
+    public static function actualizarNuevoValorAlquilerMensual($alquilerMensual,$idRegistroPago,$tipoComprobante,$idContrato)
+    {
+        $respuesta = null;
+        try {
+            $sql = "UPDATE registros_de_pagos SET valor_alquiler = '$alquilerMensual'
+            WHERE id_registro_de_pago >= '$idRegistroPago' 
+            AND id_contrato = '$idContrato' 
+            AND tipo_registro_de_pago = '$tipoComprobante'";
+
+            $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
+            $respuesta = $sentencia->execute();
+
+        } catch (PDOException $ex) {
+            print 'ERROR' . $ex->getMessage();
+            $respuesta = null;
+        }
+        return $respuesta;
+    }
 }

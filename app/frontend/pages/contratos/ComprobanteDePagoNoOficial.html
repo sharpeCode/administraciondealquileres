@@ -125,7 +125,7 @@
                 </div>
                 <div class="col-md-2">
                     <input type="text" class="inputTextConSombra" name="reciboNoOfiAlquilerMensual"
-                           id="reciboNoOfiAlquilerMensual" readonly="readonly">
+                           id="reciboNoOfiAlquilerMensual" readonly="readonly" onchange="EditarValoresReciboNoOficial();">
                 </div>
                 <div class="col-md-7"></div>
             </div>
@@ -147,44 +147,12 @@
             <!-- INTERES POR MORA-->
             <div class="row">
                 <div class="col-md-7"></div>
-                <div class="col-md-1">
-                    <label class="labelSubtituloNormal">Int. Dias</label>
-                </div>
-                <div class="col-md-1">
-                    <input type="text" class="inputTextLabel" name="reciboNoOfiTotalDias"
-                           id="reciboNoOfiTotalDias">
-                </div>
-                <div class="col-md-2">
-                    <input type="text" class="inputTextConSombra" name="reciboNoOfiInteresPorMora"
-                           id="reciboNoOfiInteresPorMora" onchange="EditarValoresReciboNoOficial();">
-                </div>
-                <div class="col-md-1"></div>
-            </div>
-            <!-- OTROS CONCEPTOS-->
-            <div class="row">
-                <div class="col-md-7"></div>
                 <div class="col-md-2">
                     <label class="labelSubtituloNormal">Otros Conceptos</label>
                 </div>
                 <div class="col-md-2">
-                    <input type="text" class="inputTextConSombra" name="reciboNoOfiOtrosConceptos"
-                           id="reciboNoOfiOtrosConceptos" onchange="EditarValoresReciboNoOficial();">
-                </div>
-                <div class="col-md-1"></div>
-            </div>
-            <!-- SALDO ANTERIOR-->
-            <div class="row">
-                <div class="col-md-7"></div>
-                <div class="col-md-2">
-                    <label class="labelSubtituloNormal">Saldo Anterior</label>
-                </div>
-                <div class="col-md-2">
-                    <label>
-                        <select class="inputTextConSombra" id="reciboNoOfiSaldoAnterior" name='reciboNoOfiSaldoAnterior'
-                                style="width: 164px;"
-                                onchange="EditarValoresReciboOficial();">
-                        </select>
-                    </label>
+                    <input type="text" class="inputTextConSombra" name="reciboNoOfiInteresPorMora"
+                           id="reciboNoOfiInteresPorMora" onchange="EditarValoresReciboNoOficial();">
                 </div>
                 <div class="col-md-1"></div>
             </div>
@@ -200,37 +168,15 @@
                 </div>
                 <div class="col-md-1"></div>
             </div>
-            <!-- IMPORTE RECIBIDO-->
-            <div class="row">
-                <div class="col-md-7"></div>
-                <div class="col-md-2">
-                    <label class="labelSubtitulo">Imp. Recibido</label>
-                </div>
-                <div class="col-md-2">
-                    <input type="text" class="inputTextConSombra" name="reciboNoOfiImporteRecibido"
-                           id="reciboNoOfiImporteRecibido" onchange="EditarValoresReciboNoOficial();">
-                </div>
-                <div class="col-md-1"></div>
-            </div>
-
             <br><br>
 
             <!-- SALDO PENDIENTE-->
             <div class="row">
-
-                <div class="col-md-1"></div>
-                <div class="col-md-2">
-                    <label class="labelSubtitulo">Saldo Pendiente</label>
-                </div>
-                <div class="col-md-2">
-                    <input type="text" class="inputTextConSombra" name="reciboNoOfiSaldoPendiente"
-                           id="reciboNoOfiSaldoPendiente" readonly="readonly">
-                </div>
-                <div class="col-md-4"></div>
+                <div class="col-md-9"></div>
                 <div class="col-md-3">
                     <a><input class="miBoton-chico" type="button" onclick="ListadoDeRegistrosDePago()"
                               value="Atras"></a>
-                    <a><input class="miBoton-chico" type="button" onclick="GuardarComprobanteDePago()" value="Guardar"></a>
+                    <a><input class="miBoton-chico" type="button" onclick="GuardarComprobanteDePago(2)" value="Guardar"></a>
                 </div>
             </div>
             <br><br>

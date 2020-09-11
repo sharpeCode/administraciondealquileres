@@ -301,11 +301,18 @@ function guardarComprobanteDePago()
     $mes = MesRepositorio::buscarIdMes($nombreMes);
     $correspondienteMes = $mes->idMes;
 
+    //cambiar los valores siguientes de alguiler mensual si es que se modifico el actual
+    $valorRegistrado = RegistroPagoRepositorio::buscarValorActualAlquilerMensual($idRegistroPago);
+    $valorViejo = (int) $valorRegistrado->valorAlquiler;
+    $valorNuevo = (int) $alquilerMensual;
+
+    if($valorViejo != $valorNuevo){
+        RegistroPagoRepositorio::actualizarNuevoValorAlquilerMensual($alquilerMensual,$idRegistroPago,$tipoComprobante,$idContrato);
+    }
 
     //guardar el comprobante de pago en la tabla "comprobante_de_pagos"
     $registroDePago = ComprobanteDePagoRepositorio::guardarComprobanteDePago($numeroComprobante, $tipoComprobante, $tipoRecibo, $idContrato, $idRegistroPago, $correspondienteMes, $correspondienteAnio, $alquilerMensual, $expensas, $gastosAdm, $deposito, $cuotas, $numCuota, $interesPorMora, $otrosConceptos, $saldoAnterior, $totalImporteAPagar, $totalImporteRecibido, $saldoPendiente, $saldoPendienteSinModificar);
     echo json_encode($registroDePago);
-
 
      //cambiar la accion del recibo generado --> SI en registros de pago
      RegistroPagoRepositorio::cambiarLaAccionDelRegistroRecibo($idRegistroPago);
@@ -322,7 +329,6 @@ function guardarComprobanteDePago()
         //en la tabla comprobantes de pagos
         ComprobanteDePagoRepositorio::ponerSaldoCeroEnLosSaldosPendientes($idContrato, $idRegistroPago, $tipoComprobante);
     }
-
 }
 
 function editarElImporteRecibidoDelReciboPreCargado($total, $recibido)
@@ -361,24 +367,17 @@ function EditarValoresReciboOficial()
 
 function EditarValoresReciboNoOficial()
 {
-
     $subT = $_POST['alquilerMensual'];
-
     $interesPorMora = $_POST['interesPorMora'];
-    $otrosConceptos = $_POST['otrosConceptos'];
-    $saldoAnterior = $_POST['saldoAnterior'];
-    $recibido = $_POST['recibido'];
 
     $saldos = new Saldos();
 
-    $total = $subT + $interesPorMora + $otrosConceptos + $saldoAnterior;
-    $salPendiente = $total - $recibido;
+    $total = $subT + $interesPorMora;
 
+    $saldos->subTotal = $subT;
     $saldos->totalImporteAPagar = $total;
-    $saldos->saldoPendiente = $salPendiente;
 
     echo json_encode($saldos);
-
 }
 
 function visualizarRecibo($idRegistroDePago)

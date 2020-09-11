@@ -36,17 +36,6 @@ function generarRegistrosDePagos()
     $inmueble = InmuebleRepository::getInmueblesById($idInmu);
     $tipoInmueble = $inmueble->tipo;
 
-    if ($tipoInmueble == "Particular") {
-
-        //traer la ultima variable con el aumento ipc/ripte anual
-        $intAnual = variableIpcRipteAnualRepositorio::traerUltimaVariableIpcRipteAnual();
-        $interesAnual = (int)$intAnual->porcentaje;
-
-    } elseif ($tipoInmueble == "Comercial") {
-        //traer la ultima variable con el aumento anual comercial
-        $intAnual = VariableIntAnualComercioRepositorio::traerUltimaVariableIntComercioAnual();
-        $interesAnual = (int)$intAnual->porcentaje;
-    }
 
     // FECHAS SUBSTR=========================================================================
     //guardo en variable la fecha de Inicio y Fin de contrato
@@ -84,11 +73,7 @@ function generarRegistrosDePagos()
         if ($mesInt <= 12) {
 
             $idCompPorContrato = $i;
-
-            //para que haga un incremento al año de contrato
-            if (($idCompPorContrato - 1) % 12 == 0 AND $idCompPorContrato != 1) {
-                $valorAlquilerOficial = (($valorAlquilerOficial * $interesAnual) / 100) + $valorAlquilerOficial;
-            }
+            $valorAlquilerOficial = $valorAlquilerOficial;
 
             //RECIBO OFICIAL
             $tipoRegistroDePago = "Oficial";
@@ -153,7 +138,6 @@ function generarRegistrosDePagos()
 
         }
     }
-
 
 }
 
