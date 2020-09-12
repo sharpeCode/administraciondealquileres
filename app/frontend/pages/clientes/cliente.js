@@ -31,15 +31,9 @@ function fillClienteGrid(jsonLocatarios) {
 function buildRawFromCliente(cliente){
     // cambiar formato fecha de AAAA-MM-DD a DD-MM-AAAA
     let fe = cliente['fechaNacimiento'];
-    console.log("VER FECHAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-    console.log(fe);
-
     let fecha = new Date(fe);
-
-    console.log("VER FECHAAAAAAAAAAAAAAAAAAAAAAAAAAAAA2222222222222222222222222");
-    console.log(fecha);
     let options = { day: 'numeric', month: 'numeric', year: 'numeric'};
-    let fechaNac = fecha.toLocaleDateString("es-ES", fecha);
+    let fechaNac = fecha.toLocaleDateString("es-ES", options);
 
 
     let raw = "";
@@ -49,8 +43,6 @@ function buildRawFromCliente(cliente){
     raw += "<td style = 'text-align: center;'>" + cliente['celular'] + "</td>";
     raw += "<td style = 'text-align: center;'>" + cliente['email'] + "</td>";
     raw += "<td style = 'text-align: center;'>" + fechaNac + "</td>";
-    raw += "<td style = 'text-align: center;'>" + cliente['datosGarante'] + "</td>";
-    raw += "<td style = 'text-align: center;' hidden='true'>" + cliente['domicilioLegal'] + "</td>";
 
     raw += "<td style = 'text-align: center;'>";
     raw += "<button class='miBoton-icon' title='Detalle Cliente' onclick='showDetailForm(" + cliente['dni'] + ")'>" +
@@ -145,7 +137,7 @@ function guardarCliente() {
 
         if (retorno == "ERROR") {
             location.href = uriPage;
-            window.alert("El locatario que desea ingresar ya existe");
+            window.alert("El Cliente que desea ingresar ya existe");
 
         } else{
             location.href = uriPage;
@@ -219,9 +211,7 @@ function fillFormEdit(cliente) {
 
 function guardarClienteEditado() {
 
-    var clienteParaGuardar = mapToJson($('#clienteEdit').serializeArray());
-
-    console.log("Guardando cliente: ", clienteParaGuardar);
+    let clienteParaGuardar = mapToJson($('#clienteEdit').serializeArray());
 
     let uri = EndpointsEnum.CLIENTE;
     let uriPage = EndpointsEnum.VOLVER_CLIENTES;
@@ -240,13 +230,13 @@ function guardarClienteEditado() {
     });
 
     funcionAjax.fail(function (retorno) {
-        console.log("error al guardar user")
+        console.log("error al guardar cliente")
     });
 
     funcionAjax.always(function (retorno) {
-        console.log("volvi de guardar el user")
+        console.log("volvi de guardar el cliente")
     });
-    console.log("Fin llamada controller usuario");
+    console.log("Fin llamada controller cliente");
 }
 
 // TODO: DETALLE CLIENTE
@@ -284,8 +274,11 @@ function loadClienteDataDetail(dni) {
 }
 
 function fillFormDetail(cliente) {
-    var fecha = cliente["fechaNacimiento"];
-    var fechaNac=fecha.split(" ")[0].split("/").reverse().join("/");
+    let fecha = cliente["fechaNacimiento"];
+    let fechaNac=fecha.split(" ")[0].split("/").reverse().join("/");
+
+    // var fechaRegistro = cliente["fechaRegistro"];
+    // var fechaReg = fechaRegistro.split(" ")[0].split("/").reverse().join("/");
 
     $("#detailNombres").val(cliente["nombres"]);
     $("#detailApellidos").val(cliente["apellidos"]);
@@ -293,7 +286,9 @@ function fillFormDetail(cliente) {
     $("#detailCelular").val(cliente["celular"]);
     $("#detailEmail").val(cliente["email"]);
     $("#detailFechaNacimiento").val(fechaNac);
+    // $("#detailFechaRegistro").val(fechaRegistro);
     $("#detailDatosGarante").val(cliente["datosGarante"]);
+    $("#detailDomicilioLegal").val(cliente["domicilioLegal"]);
 }
 
 // TODO: FORM PPAL
@@ -380,4 +375,33 @@ function locatarioFilter(doneFunction, data) {
 
 function deleteCliente(dni) {
 
+    let uri = EndpointsEnum.CLIENTE;
+    let uriPage = EndpointsEnum.VOLVER_CLIENTES;
+
+    let txt;
+    let r = confirm("Desea eliminar este Cliente?");
+    if (r == true) {
+
+        let funcionAjax = $.ajax({
+            url: uri,
+            method: "POST",
+            data: {
+                action: "deleteCliente",
+                dni: dni
+            }
+        });
+
+        funcionAjax.done(function (retorno) {
+            location.href = uriPage;
+        });
+
+        funcionAjax.fail(function (retorno) {
+            console.log("error al eliminar")
+        });
+
+        funcionAjax.always(function (retorno) {
+            console.log("volvi de eliminar")
+        });
+        console.log("Fin llamada controller cliente");
+    }
 }

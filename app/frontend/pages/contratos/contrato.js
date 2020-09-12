@@ -929,6 +929,7 @@ function cargarDatosEnRecibo(datosParaCargarRecibo,ban) {
 
     if(ban == 1){
         console.log(ban);
+        alert("Actualizar el valor del alquiler mensual");
         document.getElementById('reciboOfiAlquilerMensual').readOnly = false;
         document.getElementById('reciboNoOfiAlquilerMensual').readOnly = false;
     }else if(ban == 2){

@@ -8,6 +8,9 @@ switch ($action) {
     case "listarClientes":
         listarClientes();
         break;
+    case "deleteCliente":
+        eliminarCliente();
+        break;
     case "guardarClienteNuevo":
         guardarClienteNuevo();
         break;
@@ -87,5 +90,12 @@ function traerClienteParaEditar($dni)
 function traerClienteFiltradoPorNombre($nombre)
 {
     $clientes = ClienteRepository::traerClientesFiltradoPorNombre($nombre);
+    echo json_encode($clientes);
+}
+
+function eliminarCliente()
+{
+    $dni = $_POST["dni"];
+    $clientes = ClienteRepository::eliminarCliente($dni);
     echo json_encode($clientes);
 }

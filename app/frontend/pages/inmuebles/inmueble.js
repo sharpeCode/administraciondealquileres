@@ -92,7 +92,7 @@ function construirFilaDeInmueble(inmueble) {
     raw += "<td style = 'text-align: center; word-wrap: break-word;'>" + inmueble['localidad'] + "</td>";
 
     raw += "<td style = 'text-align: center;width: 100px;word-wrap: break-word;'>";
-    raw += "<button class='miBoton-5-C' title='Editar inmueble' onclick='mostrarFormInmuebleEditar(" + inmueble['idInmueble'] + ")'>" +
+    raw += "<button class='miBoton-icon' title='Editar inmueble' onclick='mostrarFormInmuebleEditar(" + inmueble['idInmueble'] + ")'>" +
         "<span class='glyphicon glyphicon-pencil'></span>";
     raw += "</button></td> ";
 
@@ -384,7 +384,7 @@ function buildRawFromLocalidades(loc) {
 
     raw += "<td>";
     raw += "<td>";
-    raw += "<button class='miBoton-5-C' title='Editar Localidad' onclick='mostrarFormLocalidadEditar(" + loc['idLocalidad'] + ")'>" +
+    raw += "<button class='miBoton-icon' title='Editar Localidad' onclick='mostrarFormLocalidadEditar(" + loc['idLocalidad'] + ")'>" +
         "<span class='glyphicon glyphicon-pencil'></span>";
     raw += "</button></td> ";
 

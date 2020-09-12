@@ -99,22 +99,10 @@ INSERT INTO `fecha_pago` (`fecha`) VALUES (30);
 INSERT INTO `fecha_pago` (`fecha`) VALUES (31);
 
 
-INSERT INTO `variables` (`id_variable`,`variable`) VALUES (1,'IPS/RIPTE');
-INSERT INTO `variables` (`id_variable`,`variable`) VALUES (2,'Interés anual-Comercio');
-INSERT INTO `variables` (`id_variable`,`variable`) VALUES (3,'Interés x vencimiento');
-INSERT INTO `variables` (`id_variable`,`variable`) VALUES (4,'Porcentaje de importe No oficial');
+INSERT INTO `variables` (`id_variable`,`variable`) VALUES (1,'Interés x vencimiento');
 
 INSERT INTO `porcentaje_de_variables` (`id_variable`,`porcentaje`,`fecha_ingreso`) VALUES (1,10,'2020-08-05');
 INSERT INTO `porcentaje_de_variables` (`id_variable`,`porcentaje`,`fecha_ingreso`) VALUES (1,15,'2020-08-08');
-
-INSERT INTO `porcentaje_de_variables` (`id_variable`,`porcentaje`,`fecha_ingreso`) VALUES (2,10,'2020-08-05');
-INSERT INTO `porcentaje_de_variables` (`id_variable`,`porcentaje`,`fecha_ingreso`) VALUES (2,15,'2020-08-08');
-
-INSERT INTO `porcentaje_de_variables` (`id_variable`,`porcentaje`,`fecha_ingreso`) VALUES (3,10,'2020-08-05');
-INSERT INTO `porcentaje_de_variables` (`id_variable`,`porcentaje`,`fecha_ingreso`) VALUES (3,15,'2020-08-08');
-
-INSERT INTO `porcentaje_de_variables` (`id_variable`,`porcentaje`,`fecha_ingreso`) VALUES (4,10,'2020-08-05');
-INSERT INTO `porcentaje_de_variables` (`id_variable`,`porcentaje`,`fecha_ingreso`) VALUES (4,15,'2020-08-08');
 
 INSERT INTO `comprobantes_de_pagos` (`id_comprobantes_de_pago`,`numero_comprobante`,`fecha_comprobante`,`tipo_comprobante_de_pago`,`saldo_pendiente`) 
 				     VALUES (1,'00000','0000-00-00','Oficial',0);
