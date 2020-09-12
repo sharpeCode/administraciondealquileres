@@ -729,9 +729,9 @@ function contruirFilasRegistroDePagos(RPago) {
 
         var ban = 1;
 
-        raw += "<td>" + RPago['idRegistroDePago'] + "</td>";
-        raw += "<td>" + RPago['idContrato'] + "</td>";
-        raw += "<td style='color: red;'>" + RPago['idCompPorContrato'] + "</td>";
+        raw += "<td style='visibility:hidden; display: none;'>" + RPago['idRegistroDePago'] + "</td>";
+        raw += "<td style='visibility:hidden; display: none;'>" + RPago['idContrato'] + "</td>";
+        raw += "<td style='visibility:hidden; display: none;'>" + RPago['idCompPorContrato'] + "</td>";
         raw += "<td style='color: red;'>" + RPago['tipo'] + "</td>";
         raw += "<td style='color: red;'>" + RPago['mesCorto'] + "</td>";
         raw += "<td style='color: red;'>" + RPago['correspondienteAnio'] + "</td>";
@@ -749,9 +749,9 @@ function contruirFilasRegistroDePagos(RPago) {
 
         var ban = 2;
 
-        raw += "<td>" + RPago['idRegistroDePago'] + "</td>";
-        raw += "<td>" + RPago['idContrato'] + "</td>";
-        raw += "<td>" + RPago['idCompPorContrato'] + "</td>";
+        raw += "<td style='visibility:hidden; display: none;'>" + RPago['idRegistroDePago'] + "</td>";
+        raw += "<td style='visibility:hidden; display: none;'>" + RPago['idContrato'] + "</td>";
+        raw += "<td style='visibility:hidden; display: none;'>" + RPago['idCompPorContrato'] + "</td>";
         raw += "<td>" + RPago['tipo'] + "</td>";
         raw += "<td>" + RPago['mesCorto'] + "</td>";
         raw += "<td>" + RPago['correspondienteAnio'] + "</td>";
