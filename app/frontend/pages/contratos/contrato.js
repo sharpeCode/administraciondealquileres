@@ -1546,12 +1546,7 @@ function cargarVisualizacionReciboNoOficial(datosParaCargarRecibo) {
     $("#noOfiNumCuota").val(datosParaCargarRecibo["numCuotaAPagar"]);
     $("#noOfiSubTotal").val("$ " + subTotal);
     $("#noOfiInteresPorMora").val("$ " + datosParaCargarRecibo["interesPorMora"]);
-    $("#noOfiTotalDias").val(datosParaCargarRecibo["diasMora"]);
-    $("#noOfiOtrosConceptos").val("$ " + datosParaCargarRecibo["otrosConceptos"]);
-    $("#noOfiSaldoAnterior").val("$ " + datosParaCargarRecibo["saldoAnterior"]);
     $("#noOfiTotal").val("$ " + datosParaCargarRecibo["totalImporteAPagar"]);
-    $("#noOfiImporteRecibido").val("$ " + datosParaCargarRecibo["totalImporteRecibido"]);
-    $("#noOfiSaldoPendiente").val("$ " + datosParaCargarRecibo["saldoPendienteSinModificar"]);
 
 }
 
@@ -1806,7 +1801,7 @@ function printPdfReciboOficial() {
             var width = doc.internal.pageSize.getWidth();
             var height = doc.internal.pageSize.getHeight();
             height = ratio * width;
-            doc.addImage(imgData, 'JPEG', 0, 10, width+30, height+50);
+            doc.addImage(imgData, 'JPEG', 0, 10, width+0, height+20);
             doc.save('ReciboOficial-' + numeroComprobante + '.pdf');
         });
 }
@@ -1827,7 +1822,7 @@ function printPdfReciboNoOficial() {
             var width = doc.internal.pageSize.getWidth();
             var height = doc.internal.pageSize.getHeight();
             height = ratio * width;
-            doc.addImage(imgData, 'JPEG', 0, 10, width+30, height+50);
+            doc.addImage(imgData, 'JPEG', 0, 10, width+0, height+20);
             doc.save('ReciboNoOficial-' + numeroComprobante + '.pdf');
         });
 }
@@ -1848,7 +1843,7 @@ function printPdfReciboOficialSoloSaldo() {
             var width = doc.internal.pageSize.getWidth();
             var height = doc.internal.pageSize.getHeight();
             height = ratio * width;
-            doc.addImage(imgData, 'JPEG', 0, 10, width+30, height+50);
+            doc.addImage(imgData, 'JPEG', 0, 10, width+0, height+20);
             doc.save('ReciboOficialSoloSaldo-' + numeroComprobante + '.pdf');
         });
 }
@@ -1869,7 +1864,7 @@ function printPdfReciboNoOficialSoloSaldo() {
             var width = doc.internal.pageSize.getWidth();
             var height = doc.internal.pageSize.getHeight();
             height = ratio * width;
-            doc.addImage(imgData, 'JPEG', 0, 10, width+10, height+40);
+            doc.addImage(imgData, 'JPEG', 0, 10, width+0, height+20);
             doc.save('ReciboNoOficialSoloSaldoNumero-' + numeroComprobante + '.pdf');
         });
 }

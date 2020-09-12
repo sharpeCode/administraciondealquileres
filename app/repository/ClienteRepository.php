@@ -28,8 +28,8 @@ class ClienteRepository
         $estado = "1";
         try {
 
-            $sql = "INSERT INTO clientes (dni, nombres, apellidos, celular, email, fecha_nacimiento, datos_garante, estado)
-                    VALUES(:dni, :nombres, :apellidos, :celular, :email, :fecha_nacimiento, :datos_garante,:estado)";
+            $sql = "INSERT INTO clientes (dni, nombres, apellidos, celular, email, fecha_registro, fecha_nacimiento, datos_garante, domicilio_legal, estado)
+                    VALUES(:dni, :nombres, :apellidos, :celular, :email, NOW(), :fecha_nacimiento, :datos_garante, :domicilio_legal,:estado)";
 
             $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
             $sentencia->bindParam(':dni', $clienteObject->dni, PDO::PARAM_STR);
@@ -39,6 +39,7 @@ class ClienteRepository
             $sentencia->bindParam(':email', $clienteObject->email, PDO::PARAM_INT);
             $sentencia->bindParam(':fecha_nacimiento', $clienteObject->fechaNacimiento, PDO::PARAM_INT);
             $sentencia->bindParam(':datos_garante', $clienteObject->datosGarante, PDO::PARAM_STR);
+            $sentencia->bindParam(':domicilio_legal', $clienteObject->domicilioLegal, PDO::PARAM_STR);
             $sentencia->bindParam(':estado', $estado, PDO::PARAM_STR);
 
             $sentencia->execute();
@@ -92,7 +93,8 @@ class ClienteRepository
         {
             if ($dni <> "") {
 
-                $sql = "SELECT nombres, apellidos, dni, celular, email, fecha_nacimiento fechaNacimiento, datos_garante datosGarante, estado
+                $sql = "SELECT nombres, apellidos, dni, celular, email, fecha_nacimiento fechaNacimiento, 
+                        datos_garante datosGarante, domicilio_legal domicilioLegal
                         FROM clientes
                         WHERE dni = $dni";
 
@@ -173,7 +175,7 @@ class ClienteRepository
         try {
 
             $sql = "UPDATE clientes SET dni=:dni, nombres=:nombres, apellidos=:apellidos, celular=:celular, email=:email, 
-                    fecha_nacimiento=:fecha_nacimiento, datos_garante=:datos_garante, estado=:estado
+                    fecha_nacimiento=:fecha_nacimiento, datos_garante=:datos_garante, estado=:estado, domicilio_legal=:domicilio_legal
                     WHERE dni = '$clienteObject->editDni'";
 
             $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
@@ -184,6 +186,7 @@ class ClienteRepository
             $sentencia->bindParam(':email', $clienteObject->editEmail, PDO::PARAM_INT);
             $sentencia->bindParam(':fecha_nacimiento', $clienteObject->editFechaNacimiento, PDO::PARAM_INT);
             $sentencia->bindParam(':datos_garante', $clienteObject->editDatosGarante, PDO::PARAM_STR);
+            $sentencia->bindParam(':domicilio_legal', $clienteObject->editDomicilioLegal, PDO::PARAM_STR);
             $sentencia->bindParam(':estado',$estado , PDO::PARAM_STR);
 
             $sentencia->execute();

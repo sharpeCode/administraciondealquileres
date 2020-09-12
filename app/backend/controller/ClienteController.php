@@ -44,19 +44,18 @@ function guardarClienteNuevo()
     // Si no casteo no lo paso de array a objeto y no lo puedo usar
     $clienteObject = (object)$guardarCliente;
 
-//    $dni = $clienteObject->dni;
+    $dni = $clienteObject->dni;
 
     //buscar que el cliente no exista
-//    $cliente = ClienteRepository::traerClientesFiltradoPorDni($dni);
+    $cliente = ClienteRepository::traerClienteParaEditar($dni);
 
 //    echo'entro al UNO';
-//    if ($cliente != "") {
-//        echo 'ERROR';
-//    } else {
-//        echo'entro al DOS';
+    if ($cliente != null) {
+        echo 'ERROR';
+    } else {
     $cliente = ClienteRepository::guardarClienteNuevo($clienteObject);
     echo json_encode($cliente);
-//    }
+    }
 
 }
 

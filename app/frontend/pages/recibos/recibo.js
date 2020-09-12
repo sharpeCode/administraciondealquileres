@@ -3,7 +3,6 @@ $(function () {
     $("#visualizarReciboOficial").hide();
     $("#visualizarReciboNoOficial").hide();
     $("#visualizarReciboSaldoOficial").hide();
-    $("#visualizarReciboSaldoNoOficial").hide();
     listarRecibos();
 });
 
@@ -13,7 +12,6 @@ function visualizarReciboOficial(idComprobantesDePago) {
     $("#visualizarReciboOficial").show();
     $("#visualizarReciboNoOficial").hide();
     $("#visualizarReciboSaldoOficial").hide();
-    $("#visualizarReciboSaldoNoOficial").hide();
     cargarReciboOficial(idComprobantesDePago);
 }
 
@@ -23,7 +21,6 @@ function visualizarReciboOficialSoloSaldo(idComprobantesDePago) {
     $("#visualizarReciboOficial").hide();
     $("#visualizarReciboNoOficial").hide();
     $("#visualizarReciboSaldoOficial").show();
-    $("#visualizarReciboSaldoNoOficial").hide();
     cargarReciboOficialSoloSaldo(idComprobantesDePago);
 }
 
@@ -33,18 +30,7 @@ function visualizarReciboNoOficial(idComprobantesDePago) {
     $("#visualizarReciboOficial").hide();
     $("#visualizarReciboNoOficial").show();
     $("#visualizarReciboSaldoOficial").hide();
-    $("#visualizarReciboSaldoNoOficial").hide();
     cargarReciboNoOficial(idComprobantesDePago);
-}
-
-// TODO: Visualizar recibo - No Oficial solo Saldo
-function visualizarReciboNoOficialSoloSaldo(idComprobantesDePago) {
-    $("#listarRecibos").hide();
-    $("#visualizarReciboOficial").hide();
-    $("#visualizarReciboNoOficial").hide();
-    $("#visualizarReciboSaldoOficial").hide();
-    $("#visualizarReciboSaldoNoOficial").show();
-    cargarReciboNoOficialSoloSaldo(idComprobantesDePago);
 }
 
 // TODO: boton Atras
@@ -53,7 +39,6 @@ function Atras() {
     $("#visualizarReciboOficial").hide();
     $("#visualizarReciboNoOficial").hide();
     $("#visualizarReciboSaldoOficial").hide();
-    $("#visualizarReciboSaldoNoOficial").hide();
     listarRecibos();
 }
 
@@ -300,13 +285,11 @@ function verReciboNoOficial(datosParaCargarRecibo) {
 
     $("#dosSubTotal").val(datosParaCargarRecibo["valorAlquiler"]);
 
-    $("#dosTotalDias").val(datosParaCargarRecibo["diasMora"]);
+
     $("#dosInteresPorMora").val(datosParaCargarRecibo["interesPorMora"]);
-    $("#dosOtrosConceptos").val(datosParaCargarRecibo["otrosConceptos"]);
-    $("#dosSaldoAnterior").val(datosParaCargarRecibo["saldoAnterior"]);
+
     $("#dosTotal").val(datosParaCargarRecibo["totalImporteAPagar"]);
-    $("#dosImporteRecibido").val(datosParaCargarRecibo["totalImporteRecibido"]);
-    $("#dosSaldoPendiente").val(datosParaCargarRecibo["saldoPendienteSinModificar"]);
+
 
 }
 
@@ -395,12 +378,13 @@ function verReciboNoOficialSoloSaldo(datosParaCargarRecibo) {
 }
 
 function printPdfReciboOficial() {
+    //let uriPage = EndpointsEnum.VOLVER_RECIBOS;
     var numeroComprobante = document.getElementById("unoNumeroComprobante").value;
 
-    var divHeight = $('#bodyReciboOficial').height();
-    var divWidth = $('#bodyReciboOficial').width();
+    var divHeight = $('#bodyReciboOficial1').height();
+    var divWidth = $('#bodyReciboOficial1').width();
     var ratio = divHeight / divWidth;
-    var body = document.getElementById('bodyReciboOficial');
+    var body = document.getElementById('bodyReciboOficial1');
     html2canvas(body)
         .then(function(canvas){
             document.body.appendChild(canvas);
@@ -410,18 +394,20 @@ function printPdfReciboOficial() {
             var width = doc.internal.pageSize.getWidth();
             var height = doc.internal.pageSize.getHeight();
             height = ratio * width;
-            doc.addImage(imgData, 'JPEG', 0, 10, width+30, height+50);
+            doc.addImage(imgData, 'JPEG', 0, 10, width+0, height+20);
             doc.save('ReciboOficial-' + numeroComprobante + '.pdf');
         });
+    //location.href = uriPage;
 }
 
 function printPdfReciboNoOficial() {
+    //let uriPage = EndpointsEnum.VOLVER_RECIBOS;
     var numeroComprobante = document.getElementById("dosNumeroComprobante").value;
 
-    var divHeight = $('#bodyReciboNoOficial').height();
-    var divWidth = $('#bodyReciboNoOficial').width();
+    var divHeight = $('#bodyReciboNoOficial1').height();
+    var divWidth = $('#bodyReciboNoOficial1').width();
     var ratio = divHeight / divWidth;
-    var body = document.getElementById('bodyReciboNoOficial');
+    var body = document.getElementById('bodyReciboNoOficial1');
     html2canvas(body)
         .then(function(canvas){
             document.body.appendChild(canvas);
@@ -431,18 +417,21 @@ function printPdfReciboNoOficial() {
             var width = doc.internal.pageSize.getWidth();
             var height = doc.internal.pageSize.getHeight();
             height = ratio * width;
-            doc.addImage(imgData, 'JPEG', 0, 10, width+30, height+50);
+            doc.addImage(imgData, 'JPEG', 0, 10, width+0, height+20);
             doc.save('ReciboNoOficial-' + numeroComprobante + '.pdf');
+            //location.href = uriPage;
         });
+
 }
 
 function printPdfReciboOficialSoloSaldo() {
+    //let uriPage = EndpointsEnum.VOLVER_RECIBOS;
     var numeroComprobante = document.getElementById("tresNumeroComprobante").value;
 
-    var divHeight = $('#bodyReciboOficialSoloSaldo').height();
-    var divWidth = $('#bodyReciboOficialSoloSaldo').width();
+    var divHeight = $('#bodyReciboOficialSoloSaldo1').height();
+    var divWidth = $('#bodyReciboOficialSoloSaldo1').width();
     var ratio = divHeight / divWidth;
-    var body = document.getElementById('bodyReciboOficialSoloSaldo');
+    var body = document.getElementById('bodyReciboOficialSoloSaldo1');
     html2canvas(body)
         .then(function(canvas){
             document.body.appendChild(canvas);
@@ -452,30 +441,10 @@ function printPdfReciboOficialSoloSaldo() {
             var width = doc.internal.pageSize.getWidth();
             var height = doc.internal.pageSize.getHeight();
             height = ratio * width;
-            doc.addImage(imgData, 'JPEG', 0, 10, width+30, height+50);
+            doc.addImage(imgData, 'JPEG', 0, 10, width+0, height+20);
             doc.save('ReciboOficialSoloSaldo-' + numeroComprobante + '.pdf');
         });
-}
-
-function printPdfReciboNoOficialSoloSaldo() {
-    var numeroComprobante = document.getElementById("cuatroNumeroComprobante").value;
-
-    var divHeight = $('#bodyReciboNoOficialSoloSaldo').height();
-    var divWidth = $('#bodyReciboNoOficialSoloSaldo').width();
-    var ratio = divHeight / divWidth;
-    var body = document.getElementById('bodyReciboNoOficialSoloSaldo');
-    html2canvas(body)
-        .then(function(canvas){
-            document.body.appendChild(canvas);
-            var imgData = canvas.toDataURL('image/png');
-
-            var doc = new jsPDF();
-            var width = doc.internal.pageSize.getWidth();
-            var height = doc.internal.pageSize.getHeight();
-            height = ratio * width;
-            doc.addImage(imgData, 'JPEG', 0, 10, width+10, height+40);
-            doc.save('ReciboNoOficialSoloSaldoNumero-' + numeroComprobante + '.pdf');
-        });
+    //location.href = uriPage;
 }
 
 

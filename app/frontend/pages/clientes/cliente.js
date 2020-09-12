@@ -29,11 +29,18 @@ function fillClienteGrid(jsonLocatarios) {
 }
 
 function buildRawFromCliente(cliente){
-    //cambiar formato fecha de AAAA-MM-DD a DD-MM-AAAA
+    // cambiar formato fecha de AAAA-MM-DD a DD-MM-AAAA
     let fe = cliente['fechaNacimiento'];
-    var fecha = new Date(fe);
-    var options = { day: 'numeric' , month: 'numeric', year: 'numeric'};
-    var fechaNac = fecha.toLocaleDateString("es-ES", options);
+    console.log("VER FECHAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+    console.log(fe);
+
+    let fecha = new Date(fe);
+
+    console.log("VER FECHAAAAAAAAAAAAAAAAAAAAAAAAAAAAA2222222222222222222222222");
+    console.log(fecha);
+    let options = { day: 'numeric', month: 'numeric', year: 'numeric'};
+    let fechaNac = fecha.toLocaleDateString("es-ES", fecha);
+
 
     let raw = "";
     raw += "<td style = 'text-align: center;'>" + cliente['nombres'] + "</td>";
@@ -55,7 +62,7 @@ function buildRawFromCliente(cliente){
     raw += "</td> ";
 
     raw += "<td style = 'text-align: center;'>";
-    raw += "<button class='miBoton-icon' title='Eliminar Cliente' onclick='showFormEdit(" + cliente['dni'] + ")'>" +
+    raw += "<button class='miBoton-icon' title='Eliminar Cliente' onclick='deleteCliente(" + cliente['dni'] + ")'>" +
         "<span class='glyphicon glyphicon-remove'></span>";
     raw += "</td> ";
 
@@ -98,22 +105,36 @@ function showFormAdd() {
     $("#locatarioEdit").hide();
     $("#clienteDetail").hide();
     $("#clienteList").hide();
+    clearCliente();
+}
+
+function clearCliente() {
+
+    document.getElementById('nombres').value = "";
+    document.getElementById('apellidos').value = "";
+    document.getElementById('dni').value = "";
+    document.getElementById('celular').value = "";
+    document.getElementById('email').value = "";
+    document.getElementById('fechaNacimiento').value = "";
+    // document.getElementById('fechaRegistro').value = "";
+    // document.getElementById('domicilioLegal').value = "";
+    document.getElementById('datosGarante').value = "";
 }
 
 function guardarCliente() {
 
-    var clienteNuevoParaGuardar = mapToJson($('#locatarioAdd').serializeArray());
+    var clienteNuevoParaGuardar = mapToJson($('#clienteAdd').serializeArray());
 
     console.log("Guardando locatario: ", clienteNuevoParaGuardar);
 
     let uri = EndpointsEnum.CLIENTE;
-    console.log("Llamando a controller cliente = " + uri);
+    let uriPage = EndpointsEnum.VOLVER_CLIENTES;
 
     var funcionAjax = $.ajax({
         url: uri,
         method: "POST",
         data: {
-            action: "guardarLocNuevo",
+            action: "guardarClienteNuevo",
             cliente: clienteNuevoParaGuardar
         }
     });
@@ -121,12 +142,13 @@ function guardarCliente() {
     funcionAjax.done(function (retorno) {
         console.debug("Done: ", retorno);
 
+
         if (retorno == "ERROR") {
-            location.href = uri;
+            location.href = uriPage;
             window.alert("El locatario que desea ingresar ya existe");
 
         } else{
-            location.href = uri;
+            location.href = uriPage;
         }
     });
 
@@ -175,8 +197,14 @@ function loadClienteDataEdit(dni) {
 }
 
 function fillFormEdit(cliente) {
-    var fecha = cliente["fechaNacimiento"];
-    var fechaNac=fecha.split(" ")[0].split("/").reverse().join("/");
+    let fecha = cliente["fechaNacimiento"];
+    let fechaNac = fecha.split(" ")[0].split("/").reverse().join("/");
+
+    // let fe = cliente['fechaNacimiento'];
+    // let fecha = new Date(fe);
+    // let options = { day: 'numeric' , month: 'numeric', year: 'numeric'};
+    // let fechaNac = fecha.toLocaleDateString("es-ES", options);
+
 
     $("#editNombres").val(cliente["nombres"]);
     $("#editApellidos").val(cliente["apellidos"]);
@@ -185,6 +213,8 @@ function fillFormEdit(cliente) {
     $("#editEmail").val(cliente["email"]);
     $("#editFechaNacimiento").val(fechaNac);
     $("#editDatosGarante").val(cliente["datosGarante"]);
+    $("#editDomicilioLegal").val(cliente["domicilioLegal"]);
+    console.log($("#editDomicilioLegal").val(cliente["domicilioLegal"]));
 }
 
 function guardarClienteEditado() {
@@ -194,7 +224,7 @@ function guardarClienteEditado() {
     console.log("Guardando cliente: ", clienteParaGuardar);
 
     let uri = EndpointsEnum.CLIENTE;
-    console.log("Llamando a controller cliente = " + uri);
+    let uriPage = EndpointsEnum.VOLVER_CLIENTES;
 
     var funcionAjax = $.ajax({
         url: uri,
@@ -206,7 +236,7 @@ function guardarClienteEditado() {
     });
 
     funcionAjax.done(function (retorno) {
-        location.href = uri;
+        location.href = uriPage;
     });
 
     funcionAjax.fail(function (retorno) {
@@ -346,4 +376,8 @@ function locatarioFilter(doneFunction, data) {
     funcionAjax.always(function (retorno) {
         console.log("always de promise clientes")
     });
+}
+
+function deleteCliente(dni) {
+
 }

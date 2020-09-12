@@ -1,6 +1,6 @@
 <body>
 <div class="container" id="visualizarReciboNoOficial">
-    <div id="bodyReciboNoOficial">
+    <div id="bodyReciboNoOficial1">
         <br>
         <div class="row">
             <!-- COLUMNA 1 -->
@@ -88,17 +88,17 @@
                 </div>
                 <!-- ID REGISTRO DE PAGO - ESTA OCULTO-->
                 <div class="col-md-1">
-                    <input type="text" class="inputTextLabel" name="dosIdRegistroPago"
+                    <input type="text" class="inputTextLabel inputOculto" name="dosIdRegistroPago"
                            id="dosIdRegistroPago" readonly="readonly">
                 </div>
                 <!-- ID CONTRATO - ESTA OCULTO-->
                 <div class="col-md-1">
-                    <input type="text" class="inputTextLabel" name="dosIdContrato"
+                    <input type="text" class="inputTextLabel inputOculto" name="dosIdContrato"
                            id="dosIdContrato" readonly="readonly">
                 </div>
                 <!-- TIPO COMPROBANTE - ESTA OCULTO-->
                 <div class="col-md-1">
-                    <input type="text" class="inputTextLabel " name="dosTipoComprobante"
+                    <input type="text" class="inputTextLabel inputOculto" name="dosTipoComprobante"
                            id="dosTipoComprobante" readonly="readonly">
                 </div>
                 <div class="col-md-1"></div>
@@ -109,7 +109,7 @@
             <div class="row">
                 <div class="col-md-1"></div>
                 <div class="col-md-11">
-                    <label class="labelSubtitulo">Conceptos de pago</label>
+                    <label class="labelSubtitulo">En concepto de pago</label>
                 </div>
             </div>
             <br>
@@ -143,40 +143,12 @@
             <!-- INTERES POR MORA-->
             <div class="row">
                 <div class="col-md-7"></div>
-                <div class="col-md-1">
-                    <label class="labelSubtituloNormal">Int. Dias</label>
-                </div>
-                <div class="col-md-1">
-                    <input type="text" class="inputTextLabel" name="dosTotalDias"
-                           id="dosTotalDias">
-                </div>
-                <div class="col-md-2">
-                    <input type="text" class="inputTextLabel" name="dosInteresPorMora"
-                           id="dosInteresPorMora">
-                </div>
-                <div class="col-md-1"></div>
-            </div>
-            <!-- OTROS CONCEPTOS-->
-            <div class="row">
-                <div class="col-md-7"></div>
                 <div class="col-md-2">
                     <label class="labelSubtituloNormal">Otros Conceptos</label>
                 </div>
                 <div class="col-md-2">
-                    <input type="text" class="inputTextLabel" name="dosOtrosConceptos"
-                           id="dosOtrosConceptos">
-                </div>
-                <div class="col-md-1"></div>
-            </div>
-            <!-- SALDO ANTERIOR-->
-            <div class="row">
-                <div class="col-md-7"></div>
-                <div class="col-md-2">
-                    <label class="labelSubtituloNormal">Saldo Anterior</label>
-                </div>
-                <div class="col-md-2">
-                    <input type="text" class="inputTextLabel" name="dosSaldoAnterior"
-                           id="dosSaldoAnterior">
+                    <input type="text" class="inputTextLabel" name="dosInteresPorMora"
+                           id="dosInteresPorMora">
                 </div>
                 <div class="col-md-1"></div>
             </div>
@@ -191,32 +163,6 @@
                            id="dosTotal" readonly="readonly">
                 </div>
                 <div class="col-md-1"></div>
-            </div>
-            <!-- IMPORTE RECIBIDO-->
-            <div class="row">
-                <div class="col-md-7"></div>
-                <div class="col-md-2">
-                    <label class="labelSubtitulo">Imp. Recibido</label>
-                </div>
-                <div class="col-md-2">
-                    <input type="text" class="inputTextLabel" name="dosImporteRecibido"
-                           id="dosImporteRecibido">
-                </div>
-                <div class="col-md-1"></div>
-            </div>
-            <br><br>
-
-            <!-- SALDO PENDIENTE-->
-            <div class="row">
-                <div class="col-md-1"></div>
-                <div class="col-md-2">
-                    <label class="labelSubtitulo">Saldo Pendiente</label>
-                </div>
-                <div class="col-md-2">
-                    <input type="text" class="inputTextLabel" name="dosSaldoPendiente"
-                           id="dosSaldoPendiente">
-                </div>
-                <div class="col-md-7"></div>
             </div>
 
         </div>

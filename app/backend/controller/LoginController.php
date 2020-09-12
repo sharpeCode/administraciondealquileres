@@ -19,28 +19,30 @@ switch ($action) {
 
 function validar($datosLogin){
 
-    if(isset($_SESSION['user'])) {
-
+    //if(isset($_SESSION['user'])) {
 
         $datosLoginObject = (object)$datosLogin;  // Si no casteo no lo paso de array a objeto y no lo puedo usar
         $dni = $datosLoginObject->dni;
         $pass = $datosLoginObject->password;
 
+
         if ($dni == "" || $pass == "") {
             echo "ERROR1";
         } else {
-            $datosUsuario = UserRepository::traerUsuarioPorDni($dni);
+            $datosUsuario = LoginRepositorio::findById($dni);
 
-            if ($datosUsuario != null) {
+            var_dump($datosUsuario) ;
+
+            if ($datosUsuario == true) {
                 echo json_encode($datosUsuario);
             } else {
-                echo "ERROR2"; //el usuario o contraseña son incorrectos
+                echo "ERROR2";
             }
         }
 
-    }else{
-        echo "ERROR3";
-    }
+    //}else{
+    //    echo "ERROR3";
+    //}
 }
 
 function ingresar($datosCorrectos){

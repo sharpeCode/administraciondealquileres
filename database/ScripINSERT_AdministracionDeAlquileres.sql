@@ -39,9 +39,6 @@ INSERT INTO `localidades` (`localidad`,`cp`,`id_provincia`) VALUES ('Lujan','670
 
 INSERT INTO `inmuebles` (`tipo`,`torre`,`piso`,`departamento`,`domicilio`,`id_localidad`) VALUES ('Particular','UNO','1','B','Sarmiento 2021',1);
 
-#INSERT INTO `contratos` (`fecha_inicio`,`fecha_fin`,`dni`,`id_inmueble`,`valor_alquiler_oficial`,`valor_alquiler_no_oficial`,`valor_deposito`,`gastos_administrativos`,`valor_expensas`,`cant_cuotas_deposito`,`fecha_pago_inicio`,`fecha_pago_fin`) 
-#                 VALUES ('2020-04-10','2022-04-10','22222','1','12000','3000','12000','3000','1700',3,1,10);
-
 INSERT INTO `meses` (`id_mes`,`mes_largo`,`mes_corto`) VALUES (1,'Enero','Ene');
 INSERT INTO `meses` (`id_mes`,`mes_largo`,`mes_corto`) VALUES (2,'Febrero','Feb');
 INSERT INTO `meses` (`id_mes`,`mes_largo`,`mes_corto`) VALUES (3,'Marzo','Mar');

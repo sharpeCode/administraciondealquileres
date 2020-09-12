@@ -1,12 +1,34 @@
 function validar() {
+
+    var datosLogin = mapToJson($('#formLogin').serializeArray());
+
+    console.log(datosLogin);
+
+    let dni = datosLogin['dni'];
+    let pass = datosLogin['password'];
+
+    let uri = EndpointsEnum.VOLVER_MENU_PRINCIPAL
+
+    if (dni =="Walter" && pass == 1234)
+    {
+        location.href = uri;
+    }
+    else
+    {
+        window.alert("Usuario/Contraseña incorrectos");
+    }
+
+    // if (datosLogin)
+    // {
+    //
+    // }
     // var datosLogin = mapToJson($('#formLogin').serializeArray());
     // console.log("recibiendo datos de logeo: ", datosLogin);
     //
     // let uri = EndpointsEnum.LOGIN;
-    // console.log("Volver al listado de inmuebles = " + uri);
-
-    let href = EndpointsEnum.VOLVER_MENU_PRINCIPAL;
-
+    //
+    // let href = EndpointsEnum.VOLVER_MENU_PRINCIPAL;
+    //
     // var funcionAjax = $.ajax({
     //     url: uri,
     //     method: "POST",
@@ -16,14 +38,16 @@ function validar() {
     //     }
     // });
     // funcionAjax.done(function (retorno) {
-    //     console.debug("Done: ", retorno);
-    //     if (retorno == "ERROR1"){
-    //         window.alert("los campos de dni y contraseña deben ser completados");
-    //     }else if (retorno == "ERROR2") {
-    //         window.alert("el dni o contraseña son incorrectos");
-    //     }else{
-             location.href = href;
-    //     }
+    //     console.log("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEe");
+    //     console.log(retorno);
+    //     // console.debug("Done: ", retorno);
+    //     // if (retorno == "ERROR1"){
+    //     //     window.alert("los campos de dni y contraseña deben ser completados");
+    //     // }else if (retorno == "ERROR2") {
+    //     //     window.alert("el dni o contraseña son incorrectos");
+    //     // }else{
+    //     //      location.href = href;
+    //     // }
     // });
     // funcionAjax.fail(function (retorno) {
     //     console.log("error al guardar user")

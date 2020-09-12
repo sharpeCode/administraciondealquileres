@@ -14,6 +14,5 @@ require_once 'listarRecibos.html';
 require_once 'visualizarReciboOficial.html';
 require_once 'visualizarReciboNoOficial.html';
 require_once 'visualizarReciboSaldoOficial.html';
-require_once 'visualizarReciboSaldoNoOficial.html';
 
 ?>

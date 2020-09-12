@@ -15,7 +15,7 @@ class BaseRepository
                 array(PDO::ATTR_EMULATE_PREPARES => false, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 	     //   --------------------------------------------------------------------------------------------------------
 	
-	     //  -- PARA LA CONEXION LOCAL
+//	       -- PARA LA CONEXION LOCAL
 //            $this->connection = new PDO('mysql:host=localhost;dbname=db_administracion_de_alquileres;charset=utf8',
 //                'root', '',
 //                array(PDO::ATTR_EMULATE_PREPARES => false, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));

@@ -451,6 +451,10 @@ function cargarComprobanteDePagoSoloSaldo($idRegistroDePago)
 function guardarComprobanteDePagoSoloSaldo()
 {
 
+    $Comprobante = ComprobanteDePagoRepositorio::buscarUltimoIdComprobanteDePago();
+    $id = $Comprobante->idComprobantesDePago;
+    $idComprobantesDePago = $id + 1;
+
     $numeroComprobante = $_POST['numeroComprobante'];
     $tipoComprobante = $_POST['tipoComprobante'];
     $tipoRecibo = $_POST['tipoRecibo'];
@@ -477,7 +481,7 @@ function guardarComprobanteDePagoSoloSaldo()
     $mes = MesRepositorio::buscarIdMes($nombreMes);
     $correspondienteMes = $mes->idMes;
 
-    $registroDePago = ComprobanteDePagoRepositorio::guardarComprobanteDePago($numeroComprobante, $tipoComprobante,
+    $registroDePago = ComprobanteDePagoRepositorio::guardarComprobanteDePago($idComprobantesDePago,$numeroComprobante, $tipoComprobante,
         $tipoRecibo, $idContrato, $idRegistroPago, $correspondienteMes, $correspondienteAnio, $alquilerMensual, $expensas,
         $gastosAdm, $deposito, $cuotas, $numCuota, $interesPorMora, $otrosConceptos, $saldoAnterior, $totalImporteAPagar,
         $totalImporteRecibido, $saldoPendiente, $saldoPendienteSinModificar);

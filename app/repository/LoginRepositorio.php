@@ -9,15 +9,13 @@ class LoginRepositorio
     {
         $user = null;
         try {
-            $sql = "SELECT nombre_completo nombreCompleto , dni, fecha_nacimiento, sexo, estatura, domicilio, localidad, cp, 
-                    provincia, celular, email, id_rol idRol, fecha_ingreso fechaIngreso, 
-                    password, fecha_registro, estado 
+            $sql = "SELECT dni, password 
                         FROM usuarios 
-                        WHERE id_usuario = $userId ";
+                        WHERE dni = $userId ";
 
             $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
             $sentencia->execute();
-            $user = $sentencia->fetchObject("Usuario");
+            $user = $sentencia->fetchObject("Login");
 
         } catch (PDOException $ex) {
             print 'ERROR' . $ex->getMessage();
