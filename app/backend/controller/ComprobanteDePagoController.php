@@ -63,6 +63,7 @@ switch ($action) {
 
 function cargarComprobanteDePago($idRegistroDePago)
 {
+    echo 'entro acaaaa ';
 
     // obtener registro de pago completo por el id
     $registroDePago = RegistroPagoRepositorio::buscarRegistroDePagoPorId($idRegistroDePago);
