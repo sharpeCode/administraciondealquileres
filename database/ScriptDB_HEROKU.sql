@@ -1,7 +1,7 @@
 USE heroku_0852b66c3d788ad;
 
 CREATE TABLE `heroku_0852b66c3d788ad`.`roles`(
-	`id_rol` INT NOT NULL AUTO_INCREMENT,
+	`id_rol` INT NOT NULL,
 	`rol` VARCHAR(15) NOT NULL,
 	PRIMARY KEY(`id_rol`)
 );
@@ -35,7 +35,7 @@ CREATE TABLE `heroku_0852b66c3d788ad`.`clientes`(
 );
 
 CREATE TABLE `heroku_0852b66c3d788ad`.`provincias`(
-	`id_provincia` INT NOT NULL AUTO_INCREMENT,
+	`id_provincia` INT NOT NULL,
 	`nombre` VARCHAR(30) NOT NULL,
 	PRIMARY KEY (`id_provincia`)
 );
@@ -62,7 +62,7 @@ CREATE TABLE `heroku_0852b66c3d788ad`.`inmuebles`(
 );
 
 CREATE TABLE `heroku_0852b66c3d788ad`.`variables`(
-	`id_variable` INT NOT NULL AUTO_INCREMENT,
+	`id_variable` INT NOT NULL,
 	`variable` VARCHAR(30),
 	PRIMARY KEY (`id_variable`)
 );
@@ -77,20 +77,20 @@ CREATE TABLE `heroku_0852b66c3d788ad`.`porcentaje_de_variables`(
 );
 
 CREATE TABLE `heroku_0852b66c3d788ad`.`meses`(
-	`id_mes` INT NOT NULL AUTO_INCREMENT,
+	`id_mes` INT NOT NULL,
 	`mes_largo` VARCHAR(10) NOT NULL,
 	`mes_corto` VARCHAR(3) NOT NULL,
 	PRIMARY KEY(`id_mes`)
 );
 
 CREATE TABLE `heroku_0852b66c3d788ad`.`anios`(
-	`id_anio` INT NOT NULL AUTO_INCREMENT,
+	`id_anio` INT NOT NULL,
 	`anio` INT NOT NULL,
 	PRIMARY KEY(`id_anio`)
 );
 
 CREATE TABLE `heroku_0852b66c3d788ad`.`contratos`(
-	`id_contrato` INT NOT NULL AUTO_INCREMENT,
+	`id_contrato` INT NOT NULL,
 	`fecha_inicio` DATETIME,
 	`fecha_fin` DATETIME,
 	`dni` VARCHAR(15) NOT NULL,
@@ -108,7 +108,7 @@ CREATE TABLE `heroku_0852b66c3d788ad`.`contratos`(
 );
 
 CREATE TABLE `heroku_0852b66c3d788ad`.`registros_de_pagos`(
-	`id_registro_de_pago` INT NOT NULL AUTO_INCREMENT,
+	`id_registro_de_pago` INT NOT NULL,
 	`id_comp_por_contrato` INT NOT NULL,
 	`id_contrato` INT NOT NULL,
 	`tipo_registro_de_pago` VARCHAR(10) NOT NULL,                         
@@ -127,7 +127,7 @@ CREATE TABLE `heroku_0852b66c3d788ad`.`registros_de_pagos`(
 );
 
 CREATE TABLE `heroku_0852b66c3d788ad`.`comprobantes_de_pagos`(
-	`id_comprobantes_de_pago` INT NOT NULL AUTO_INCREMENT,
+	`id_comprobantes_de_pago` INT NOT NULL,
 	`numero_comprobante` VARCHAR(5) NOT NULL,
 	`fecha_comprobante` DATE NOT NULL,
 	`tipo_comprobante_de_pago` VARCHAR(10) NOT NULL, 

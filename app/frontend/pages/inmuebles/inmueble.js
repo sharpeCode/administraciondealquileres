@@ -8,7 +8,7 @@ $(function () {
     CargarListadoInmueble();
 });
 
-// TODO: INMUEBLES
+// TODO: INMUEBLES PPAL
 function mostrarFormInmueblePpal() {
     $("#inmuebleList").show();
     $("#inmuebleAdd").hide();
@@ -22,24 +22,6 @@ function CargarListadoInmueble() {
             action: "listar"
         }
     );
-}
-
-function mostrarFormInmuebleAdd() {
-    $("#localidadAdd").hide();
-    $("#localidadList").hide();
-    $("#localidadEdit").hide();
-    $("#inmuebleAdd").show();
-    $("#inmuebleList").hide();
-    $("#inmuebleEdit").hide();
-    llenarSelectConLocalidades();
-}
-
-function mostrarFormInmuebleEditar(id) {
-    $("#inmuebleAdd").hide();
-    $("#inmuebleList").hide();
-    $("#inmuebleEdit").show();
-    llenarSelectConLocalidadesParaEditar();
-    loadInmuebleData(id);
 }
 
 function obtenerInmuebles(doneFunction, data) {
@@ -98,6 +80,18 @@ function construirFilaDeInmueble(inmueble) {
     return raw;
 }
 
+// TODO : INMUEBLE ADD
+
+function mostrarFormInmuebleAdd() {
+    $("#localidadAdd").hide();
+    $("#localidadEdit").hide();
+    $("#localidadList").hide();
+    $("#inmuebleAdd").show();
+    $("#inmuebleEdit").hide();
+    $("#inmuebleList").hide();
+    llenarSelectConLocalidades();
+}
+
 function llenarSelectConLocalidades() {
 
     let uri = EndpointsEnum.LOCALIDAD;
@@ -115,7 +109,7 @@ function llenarSelectConLocalidades() {
     });
 
     funcionAjax.fail(function (retorno) {
-        console.log("error al cargar select con alumnos")
+        console.log("Error al cargar Localidades")
     });
 
     funcionAjax.always(function (retorno) {
@@ -137,12 +131,6 @@ function fillDom(arrayLocalidad) {
     $("#idLocalidad").html(options);
 }
 
-function optionsLocalidad(localidad) {
-    let option = "";
-    option += "<option value=" + localidad['idLocalidad'] + ">" + localidad['localidad'] + "</option>";
-    return option;
-}
-
 function guardarInmueble() {
     var inmuebleNuevoParaGuardar = mapToJson($('#inmuebleAdd').serializeArray());
 
@@ -161,7 +149,7 @@ function guardarInmueble() {
 
     funcionAjax.done(function (retorno) {
         console.log(retorno);
-         location.href = href;
+        location.href = href;
     });
 
     funcionAjax.fail(function (retorno) {
@@ -172,6 +160,58 @@ function guardarInmueble() {
         console.log("volvi de guardar el user")
     });
     console.log("Fin llamada controller usuario");
+}
+
+// TODO : INMUEBLE EDIT
+
+function mostrarFormInmuebleEditar(id) {
+    $("#localidadAdd").hide();
+    $("#localidadEdit").hide();
+    $("#localidadList").hide();
+    $("#inmuebleAdd").hide();
+    $("#inmuebleEdit").show();
+    $("#inmuebleList").hide();
+    llenarSelectConLocalidadesParaEditar();
+    loadInmuebleData(id);
+}
+
+function llenarSelectConLocalidadesParaEditar() {
+
+    let uri = EndpointsEnum.LOCALIDAD;
+
+    var funcionAjax = $.ajax({
+        url: uri,
+        method: "POST",
+        data: {
+            action: "listarLocalidades"
+        }
+    });
+
+    funcionAjax.done(function (retorno) {
+        fillDomEdit(retorno);
+    });
+
+    funcionAjax.fail(function (retorno) {
+        console.log("Error al cargar Localidades")
+    });
+}
+
+function fillDomEdit(arrayLocalidad) {
+    arrayLocalidad = JSON.parse(arrayLocalidad);
+
+    let options = "";
+
+    for (var i = 0, l = arrayLocalidad.length; i < l; i++) {
+        options += optionsLocalidad(arrayLocalidad[i]);
+    }
+    $("#editIdlocalidad").html(options);
+
+}
+
+function optionsLocalidad(localidad) {
+    let option = "";
+    option += "<option value=" + localidad['idLocalidad'] + ">" + localidad['localidad'] + "</option>";
+    return option;
 }
 
 function loadInmuebleData(id) {
@@ -204,39 +244,6 @@ function fillEditionForm(inmueble) {
     $("#editDepartamento").val(inmueble["departamento"]);
     $("#editDomicilio").val(inmueble["domicilio"]);
     $("#editIdlocalidad").val(inmueble["idLocalidad"]);
-}
-
-function llenarSelectConLocalidadesParaEditar() {
-
-    let uri = EndpointsEnum.LOCALIDAD;
-
-    var funcionAjax = $.ajax({
-        url: uri,
-        method: "POST",
-        data: {
-            action: "listar"
-        }
-    });
-
-    funcionAjax.done(function (retorno) {
-        fillDomEdit(retorno);
-    });
-
-    funcionAjax.fail(function (retorno) {
-        console.log("error al cargar select con alumnos")
-    });
-}
-
-function fillDomEdit(arrayLocalidad) {
-    arrayLocalidad = JSON.parse(arrayLocalidad);
-
-    let options = "";
-
-    for (var i = 0, l = arrayLocalidad.length; i < l; i++) {
-        options += optionsLocalidad(arrayLocalidad[i]);
-    }
-    $("#editIdlocalidad").html(options);
-
 }
 
 function guardarInmuebleEditado() {
@@ -272,10 +279,7 @@ function guardarInmuebleEditado() {
     console.log("Fin llamada controller usuario");
 }
 
-
-// TODO: LOCALIDADES
-
-// TODO: MOSTRAR FORMULARIO QUE LISTA LAS LOCALIDADES
+// TODO: LOCALIDAD PPAL
 function mostrarFormLocalidadPpal() {
      $("#inmuebleList").hide();
      $("#inmuebleAdd").hide();
@@ -289,7 +293,7 @@ function mostrarFormLocalidadPpal() {
 function loadLocalidadesGrid() {
     getAllLocalidades(fillLocalidadesGrid,
         {
-            action: "listar",
+            action: "listarLocalidades",
         }
     );
 }
@@ -354,14 +358,14 @@ function buildRawFromLocalidades(loc) {
 }
 
 
-// TODO: MOSTRAR FORMULARIO DE ALTA DE LOCALIDAD
+// TODO: LOCALIDAD ADD
 function mostrarFormLocalidadAdd() {
-    $("#inmuebleAdd").hide();
     $("#inmuebleList").hide();
+    $("#inmuebleAdd").hide();
     $("#inmuebleEdit").hide();
     $("#localidadList").hide();
-    $("#localidadEdit").hide();
     $("#localidadAdd").show();
+    $("#localidadEdit").hide();
     llenarSelectConProvincias();
 }
 
