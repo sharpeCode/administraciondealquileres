@@ -8,9 +8,8 @@ class ClienteRepository
     {
         $locatarios = null;
         try {
-            $sql = "SELECT nombres, apellidos, dni, celular, email, fecha_nacimiento as fechaNacimiento, 
-                    fecha_registro as fechaRegistro,datos_garante as datosGarante, estado
-                        FROM clientes WHERE estado = '1' ORDER by fecha_registro DESC";
+            $sql = "SELECT nombres, apellidos, dni, celular, email, fecha_nacimiento as fechaNacimiento, datos_garante as datosGarante, estado
+                        FROM clientes WHERE estado = '1'";
 
             $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
             $sentencia->execute();
@@ -29,8 +28,7 @@ class ClienteRepository
         $estado = "1";
         try {
 
-            $sql = "INSERT INTO clientes (dni, nombres, apellidos, celular, email, fecha_registro, fecha_nacimiento, 
-                    datos_garante, domicilio_legal, estado)
+            $sql = "INSERT INTO clientes (dni, nombres, apellidos, celular, email, fecha_registro, fecha_nacimiento, datos_garante, domicilio_legal, estado)
                     VALUES(:dni, :nombres, :apellidos, :celular, :email, NOW(), :fecha_nacimiento, :datos_garante, :domicilio_legal,:estado)";
 
             $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
@@ -189,28 +187,6 @@ class ClienteRepository
             $sentencia->bindParam(':fecha_nacimiento', $clienteObject->editFechaNacimiento, PDO::PARAM_INT);
             $sentencia->bindParam(':datos_garante', $clienteObject->editDatosGarante, PDO::PARAM_STR);
             $sentencia->bindParam(':domicilio_legal', $clienteObject->editDomicilioLegal, PDO::PARAM_STR);
-            $sentencia->bindParam(':estado',$estado , PDO::PARAM_STR);
-
-            $sentencia->execute();
-            $cliente = $sentencia->fetchObject("Cliente");
-
-        } catch (PDOException $ex) {
-            $cliente = null;
-        }
-        return $cliente;
-
-    }
-
-    public static function eliminarCliente($dni)
-    {
-        $cliente = null;
-        $estado = "0";
-        try {
-
-            $sql = "UPDATE clientes SET estado=:estado
-                    WHERE dni = '$dni'";
-
-            $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
             $sentencia->bindParam(':estado',$estado , PDO::PARAM_STR);
 
             $sentencia->execute();
