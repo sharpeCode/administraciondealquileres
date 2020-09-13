@@ -25,14 +25,13 @@ function CargarListadoInmueble() {
 }
 
 function mostrarFormInmuebleAdd() {
-    // $("#localidadAdd").hide();
-    // $("#localidadList").hide();
-    // $("#localidadEdit").hide();
-    // $("#inmuebleAdd").show();
-    // $("#inmuebleList").hide();
-    // $("#inmuebleEdit").hide();
-    //llenarSelectConLocalidades();
-    console.log("HOLAAA");
+    $("#localidadAdd").hide();
+    $("#localidadList").hide();
+    $("#localidadEdit").hide();
+    $("#inmuebleAdd").show();
+    $("#inmuebleList").hide();
+    $("#inmuebleEdit").hide();
+    llenarSelectConLocalidades();
 }
 
 function mostrarFormInmuebleEditar(id) {
