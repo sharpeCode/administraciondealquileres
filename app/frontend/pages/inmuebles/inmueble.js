@@ -31,7 +31,7 @@ function mostrarFormInmuebleAdd() {
     $("#inmuebleAdd").show();
     $("#inmuebleList").hide();
     $("#inmuebleEdit").hide();
-    llenarSelectConLocalidades();
+    //llenarSelectConLocalidades();
 }
 
 function mostrarFormInmuebleEditar(id) {
@@ -106,7 +106,7 @@ function llenarSelectConLocalidades() {
         url: uri,
         method: "POST",
         data: {
-            action: "listar"
+            action: "listarLocalidades"
         }
     });
 
