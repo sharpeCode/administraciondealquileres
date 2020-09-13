@@ -916,7 +916,7 @@ function llenarInputsRecibo(idRegistroDePago,ban) {
     });
 
     funcionAjax.done(function (retorno) {
-        console.debug("Done: ", retorno);
+        //console.debug("Done: ", retorno);
         cargarDatosEnRecibo(JSON.parse(retorno),ban);
     });
 
