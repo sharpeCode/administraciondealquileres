@@ -50,7 +50,6 @@ function obtenerInmuebles(doneFunction, data) {
     data = data === undefined ? {action: "obtenerInmuebles"} : data;
 
     let uri = EndpointsEnum.INMUEBLE;
-    console.log("Llamando a controller Inmueble = " + uri);
 
     var funcionAjax = $.ajax({
         url: uri,
@@ -102,7 +101,6 @@ function construirFilaDeInmueble(inmueble) {
 function llenarSelectConLocalidades() {
 
     let uri = EndpointsEnum.LOCALIDAD;
-    console.log("Llamando a controller Localidad = " + uri);
 
     var funcionAjax = $.ajax({
         url: uri,
