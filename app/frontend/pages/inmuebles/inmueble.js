@@ -147,7 +147,6 @@ function guardarInmueble() {
     var inmuebleNuevoParaGuardar = mapToJson($('#inmuebleAdd').serializeArray());
 
     let uri = EndpointsEnum.INMUEBLE;
-    console.log("Llamando a controller Inmueble = " + uri);
     let href = EndpointsEnum.VOLVER_INMUEBLES;
 
 
@@ -178,7 +177,6 @@ function guardarInmueble() {
 function loadInmuebleData(id) {
 
     let uri = EndpointsEnum.INMUEBLE;
-    console.log("Llamando a controller Inmueble = " + uri);
 
     var funcionAjax = $.ajax({
         url: uri,
@@ -211,7 +209,6 @@ function fillEditionForm(inmueble) {
 function llenarSelectConLocalidadesParaEditar() {
 
     let uri = EndpointsEnum.LOCALIDAD;
-    console.log("Llamando a controller Localidad = " + uri);
 
     var funcionAjax = $.ajax({
         url: uri,
@@ -232,7 +229,7 @@ function llenarSelectConLocalidadesParaEditar() {
 
 function fillDomEdit(arrayLocalidad) {
     arrayLocalidad = JSON.parse(arrayLocalidad);
-    console.log(arrayLocalidad);
+
     let options = "";
 
     for (var i = 0, l = arrayLocalidad.length; i < l; i++) {
@@ -247,7 +244,7 @@ function guardarInmuebleEditado() {
     var inmuebleEditado = mapToJson($('#inmuebleEdit').serializeArray());
 
     let uri = EndpointsEnum.INMUEBLE;
-    console.log("Llamando a controller Inmueble = " + uri);
+
     let href = EndpointsEnum.VOLVER_INMUEBLES;
 
     var funcionAjax = $.ajax({
@@ -273,39 +270,6 @@ function guardarInmuebleEditado() {
         console.log("volvi de guardar el user")
     });
     console.log("Fin llamada controller usuario");
-}
-
-function demoFromHTML() {
-    // var doc = new jsPDF();
-    // doc.text(20, 20, 'Sharp Code COMPANY!');
-    // doc.text(20, 30, 'Esto de imprimir en pdf es una cagada');
-    //
-    //
-    // doc.setLineWidth(0.9);
-    // doc.line(20, 25, 200, 25);
-    // doc.setDrawColor(255,40,40); // draw red lines
-    //
-    //
-    // doc.save('Recibo.pdf');
-
-    var doc = new jsPDF();
-    var elementHTML = $('#InmueblePDF').html();
-    var specialElementHandlers = {
-        '#elementH': function (element, renderer) {
-            return true;
-        }
-    };
-    doc.fromHTML(elementHTML, 15, 15, {
-        'width': 170,
-        'elementHandlers': specialElementHandlers
-    });
-
-    doc.setLineWidth(0.9);
-    doc.line(20, 25, 200, 25);
-
-// Save the PDF
-    doc.save('sample-document.pdf');
-
 }
 
 
@@ -338,7 +302,6 @@ function getAllLocalidades(doneFunction, data) {
     data = data === undefined ? {action: "getAll"} : data;
 
     let uri = EndpointsEnum.LOCALIDAD;
-    console.log("Llamando a controller Localidad = " + uri);
 
     let funcionAjax = $.ajax({
         url: uri,
@@ -360,7 +323,7 @@ function getAllLocalidades(doneFunction, data) {
 function fillLocalidadesGrid(jsonLocalidades) {
 
     jsonLocalidades = JSON.parse(jsonLocalidades);
-    console.log(jsonLocalidades);
+
     let tableRaws = "";
 
     for (var i = 0, l = jsonLocalidades.length; i < l; i++) {
@@ -405,7 +368,6 @@ function mostrarFormLocalidadAdd() {
 function llenarSelectConProvincias() {
 
     let uri = EndpointsEnum.LOCALIDAD;
-    console.log("Llamando a controller Localidad = " + uri);
 
     var funcionAjax = $.ajax({
         url: uri,
@@ -432,7 +394,6 @@ function llenarSelectConProvincias() {
 
 function fillDomProvincia(arrayProvincia) {
 
-    console.log(arrayProvincia);
     arrayProvincia = JSON.parse(arrayProvincia);
     let options = "";
 
@@ -452,7 +413,6 @@ function optionsProvincia(provincia) {
     let option = "";
     option += "<option value='" + provincia['idProvincia'] + "'>" + provincia['nombre'] + "</option>";
     return option;
-
 }
 
 function guardarLocalidad() {
@@ -460,9 +420,7 @@ function guardarLocalidad() {
     var guardarLocalidad = mapToJson($('#localidadAdd').serializeArray()); //obtener el varlos de todos los input
 
     let uri = EndpointsEnum.LOCALIDAD;
-    console.log("Llamando a controller Localidad = " + uri);
 
-    console.log("Guardando localidad: ", guardarLocalidad);
     var funcionAjax = $.ajax({
         url: uri,
         method: "POST",
@@ -538,7 +496,6 @@ function fillDomEditProvincia(arrayProvincia) {
 function cargarLocalidadParaEditar(idLocalidad) {
 
     let uri = EndpointsEnum.LOCALIDAD;
-    console.log("Llamando a controller Localidad = " + uri);
 
     var funcionAjax = $.ajax({
         url: uri,
@@ -571,9 +528,7 @@ function guardarLocalidadEditada() {
     var localidadEditadaParaGuardar = mapToJson($('#localidadEdit').serializeArray());
 
     let uri = EndpointsEnum.LOCALIDAD;
-    console.log("Llamando a controller Localidad = " + uri);
 
-    console.log(localidadEditadaParaGuardar);
     var funcionAjax = $.ajax({
         url: uri,
         method: "POST",
