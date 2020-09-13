@@ -167,6 +167,11 @@ class ContratoRepositorio
             $sentencia->execute();
             $contrato = $sentencia->fetchObject("Contrato");
 
+//            $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
+//            $sentencia->execute();
+//            $contrato = $sentencia->fetch(int|null);
+
+
         } catch (PDOException $ex) {
             print 'ERROR' . $ex->getMessage();
             $contrato = null;

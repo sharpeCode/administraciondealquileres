@@ -6,7 +6,6 @@ $(function () {
     $("#localidadAdd").hide();
     $("#localidadEdit").hide();
     CargarListadoInmueble();
-	
 });
 
 // TODO: INMUEBLES PPAL

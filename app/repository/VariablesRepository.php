@@ -69,7 +69,7 @@ class VariablesRepository
         return $inm;
     }
 
-    public static function getVariablesId($id)
+    public static function getVariablesId($nombreVariable)
     {
         $variableInteresPorDia = null;
         try {
@@ -78,7 +78,7 @@ class VariablesRepository
                     FROM porcentaje_de_variables as P
                     INNER JOIN variables as V 
                     ON P.id_variable = V.id_variable
-                    WHERE P.id_variable = $id
+                    WHERE V.variable = '$nombreVariable'
                     ORDER BY fecha_ingreso DESC LIMIT 1";
 
             $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);

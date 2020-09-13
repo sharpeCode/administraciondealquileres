@@ -109,8 +109,8 @@ function cargarComprobanteDePago($idRegistroDePago)
     }
 
     //traer el ultimo aumneto agregado para la variable vencimiento x dia de atraso
-    $id = 3; //el id 3 es --> Interes x vencimiento
-    $variableAumentoPorDia = VariablesRepository::getVariablesId($id);
+    $nombreVariable = "Interés x vencimiento"; //el id 3 es --> Interes x vencimiento
+    $variableAumentoPorDia = VariablesRepository::getVariablesId($nombreVariable);
     $porcAumento = (int)$variableAumentoPorDia->porcentaje;
     $alquiler = (int)$registroDePago->valorAlquiler;
     $valorInteresPorDia = ($alquiler * $porcAumento) / 100; //valor interes x dia en pesos
