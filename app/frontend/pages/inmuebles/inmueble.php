@@ -14,4 +14,5 @@ require_once 'inmuebleEdit.html';
 require_once 'localidadList.html';
 require_once 'localidadAdd.html';
 require_once 'localidadEdit.html';
+require_once 'inmuebleAgregar.html';
 ?>

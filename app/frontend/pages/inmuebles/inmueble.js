@@ -5,6 +5,7 @@ $(function () {
     $("#localidadList").hide();
     $("#localidadAdd").hide();
     $("#localidadEdit").hide();
+    $("#inmuebleAgregar").hide();
     CargarListadoInmueble();
 });
 
@@ -13,6 +14,7 @@ function mostrarFormInmueblePpal() {
     $("#inmuebleList").show();
     $("#inmuebleAdd").hide();
     $("#inmuebleEdit").hide();
+    $("#inmuebleAgregar").hide();
     CargarListadoInmueble();
 }
 
@@ -86,7 +88,9 @@ function mostrarFormInmuebleAdd() {
     $("#localidadAdd").hide();
     $("#localidadEdit").hide();
     $("#localidadList").hide();
-    $("#inmuebleAdd").show();
+
+    $("#inmuebleAgregar").show();
+    $("#inmuebleAdd").hide();
     $("#inmuebleEdit").hide();
     $("#inmuebleList").hide();
     //llenarSelectConLocalidades();
@@ -171,6 +175,7 @@ function mostrarFormInmuebleEditar(id) {
     $("#inmuebleAdd").hide();
     $("#inmuebleEdit").show();
     $("#inmuebleList").hide();
+    $("#inmuebleAgregar").hide();
     llenarSelectConLocalidadesParaEditar();
     loadInmuebleData(id);
 }
@@ -287,6 +292,7 @@ function mostrarFormLocalidadPpal() {
      $("#localidadList").show();
      $("#localidadAdd").hide();
      $("#localidadEdit").hide();
+    $("#inmuebleAgregar").hide();
      loadLocalidadesGrid();
 }
 
@@ -366,6 +372,7 @@ function mostrarFormLocalidadAdd() {
     $("#localidadList").hide();
     $("#localidadAdd").show();
     $("#localidadEdit").hide();
+    $("#inmuebleAgregar").hide();
     cargarIdLocalidad();
     llenarSelectConProvincias();
 }
@@ -478,6 +485,7 @@ function mostrarFormLocalidadEditar(idLocalidad) {
     $("#localidadAdd").hide();
     $("#localidadList").hide();
     $("#localidadEdit").show();
+    $("#inmuebleAgregar").hide();
     llenarSelectConProvinciasParaEditar();
     cargarLocalidadParaEditar(idLocalidad);
 }
