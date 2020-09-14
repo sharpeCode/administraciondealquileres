@@ -59,7 +59,6 @@ function llenarTablaVariables(jsonUsers) {
 function construirFilaDeVariable(PorcentajeDeVariable) {
 
     let raw = "";
-    raw += "<td style = 'text-align: center;word-wrap: break-word;'>" + PorcentajeDeVariable['id'] + "</td>";
     raw += "<td style = 'word-wrap: break-word;'>" + PorcentajeDeVariable['variable'] + "</td>";
     raw += "<td style = 'word-wrap: break-word;'>" + PorcentajeDeVariable['porcentaje'] + "</td>";
     raw += "<td style = 'word-wrap: break-word;'>" + PorcentajeDeVariable['fecha'] + "</td>";
@@ -83,7 +82,7 @@ function llenarSelectConVariables() {
         url: uri,
         method: "POST",
         data: {
-            action: "listarVariables"
+            action: "cargarSelectConVariables"
         }
     });
 

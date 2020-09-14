@@ -11,6 +11,9 @@ switch ($action) {
     case "listarVariables":
         getAllVariables();
         break;
+    case "cargarSelectConVariables":
+        getVariables();
+        break;
     case "guardarVariableNuevo":
         guardarVariableNuevo();
         break;
@@ -23,6 +26,12 @@ function getAllVariables()
 {
     $porcentajeDeVariable = VariablesRepository::getAllVariables();
     echo json_encode($porcentajeDeVariable);
+}
+
+function getVariables()
+{
+    $variable = VariablesRepository::getVariables();
+    echo json_encode($variable);
 }
 
 function guardarVariableNuevo()
