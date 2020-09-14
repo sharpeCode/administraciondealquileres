@@ -13,11 +13,11 @@
 }
 
 .fondoBody{
-    background-image: url("../../resources/images/fondoHome2.jpg");
-    background-repeat: no-repeat;
-    background-position: center center;
+    background-image: url("../../resources/images/fondoHome.png");
+    /*background-repeat: no-repeat;*/
+    /*background-position: center center;*/
     background-size: cover;
-
+    overflow: hidden;
 }
 
 .boton-1{
@@ -28,6 +28,6 @@
 
 .fuentePie{
     font: bold 100% sans-serif;
-    margin: 20px;
+    margin: 10px;
 }
 
