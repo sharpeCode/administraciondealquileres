@@ -90,10 +90,10 @@ function mostrarFormInmuebleAdd() {
    // $("#localidadEdit").hide();
    // $("#localidadList").hide();
 
-    $("#inmuebleAgregar").show();
+    //$("#inmuebleAgregar").show();
    // $("#inmuebleAdd").hide();
    // $("#inmuebleEdit").hide();
-    $("#inmuebleList").hide();
+    $("#inmuebleList").show();
     //llenarSelectConLocalidades();
 }
 
