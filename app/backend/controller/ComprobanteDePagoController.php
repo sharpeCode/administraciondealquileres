@@ -62,8 +62,6 @@ switch ($action) {
 
 function cargarComprobanteDePago($idRegistroDePago)
 {
-
-
       // obtener registro de pago completo por el id
     $registroDePago = RegistroPagoRepositorio::buscarRegistroDePagoPorId($idRegistroDePago);
 
@@ -163,10 +161,10 @@ function cargarComprobanteDePago($idRegistroDePago)
         $interesPorMora = $valorInteresPorDia * $diasAtrasado;
     }
 
-     //VERIFICAR ULTIMO NUMERO DE COMPROBANTE PARA CARGAR EL SIGUIENTE
+    //VERIFICAR ULTIMO NUMERO DE COMPROBANTE PARA CARGAR EL SIGUIENTE
     $tipo = $registroDePago->tipoRegistroDePago;
     $ultimoNumComprobante = ComprobanteDePagoRepositorio::mostrarUltimoComprobanteCargado($tipo);
-    
+
 
     $ultimoNumInt = (int)$ultimoNumComprobante->numeroComprobante;
 
@@ -178,75 +176,77 @@ function cargarComprobanteDePago($idRegistroDePago)
     $idContrato = $registroDePago->idContrato;
     $saldos = ComprobanteDePagoRepositorio::sumarSaldosPendientesAnteriores($idContrato, $tipo);
     var_dump($saldos);
-//
-//
-//    if ($saldos->saldoPendiente == "" or $saldos->saldoPendiente == null) {
-//        $saldoAnterior = 0;
-//    } else {
-//        $saldoAnterior = (int)$saldos->saldoPendiente;
-//    }
-//
-//    $v_alquiler = (int)$registroDePago->valorAlquiler;
-//    $v_expensas = (int)$registroDePago->valorExpensas;
-//    $v_gastosAdm = (int)$registroDePago->gastosAdministrativos;
-//    $v_deposito = (int)$registroDePago->valorDeposito;
-//
-//    $subTotal = $v_alquiler + $v_expensas + $v_gastosAdm + $v_deposito;
-//
-//
-//    $v_intPorMora = (int)$interesPorMora;
-//    $v_saldoAnterior = (int)$saldoAnterior;
-//
-//    $total = $subTotal + $v_intPorMora + $v_saldoAnterior;
-//
-//
-//    //CARGO OBJETO PARA PASAR
-//    $CompDePagoConMora = new ArmadoRegistroPagoParaConfeccionar();
-//
-//
-//    $CompDePagoConMora->numeroComprobante = $numeroComprobante;
-//
-//    $CompDePagoConMora->idRegistroDePago = $idRegistroDePago;
-//    $CompDePagoConMora->idContrato = $idContrato;
-//    $CompDePagoConMora->tipoRegistroDePago = $registroDePago->tipoRegistroDePago;
-//
-//    $CompDePagoConMora->correspondienteMes = $registroDePago->correspondienteMes;
-//    $CompDePagoConMora->correspondienteAnio = $registroDePago->correspondienteAnio;
-//
-//    $CompDePagoConMora->valorAlquiler = $registroDePago->valorAlquiler;
-//    $CompDePagoConMora->valorDeposito = $registroDePago->valorDeposito;
-//    $CompDePagoConMora->gastosAdministrativos = $registroDePago->gastosAdministrativos;
-//    $CompDePagoConMora->valorExpensas = $registroDePago->valorExpensas;
-//    $CompDePagoConMora->cantCuotasDeposito = $registroDePago->cantCuotasDeposito;
-//    $CompDePagoConMora->numCuotaAPagar = $registroDePago->numCuotaAPagar;
-//
-//    $CompDePagoConMora->subTotal = $subTotal;
-//    $CompDePagoConMora->interesPorMora = $interesPorMora;
-//    $CompDePagoConMora->diasMora = $diasAtrasado;
-//    $CompDePagoConMora->otrosConceptos = 0;
-//    $CompDePagoConMora->saldoAnterior = $saldoAnterior;
-//    $CompDePagoConMora->totalImporteAPagar = $total;
-//    $CompDePagoConMora->totalImporteRecibido = 0;
-//    $CompDePagoConMora->saldoPendiente = $total - $CompDePagoConMora->totalImporteRecibido;
-//
-//    $CompDePagoConMora->recibo = $registroDePago->recibo;
-//    $CompDePagoConMora->mesLargo = $registroDePago->mesLargo;
-//    $CompDePagoConMora->mesCorto = $registroDePago->mesCorto;
-//    $CompDePagoConMora->dni = $registroDePago->dni;
-//    $CompDePagoConMora->idInmueble = $registroDePago->idInmueble;
-//    $CompDePagoConMora->nombres = $registroDePago->nombres;
-//    $CompDePagoConMora->apellidos = $registroDePago->apellidos;
-//    $CompDePagoConMora->tipo = $registroDePago->tipo;  //particular - comercial
-//    $CompDePagoConMora->torre = $registroDePago->torre;
-//    $CompDePagoConMora->piso = $registroDePago->piso;
-//    $CompDePagoConMora->departamento = $registroDePago->departamento;
-//    $CompDePagoConMora->domicilio = $registroDePago->domicilio;
-//    $CompDePagoConMora->localidad = $registroDePago->localidad;
-//    $CompDePagoConMora->cp = $registroDePago->cp;
-//    $CompDePagoConMora->nombrePais = $registroDePago->nombre;
-//
-//
-//    echo json_encode($CompDePagoConMora);
+
+
+    if ($saldos->saldoPendiente == "" or $saldos->saldoPendiente == null) {
+        $saldoAnterior = 0;
+    } else {
+        $saldoAnterior = (int)$saldos->saldoPendiente;
+    }
+
+    $v_alquiler = (int)$registroDePago->valorAlquiler;
+    $v_expensas = (int)$registroDePago->valorExpensas;
+    $v_gastosAdm = (int)$registroDePago->gastosAdministrativos;
+    $v_deposito = (int)$registroDePago->valorDeposito;
+
+    $subTotal = $v_alquiler + $v_expensas + $v_gastosAdm + $v_deposito;
+
+
+    $v_intPorMora = (int)$interesPorMora;
+    $v_saldoAnterior = (int)$saldoAnterior;
+
+    $total = $subTotal + $v_intPorMora + $v_saldoAnterior;
+
+
+    //CARGO OBJETO PARA PASAR
+    $CompDePagoConMora = new ArmadoRegistroPagoParaConfeccionar();
+
+
+    $CompDePagoConMora->numeroComprobante = $numeroComprobante;
+
+    $CompDePagoConMora->idRegistroDePago = $idRegistroDePago;
+    $CompDePagoConMora->idContrato = $idContrato;
+    $CompDePagoConMora->tipoRegistroDePago = $registroDePago->tipoRegistroDePago;
+
+    $CompDePagoConMora->correspondienteMes = $registroDePago->correspondienteMes;
+    $CompDePagoConMora->correspondienteAnio = $registroDePago->correspondienteAnio;
+
+    $CompDePagoConMora->valorAlquiler = $registroDePago->valorAlquiler;
+    $CompDePagoConMora->valorDeposito = $registroDePago->valorDeposito;
+    $CompDePagoConMora->gastosAdministrativos = $registroDePago->gastosAdministrativos;
+    $CompDePagoConMora->valorExpensas = $registroDePago->valorExpensas;
+    $CompDePagoConMora->cantCuotasDeposito = $registroDePago->cantCuotasDeposito;
+    $CompDePagoConMora->numCuotaAPagar = $registroDePago->numCuotaAPagar;
+
+    $CompDePagoConMora->subTotal = $subTotal;
+    $CompDePagoConMora->interesPorMora = $interesPorMora;
+    $CompDePagoConMora->diasMora = $diasAtrasado;
+    $CompDePagoConMora->otrosConceptos = 0;
+    $CompDePagoConMora->saldoAnterior = $saldoAnterior;
+    $CompDePagoConMora->totalImporteAPagar = $total;
+    $CompDePagoConMora->totalImporteRecibido = 0;
+    $CompDePagoConMora->saldoPendiente = $total - $CompDePagoConMora->totalImporteRecibido;
+
+    $CompDePagoConMora->recibo = $registroDePago->recibo;
+    $CompDePagoConMora->mesLargo = $registroDePago->mesLargo;
+    $CompDePagoConMora->mesCorto = $registroDePago->mesCorto;
+    $CompDePagoConMora->dni = $registroDePago->dni;
+    $CompDePagoConMora->idInmueble = $registroDePago->idInmueble;
+    $CompDePagoConMora->nombres = $registroDePago->nombres;
+    $CompDePagoConMora->apellidos = $registroDePago->apellidos;
+    $CompDePagoConMora->tipo = $registroDePago->tipo;  //particular - comercial
+    $CompDePagoConMora->torre = $registroDePago->torre;
+    $CompDePagoConMora->piso = $registroDePago->piso;
+    $CompDePagoConMora->departamento = $registroDePago->departamento;
+    $CompDePagoConMora->domicilio = $registroDePago->domicilio;
+    $CompDePagoConMora->localidad = $registroDePago->localidad;
+    $CompDePagoConMora->cp = $registroDePago->cp;
+    $CompDePagoConMora->nombrePais = $registroDePago->nombre;
+
+
+    echo json_encode($CompDePagoConMora);
+
+   
 }
 
 function sumarSaldoAnteriores($idRegistroDePago){
