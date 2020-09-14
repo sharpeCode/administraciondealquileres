@@ -240,7 +240,8 @@ function cargarComprobanteDePago($idRegistroDePago)
     $CompDePagoConMora->nombrePais = $registroDePago->nombre;
 
 
-    echo json_encode($CompDePagoConMora);
+    //echo json_encode($CompDePagoConMora);
+	var_dump($CompDePagoConMora);
 
 }
 
