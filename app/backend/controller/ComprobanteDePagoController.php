@@ -118,7 +118,7 @@ function cargarComprobanteDePago($idRegistroDePago)
 
     // armo la fecha
     $fechaArmada = $anioAPagar . "-" . $mes . "-" . $fecha;
-	 
+	 var_dump($fechaArmada);
 
     // saco diferencia fecha armada (mes y año correspondiente al recibo que pagaria + la fecha de vto que figura en el contrato
  //   $fecha1 = new DateTime($fechaHoy);
