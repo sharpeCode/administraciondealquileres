@@ -221,9 +221,10 @@ function fillFormEdit(cliente) {
 
 function guardarClienteEditado() {
 
-    var clienteParaGuardar = mapToJson($('#clienteEdit').serializeArray());
+    let clienteParaGuardar = mapToJson($('#clienteEdit').serializeArray());
 
-    console.log("Guardando cliente: ", clienteParaGuardar);
+    console.log("ACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+    console.log(clienteParaGuardar);
 
     let uri = EndpointsEnum.CLIENTE;
     let uriPage = EndpointsEnum.VOLVER_CLIENTES;

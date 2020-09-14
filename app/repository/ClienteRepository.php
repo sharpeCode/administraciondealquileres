@@ -185,11 +185,11 @@ class ClienteRepository
 
             $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
             $sentencia->bindParam(':dni', $clienteObject->editDni, PDO::PARAM_STR);
-            $sentencia->bindParam(':nombres', $clienteObject->editNombres, PDO::PARAM_INT);
-            $sentencia->bindParam(':apellidos', $clienteObject->editApellidos, PDO::PARAM_INT);
-            $sentencia->bindParam(':celular', $clienteObject->editCelular, PDO::PARAM_INT);
-            $sentencia->bindParam(':email', $clienteObject->editEmail, PDO::PARAM_INT);
-            $sentencia->bindParam(':fecha_nacimiento', $clienteObject->editFechaNacimiento, PDO::PARAM_INT);
+            $sentencia->bindParam(':nombres', $clienteObject->editNombres, PDO::PARAM_STR);
+            $sentencia->bindParam(':apellidos', $clienteObject->editApellidos, PDO::PARAM_STR);
+            $sentencia->bindParam(':celular', $clienteObject->editCelular, PDO::PARAM_STR);
+            $sentencia->bindParam(':email', $clienteObject->editEmail, PDO::PARAM_STR);
+            $sentencia->bindParam(':fecha_nacimiento', $clienteObject->editFechaNacimiento, PDO::PARAM_STR);
             $sentencia->bindParam(':datos_garante', $clienteObject->editDatosGarante, PDO::PARAM_STR);
             $sentencia->bindParam(':domicilio_legal', $clienteObject->editDomicilioLegal, PDO::PARAM_STR);
             $sentencia->bindParam(':estado',$estado , PDO::PARAM_STR);
