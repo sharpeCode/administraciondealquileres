@@ -33,7 +33,7 @@ function buildRawFromCliente(cliente){
     let fe = cliente['fechaNacimiento'];
     let fechaNac;
 
-    if (fe =!"0000-00-00")
+    if (fe !="0000-00-00")
     {
         let fecha = new Date(fe);
 
@@ -288,6 +288,7 @@ function fillFormDetail(cliente) {
     var fecha = cliente["fechaNacimiento"];
     var fechaNac=fecha.split(" ")[0].split("/").reverse().join("/");
 
+    $("#detailFechaRegistro").val(cliente["fechaRegistro"]);
     $("#detailNombres").val(cliente["nombres"]);
     $("#detailApellidos").val(cliente["apellidos"]);
     $("#detailDni").val(cliente["dni"]);

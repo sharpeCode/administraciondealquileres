@@ -8,12 +8,12 @@ class Cliente
     public $celular;
     public $email;
     public $fechaNacimiento;
+    public $fechaRegistro;
     public $datosGarante;
     public $domicilioLegal;
     public $estado;
 
-
-    public function constructor($dni, $nombres, $apellidos, $celular, $email,  $fechaNacimiento, $datosGarante, $domicilioLegal, $estado)
+    public function constructor($dni, $nombres, $apellidos, $celular, $email,  $fechaNacimiento, $fechaRegistro, $datosGarante, $domicilioLegal, $estado)
     {
         $this->dni = $dni;
         $this->nombres = $nombres;
@@ -24,7 +24,6 @@ class Cliente
         $this->datosGarante = $datosGarante;
         $this->domicilioLegal = $domicilioLegal;
         $this->estado = $estado;
-
+        $this->fechaRegistro = $fechaRegistro;
     }
-
 }

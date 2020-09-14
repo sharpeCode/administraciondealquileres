@@ -8,7 +8,8 @@ class ClienteRepository
     {
         $locatarios = null;
         try {
-            $sql = "SELECT nombres, apellidos, dni, celular, email, fecha_nacimiento as fechaNacimiento, datos_garante as datosGarante, estado
+            $sql = "SELECT nombres, apellidos, dni, celular, email, fecha_nacimiento fechaNacimiento, fecha_registro as fechaRegistro,
+                        datos_garante datosGarante, domicilio_legal domicilioLegal
                         FROM clientes WHERE estado = '1'";
 
             $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
@@ -60,7 +61,8 @@ class ClienteRepository
         {
             if ($dni <> "") {
 
-                $sql = "SELECT nombres, apellidos, dni, celular, email, fecha_nacimiento fechaNacimiento, datos_garante datosGarante, estado
+                $sql = "SELECT nombres, apellidos, dni, celular, email, fecha_nacimiento fechaNacimiento, fecha_registro as fechaRegistro,
+                        datos_garante datosGarante, domicilio_legal domicilioLegal
                         FROM clientes
                         WHERE dni = $dni";
 
@@ -69,7 +71,8 @@ class ClienteRepository
                 $clientes = $sentencia-> fetchAll(PDO::FETCH_CLASS, "Cliente");
 
             } else {
-                $sql = "SELECT nombres, apellidos, dni, celular, email, fecha_nacimiento fechaNacimiento, datos_garante datosGarante
+                $sql = "SELECT nombres, apellidos, dni, celular, email, fecha_nacimiento fechaNacimiento, fecha_registro as fechaRegistro,
+                        datos_garante datosGarante, domicilio_legal domicilioLegal
                         FROM clientes";
 
                 $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
@@ -93,7 +96,7 @@ class ClienteRepository
         {
             if ($dni <> "") {
 
-                $sql = "SELECT nombres, apellidos, dni, celular, email, fecha_nacimiento fechaNacimiento, 
+                $sql = "SELECT nombres, apellidos, dni, celular, email, fecha_nacimiento fechaNacimiento, fecha_registro as fechaRegistro,
                         datos_garante datosGarante, domicilio_legal domicilioLegal
                         FROM clientes
                         WHERE dni = $dni";
@@ -103,7 +106,7 @@ class ClienteRepository
                 $clientes = $sentencia-> fetchObject("Cliente");
 
             } else {
-                $sql = "SELECT nombres, apellidos, dni, celular, email, fecha_nacimiento fechaNacimiento, datos_garante datosGarante
+                $sql = "SELECT nombres, apellidos, dni, celular, email, fecha_nacimiento fechaNacimiento, fecha_registro as fechaRegistro, datos_garante datosGarante
                         FROM clientes";
 
                 $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
@@ -125,7 +128,8 @@ class ClienteRepository
         try {
             if ($nombre <> "") {
 
-                $sql = "SELECT nombres, apellidos, dni, celular, email, fecha_nacimiento fechaNacimiento, datos_garante datosGarante
+                $sql = "SELECT nombres, apellidos, dni, celular, email, fecha_nacimiento fechaNacimiento, fecha_registro as fechaRegistro,
+                        datos_garante datosGarante, domicilio_legal domicilioLegal
                         FROM clientes
                         WHERE nombres like '%$nombre%'";
 
@@ -134,7 +138,8 @@ class ClienteRepository
                 $clientes = $sentencia->fetchAll(PDO::FETCH_CLASS, "Cliente");
 
             } else {
-                $sql = "SELECT nombres, apellidos, dni, celular, email, fecha_nacimiento fechaNacimiento, datos_garante datosGarante
+                $sql = "SELECT nombres, apellidos, dni, celular, email, fecha_nacimiento fechaNacimiento, fecha_registro as fechaRegistro,
+                        datos_garante datosGarante, domicilio_legal domicilioLegal
                         FROM clientes";
 
                 $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
@@ -175,7 +180,7 @@ class ClienteRepository
         try {
 
             $sql = "UPDATE clientes SET dni=:dni, nombres=:nombres, apellidos=:apellidos, celular=:celular, email=:email, 
-                    fecha_nacimiento=:fecha_nacimiento, datos_garante=:datos_garante, estado=:estado, domicilio_legal=:domicilio_legal
+                    fecha_nacimiento=:fecha_nacimiento, fecha_registro=: NOW(), datos_garante=:datos_garante, estado=:estado, domicilio_legal=:domicilio_legal
                     WHERE dni = '$clienteObject->editDni'";
 
             $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
