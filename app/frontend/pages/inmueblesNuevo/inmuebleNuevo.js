@@ -441,7 +441,7 @@ function optionsProvincia(provincia) {
 }
 
 function guardarLocalidad() {
-    var guardarLocalidad = mapToJson($('#localidadAdd').serializeArray()); //obtener el varlos de todos los input
+    var guardarLocalidad = mapToJson($('#localidadNuevoAdd').serializeArray()); //obtener el varlos de todos los input
 
     let uri = EndpointsEnum.LOCALIDAD;
 
@@ -473,7 +473,6 @@ function guardarLocalidad() {
 function llenarSelectConProvinciasParaEditar() {
 
     let uri = EndpointsEnum.LOCALIDAD;
-    console.log("Llamando a controller Localidad = " + uri);
 
     var funcionAjax = $.ajax({
         url: uri,
@@ -542,7 +541,7 @@ function llenarFormConLocalidad(localidad) {
 
 function guardarLocalidadEditada() {
 
-    var localidadEditadaParaGuardar = mapToJson($('#localidadEdit').serializeArray());
+    var localidadEditadaParaGuardar = mapToJson($('#localidadNuevoEdit').serializeArray());
 
     let uri = EndpointsEnum.LOCALIDAD;
 
