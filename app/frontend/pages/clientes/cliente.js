@@ -239,7 +239,7 @@ function guardarClienteEditado() {
     });
 
     funcionAjax.done(function (retorno) {
-        location.href = uriPage;
+       // location.href = uriPage;
     });
 
     funcionAjax.fail(function (retorno) {
