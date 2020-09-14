@@ -19,7 +19,7 @@ var EndpointsEnum = {
 
     VOLVER_CLIENTES: VOLVER_PAGE + "/clientes/cliente.page.php",
     VOLVER_CONTRATOS: VOLVER_PAGE + "/contratos/contrato.page.php",
-    VOLVER_INMUEBLES: VOLVER_PAGE + "/inmuebles/inmueble.page.php",
+    VOLVER_INMUEBLES: VOLVER_PAGE + "/inmueblesNuevo/inmuebleNuevo.page.php",
     VOLVER_MENU_PRINCIPAL: VOLVER_PAGE + "/principal/menuPrincipal.page.php",
     VOLVER_VARIABLES: VOLVER_PAGE + "/variables/variable.page.php",
 
