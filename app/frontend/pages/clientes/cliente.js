@@ -31,16 +31,19 @@ function fillClienteGrid(jsonLocatarios) {
 function buildRawFromCliente(cliente){
     // cambiar formato fecha de AAAA-MM-DD a DD-MM-AAAA
     let fe = cliente['fechaNacimiento'];
-    console.log("VER FECHAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-    console.log(fe);
+    console.log("VER FECHA OBTENIDAAA");
+    let fechaNac;
+    if (fe!=null)
+    {
+        let fecha = new Date(fe);
 
-    let fecha = new Date(fe);
-
-    console.log("VER FECHAAAAAAAAAAAAAAAAAAAAAAAAAAAAA2222222222222222222222222");
-    console.log(fecha);
-    let options = { day: 'numeric', month: 'numeric', year: 'numeric'};
-    let fechaNac = fecha.toLocaleDateString("es-ES", fecha);
-
+        let options = { day: 'numeric', month: 'numeric', year: 'numeric'};
+        fechaNac = fecha.toLocaleDateString("es-ES", fecha)
+    }
+    else
+    {
+        fechaNac = "";
+    }
 
     let raw = "";
     raw += "<td style = 'text-align: center;'>" + cliente['nombres'] + "</td>";
