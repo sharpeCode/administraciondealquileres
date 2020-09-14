@@ -6,20 +6,20 @@ $(function () {
     CargarListadoInmueble();
 });
 
-function InmuebleAdd() {
-    $("#inmuebleNuevoAdd").show();
-    $("#inmuebleNuevoLis").hide();
-    $("#inmuebleNuevoEdit").hide();
-    $("#localidadNuevoAdd").hide();
-    llenarSelectConLocalidades();
-}
-
 function mostrarListadoInmuebles() {
     $("#inmuebleNuevoAdd").hide();
     $("#inmuebleNuevoLis").show();
     $("#inmuebleNuevoEdit").hide();
     $("#localidadNuevoAdd").hide();
     CargarListadoInmueble();
+}
+
+function InmuebleAdd() {
+    $("#inmuebleNuevoAdd").show();
+    $("#inmuebleNuevoLis").hide();
+    $("#inmuebleNuevoEdit").hide();
+    $("#localidadNuevoAdd").hide();
+    llenarSelectConLocalidades();
 }
 
 function mostrarFormInmuebleEditar(id) {
@@ -32,14 +32,33 @@ function mostrarFormInmuebleEditar(id) {
 }
 
 function mostrarFormLocalidadPpal() {
-    $("#inmuebleNuevoAdd").hide();
+    $("#inmuebleNuevoLis").hide();
     $("#inmuebleNuevoLis").hide();
     $("#inmuebleNuevoEdit").hide();
-    $("#localidadNuevoAdd").show();
+    $("#localidadNuevoList").show();
+    $("#localidadNuevoAdd").hide();
     loadLocalidadesGrid();
 }
 
-//LISTAR INMUEBLES
+function mostrarFormLocalidadAdd() {
+    $("#inmuebleNuevoLis").hide();
+    $("#inmuebleNuevoLis").hide();
+    $("#inmuebleNuevoEdit").hide();
+    $("#localidadNuevoList").show();
+    $("#localidadNuevoAdd").hide();
+    llenarSelectConProvincias();
+}
+
+function mostrarFormLocalidadEditar(idLocalidad) {
+    $("#localidadAdd").hide();
+    $("#localidadList").hide();
+    $("#localidadEdit").show();
+    llenarSelectConProvinciasParaEditar();
+    cargarLocalidadParaEditar(idLocalidad);
+}
+
+//TODO: IMNUEBLE LIST
+
 function CargarListadoInmueble() {
     obtenerInmuebles(llenarTablaInmuebles,
         {
@@ -104,7 +123,8 @@ function construirFilaDeInmueble(inmueble) {
     return raw;
 }
 
-//LLENAR SELECT LOCALIDADES
+//TODO: INMUEBLE ADD
+
 function llenarSelectConLocalidades() {
 
     let uri = EndpointsEnum.LOCALIDAD;
@@ -150,7 +170,6 @@ function optionsLocalidad(localidad) {
     return option;
 }
 
-//GUARDAR INMUEBLE
 function guardarInmueble() {
     var inmuebleNuevoParaGuardar = mapToJson($('#inmuebleNuevoAdd').serializeArray());
 
@@ -181,7 +200,8 @@ function guardarInmueble() {
     console.log("Fin llamada controller usuario");
 }
 
-//LLENAR SELECT CON LOCADIDADES PARA EDITAR
+//TODO: INMUEBLE EDIT
+
 function llenarSelectConLocalidadesParaEditar() {
 
     let uri = EndpointsEnum.LOCALIDAD;
@@ -209,19 +229,18 @@ function fillDomEdit(arrayLocalidad) {
     let options = "";
 
     for (var i = 0, l = arrayLocalidad.length; i < l; i++) {
-        options += optionsLocalidad(arrayLocalidad[i]);
+        options += optionsLocalidadEdit(arrayLocalidad[i]);
     }
     $("#editIdlocalidad").html(options);
 
 }
 
-function optionsLocalidad(localidad) {
+function optionsLocalidadEdit(localidad) {
     let option = "";
     option += "<option value=" + localidad['idLocalidad'] + ">" + localidad['localidad'] + "</option>";
     return option;
 }
 
-//LLENAR INPUT PARA EDITAR INMUEBLE
 function loadInmuebleData(id) {
 
     let uri = EndpointsEnum.INMUEBLE;
@@ -254,7 +273,6 @@ function fillEditionForm(inmueble) {
     $("#editIdlocalidad").val(inmueble["idLocalidad"]);
 }
 
-//GUARDAR INMUEBLE EDITADO
 function guardarInmuebleEditado() {
 
     var inmuebleEditado = mapToJson($('#inmuebleNuevoEdit').serializeArray());
@@ -288,7 +306,8 @@ function guardarInmuebleEditado() {
     console.log("Fin llamada controller usuario");
 }
 
-//LISTAR LOCALIDADES
+// TODO: LOCALIDADES LIST
+
 function loadLocalidadesGrid() {
     getAllLocalidades(fillLocalidadesGrid,
         {
@@ -354,4 +373,188 @@ function buildRawFromLocalidades(loc) {
 
     return raw;
 
+}
+
+// TODO: LOCALIDADES ADD
+
+function llenarSelectConProvincias() {
+
+    let uri = EndpointsEnum.LOCALIDAD;
+
+    var funcionAjax = $.ajax({
+        url: uri,
+        method: "POST",
+        data: {
+            action: "cargarSelectConProvincias",
+        }
+    });
+
+    funcionAjax.done(function (retorno) {
+        console.log(retorno);
+        fillDomProvincia(retorno);
+
+    });
+
+    funcionAjax.fail(function (retorno) {
+        console.log("error al cargar select con alumnos")
+    });
+
+    funcionAjax.always(function (retorno) {
+        console.log("volvi de buscar a los alumnos")
+    });
+}
+
+function fillDomProvincia(arrayProvincia) {
+
+    arrayProvincia = JSON.parse(arrayProvincia);
+    let options = "";
+
+    //para agregarle placeholder a la lista desplegable
+    let optionDefault = "<option value='-1'>Provincia</option>";
+    options += optionDefault;
+
+    for (var i = 0, l = arrayProvincia.length; i < l; i++) {
+        options += optionsProvincia(arrayProvincia[i]);
+    }
+    $("#idProvincia").html(options);
+    //document.getElementById('provincia').selectedIndex = -1;
+
+}
+
+function optionsProvincia(provincia) {
+    let option = "";
+    option += "<option value='" + provincia['idProvincia'] + "'>" + provincia['nombre'] + "</option>";
+    return option;
+}
+
+function guardarLocalidad() {
+    var guardarLocalidad = mapToJson($('#localidadAdd').serializeArray()); //obtener el varlos de todos los input
+
+    let uri = EndpointsEnum.LOCALIDAD;
+
+    var funcionAjax = $.ajax({
+        url: uri,
+        method: "POST",
+        data: {
+            action: "datosParaGuardarLocalidad",
+            guardarLocalidad: guardarLocalidad
+        }
+    });
+    funcionAjax.done(function (retorno) {
+        console.log(retorno);
+        if (retorno != null) {
+            mostrarFormLocalidadPpal();
+        }
+    });
+    funcionAjax.fail(function (retorno) {
+        console.log("error al guardar ejercicio en la rutina")
+    });
+    funcionAjax.always(function (retorno) {
+        console.log("volvi de guardar el ejercicio en la rutina")
+    });
+    console.log("Fin llamada controller rutina");
+}
+
+// TODO:LOCALIDADES EDIT
+
+function llenarSelectConProvinciasParaEditar() {
+
+    let uri = EndpointsEnum.LOCALIDAD;
+    console.log("Llamando a controller Localidad = " + uri);
+
+    var funcionAjax = $.ajax({
+        url: uri,
+        method: "POST",
+        data: {
+            action: "cargarSelectConProvincias",
+        }
+    });
+
+    funcionAjax.done(function (retorno) {
+        console.log(retorno);
+        fillDomEditProvincia(retorno);
+
+    });
+
+    funcionAjax.fail(function (retorno) {
+        console.log("error al cargar select con alumnos")
+    });
+
+    funcionAjax.always(function (retorno) {
+        console.log("volvi de buscar a los alumnos")
+    });
+}
+
+function fillDomEditProvincia(arrayProvincia) {
+
+    arrayProvincia = JSON.parse(arrayProvincia);
+    let options = "";
+
+    for (var i = 0, l = arrayProvincia.length; i < l; i++) {
+        options += optionsProvincia(arrayProvincia[i]);
+    }
+    $("#editIdProvincia").html(options);
+
+}
+
+function cargarLocalidadParaEditar(idLocalidad) {
+
+    let uri = EndpointsEnum.LOCALIDAD;
+
+    var funcionAjax = $.ajax({
+        url: uri,
+        method: "POST",
+        data: {
+            action: "traerLocalidadPorId",
+            idLocalidad: idLocalidad
+        }
+    });
+
+    funcionAjax.done(function (retorno) {
+        llenarFormConLocalidad(JSON.parse(retorno));
+    });
+
+    funcionAjax.fail(function (retorno) {
+        console.error(retorno);
+    });
+}
+
+function llenarFormConLocalidad(localidad) {
+
+    $("#editIdLocalidad").val(localidad["idLocalidad"]);
+    $("#editLocalidad").val(localidad["localidad"]);
+    $("#editCp").val(localidad["cp"]);
+    $("#editIdProvincia").val(localidad["idProvincia"]);
+}
+
+function guardarLocalidadEditada() {
+
+    var localidadEditadaParaGuardar = mapToJson($('#localidadEdit').serializeArray());
+
+    let uri = EndpointsEnum.LOCALIDAD;
+
+    var funcionAjax = $.ajax({
+        url: uri,
+        method: "POST",
+        data: {
+            action: "guardarLocalidadEditada",
+            guardarLocalidadEditada: localidadEditadaParaGuardar
+        }
+    });
+
+    funcionAjax.done(function (retorno) {
+        console.log(retorno);
+        if (retorno != null) {
+            mostrarFormLocalidadPpal();
+        }
+    });
+
+    funcionAjax.fail(function (retorno) {
+        console.log("error al guardar user")
+    });
+
+    funcionAjax.always(function (retorno) {
+        console.log("volvi de guardar el user")
+    });
+    console.log("Fin llamada controller usuario");
 }

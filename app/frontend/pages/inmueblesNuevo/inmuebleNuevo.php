@@ -10,6 +10,7 @@
 require_once 'inmuebleNuevoList.html';
 require_once 'inmuebleNuevoAdd.html';
 require_once 'inmuebleNuevoEdit.html';
+require_once 'localidadNuevoList.html';
 require_once 'localidadNuevoAdd.html';
-
+require_once 'localidadNuevoEdit.html';
 ?>

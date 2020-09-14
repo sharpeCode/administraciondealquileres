@@ -175,7 +175,7 @@ function construirFilaDeInmueble(inmueble) {
 //     options +=optionDefault;
 //
 //     for (var i = 0, l = arrayLocalidad.length; i < l; i++) {
-//         options += optionsLocalidad(arrayLocalidad[i]);
+//         options += optionsLocalidadEdit(arrayLocalidad[i]);
 //     }
 //     $("#idLocalidad").html(options);
 // }
@@ -240,13 +240,13 @@ function construirFilaDeInmueble(inmueble) {
 //     let options = "";
 //
 //     for (var i = 0, l = arrayLocalidad.length; i < l; i++) {
-//         options += optionsLocalidad(arrayLocalidad[i]);
+//         options += optionsLocalidadEdit(arrayLocalidad[i]);
 //     }
 //     $("#editIdlocalidad").html(options);
 //
 // }
 //
-// function optionsLocalidad(localidad) {
+// function optionsLocalidadEdit(localidad) {
 //     let option = "";
 //     option += "<option value=" + localidad['idLocalidad'] + ">" + localidad['localidad'] + "</option>";
 //     return option;
