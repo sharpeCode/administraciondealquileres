@@ -2,6 +2,8 @@ $(function () {
     $("#variableAdd").hide();
     CargarListadoVariables();
 });
+
+// TODO: VARIABLES LIST
 function mostrarFormPpal() {
     $("#variableList").show();
     $("#variableAdd").hide();
@@ -16,12 +18,6 @@ function CargarListadoVariables() {
     );
 }
 
-function mostrarFormAdd() {
-    $("#variableAdd").show();
-    $("#variableList").hide();
-    llenarSelectConVariables();
-}
-
 function obtenerVariables(doneFunction, data) {
 
     doneFunction = doneFunction instanceof Function ? doneFunction : function (data) {
@@ -30,9 +26,8 @@ function obtenerVariables(doneFunction, data) {
     data = data === undefined ? {action: "obtenerVariables"} : data;
 
     let uri = EndpointsEnum.VARIABLES;
-    console.log("Volver al listado de inmuebles = " + uri);
 
-    var funcionAjax = $.ajax({
+    let funcionAjax = $.ajax({
         url: uri,
         method: "POST",
         data: data
@@ -72,8 +67,15 @@ function construirFilaDeVariable(PorcentajeDeVariable) {
     return raw;
 }
 
-function llenarSelectConVariables() {
+// TODO: VARIABLE ADD
 
+function mostrarFormAdd() {
+    $("#variableAdd").show();
+    $("#variableList").hide();
+    llenarSelectConVariables();
+}
+
+function llenarSelectConVariables() {
     let uri = EndpointsEnum.VARIABLES;
     console.log("Volver al listado de inmuebles = " + uri);
 
@@ -119,10 +121,10 @@ function optionsVariable(variable) {
 }
 
 function guardarVariable() {
-    var variableNuevoParaGuardar = mapToJson($('#variableAdd').serializeArray());
+    let variableNuevoParaGuardar = mapToJson($('#variableAdd').serializeArray());
+    console.log(variableNuevoParaGuardar);
 
     let uri = EndpointsEnum.VARIABLES;
-    console.log("Volver al listado de inmuebles = " + uri);
 
     let href = EndpointsEnum.VOLVER_VARIABLES;
 

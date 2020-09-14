@@ -41,7 +41,7 @@ function guardarVariableNuevo()
     // Si no casteo no lo paso de array a objeto y no lo puedo usar
     $porcentajeDeVariable = (object)$porcentajeDeVariableAdd;
 
-    $inm = InmuebleRepository::addInmueble($porcentajeDeVariable);
+    $inm = VariablesRepository::addVariable($porcentajeDeVariable);
     echo json_encode($inm);
 }
 

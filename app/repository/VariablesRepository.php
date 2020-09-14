@@ -27,24 +27,6 @@ class VariablesRepository
         return $inmuebles;
     }
 
-    public static function getVariables()
-    {
-        $localidades = null;
-        try {
-            $sql = "SELECT id_variable AS idVariable, variable
-                    FROM variables";
-
-            $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
-            $sentencia->execute();
-            $localidades = $sentencia->fetchAll(PDO::FETCH_CLASS, "Variable");
-
-        } catch (PDOException $ex) {
-            print 'ERROR' . $ex->getMessage();
-        }
-
-        return $localidades;
-    }
-
     public static function addVariable($PorcentajeDeVariable)
     {
         $inm = null;
@@ -68,30 +50,5 @@ class VariablesRepository
         }
         return $inm;
     }
-
-    public static function getVariablesId($nombreVariable)
-    {
-        $variableInteresPorDia = null;
-        try {
-            $sql = "SELECT P.id, P.id_variable as idVariable, P.porcentaje, P.fecha_ingreso as fecha, 
-                V.variable 
-                    FROM porcentaje_de_variables as P
-                    INNER JOIN variables as V 
-                    ON P.id_variable = V.id_variable
-                    WHERE V.variable = '$nombreVariable'
-                    ORDER BY fecha_ingreso DESC LIMIT 1";
-
-            $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
-            $sentencia->execute();
-            $variableInteresPorDia = $sentencia->fetchObject("PorcentajeDeVariable");
-
-        } catch (PDOException $ex) {
-            print 'ERROR' . $ex->getMessage();
-            $variableInteresPorDia = null;
-        }
-
-        return $variableInteresPorDia;
-    }
-
-
+    
 }

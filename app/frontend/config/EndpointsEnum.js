@@ -23,10 +23,6 @@ var EndpointsEnum = {
     VOLVER_MENU_PRINCIPAL: VOLVER_PAGE + "/principal/menuPrincipal.page.php",
     VOLVER_VARIABLES: VOLVER_PAGE + "/Variables/variable.page.php",
 
-
-
-
-
 };
 
 
