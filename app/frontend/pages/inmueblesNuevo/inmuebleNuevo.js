@@ -188,7 +188,7 @@ function guardarInmueble() {
     var inmuebleNuevoParaGuardar = mapToJson($('#inmuebleNuevoAdd').serializeArray());
 
     let uri = EndpointsEnum.INMUEBLE;
-    let href = EndpointsEnum.VOLVER_INMUEsBLES;
+    let href = EndpointsEnum.VOLVER_INMUEBLES;
 
     var funcionAjax = $.ajax({
         url: uri,
