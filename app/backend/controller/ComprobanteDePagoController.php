@@ -64,101 +64,101 @@ function cargarComprobanteDePago($idRegistroDePago)
 {
 
 
-  // obtener registro de pago completo por el id
+      // obtener registro de pago completo por el id
     $registroDePago = RegistroPagoRepositorio::buscarRegistroDePagoPorId($idRegistroDePago);
-    var_dump($registroDePago);
+
 
     // busco datos del contrato completo
     $idContrato = $registroDePago->idContrato;
     $datosContrato = ContratoRepositorio::buscarContratoPorId($idContrato);
-	var_dump($datosContrato);
-//
-//    //obtengo parametros de fecha inicio y fin de pago e cuota alquiler
-//    $fechaDesde = $datosContrato->fechaPagoInicio;
-//    $fechaHasta = $datosContrato->fechaPagoFin;
-//
-//    //buscar mes y año que corresponde al pago que realizara, para eso buscamos el registro completo por el id
-//    $mesAPagar = $registroDePago->correspondienteMes;
-//    $anioAPagar = $registroDePago->correspondienteAnio;
-//
-//    //CORROBORO SI LA FECHA A PAGAR ESTA VENCIDA =========================================================
-//
-//    //capturar la fecha de hoy
-//    $fechaHoy = date('Y-m-d');
-//
-//    //desglozo DD MM AAAA por separado
-//    $diaHoy = substr($fechaHoy, -2, 2);  // DD
-//    $mesHoy = substr($fechaHoy, -5, 2);  // MM
-//    $anioHoy = substr($fechaHoy, -10, 4); // AAAA
-//
-//    // convertir el dia en dos digitos DD para armar la fecha y comparar
-//    $cero = 0;
-//    if ((strlen($fechaHasta)) < 2) {
-//        //FECHA con un solo digito lo convierte --> DD
-//        $fecha = $cero . $fechaHasta;
-//    } else {
-//        //aca entra si no hay que hacer nada ya viene --> DD
-//        $fecha = $fechaHasta;
-//    }
-//
-//    // convertir el mes en dos digitos
-//    if ((strlen($mesAPagar)) < 2) {
-//        //MES con un solo digito lo convierte --> MM
-//        $mes = $cero . $mesAPagar;
-//    } else {
-//        //aca entra si no hay que hacer nada ya viene --> MM
-//        $mes = $mesAPagar;
-//    }
-//
-//    //traer el ultimo aumneto agregado para la variable vencimiento x dia de atraso
-//    $nombreVariable = "Interés x vencimiento"; //el id 3 es --> Interes x vencimiento
-//    $variableAumentoPorDia = VariablesRepository::getVariablesId($nombreVariable);
-//    $porcAumento = (int)$variableAumentoPorDia->porcentaje;
-//    $alquiler = (int)$registroDePago->valorAlquiler;
-//    $valorInteresPorDia = ($alquiler * $porcAumento) / 100; //valor interes x dia en pesos
-//
-//    // armo la fecha
-//    $fechaArmada = $anioAPagar . "-" . $mes . "-" . $fecha;
-//
-//    // saco diferencia fecha armada (mes y año correspondiente al recibo que pagaria + la fecha de vto que figura en el contrato
-//    $fecha1 = new DateTime($fechaHoy);
-//    $fecha2 = new DateTime($fechaArmada);
-//    $diff = $fecha1->diff($fecha2);
-//    //dias de atraso entre las dos fechas
-//    $diasAtrasado = $diff->days;
-//
-//
-//    //corroborar si va a apagar con atraso
-//    if ($anioHoy < $anioAPagar) {
-//        //OK
-//        $interesPorMora = 0;
-//        $diasAtrasado = 0;
-//    } elseif ($anioHoy == $anioAPagar) {
-//        //analizar mes y dia
-//        if ($mesHoy < $mesAPagar) {
-//            //OK
-//            $interesPorMora = 0;
-//            $diasAtrasado = 0;
-//        } elseif ($mesHoy == $mesAPagar) {
-//            //analizar dia
-//            if ($diaHoy <= $fechaHasta) {
-//                //OK
-//                $interesPorMora = 0;
-//                $diasAtrasado = 0;
-//            } elseif ($diaHoy > $fechaHasta) {
-//                //ATRASADO
-//                $interesPorMora = $valorInteresPorDia * $diasAtrasado;
-//            }
-//
-//        } elseif ($mesHoy > $mesAPagar) {
-//            //ATRASADO
-//            $interesPorMora = $valorInteresPorDia * $diasAtrasado;
-//        }
-//
-//    } elseif ($anioHoy < $anioAPagar) {
-//        //ATRASADO
-//        $interesPorMora = $valorInteresPorDia * $diasAtrasado;
-//    }
+    var_dump($datosContrato);
+
+    //obtengo parametros de fecha inicio y fin de pago e cuota alquiler
+    $fechaDesde = $datosContrato->fechaPagoInicio;
+    $fechaHasta = $datosContrato->fechaPagoFin;
+
+    //buscar mes y año que corresponde al pago que realizara, para eso buscamos el registro completo por el id
+    $mesAPagar = $registroDePago->correspondienteMes;
+    $anioAPagar = $registroDePago->correspondienteAnio;
+
+    //CORROBORO SI LA FECHA A PAGAR ESTA VENCIDA =========================================================
+
+    //capturar la fecha de hoy
+    $fechaHoy = date('Y-m-d');
+
+    //desglozo DD MM AAAA por separado
+    $diaHoy = substr($fechaHoy, -2, 2);  // DD
+    $mesHoy = substr($fechaHoy, -5, 2);  // MM
+    $anioHoy = substr($fechaHoy, -10, 4); // AAAA
+
+    // convertir el dia en dos digitos DD para armar la fecha y comparar
+    $cero = 0;
+    if ((strlen($fechaHasta)) < 2) {
+        //FECHA con un solo digito lo convierte --> DD
+        $fecha = $cero . $fechaHasta;
+    } else {
+        //aca entra si no hay que hacer nada ya viene --> DD
+        $fecha = $fechaHasta;
+    }
+
+    // convertir el mes en dos digitos
+    if ((strlen($mesAPagar)) < 2) {
+        //MES con un solo digito lo convierte --> MM
+        $mes = $cero . $mesAPagar;
+    } else {
+        //aca entra si no hay que hacer nada ya viene --> MM
+        $mes = $mesAPagar;
+    }
+
+    //traer el ultimo aumneto agregado para la variable vencimiento x dia de atraso
+    $nombreVariable = "Interés x vencimiento"; //el id 3 es --> Interes x vencimiento
+    $variableAumentoPorDia = VariablesRepository::getVariablesId($nombreVariable);
+    $porcAumento = (int)$variableAumentoPorDia->porcentaje;
+    $alquiler = (int)$registroDePago->valorAlquiler;
+    $valorInteresPorDia = ($alquiler * $porcAumento) / 100; //valor interes x dia en pesos
+
+    // armo la fecha
+    $fechaArmada = $anioAPagar . "-" . $mes . "-" . $fecha;
+
+    // saco diferencia fecha armada (mes y año correspondiente al recibo que pagaria + la fecha de vto que figura en el contrato
+    $fecha1 = new DateTime($fechaHoy);
+    $fecha2 = new DateTime($fechaArmada);
+    $diff = $fecha1->diff($fecha2);
+    //dias de atraso entre las dos fechas
+    $diasAtrasado = $diff->days;
+
+
+    //corroborar si va a apagar con atraso
+    if ($anioHoy < $anioAPagar) {
+        //OK
+        $interesPorMora = 0;
+        $diasAtrasado = 0;
+    } elseif ($anioHoy == $anioAPagar) {
+        //analizar mes y dia
+        if ($mesHoy < $mesAPagar) {
+            //OK
+            $interesPorMora = 0;
+            $diasAtrasado = 0;
+        } elseif ($mesHoy == $mesAPagar) {
+            //analizar dia
+            if ($diaHoy <= $fechaHasta) {
+                //OK
+                $interesPorMora = 0;
+                $diasAtrasado = 0;
+            } elseif ($diaHoy > $fechaHasta) {
+                //ATRASADO
+                $interesPorMora = $valorInteresPorDia * $diasAtrasado;
+            }
+
+        } elseif ($mesHoy > $mesAPagar) {
+            //ATRASADO
+            $interesPorMora = $valorInteresPorDia * $diasAtrasado;
+        }
+
+    } elseif ($anioHoy < $anioAPagar) {
+        //ATRASADO
+        $interesPorMora = $valorInteresPorDia * $diasAtrasado;
+    }
 //
 //    //VERIFICAR ULTIMO NUMERO DE COMPROBANTE PARA CARGAR EL SIGUIENTE
 //    $tipo = $registroDePago->tipoRegistroDePago;
