@@ -340,7 +340,7 @@ input:focus, input.form-control:focus, button:focus, select:focus {
    Botones de menu principal
 ====================================================================================*/
 .miBoton-1{
-    width: 350px;
+    width: 250px;
     height: 60px;
     background-color: #3a5ba0;
     /*padding: 10px 100px 70px 10px;  espacio con respecto al texto*/
@@ -375,19 +375,19 @@ input:focus, input.form-control:focus, button:focus, select:focus {
 /*====================================================================================
    Boton Iniciar Sesion
 ====================================================================================*/
-/*.miBoton-1{*/
-/*    width: 130px;*/
-/*    height: 40px;*/
-/*    background-color: #3a5ba0;*/
-/*    !*padding: 10px 100px 70px 10px;  espacio con respecto al texto*!*/
-/*    margin: 10px;*/
-/*    border-radius: 8px 8px 8px 8px;*/
-/*    border: 0px solid #000000;*/
-/*    color: white; !*color de letra gris claro el mismo gris del fondo*!*/
-/*    !*position: absolute;*!*/
-/*    !*left: 0px;*!*/
-/*    font: normal 16px sans-serif; !*negrita, tamaño, tipo de letra*!*/
-/*}*/
+.miBoton-index{
+    width: 130px;
+    height: 40px;
+    background-color: #3a5ba0;
+    /*padding: 10px 100px 70px 10px;  espacio con respecto al texto*/
+    margin: 10px;
+    border-radius: 8px 8px 8px 8px;
+    border: 0px solid #000000;
+    color: white; /*color de letra gris claro el mismo gris del fondo*/
+    /*position: absolute;*/
+    /*left: 0px;*/
+    font: normal 16px sans-serif; /*negrita, tamaño, tipo de letra*/
+}
 /*.miBoton-1:hover{*/
 /*    color: #3a5ba0;*/
 /*    background-color: white;*/
