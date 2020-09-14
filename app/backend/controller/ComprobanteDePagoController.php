@@ -68,9 +68,10 @@ function cargarComprobanteDePago($idRegistroDePago)
     $registroDePago = RegistroPagoRepositorio::buscarRegistroDePagoPorId($idRegistroDePago);
     var_dump($registroDePago);
 
-//    // busco datos del contrato completo
-//    $idContrato = $registroDePago->idContrato;
-//    $datosContrato = ContratoRepositorio::buscarContratoPorId($idContrato);
+    // busco datos del contrato completo
+    $idContrato = $registroDePago->idContrato;
+    $datosContrato = ContratoRepositorio::buscarContratoPorId($idContrato);
+	var_dump($datosContrato);
 //
 //    //obtengo parametros de fecha inicio y fin de pago e cuota alquiler
 //    $fechaDesde = $datosContrato->fechaPagoInicio;
