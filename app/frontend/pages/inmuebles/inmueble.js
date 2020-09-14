@@ -18,7 +18,6 @@ function mostrarFormInmuebleAdd() {
     $("#localidadAdd").hide();
     $("#localidadEdit").hide();
     $("#localidadList").hide();
-    console.log("holaaaaa1 ");
 
     //llenarSelectConLocalidades();
 }
