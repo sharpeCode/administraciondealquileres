@@ -85,13 +85,14 @@ function construirFilaDeInmueble(inmueble) {
 // TODO : INMUEBLE ADD
 
 function mostrarFormInmuebleAdd() {
-    $("#localidadAdd").hide();
-    $("#localidadEdit").hide();
-    $("#localidadList").hide();
+	console.log ("hola");
+   // $("#localidadAdd").hide();
+   // $("#localidadEdit").hide();
+   // $("#localidadList").hide();
 
     $("#inmuebleAgregar").show();
-    $("#inmuebleAdd").hide();
-    $("#inmuebleEdit").hide();
+   // $("#inmuebleAdd").hide();
+   // $("#inmuebleEdit").hide();
     $("#inmuebleList").hide();
     //llenarSelectConLocalidades();
 }
