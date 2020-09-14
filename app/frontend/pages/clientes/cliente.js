@@ -31,10 +31,9 @@ function fillClienteGrid(jsonLocatarios) {
 function buildRawFromCliente(cliente){
     // cambiar formato fecha de AAAA-MM-DD a DD-MM-AAAA
     let fe = cliente['fechaNacimiento'];
-    console.log("VER FECHA OBTENIDAAA");
-    console.log(fe);
     let fechaNac;
-    if (fe!=null)
+
+    if (fe =!"0000-00-00")
     {
         let fecha = new Date(fe);
 
@@ -54,7 +53,6 @@ function buildRawFromCliente(cliente){
     raw += "<td style = 'text-align: center;'>" + cliente['email'] + "</td>";
     raw += "<td style = 'text-align: center;'>" + fechaNac + "</td>";
     raw += "<td style = 'text-align: center;'>" + cliente['datosGarante'] + "</td>";
-    raw += "<td style = 'text-align: center;' hidden='true'>" + cliente['domicilioLegal'] + "</td>";
 
     raw += "<td style = 'text-align: center;'>";
     raw += "<button class='miBoton-icon' title='Detalle Cliente' onclick='showDetailForm(" + cliente['dni'] + ")'>" +
@@ -278,7 +276,6 @@ function loadClienteDataDetail(dni) {
     });
 
     funcionAjax.done(function (retorno) {
-        console.log(retorno);
         fillFormDetail(JSON.parse(retorno));
     });
 
