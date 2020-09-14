@@ -63,7 +63,7 @@ switch ($action) {
 
 function cargarComprobanteDePago($idRegistroDePago)
 {
-    echo 'entro acaaaa ';
+
 
     // obtener registro de pago completo por el id
     $registroDePago = RegistroPagoRepositorio::buscarRegistroDePagoPorId($idRegistroDePago);
@@ -162,7 +162,9 @@ function cargarComprobanteDePago($idRegistroDePago)
     //VERIFICAR ULTIMO NUMERO DE COMPROBANTE PARA CARGAR EL SIGUIENTE
     $tipo = $registroDePago->tipoRegistroDePago;
     $ultimoNumComprobante = ComprobanteDePagoRepositorio::mostrarUltimoComprobanteCargado($tipo);
+
     $ultimoNumInt = (int)$ultimoNumComprobante->numeroComprobante;
+
     $numero = $ultimoNumInt + 1;
     $numeroComprobante = str_pad($numero, 5, "0", STR_PAD_LEFT);
 
