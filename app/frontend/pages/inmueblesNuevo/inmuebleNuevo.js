@@ -8,7 +8,12 @@ function InmuebleAdd() {
     $("#inmuebleNuevoAdd").show();
     $("#inmuebleNuevoLis").hide();
     llenarSelectConLocalidades();
+}
 
+function mostrarFormInmueblePpal() {
+    $("#inmuebleNuevoAdd").show();
+    $("#inmuebleNuevoLis").hide();
+    CargarListadoInmueble();
 }
 
 //LISTAR INMUEBLES
@@ -120,4 +125,36 @@ function optionsLocalidad(localidad) {
     let option = "";
     option += "<option value=" + localidad['idLocalidad'] + ">" + localidad['localidad'] + "</option>";
     return option;
+}
+
+//GUARDAR INMUEBLE
+function guardarInmueble() {
+    var inmuebleNuevoParaGuardar = mapToJson($('#inmuebleAdd').serializeArray());
+
+    let uri = EndpointsEnum.INMUEBLE;
+    let href = EndpointsEnum.VOLVER_INMUEBLES;
+
+
+    var funcionAjax = $.ajax({
+        url: uri,
+        method: "POST",
+        data: {
+            action: "guardarInmuebleNuevo",
+            inmueble: inmuebleNuevoParaGuardar
+        }
+    });
+
+    funcionAjax.done(function (retorno) {
+        console.log(retorno);
+        location.href = href;
+    });
+
+    funcionAjax.fail(function (retorno) {
+        console.log("error al guardar inmueble")
+    });
+
+    funcionAjax.always(function (retorno) {
+        console.log("volvi de guardar el user")
+    });
+    console.log("Fin llamada controller usuario");
 }
