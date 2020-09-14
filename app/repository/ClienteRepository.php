@@ -177,6 +177,8 @@ class ClienteRepository
     {
         $cliente = null;
         $estado = "1";
+        echo 'ENTRO AL REPOSITORIO....';
+        var_dump($clienteObject);
         try {
             $sql = "UPDATE clientes 
                     SET nombres=:nombres, apellidos=:apellidos, celular=:celular, email=:email, 
@@ -184,7 +186,6 @@ class ClienteRepository
                     WHERE dni = '$clienteObject->editDni'";
 
             $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
-            $sentencia->bindParam(':dni', $clienteObject->editDni, PDO::PARAM_STR);
             $sentencia->bindParam(':nombres', $clienteObject->editNombres, PDO::PARAM_STR);
             $sentencia->bindParam(':apellidos', $clienteObject->editApellidos, PDO::PARAM_STR);
             $sentencia->bindParam(':celular', $clienteObject->editCelular, PDO::PARAM_STR);
