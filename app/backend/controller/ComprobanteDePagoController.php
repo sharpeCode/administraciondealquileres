@@ -74,6 +74,7 @@ function cargarComprobanteDePago($idRegistroDePago)
     //obtengo parametros de fecha inicio y fin de pago e cuota alquiler
     $fechaDesde = $datosContrato->fechaPagoInicio;
     $fechaHasta = $datosContrato->fechaPagoFin;
+	var_dump($fechaHasta);
 
     //buscar mes y año que corresponde al pago que realizara, para eso buscamos el registro completo por el id
     $mesAPagar = $registroDePago->correspondienteMes;
