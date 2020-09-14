@@ -7,7 +7,7 @@ CREATE TABLE `heroku_0852b66c3d788ad`.`roles`(
 );
 
 CREATE TABLE `heroku_0852b66c3d788ad`.`usuarios`(
-	`id_usuario` INT NOT NULL AUTO_INCREMENT,	
+	`id_usuario` INT NOT NULL,	
 	`nombres` VARCHAR(30) NOT NULL,
 	`apellidos` VARCHAR(30) NOT NULL,
 	`dni` VARCHAR(15) NOT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE `heroku_0852b66c3d788ad`.`provincias`(
 );
 
 CREATE TABLE `heroku_0852b66c3d788ad`.`localidades`(
-	`id_localidad` INT NOT NULL AUTO_INCREMENT,	
+	`id_localidad` INT NOT NULL,	
 	`localidad` VARCHAR(50) NOT NULL,
 	`cp` VARCHAR(10),
 	`id_provincia` INT,
@@ -68,7 +68,7 @@ CREATE TABLE `heroku_0852b66c3d788ad`.`variables`(
 );
 
 CREATE TABLE `heroku_0852b66c3d788ad`.`porcentaje_de_variables`(
-	`id` INT NOT NULL AUTO_INCREMENT,
+	`id` INT NOT NULL,
 	`id_variable` INT,
 	`porcentaje` INT NOT NULL,
 	`fecha_ingreso` DATETIME,
@@ -153,12 +153,11 @@ CREATE TABLE `heroku_0852b66c3d788ad`.`comprobantes_de_pagos`(
 );
 
 CREATE TABLE `heroku_0852b66c3d788ad`.`fecha_pago`(
-	`id_fecha_pago` INT NOT NULL AUTO_INCREMENT,
+	`id_fecha_pago` INT NOT NULL,
 	`fecha` INT,
 	PRIMARY KEY(`id_fecha_pago`)
 );
 
-SET @@SESSION.auto_increment_increment = 1;
 
 
 

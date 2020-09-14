@@ -2,9 +2,6 @@
 INSERT INTO `roles` (`id_rol`,`rol`) VALUES (1,'Administrador');
 INSERT INTO `roles` (`id_rol`,`rol`) VALUES (2,'Usuario');
 
-INSERT INTO `usuarios` (`nombres`,`apellidos`,`dni`,`id_rol`,`password`, `fecha_registro`, `estado`,`fecha_modif_estado`) 
-VALUES ('Nombre Prueba','Apellido Prueba','11111', 1,'123', NOW(), 'Activo','0000-00-00');
-
 INSERT INTO `clientes` (`dni`,`nombres`,`apellidos`,`celular`,`email`, `fecha_registro`,`fecha_nacimiento`,`datos_garante`,`domicilio_legal`,`estado`) 
 VALUES ('22222','Sharpe','Code', '15-1111-2222','sharpecode@gmail.com','2020-09-02', '1986-07-01', 'Daniela Acosta Tel 1548755412', 'Peron 2546, San Miguel','1');
 
@@ -31,11 +28,7 @@ INSERT INTO `provincias` (`id_provincia`,`nombre`) VALUES (20,'Santiago del Este
 INSERT INTO `provincias` (`id_provincia`,`nombre`) VALUES (21,'Tierra del Fuego');
 INSERT INTO `provincias` (`id_provincia`,`nombre`) VALUES (22,'Tucumán');
 
-INSERT INTO `localidades` (`localidad`,`cp`,`id_provincia`) VALUES ('San Miguel','1663','1');
-INSERT INTO `localidades` (`localidad`,`cp`,`id_provincia`) VALUES ('Bella Vista','1661','1');
-INSERT INTO `localidades` (`localidad`,`cp`,`id_provincia`) VALUES ('Muñiz','1662','1');
-INSERT INTO `localidades` (`localidad`,`cp`,`id_provincia`) VALUES ('Moreno','1744','1');
-INSERT INTO `localidades` (`localidad`,`cp`,`id_provincia`) VALUES ('Lujan','6700','1');
+INSERT INTO `localidades` (`id_localidad`,`localidad`,`cp`,`id_provincia`) VALUES (1,'San Miguel','1663','1');
 
 INSERT INTO `inmuebles` (`tipo`,`torre`,`piso`,`departamento`,`domicilio`,`id_localidad`) VALUES ('Particular','UNO','1','B','Sarmiento 2021',1);
 
