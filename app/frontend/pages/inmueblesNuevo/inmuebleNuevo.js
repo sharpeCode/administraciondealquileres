@@ -2,6 +2,7 @@ $(function () {
     $("#inmuebleNuevoLis").show();
     $("#inmuebleNuevoAdd").hide();
     $("#inmuebleNuevoEdit").hide();
+    $("#localidadNuevoAdd").hide();
     CargarListadoInmueble();
 });
 
@@ -9,6 +10,7 @@ function InmuebleAdd() {
     $("#inmuebleNuevoAdd").show();
     $("#inmuebleNuevoLis").hide();
     $("#inmuebleNuevoEdit").hide();
+    $("#localidadNuevoAdd").hide();
     llenarSelectConLocalidades();
 }
 
@@ -16,6 +18,7 @@ function mostrarListadoInmuebles() {
     $("#inmuebleNuevoAdd").hide();
     $("#inmuebleNuevoLis").show();
     $("#inmuebleNuevoEdit").hide();
+    $("#localidadNuevoAdd").hide();
     CargarListadoInmueble();
 }
 
@@ -23,8 +26,17 @@ function mostrarFormInmuebleEditar(id) {
     $("#inmuebleNuevoAdd").hide();
     $("#inmuebleNuevoLis").hide();
     $("#inmuebleNuevoEdit").show();
+    $("#localidadNuevoAdd").hide();
     llenarSelectConLocalidadesParaEditar();
     loadInmuebleData(id);
+}
+
+function mostrarFormLocalidadPpal() {
+    $("#inmuebleNuevoAdd").hide();
+    $("#inmuebleNuevoLis").hide();
+    $("#inmuebleNuevoEdit").hide();
+    $("#localidadNuevoAdd").show();
+    loadLocalidadesGrid();
 }
 
 //LISTAR INMUEBLES
@@ -240,4 +252,106 @@ function fillEditionForm(inmueble) {
     $("#editDepartamento").val(inmueble["departamento"]);
     $("#editDomicilio").val(inmueble["domicilio"]);
     $("#editIdlocalidad").val(inmueble["idLocalidad"]);
+}
+
+//GUARDAR INMUEBLE EDITADO
+function guardarInmuebleEditado() {
+
+    var inmuebleEditado = mapToJson($('#inmuebleNuevoEdit').serializeArray());
+
+    let uri = EndpointsEnum.INMUEBLE;
+
+    let href = EndpointsEnum.VOLVER_INMUEBLES;
+
+    var funcionAjax = $.ajax({
+        url: uri,
+        method: "POST",
+        data: {
+            action: "guardarInmuebleEditado",
+            inmuebleEditado: inmuebleEditado
+        }
+    });
+
+    funcionAjax.done(function (retorno) {
+        if (retorno != null) {
+            location.href = href;
+        }
+    });
+
+    funcionAjax.fail(function (retorno) {
+        console.log("error al guardar user")
+    });
+
+    funcionAjax.always(function (retorno) {
+        console.log("volvi de guardar el user")
+    });
+    console.log("Fin llamada controller usuario");
+}
+
+//LISTAR LOCALIDADES
+function loadLocalidadesGrid() {
+    getAllLocalidades(fillLocalidadesGrid,
+        {
+            action: "listarLocalidades",
+        }
+    );
+}
+
+function getAllLocalidades(doneFunction, data) {
+
+    doneFunction = doneFunction instanceof Function ? doneFunction : function (data) {
+        console.log(data)
+    };
+    data = data === undefined ? {action: "getAll"} : data;
+
+    let uri = EndpointsEnum.LOCALIDAD;
+
+    let funcionAjax = $.ajax({
+        url: uri,
+        method: "POST",
+        data: data
+    });
+
+    funcionAjax.done(doneFunction);
+
+    funcionAjax.fail(function (retorno) {
+        console.log("error al llamar back de Localidades")
+    });
+
+    funcionAjax.always(function (retorno) {
+        console.log("always de promise clientes")
+    });
+}
+
+function fillLocalidadesGrid(jsonLocalidades) {
+
+    jsonLocalidades = JSON.parse(jsonLocalidades);
+
+    let tableRaws = "";
+
+    for (var i = 0, l = jsonLocalidades.length; i < l; i++) {
+        tableRaws += "<tr>";
+        tableRaws += buildRawFromLocalidades(jsonLocalidades[i]);
+        tableRaws += "</tr>";
+    }
+
+    $("#listadoLocalidades").html(tableRaws);
+}
+
+function buildRawFromLocalidades(loc) {
+
+    let raw = "";
+    raw += "<td>" + loc['idLocalidad'] + "</td>";
+    raw += "<td>" + loc['localidad'] + "</td>";
+    raw += "<td>" + loc['cp'] + "</td>";
+    raw += "<td>" + loc['nombre'] + "</td>";
+
+    raw += "<td>";
+    raw += "<td>";
+    raw += "<button class='miBoton-icon' title='Editar Localidad' onclick='mostrarFormLocalidadEditar(" + loc['idLocalidad'] + ")'>" +
+        "<span class='glyphicon glyphicon-pencil'></span>";
+    raw += "</button></td> ";
+
+    return raw;
+
 }
