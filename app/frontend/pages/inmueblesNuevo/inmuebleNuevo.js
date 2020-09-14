@@ -4,6 +4,7 @@ $(function () {
 });
 
 function InmuebleAdd() {
+    console.log("hlaaa");
     $("#inmuebleNuevoAdd").show();
     $("#inmuebleNuevoLis").hide();
 

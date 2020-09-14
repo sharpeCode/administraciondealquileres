@@ -11,9 +11,6 @@ switch ($action) {
     case "listar":
         getAllInmuebles();
         break;
-    case "cargarSelectConLocalidades":
-        getLocalidades();
-        break;
     case "traerInmueblePorId":
         traerInmueblePorId($_POST['inmueble']);
         break;
@@ -22,9 +19,6 @@ switch ($action) {
         break;
     case "guardarInmuebleEditado":
         guardarInmuebleEditado($_POST['inmuebleEditado']);
-        break;
-    case "crearPDF":
-        crearPDF();
         break;
     default:
         console . log("NO SE QUE HACER VIEJA");
@@ -65,11 +59,3 @@ function guardarInmuebleEditado($inmuebleEditado)
     echo json_encode($inm);
 }
 
-function crearPDF()
-{
-    $pdf = new FPDF();
-    $pdf->AddPage('P','Letter');
-    $pdf->SetFont('Arial', 'B', 16);
-    $pdf->Cell(40, 10, '¡Hola, Mundo!');
-    $pdf->Output();
-};

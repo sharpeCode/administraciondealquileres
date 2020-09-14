@@ -65,7 +65,6 @@ class InmuebleRepository
         return $localidades;
     }
 
-
     public static function addInmueble($inmueble)
     {
         $inm = null;
@@ -93,14 +92,10 @@ class InmuebleRepository
         return $inm;
     }
 
-
-
     public static function editInmueble($inmueble)
     {
         $inm = null;
-
         try {
-
             $sql = "UPDATE inmuebles 
                     SET tipo=:tipo, torre=:torre, piso=:piso, departamento=:departamento, 
                     domicilio=:domicilio, id_localidad =:idLocalidad
