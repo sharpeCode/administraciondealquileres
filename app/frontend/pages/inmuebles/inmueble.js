@@ -93,7 +93,7 @@ function mostrarFormInmuebleAdd() {
     //$("#inmuebleAgregar").show();
    // $("#inmuebleAdd").hide();
    // $("#inmuebleEdit").hide();
-    $("#inmuebleList").show();
+    $("#inmuebleList").hide();
     //llenarSelectConLocalidades();
 }
 
