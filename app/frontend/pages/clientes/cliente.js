@@ -32,7 +32,7 @@ function buildRawFromCliente(cliente){
     // cambiar formato fecha de AAAA-MM-DD a DD-MM-AAAA
     let fe = cliente['fechaNacimiento'];
     console.log("VER FECHA OBTENIDAAA");
-    console.log("fe");
+    console.log(fe);
     let fechaNac;
     if (fe!=null)
     {
