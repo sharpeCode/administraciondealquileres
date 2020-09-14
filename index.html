@@ -11,17 +11,37 @@
 	<script src="app/frontend/resources/js/commons.js"></script>
 	<style type="text/css">
 
-		.fondoBody{
+		.fondoBody {
 			background-image: url("app/frontend/resources/images/fondoHome.png");
 			/*background-repeat: no-repeat;*/
-            /*background-position: center center;*/
+			/*background-position: center center;*/
 			background-size: cover;
 			overflow: hidden;
-	}
+		}
 
 		.fuentePie{
 			font: bold 100% sans-serif;
 			margin: 10px;
+		}
+
+		.miBoton-index{
+			width: 130px;
+			height: 40px;
+			background-color: #3a5ba0;
+			/*padding: 10px 100px 70px 10px;  espacio con respecto al texto*/
+			margin: 10px;
+			border-radius: 8px 8px 8px 8px;
+			border: 0px solid #000000;
+			color: white; /*color de letra gris claro el mismo gris del fondo*/
+			/*position: absolute;*/
+			/*left: 0px;*/
+			font: normal 16px sans-serif; /*negrita, tamaño, tipo de letra*/
+		}
+
+		.miBoton-index:hover{
+			color: #3a5ba0;
+			background-color: white;
+			border: 2px solid #3a5ba0;
 		}
 
 	</style>
@@ -49,7 +69,7 @@
 				</div>
 				<div class="panel-body text-right panel-cuerpo">
 					<div>
-						<a href="app/frontend/pages/login/login.page.php"><input class=".miBoton-index" type="button" value="Login"></a>
+						<a href="app/frontend/pages/login/login.page.php"><input class="miBoton-index" type="button" value="Login"></a>
 					</div>
 
 				</div>

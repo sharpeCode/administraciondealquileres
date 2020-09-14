@@ -388,25 +388,12 @@ input:focus, input.form-control:focus, button:focus, select:focus {
     /*left: 0px;*/
     font: normal 16px sans-serif; /*negrita, tamaño, tipo de letra*/
 }
-/*.miBoton-1:hover{*/
-/*    color: #3a5ba0;*/
-/*    background-color: white;*/
-/*    border: 2px solid #3a5ba0;*/
-/*}*/
+.miBoton-index:hover{
+    color: #3a5ba0;
+    background-color: white;
+    border: 2px solid #3a5ba0;
+}
 
-/*.miBoton-2{*/
-/*    width: 180px;*/
-/*    height: 120px;*/
-/*    padding: 0px 70px 70px 10px; !* espacio con respecto al texto*!*/
-/*    margin: 10px;*/
-/*    border-radius: 9px 9px 9px 9px;*/
-/*    border: 0px solid #000000;*/
-/*    background-image: url("../../resources/images/imagen-ppal.jpeg");*/
-/*    color: #3a5ba0; !*color de letra gris claro el mismo gris del fondo*!*/
-/*    !*position: absolute;*!*/
-/*    !*left: 0px;*!*/
-/*    font: bold 20px sans-serif; !*negrita, tamaño, tipo de letra*!*/
-/*}*/
 
 
 
