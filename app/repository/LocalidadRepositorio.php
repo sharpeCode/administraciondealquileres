@@ -47,11 +47,12 @@ class LocalidadRepositorio
     {
         $loc = null;
         try {
-            $sql = "INSERT INTO localidades (localidad, cp, id_provincia)
-                    VALUES(:localidad, :cp, :id_provincia)";
+            $sql = "INSERT INTO localidades (id_localidad, localidad, cp, id_provincia)
+                    VALUES(:id_localidad,:localidad, :cp, :id_provincia)";
 
 
             $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
+            $sentencia->bindParam(':id_localidad', $localidad->idLocalidadADD, PDO::PARAM_STR);
             $sentencia->bindParam(':localidad', $localidad->localidad, PDO::PARAM_STR);
             $sentencia->bindParam(':cp', $localidad->cp, PDO::PARAM_STR);
             $sentencia->bindParam(':id_provincia', $localidad->idProvincia, PDO::PARAM_INT);
@@ -78,6 +79,10 @@ class LocalidadRepositorio
             $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
             $sentencia->execute();
             $loc = $sentencia->fetchObject("Localidad");
+
+            $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
+            $sentencia->execute();
+            $loc = $sentencia->fetch(int|null);
 
 
         } catch (PDOException $ex) {
@@ -177,6 +182,26 @@ class LocalidadRepositorio
         }
         return $local;
 
+    }
+
+    public static function traerUltimoIdLocalidad()
+    {
+        $localidad = null;
+        try {
+            $sql = "SELECT id_localidad AS idLocalidad
+                    FROM Localidades  
+                    ORDER BY id_localidad DESC LIMIT 1";
+
+            $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
+            $sentencia->execute();
+            $localidad = $sentencia->fetchObject("Localidad");
+
+        } catch (PDOException $ex) {
+            print 'ERROR' . $ex->getMessage();
+            $localidad = null;
+        }
+
+        return $localidad;
     }
 
 }

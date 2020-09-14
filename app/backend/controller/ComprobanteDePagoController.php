@@ -122,9 +122,9 @@ function cargarComprobanteDePago($idRegistroDePago)
 	 var_dump($fechaArmada);
 
     // saco diferencia fecha armada (mes y año correspondiente al recibo que pagaria + la fecha de vto que figura en el contrato
- //   $fecha1 = new DateTime($fechaHoy);
-//    $fecha2 = new DateTime($fechaArmada);
-//	var_dump($fecha2);
+    $fecha1 = new DateTime($fechaHoy);
+    $fecha2 = new DateTime($fechaArmada);
+	var_dump($fecha2);
 //    $diff = $fecha1->diff($fecha2);
 //    //dias de atraso entre las dos fechas
 //    $diasAtrasado = $diff->days;

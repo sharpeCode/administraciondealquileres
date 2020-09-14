@@ -26,6 +26,9 @@ switch ($action) {
     case "eliminarLocalidad":
         eliminarLocalidad($_POST['idLocalidad']);
         break;
+    case "cargarIdLocalidadAutomatico":
+        cargarIdLocalidadAutomatico();
+        break;
     default:
         console . log("Error");
         break;
@@ -77,7 +80,6 @@ function guardarLocalidadEditada()
 
     // Si no casteo no lo paso de array a objeto y no lo puedo usar
     $localidad = (object)$localidadEditar;
-    var_dump($localidad);
 
     $loc = LocalidadRepositorio::guardarLocalidadEditada($localidad);
     echo json_encode($loc);
@@ -94,8 +96,17 @@ function traerIdProvincia($provincia)
 
 function eliminarLocalidad($idLocalidad)
 {
-
     $loc = LocalidadRepositorio::eliminarLocalidad($idLocalidad);
     echo json_encode($loc);
 }
+
+function cargarIdLocalidadAutomatico()
+{
+    $localidad = LocalidadRepositorio::traerUltimoIdLocalidad();
+    $id = (int) $localidad->idLocalidad;
+    $id = $id + 1;
+    echo json_encode($id);
+
+}
+
 

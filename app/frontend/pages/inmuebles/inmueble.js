@@ -366,7 +366,31 @@ function mostrarFormLocalidadAdd() {
     $("#localidadList").hide();
     $("#localidadAdd").show();
     $("#localidadEdit").hide();
+    cargarIdLocalidad();
     llenarSelectConProvincias();
+}
+
+function cargarIdLocalidad() {
+
+    let uri = EndpointsEnum.LOCALIDAD;
+
+    var funcionAjax = $.ajax({
+        url: uri,
+        method: "POST",
+        data: {
+            action: "cargarIdLocalidadAutomatico",
+        }
+    });
+
+    funcionAjax.done(function (retorno) {
+        console.log("EL ID OBTENIDO DE LA BASE ES.....");
+        console.log(retorno);
+        $("#idLocalidadADD").val(retorno);
+    });
+
+    funcionAjax.fail(function (retorno) {
+        console.error(retorno);
+    });
 }
 
 function llenarSelectConProvincias() {
@@ -382,17 +406,15 @@ function llenarSelectConProvincias() {
     });
 
     funcionAjax.done(function (retorno) {
-        console.log(retorno);
         fillDomProvincia(retorno);
-
     });
 
     funcionAjax.fail(function (retorno) {
-        console.log("error al cargar select con alumnos")
+        console.log("Error al cargar las Provincias")
     });
 
     funcionAjax.always(function (retorno) {
-        console.log("volvi de buscar a los alumnos")
+        console.log("Volví de buscar las Provincias")
     });
 }
 
@@ -421,7 +443,10 @@ function optionsProvincia(provincia) {
 
 function guardarLocalidad() {
 
-    var guardarLocalidad = mapToJson($('#localidadAdd').serializeArray()); //obtener el varlos de todos los input
+    let guardarLocalidad = mapToJson($('#localidadAdd').serializeArray()); //obtener el varlos de todos los input
+
+    console.log("LOS DATOS OBTENIDOS DEL FOMULARIO SON....");
+    console.log(guardarLocalidad);
 
     let uri = EndpointsEnum.LOCALIDAD;
 
