@@ -130,7 +130,7 @@ function CagarReciboOficial(idRegistroDePago,ban) {
     $("#comprobDePagoSaldoNoOficial").hide();
     $("#visualizarReciboNoOficialSoloSaldo").hide();
     llenarInputsRecibo(idRegistroDePago,ban);
-    //llenarSelectConOpcionesSaldoAnteriorRecibo(idRegistroDePago);
+    llenarSelectConOpcionesSaldoAnteriorRecibo(idRegistroDePago);
 }
 
 //TODO: CARGAR COMPROBANTE DE PAGO NO OFICIAL
@@ -903,11 +903,11 @@ function cargarDatosDeContrato(datosContrato) {
 function llenarInputsRecibo(idRegistroDePago,ban) {
     //console.debug("trayendo datos de registro de pago");
 
-    let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
-    console.log("Llamando a controller locatarios = " + uri);
+    let uri2 = EndpointsEnum.COMPROBANTE_DE_PAGO;
+    //console.log("Llamando a controller locatarios = " + uri);
 
     var funcionAjax = $.ajax({
-        url: uri,
+        url: uri2,
         method: "POST",
         data: {
             action: "cargarComprobanteDePago",
