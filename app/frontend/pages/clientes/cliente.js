@@ -223,7 +223,7 @@ function guardarClienteEditado() {
     });
 
     funcionAjax.done(function (retorno) {
-       //location.href = uriPage;
+       location.href = uriPage;
     });
 
     funcionAjax.fail(function (retorno) {
@@ -233,7 +233,6 @@ function guardarClienteEditado() {
     funcionAjax.always(function (retorno) {
         console.log("volvi de guardar el user")
     });
-    console.log("Fin llamada controller usuario");
 }
 
 // TODO: DETALLE CLIENTE

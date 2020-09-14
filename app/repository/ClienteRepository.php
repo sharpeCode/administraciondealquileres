@@ -10,7 +10,8 @@ class ClienteRepository
         try {
             $sql = "SELECT nombres, apellidos, dni, celular, email, fecha_nacimiento fechaNacimiento, fecha_registro as fechaRegistro,
                         datos_garante datosGarante, domicilio_legal domicilioLegal
-                        FROM clientes WHERE estado = '1'";
+                        FROM clientes WHERE estado = '1'
+                        ORDER BY fecha_registro DESC";
 
             $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
             $sentencia->execute();
@@ -64,7 +65,8 @@ class ClienteRepository
                 $sql = "SELECT nombres, apellidos, dni, celular, email, fecha_nacimiento fechaNacimiento, fecha_registro as fechaRegistro,
                         datos_garante datosGarante, domicilio_legal domicilioLegal
                         FROM clientes
-                        WHERE dni = $dni";
+                        WHERE estado = 1 AND dni = $dni
+                        ORDER BY fecha_registro DESC";
 
                 $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
                 $sentencia->execute();
@@ -131,7 +133,8 @@ class ClienteRepository
                 $sql = "SELECT nombres, apellidos, dni, celular, email, fecha_nacimiento fechaNacimiento, fecha_registro as fechaRegistro,
                         datos_garante datosGarante, domicilio_legal domicilioLegal
                         FROM clientes
-                        WHERE nombres like '%$nombre%'";
+                        WHERE estado = 1 AND nombres like '%$nombre%'
+                        ORDER BY fecha_registro DESC";
 
                 $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
                 $sentencia->execute();
