@@ -199,4 +199,26 @@ class ClienteRepository
 
     }
 
+    public static function eliminarCliente($dni)
+    {
+        $cliente = null;
+        $estado = "0";
+        try {
+
+            $sql = "UPDATE clientes SET estado=:estado
+                    WHERE dni = '$dni'";
+
+            $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
+            $sentencia->bindParam(':estado',$estado , PDO::PARAM_STR);
+
+            $sentencia->execute();
+            $cliente = $sentencia->fetchObject("Cliente");
+
+        } catch (PDOException $ex) {
+            $cliente = null;
+        }
+        return $cliente;
+
+    }
+
 }

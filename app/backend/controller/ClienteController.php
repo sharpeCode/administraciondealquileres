@@ -23,11 +23,12 @@ switch ($action) {
     case "traerClientePorNombre":
         traerClienteFiltradoPorNombre($_POST['nombre']);
         break;
-    case "hola":
-        hola();
+    case "deleteCliente":
+        eliminarCliente();
+        break;
         break;
     default:
-        console . log("No se pudo a la acción al controller");
+        console . log("No se pudo acceder a la acción al controller");
         break;
 }
 
@@ -87,5 +88,12 @@ function traerClienteParaEditar($dni)
 function traerClienteFiltradoPorNombre($nombre)
 {
     $clientes = ClienteRepository::traerClientesFiltradoPorNombre($nombre);
+    echo json_encode($clientes);
+}
+
+function eliminarCliente()
+{
+    $dni = $_POST["dni"];
+    $clientes = ClienteRepository::eliminarCliente($dni);
     echo json_encode($clientes);
 }

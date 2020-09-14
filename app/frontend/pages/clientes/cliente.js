@@ -294,6 +294,7 @@ function fillFormDetail(cliente) {
     $("#detailEmail").val(cliente["email"]);
     $("#detailFechaNacimiento").val(fechaNac);
     $("#detailDatosGarante").val(cliente["datosGarante"]);
+    $("#detailDomiciloLegal").val(cliente["domicilioLegal"]);
 }
 
 // TODO: FORM PPAL
@@ -379,5 +380,35 @@ function locatarioFilter(doneFunction, data) {
 }
 
 function deleteCliente(dni) {
+
+    let uri = EndpointsEnum.CLIENTE;
+    let uriPage = EndpointsEnum.VOLVER_CLIENTES;
+
+    let txt;
+    let r = confirm("Desea eliminar este Cliente?");
+    if (r == true) {
+
+        let funcionAjax = $.ajax({
+            url: uri,
+            method: "POST",
+            data: {
+                action: "deleteCliente",
+                dni: dni
+            }
+        });
+
+        funcionAjax.done(function (retorno) {
+            location.href = uriPage;
+        });
+
+        funcionAjax.fail(function (retorno) {
+            console.log("error al eliminar")
+        });
+
+        funcionAjax.always(function (retorno) {
+            console.log("volvi de eliminar")
+        });
+        console.log("Fin llamada controller cliente");
+    }
 
 }
