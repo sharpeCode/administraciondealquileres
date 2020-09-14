@@ -111,13 +111,14 @@ function cargarComprobanteDePago($idRegistroDePago)
     //traer el ultimo aumneto agregado para la variable vencimiento x dia de atraso
     $nombreVariable = "Interés x vencimiento"; //el id 3 es --> Interes x vencimiento
      $variableAumentoPorDia = VariablesRepository::getVariablesId($nombreVariable);
-	     var_dump($variableAumentoPorDia);
-//    $porcAumento = (int)$variableAumentoPorDia->porcentaje;
-//    $alquiler = (int)$registroDePago->valorAlquiler;
-//    $valorInteresPorDia = ($alquiler * $porcAumento) / 100; //valor interes x dia en pesos
-//
-//    // armo la fecha
-//    $fechaArmada = $anioAPagar . "-" . $mes . "-" . $fecha;
+	    
+    $porcAumento = (int)$variableAumentoPorDia->porcentaje;
+    $alquiler = (int)$registroDePago->valorAlquiler;
+    $valorInteresPorDia = ($alquiler * $porcAumento) / 100; //valor interes x dia en pesos
+
+    // armo la fecha
+    $fechaArmada = $anioAPagar . "-" . $mes . "-" . $fecha;
+	 var_dump($fechaArmada);
 //
 //    // saco diferencia fecha armada (mes y año correspondiente al recibo que pagaria + la fecha de vto que figura en el contrato
 //    $fecha1 = new DateTime($fechaHoy);
