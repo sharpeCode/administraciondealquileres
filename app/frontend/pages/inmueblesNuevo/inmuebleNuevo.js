@@ -56,6 +56,7 @@ function mostrarFormLocalidadAdd() {
     $("#localidadNuevoList").hide();
     $("#localidadNuevoAdd").show();
     $("#localidadNuevoEdit").hide();
+    cargarIdLocalidad();
     llenarSelectConProvincias();
 }
 
@@ -389,6 +390,27 @@ function buildRawFromLocalidades(loc) {
 }
 
 // TODO: LOCALIDADES ADD
+
+function cargarIdLocalidad() {
+
+    let uri = EndpointsEnum.LOCALIDAD;
+
+    var funcionAjax = $.ajax({
+        url: uri,
+        method: "POST",
+        data: {
+            action: "cargarIdLocalidadAutomatico",
+        }
+    });
+
+    funcionAjax.done(function (retorno) {
+        $("#idLocalidad").val(retorno);
+    });
+
+    funcionAjax.fail(function (retorno) {
+        console.error(retorno);
+    });
+}
 
 function llenarSelectConProvincias() {
 
