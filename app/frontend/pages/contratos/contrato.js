@@ -130,7 +130,7 @@ function CagarReciboOficial(idRegistroDePago,ban) {
     $("#comprobDePagoSaldoNoOficial").hide();
     $("#visualizarReciboNoOficialSoloSaldo").hide();
     llenarInputsRecibo(idRegistroDePago,ban);
-    llenarSelectConOpcionesSaldoAnteriorRecibo(idRegistroDePago);
+    //llenarSelectConOpcionesSaldoAnteriorRecibo(idRegistroDePago);
 }
 
 //TODO: CARGAR COMPROBANTE DE PAGO NO OFICIAL
