@@ -118,7 +118,7 @@ function llenarTablaInmuebles(jsonUsers) {
         tableRaws += "</tr>";
     }
 
-    $("#listado").html(tableRaws);
+    $("#listadoooo").html(tableRaws);
 }
 
 function construirFilaDeInmueble(inmueble) {
