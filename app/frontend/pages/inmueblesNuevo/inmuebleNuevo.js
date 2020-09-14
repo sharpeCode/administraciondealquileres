@@ -404,7 +404,7 @@ function cargarIdLocalidad() {
     });
 
     funcionAjax.done(function (retorno) {
-        $("#idLocalidad").val(retorno);
+        $("#idLocalidadADD").val(retorno);
     });
 
     funcionAjax.fail(function (retorno) {
