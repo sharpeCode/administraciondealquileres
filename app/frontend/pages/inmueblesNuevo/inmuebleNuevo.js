@@ -3,6 +3,12 @@ $(function () {
     CargarListadoInmueble();
 });
 
+function InmuebleAdd() {
+    $("#inmuebleNuevoAdd").show();
+    $("#inmuebleNuevoLis").hide();
+
+}
+
 //LISTAR INMUEBLES
 function CargarListadoInmueble() {
     obtenerInmuebles(llenarTablaInmuebles,
