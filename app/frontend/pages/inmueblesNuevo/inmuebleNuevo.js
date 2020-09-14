@@ -7,52 +7,63 @@ $(function () {
 });
 
 function mostrarListadoInmuebles() {
+    $("#inmuebleNuevoList").show();
     $("#inmuebleNuevoAdd").hide();
-    $("#inmuebleNuevoLis").show();
     $("#inmuebleNuevoEdit").hide();
+    $("#localidadNuevoList").hide();
     $("#localidadNuevoAdd").hide();
+    $("#localidadNuevoEdit").hide();
     CargarListadoInmueble();
 }
 
 function InmuebleAdd() {
+    $("#inmuebleNuevoList").hide();
     $("#inmuebleNuevoAdd").show();
-    $("#inmuebleNuevoLis").hide();
     $("#inmuebleNuevoEdit").hide();
+    $("#localidadNuevoList").hide();
     $("#localidadNuevoAdd").hide();
+    $("#localidadNuevoEdit").hide();
     llenarSelectConLocalidades();
 }
 
 function mostrarFormInmuebleEditar(id) {
+    $("#inmuebleNuevoList").hide();
     $("#inmuebleNuevoAdd").hide();
-    $("#inmuebleNuevoLis").hide();
     $("#inmuebleNuevoEdit").show();
+    $("#localidadNuevoList").hide();
     $("#localidadNuevoAdd").hide();
+    $("#localidadNuevoEdit").hide();
     llenarSelectConLocalidadesParaEditar();
     loadInmuebleData(id);
 }
 
 function mostrarFormLocalidadPpal() {
-    $("#inmuebleNuevoLis").hide();
-    $("#inmuebleNuevoLis").hide();
+    $("#inmuebleNuevoList").hide();
+    $("#inmuebleNuevoAdd").hide();
     $("#inmuebleNuevoEdit").hide();
     $("#localidadNuevoList").show();
     $("#localidadNuevoAdd").hide();
+    $("#localidadNuevoEdit").hide();
     loadLocalidadesGrid();
 }
 
 function mostrarFormLocalidadAdd() {
-    $("#inmuebleNuevoLis").hide();
-    $("#inmuebleNuevoLis").hide();
+    $("#inmuebleNuevoList").hide();
+    $("#inmuebleNuevoAdd").hide();
     $("#inmuebleNuevoEdit").hide();
-    $("#localidadNuevoList").show();
-    $("#localidadNuevoAdd").hide();
+    $("#localidadNuevoList").hide();
+    $("#localidadNuevoAdd").show();
+    $("#localidadNuevoEdit").hide();
     llenarSelectConProvincias();
 }
 
 function mostrarFormLocalidadEditar(idLocalidad) {
-    $("#localidadAdd").hide();
-    $("#localidadList").hide();
-    $("#localidadEdit").show();
+    $("#inmuebleNuevoList").hide();
+    $("#inmuebleNuevoAdd").hide();
+    $("#inmuebleNuevoEdit").hide();
+    $("#localidadNuevoList").hide();
+    $("#localidadNuevoAdd").hide();
+    $("#localidadNuevoEdit").show();
     llenarSelectConProvinciasParaEditar();
     cargarLocalidadParaEditar(idLocalidad);
 }
