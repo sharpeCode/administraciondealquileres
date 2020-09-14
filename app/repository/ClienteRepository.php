@@ -177,12 +177,10 @@ class ClienteRepository
     {
         $cliente = null;
         $estado = "1";
-        echo 'ENTRO AL REPOSITORIO....';
-        var_dump($clienteObject);
         try {
             $sql = "UPDATE clientes 
                     SET nombres=:nombres, apellidos=:apellidos, celular=:celular, email=:email, 
-                    fecha_nacimiento=:fecha_nacimiento, fecha_registro=: NOW(), datos_garante=:datos_garante, estado=:estado, domicilio_legal=:domicilio_legal
+                    fecha_nacimiento=:fecha_nacimiento, datos_garante=:datos_garante, estado=:estado, domicilio_legal=:domicilio_legal
                     WHERE dni = '$clienteObject->editDni'";
 
             $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);

@@ -125,9 +125,7 @@ function clearCliente() {
 
 function guardarCliente() {
 
-    var clienteNuevoParaGuardar = mapToJson($('#clienteAdd').serializeArray());
-
-    console.log("Guardando locatario: ", clienteNuevoParaGuardar);
+    let clienteNuevoParaGuardar = mapToJson($('#clienteAdd').serializeArray());
 
     let uri = EndpointsEnum.CLIENTE;
     let uriPage = EndpointsEnum.VOLVER_CLIENTES;
@@ -147,7 +145,7 @@ function guardarCliente() {
 
         if (retorno == "ERROR") {
             location.href = uriPage;
-            window.alert("El locatario que desea ingresar ya existe");
+            window.alert("El Cliente que desea ingresar ya existe");
 
         } else{
             location.href = uriPage;
@@ -155,13 +153,8 @@ function guardarCliente() {
     });
 
     funcionAjax.fail(function (retorno) {
-        console.log("error al guardar cliente")
+        console.log("error al guardar Cliente")
     });
-
-    funcionAjax.always(function (retorno) {
-        console.log("volvi de guardar el cliente")
-    });
-    console.log("Fin llamada controller cliente");
 }
 
 // TODO: EDITAR CLIENTE
@@ -202,12 +195,6 @@ function fillFormEdit(cliente) {
     let fecha = cliente["fechaNacimiento"];
     let fechaNac = fecha.split(" ")[0].split("/").reverse().join("/");
 
-    // let fe = cliente['fechaNacimiento'];
-    // let fecha = new Date(fe);
-    // let options = { day: 'numeric' , month: 'numeric', year: 'numeric'};
-    // let fechaNac = fecha.toLocaleDateString("es-ES", options);
-
-
     $("#editNombres").val(cliente["nombres"]);
     $("#editApellidos").val(cliente["apellidos"]);
     $("#editDni").val(cliente["dni"]);
@@ -222,9 +209,6 @@ function fillFormEdit(cliente) {
 function guardarClienteEditado() {
 
     let clienteParaGuardar = mapToJson($('#clienteEdit').serializeArray());
-
-    console.log("ACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-    console.log(clienteParaGuardar);
 
     let uri = EndpointsEnum.CLIENTE;
     let uriPage = EndpointsEnum.VOLVER_CLIENTES;

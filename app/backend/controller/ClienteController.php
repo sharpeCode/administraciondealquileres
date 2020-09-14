@@ -62,13 +62,8 @@ function guardarClienteNuevo()
 
 function guardarClienteEditado()
 {
-    echo 'entro a CLIENTE controller';
     $clienteParaGuardar = $_POST["clienteParaGuardar"];
 
-    var_dump($clienteParaGuardar);
-
-
-    // Si no casteo no lo paso de array a objeto y no lo puedo usar
     $clienteObject = (object)$clienteParaGuardar;
 
     $cliente = ClienteRepository::guardarClienteEditado($clienteObject);
