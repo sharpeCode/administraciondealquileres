@@ -9,5 +9,6 @@
 <?php
 require_once 'inmuebleNuevoList.html';
 require_once 'inmuebleNuevoAdd.html';
+require_once 'inmuebleNuevoEdit.html';
 
 ?>

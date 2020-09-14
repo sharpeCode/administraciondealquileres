@@ -1,19 +1,30 @@
 $(function () {
     $("#inmuebleNuevoLis").show();
     $("#inmuebleNuevoAdd").hide();
+    $("#inmuebleNuevoEdit").hide();
     CargarListadoInmueble();
 });
 
 function InmuebleAdd() {
     $("#inmuebleNuevoAdd").show();
     $("#inmuebleNuevoLis").hide();
+    $("#inmuebleNuevoEdit").hide();
     llenarSelectConLocalidades();
 }
 
 function mostrarListadoInmuebles() {
-    $("#inmuebleNuevoAdd").show();
-    $("#inmuebleNuevoLis").hide();
+    $("#inmuebleNuevoAdd").hide();
+    $("#inmuebleNuevoLis").show();
+    $("#inmuebleNuevoEdit").hide();
     CargarListadoInmueble();
+}
+
+function mostrarFormInmuebleEditar(id) {
+    $("#inmuebleNuevoAdd").hide();
+    $("#inmuebleNuevoLis").hide();
+    $("#inmuebleNuevoEdit").show();
+    llenarSelectConLocalidadesParaEditar();
+    loadInmuebleData(id);
 }
 
 //LISTAR INMUEBLES
@@ -133,7 +144,7 @@ function guardarInmueble() {
 
     let uri = EndpointsEnum.INMUEBLE;
     let href = EndpointsEnum.VOLVER_INMUEBLES;
-    
+
     var funcionAjax = $.ajax({
         url: uri,
         method: "POST",
@@ -145,7 +156,7 @@ function guardarInmueble() {
 
     funcionAjax.done(function (retorno) {
         console.log(retorno);
-        //location.href = href;
+        location.href = href;
     });
 
     funcionAjax.fail(function (retorno) {
@@ -156,4 +167,77 @@ function guardarInmueble() {
         console.log("volvi de guardar el user")
     });
     console.log("Fin llamada controller usuario");
+}
+
+//LLENAR SELECT CON LOCADIDADES PARA EDITAR
+function llenarSelectConLocalidadesParaEditar() {
+
+    let uri = EndpointsEnum.LOCALIDAD;
+
+    var funcionAjax = $.ajax({
+        url: uri,
+        method: "POST",
+        data: {
+            action: "listarLocalidades"
+        }
+    });
+
+    funcionAjax.done(function (retorno) {
+        fillDomEdit(retorno);
+    });
+
+    funcionAjax.fail(function (retorno) {
+        console.log("Error al cargar Localidades")
+    });
+}
+
+function fillDomEdit(arrayLocalidad) {
+    arrayLocalidad = JSON.parse(arrayLocalidad);
+
+    let options = "";
+
+    for (var i = 0, l = arrayLocalidad.length; i < l; i++) {
+        options += optionsLocalidad(arrayLocalidad[i]);
+    }
+    $("#editIdlocalidad").html(options);
+
+}
+
+function optionsLocalidad(localidad) {
+    let option = "";
+    option += "<option value=" + localidad['idLocalidad'] + ">" + localidad['localidad'] + "</option>";
+    return option;
+}
+
+//LLENAR INPUT PARA EDITAR INMUEBLE
+function loadInmuebleData(id) {
+
+    let uri = EndpointsEnum.INMUEBLE;
+
+    var funcionAjax = $.ajax({
+        url: uri,
+        method: "POST",
+        data: {
+            action: "traerInmueblePorId",
+            inmueble: id
+        }
+    });
+
+    funcionAjax.done(function (retorno) {
+        fillEditionForm(JSON.parse(retorno));
+    });
+
+    funcionAjax.fail(function (retorno) {
+        console.error(retorno);
+    });
+}
+
+function fillEditionForm(inmueble) {
+    $("#editIdInmueble").val(inmueble["idInmueble"]);
+    $("#editTipo").val(inmueble["tipo"]);
+    $("#editTorre").val(inmueble["torre"]);
+    $("#editPiso").val(inmueble["piso"]);
+    $("#editDepartamento").val(inmueble["departamento"]);
+    $("#editDomicilio").val(inmueble["domicilio"]);
+    $("#editIdlocalidad").val(inmueble["idLocalidad"]);
 }
