@@ -10,14 +10,15 @@ $(function () {
 });
 
 function mostrarFormInmuebleAdd() {
-    console.log("holaaaaa ");
-    // $("#inmuebleAdd").hide();
+
+    $("#inmuebleAdd").hide();
     $("#inmuebleAgregar").show();
-    // $("#inmuebleEdit").hide();
-    // $("#inmuebleList").hide();
-    // $("#localidadAdd").hide();
-    // $("#localidadEdit").hide();
-    // $("#localidadList").hide();
+    $("#inmuebleEdit").hide();
+    $("#inmuebleList").hide();
+    $("#localidadAdd").hide();
+    $("#localidadEdit").hide();
+    $("#localidadList").hide();
+    console.log("holaaaaa1 ");
 
     //llenarSelectConLocalidades();
 }
