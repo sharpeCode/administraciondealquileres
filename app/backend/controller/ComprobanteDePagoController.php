@@ -60,8 +60,11 @@ switch ($action) {
         break;
 }
 
+function cargarComprobanteDePago($idRegistroDePago){
+    var_dump($idRegistroDePago);
+}
 
-function cargarComprobanteDePago($idRegistroDePago)
+function cargarComprobanteDePago2($idRegistroDePago)
 {
 
 
@@ -240,8 +243,7 @@ function cargarComprobanteDePago($idRegistroDePago)
     $CompDePagoConMora->nombrePais = $registroDePago->nombre;
 
 
-    //echo json_encode($CompDePagoConMora);
-	var_dump($CompDePagoConMora);
+    echo json_encode($CompDePagoConMora);
 
 }
 
