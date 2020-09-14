@@ -3,9 +3,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="inmueble.css">
-    <script type="text/javascript" src="inmueble.js"></script>
+    <script src="inmueble.js"></script>
 </head>
-
 
 <?php
 require_once 'inmuebleList.html';
