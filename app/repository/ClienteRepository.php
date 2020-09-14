@@ -178,8 +178,8 @@ class ClienteRepository
         $cliente = null;
         $estado = "1";
         try {
-
-            $sql = "UPDATE clientes SET dni=:dni, nombres=:nombres, apellidos=:apellidos, celular=:celular, email=:email, 
+            $sql = "UPDATE clientes 
+                    SET nombres=:nombres, apellidos=:apellidos, celular=:celular, email=:email, 
                     fecha_nacimiento=:fecha_nacimiento, fecha_registro=: NOW(), datos_garante=:datos_garante, estado=:estado, domicilio_legal=:domicilio_legal
                     WHERE dni = '$clienteObject->editDni'";
 
