@@ -340,7 +340,7 @@ input:focus, input.form-control:focus, button:focus, select:focus {
    Botones de menu principal
 ====================================================================================*/
 .miBoton-1{
-    width: 250px;
+    width: 300px;
     height: 60px;
     background-color: #3a5ba0;
     /*padding: 10px 100px 70px 10px;  espacio con respecto al texto*/
