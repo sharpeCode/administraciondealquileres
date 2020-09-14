@@ -50,5 +50,5 @@ class VariablesRepository
         }
         return $inm;
     }
-    
+
 }

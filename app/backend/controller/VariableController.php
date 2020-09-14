@@ -8,11 +8,8 @@ $action = $_POST['action'];
 
 switch ($action) {
 
-    case "listar":
+    case "listarVariables":
         getAllVariables();
-        break;
-    case "cargarSelectConVariables":
-        getVariables();
         break;
     case "guardarVariableNuevo":
         guardarVariableNuevo();
@@ -26,12 +23,6 @@ function getAllVariables()
 {
     $porcentajeDeVariable = VariablesRepository::getAllVariables();
     echo json_encode($porcentajeDeVariable);
-}
-
-function getVariables()
-{
-    $variable = VariablesRepository::getVariables();
-    echo json_encode($variable);
 }
 
 function guardarVariableNuevo()

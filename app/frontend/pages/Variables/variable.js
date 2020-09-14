@@ -13,7 +13,7 @@ function mostrarFormPpal() {
 function CargarListadoVariables() {
     obtenerVariables(llenarTablaVariables,
         {
-            action: "listar"
+            action: "listarVariables"
         }
     );
 }
@@ -83,7 +83,7 @@ function llenarSelectConVariables() {
         url: uri,
         method: "POST",
         data: {
-            action: "cargarSelectConVariables"
+            action: "listarVariables"
         }
     });
 
