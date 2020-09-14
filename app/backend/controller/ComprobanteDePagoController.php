@@ -72,7 +72,7 @@ function cargarComprobanteDePago($idRegistroDePago)
     //obtengo parametros de fecha inicio y fin de pago e cuota alquiler
     $fechaDesde = $datosContrato->fechaPagoInicio;
     $fechaHasta = $datosContrato->fechaPagoFin;
-	var_dump($fechaHasta);
+
 
     //buscar mes y año que corresponde al pago que realizara, para eso buscamos el registro completo por el id
     $mesAPagar = $registroDePago->correspondienteMes;
@@ -117,7 +117,7 @@ function cargarComprobanteDePago($idRegistroDePago)
 
     // armo la fecha
     $fechaArmada = $anioAPagar . "-" . $mes . "-" . $fecha;
-	 var_dump($fechaArmada);
+
 
     // saco diferencia fecha armada (mes y año correspondiente al recibo que pagaria + la fecha de vto que figura en el contrato
     $fecha1 = new DateTime($fechaHoy);
@@ -175,7 +175,7 @@ function cargarComprobanteDePago($idRegistroDePago)
     //VERIFICAR SI EL CONTRATO ARRASTRA ALGUN REGISTRO DE PAGO CON UN SALDO PENDIENTE
     $idContrato = $registroDePago->idContrato;
     $saldos = ComprobanteDePagoRepositorio::sumarSaldosPendientesAnteriores($idContrato, $tipo);
-    var_dump($saldos);
+
 
 
     if ($saldos->saldoPendiente == "" or $saldos->saldoPendiente == null) {
