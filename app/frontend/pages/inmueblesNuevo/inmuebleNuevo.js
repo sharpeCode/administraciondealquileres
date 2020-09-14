@@ -1,8 +1,10 @@
 $(function () {
-    $("#inmuebleNuevoLis").show();
+    $("#inmuebleNuevoList").show();
     $("#inmuebleNuevoAdd").hide();
     $("#inmuebleNuevoEdit").hide();
+    $("#localidadNuevoList").hide();
     $("#localidadNuevoAdd").hide();
+    $("#localidadNuevoEdit").hide();
     CargarListadoInmueble();
 });
 
