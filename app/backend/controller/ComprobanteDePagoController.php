@@ -70,7 +70,6 @@ function cargarComprobanteDePago($idRegistroDePago)
     // busco datos del contrato completo
     $idContrato = $registroDePago->idContrato;
     $datosContrato = ContratoRepositorio::buscarContratoPorId($idContrato);
-    var_dump($datosContrato);
 
     //obtengo parametros de fecha inicio y fin de pago e cuota alquiler
     $fechaDesde = $datosContrato->fechaPagoInicio;
@@ -111,7 +110,8 @@ function cargarComprobanteDePago($idRegistroDePago)
 
     //traer el ultimo aumneto agregado para la variable vencimiento x dia de atraso
     $nombreVariable = "Interés x vencimiento"; //el id 3 es --> Interes x vencimiento
- //    $variableAumentoPorDia = VariablesRepository::getVariablesId($nombreVariable);
+     $variableAumentoPorDia = VariablesRepository::getVariablesId($nombreVariable);
+	     var_dump($variableAumentoPorDia);
 //    $porcAumento = (int)$variableAumentoPorDia->porcentaje;
 //    $alquiler = (int)$registroDePago->valorAlquiler;
 //    $valorInteresPorDia = ($alquiler * $porcAumento) / 100; //valor interes x dia en pesos
