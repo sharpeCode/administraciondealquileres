@@ -124,47 +124,49 @@ function cargarComprobanteDePago($idRegistroDePago)
     // saco diferencia fecha armada (mes y año correspondiente al recibo que pagaria + la fecha de vto que figura en el contrato
     $fecha1 = new DateTime($fechaHoy);
     $fecha2 = new DateTime($fechaArmada);
+
     $diff = $fecha1->diff($fecha2);
-	var_dump($diff);
-//    //dias de atraso entre las dos fechas
-//    $diasAtrasado = $diff->days;
-//
-//
-//    //corroborar si va a apagar con atraso
-//    if ($anioHoy < $anioAPagar) {
-//        //OK
-//        $interesPorMora = 0;
-//        $diasAtrasado = 0;
-//    } elseif ($anioHoy == $anioAPagar) {
-//        //analizar mes y dia
-//        if ($mesHoy < $mesAPagar) {
-//            //OK
-//            $interesPorMora = 0;
-//            $diasAtrasado = 0;
-//        } elseif ($mesHoy == $mesAPagar) {
-//            //analizar dia
-//            if ($diaHoy <= $fechaHasta) {
-//                //OK
-//                $interesPorMora = 0;
-//                $diasAtrasado = 0;
-//            } elseif ($diaHoy > $fechaHasta) {
-//                //ATRASADO
-//                $interesPorMora = $valorInteresPorDia * $diasAtrasado;
-//            }
-//
-//        } elseif ($mesHoy > $mesAPagar) {
-//            //ATRASADO
-//            $interesPorMora = $valorInteresPorDia * $diasAtrasado;
-//        }
-//
-//    } elseif ($anioHoy < $anioAPagar) {
-//        //ATRASADO
-//        $interesPorMora = $valorInteresPorDia * $diasAtrasado;
-//    }
-//
-//    //VERIFICAR ULTIMO NUMERO DE COMPROBANTE PARA CARGAR EL SIGUIENTE
-//    $tipo = $registroDePago->tipoRegistroDePago;
-//    $ultimoNumComprobante = ComprobanteDePagoRepositorio::mostrarUltimoComprobanteCargado($tipo);
+
+    //dias de atraso entre las dos fechas
+    $diasAtrasado = $diff->days;
+
+
+    //corroborar si va a apagar con atraso
+    if ($anioHoy < $anioAPagar) {
+        //OK
+        $interesPorMora = 0;
+        $diasAtrasado = 0;
+    } elseif ($anioHoy == $anioAPagar) {
+        //analizar mes y dia
+        if ($mesHoy < $mesAPagar) {
+            //OK
+            $interesPorMora = 0;
+            $diasAtrasado = 0;
+        } elseif ($mesHoy == $mesAPagar) {
+            //analizar dia
+            if ($diaHoy <= $fechaHasta) {
+                //OK
+                $interesPorMora = 0;
+                $diasAtrasado = 0;
+            } elseif ($diaHoy > $fechaHasta) {
+                //ATRASADO
+                $interesPorMora = $valorInteresPorDia * $diasAtrasado;
+            }
+
+        } elseif ($mesHoy > $mesAPagar) {
+            //ATRASADO
+            $interesPorMora = $valorInteresPorDia * $diasAtrasado;
+        }
+
+    } elseif ($anioHoy < $anioAPagar) {
+        //ATRASADO
+        $interesPorMora = $valorInteresPorDia * $diasAtrasado;
+    }
+
+    //VERIFICAR ULTIMO NUMERO DE COMPROBANTE PARA CARGAR EL SIGUIENTE
+    $tipo = $registroDePago->tipoRegistroDePago;
+    $ultimoNumComprobante = ComprobanteDePagoRepositorio::mostrarUltimoComprobanteCargado($tipo);
+    var_dump($ultimoNumComprobante);
 //
 //    $ultimoNumInt = (int)$ultimoNumComprobante->numeroComprobante;
 //
