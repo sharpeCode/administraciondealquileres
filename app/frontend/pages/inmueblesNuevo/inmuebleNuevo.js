@@ -7,6 +7,7 @@ $(function () {
 function InmuebleAdd() {
     $("#inmuebleNuevoAdd").show();
     $("#inmuebleNuevoLis").hide();
+    llenarSelectConLocalidades();
 
 }
 
@@ -73,4 +74,50 @@ function construirFilaDeInmueble(inmueble) {
     raw += "</button></td> ";
 
     return raw;
+}
+
+//LLENAR SELECT LOCALIDADES
+function llenarSelectConLocalidades() {
+
+    let uri = EndpointsEnum.LOCALIDAD;
+
+    var funcionAjax = $.ajax({
+        url: uri,
+        method: "POST",
+        data: {
+            action: "listarLocalidades"
+        }
+    });
+
+    funcionAjax.done(function (retorno) {
+        fillDom(retorno);
+    });
+
+    funcionAjax.fail(function (retorno) {
+        console.log("Error al cargar Localidades")
+    });
+
+    funcionAjax.always(function (retorno) {
+    });
+}
+
+function fillDom(arrayLocalidad) {
+
+    arrayLocalidad = JSON.parse(arrayLocalidad);
+    let options = "";
+
+    //para agregarle placeholder a la lista desplegable
+    let optionDefault = "<option value='-1'>Localidad</option>";
+    options +=optionDefault;
+
+    for (var i = 0, l = arrayLocalidad.length; i < l; i++) {
+        options += optionsLocalidad(arrayLocalidad[i]);
+    }
+    $("#idLocalidad").html(options);
+}
+
+function optionsLocalidad(localidad) {
+    let option = "";
+    option += "<option value=" + localidad['idLocalidad'] + ">" + localidad['localidad'] + "</option>";
+    return option;
 }
