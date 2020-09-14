@@ -163,20 +163,21 @@ function cargarComprobanteDePago($idRegistroDePago)
         $interesPorMora = $valorInteresPorDia * $diasAtrasado;
     }
 
-    //VERIFICAR ULTIMO NUMERO DE COMPROBANTE PARA CARGAR EL SIGUIENTE
+     //VERIFICAR ULTIMO NUMERO DE COMPROBANTE PARA CARGAR EL SIGUIENTE
     $tipo = $registroDePago->tipoRegistroDePago;
     $ultimoNumComprobante = ComprobanteDePagoRepositorio::mostrarUltimoComprobanteCargado($tipo);
-    var_dump($ultimoNumComprobante);
-//
-//    $ultimoNumInt = (int)$ultimoNumComprobante->numeroComprobante;
-//
-//    $numero = $ultimoNumInt + 1;
-//    $numeroComprobante = str_pad($numero, 5, "0", STR_PAD_LEFT);
-//
-//
-//    //VERIFICAR SI EL CONTRATO ARRASTRA ALGUN REGISTRO DE PAGO CON UN SALDO PENDIENTE
-//    $idContrato = $registroDePago->idContrato;
-//    $saldos = ComprobanteDePagoRepositorio::sumarSaldosPendientesAnteriores($idContrato, $tipo);
+    
+
+    $ultimoNumInt = (int)$ultimoNumComprobante->numeroComprobante;
+
+    $numero = $ultimoNumInt + 1;
+    $numeroComprobante = str_pad($numero, 5, "0", STR_PAD_LEFT);
+
+
+    //VERIFICAR SI EL CONTRATO ARRASTRA ALGUN REGISTRO DE PAGO CON UN SALDO PENDIENTE
+    $idContrato = $registroDePago->idContrato;
+    $saldos = ComprobanteDePagoRepositorio::sumarSaldosPendientesAnteriores($idContrato, $tipo);
+    var_dump($saldos);
 //
 //
 //    if ($saldos->saldoPendiente == "" or $saldos->saldoPendiente == null) {
