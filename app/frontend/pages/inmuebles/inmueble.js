@@ -1,77 +1,20 @@
 $(function () {
-    $("#inmuebleNuevoList").show();
-    $("#inmuebleNuevoAdd").hide();
-    $("#inmuebleNuevoEdit").hide();
-    $("#localidadNuevoList").hide();
-    $("#localidadNuevoAdd").hide();
-    $("#localidadNuevoEdit").hide();
+    $("#inmuebleList").show();
+    $("#inmuebleAdd").hide();
+    $("#inmuebleEdit").hide();
+    $("#localidadList").hide();
+    $("#localidadAdd").hide();
+    $("#localidadEdit").hide();
     CargarListadoInmueble();
 });
 
-function mostrarListadoInmuebles() {
-    $("#inmuebleNuevoList").show();
-    $("#inmuebleNuevoAdd").hide();
-    $("#inmuebleNuevoEdit").hide();
-    $("#localidadNuevoList").hide();
-    $("#localidadNuevoAdd").hide();
-    $("#localidadNuevoEdit").hide();
+// TODO: INMUEBLES
+function mostrarFormInmueblePpal() {
+    $("#inmuebleList").show();
+    $("#inmuebleAdd").hide();
+    $("#inmuebleEdit").hide();
     CargarListadoInmueble();
 }
-
-function InmuebleAdd() {
-    $("#inmuebleNuevoList").hide();
-    $("#inmuebleNuevoAdd").show();
-    $("#inmuebleNuevoEdit").hide();
-    $("#localidadNuevoList").hide();
-    $("#localidadNuevoAdd").hide();
-    $("#localidadNuevoEdit").hide();
-    llenarSelectConLocalidades();
-}
-
-function mostrarFormInmuebleEditar(id) {
-    $("#inmuebleNuevoList").hide();
-    $("#inmuebleNuevoAdd").hide();
-    $("#inmuebleNuevoEdit").show();
-    $("#localidadNuevoList").hide();
-    $("#localidadNuevoAdd").hide();
-    $("#localidadNuevoEdit").hide();
-    llenarSelectConLocalidadesParaEditar();
-    loadInmuebleData(id);
-}
-
-function mostrarFormLocalidadPpal() {
-    $("#inmuebleNuevoList").hide();
-    $("#inmuebleNuevoAdd").hide();
-    $("#inmuebleNuevoEdit").hide();
-    $("#localidadNuevoList").show();
-    $("#localidadNuevoAdd").hide();
-    $("#localidadNuevoEdit").hide();
-    loadLocalidadesGrid();
-}
-
-function mostrarFormLocalidadAdd() {
-    $("#inmuebleNuevoList").hide();
-    $("#inmuebleNuevoAdd").hide();
-    $("#inmuebleNuevoEdit").hide();
-    $("#localidadNuevoList").hide();
-    $("#localidadNuevoAdd").show();
-    $("#localidadNuevoEdit").hide();
-    cargarIdLocalidad();
-    llenarSelectConProvincias();
-}
-
-function mostrarFormLocalidadEditar(idLocalidad) {
-    $("#inmuebleNuevoList").hide();
-    $("#inmuebleNuevoAdd").hide();
-    $("#inmuebleNuevoEdit").hide();
-    $("#localidadNuevoList").hide();
-    $("#localidadNuevoAdd").hide();
-    $("#localidadNuevoEdit").show();
-    llenarSelectConProvinciasParaEditar();
-    cargarLocalidadParaEditar(idLocalidad);
-}
-
-//TODO: IMNUEBLE LIST
 
 function CargarListadoInmueble() {
     obtenerInmuebles(llenarTablaInmuebles,
@@ -81,6 +24,24 @@ function CargarListadoInmueble() {
     );
 }
 
+function mostrarFormInmuebleAdd() {
+    $("#localidadAdd").hide();
+    $("#localidadList").hide();
+    $("#localidadEdit").hide();
+    $("#inmuebleAdd").show();
+    $("#inmuebleList").hide();
+    $("#inmuebleEdit").hide();
+    llenarSelectConLocalidades();
+}
+
+function mostrarFormInmuebleEditar(id) {
+    $("#inmuebleAdd").hide();
+    $("#inmuebleList").hide();
+    $("#inmuebleEdit").show();
+    llenarSelectConLocalidadesParaEditar();
+    loadInmuebleData(id);
+}
+
 function obtenerInmuebles(doneFunction, data) {
 
     doneFunction = doneFunction instanceof Function ? doneFunction : function (data) {
@@ -88,10 +49,8 @@ function obtenerInmuebles(doneFunction, data) {
     };
     data = data === undefined ? {action: "obtenerInmuebles"} : data;
 
-    let uri = EndpointsEnum.INMUEBLE;
-
     var funcionAjax = $.ajax({
-        url: uri,
+        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/InmuebleController.php",
         method: "POST",
         data: data
     });
@@ -106,17 +65,17 @@ function obtenerInmuebles(doneFunction, data) {
     });
 }
 
-function llenarTablaInmuebles(jsonInmueble) {
-    jsonInmueble = JSON.parse(jsonInmueble);
+function llenarTablaInmuebles(jsonUsers) {
+    jsonUsers = JSON.parse(jsonUsers);
     let tableRaws = "";
 
-    for (var i = 0, l = jsonInmueble.length; i < l; i++) {
+    for (var i = 0, l = jsonUsers.length; i < l; i++) {
         tableRaws += "<tr>";
-        tableRaws += construirFilaDeInmueble(jsonInmueble[i]);
+        tableRaws += construirFilaDeInmueble(jsonUsers[i]);
         tableRaws += "</tr>";
     }
 
-    $("#listadoInmuebles").html(tableRaws);
+    $("#listado").html(tableRaws);
 }
 
 function construirFilaDeInmueble(inmueble) {
@@ -130,24 +89,19 @@ function construirFilaDeInmueble(inmueble) {
     raw += "<td style = 'text-align: center; word-wrap: break-word;'>" + inmueble['localidad'] + "</td>";
 
     raw += "<td style = 'text-align: center;width: 100px;word-wrap: break-word;'>";
-    raw += "<button class='miBoton-icon' title='Editar inmueble' onclick='mostrarFormInmuebleEditar(" + inmueble['idInmueble'] + ")'>" +
+    raw += "<button class='miBoton-5-C' title='Editar inmueble' onclick='mostrarFormInmuebleEditar(" + inmueble['idInmueble'] + ")'>" +
         "<span class='glyphicon glyphicon-pencil'></span>";
     raw += "</button></td> ";
 
     return raw;
 }
 
-//TODO: INMUEBLE ADD
-
 function llenarSelectConLocalidades() {
-
-    let uri = EndpointsEnum.LOCALIDAD;
-
     var funcionAjax = $.ajax({
-        url: uri,
+        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/LocalidadController.php",
         method: "POST",
         data: {
-            action: "listarLocalidades"
+            action: "listar"
         }
     });
 
@@ -156,7 +110,7 @@ function llenarSelectConLocalidades() {
     });
 
     funcionAjax.fail(function (retorno) {
-        console.log("Error al cargar Localidades")
+        console.log("error al cargar select con alumnos")
     });
 
     funcionAjax.always(function (retorno) {
@@ -185,91 +139,35 @@ function optionsLocalidad(localidad) {
 }
 
 function guardarInmueble() {
-    var inmuebleNuevoParaGuardar = mapToJson($('#inmuebleNuevoAdd').serializeArray());
-
-    console.log(inmuebleNuevoParaGuardar);
-
-    if(inmuebleNuevoParaGuardar["tipo"] == "Tipo de Inmueble")
-    {
-        console.log("ENTROOOO AL IFFFFF");
-        window.alert("Debe ingresar el tipo de Inmueble.");
-    }
-    else {
-        let uri = EndpointsEnum.INMUEBLE;
-        let href = EndpointsEnum.VOLVER_INMUEBLES;
-
-        var funcionAjax = $.ajax({
-            url: uri,
-            method: "POST",
-            data: {
-                action: "guardarInmuebleNuevo",
-                inmueble: inmuebleNuevoParaGuardar
-            }
-        });
-
-        funcionAjax.done(function (retorno) {
-            console.log(retorno);
-            location.href = href;
-        });
-
-        funcionAjax.fail(function (retorno) {
-            console.log("error al guardar inmueble")
-        });
-
-        funcionAjax.always(function (retorno) {
-            console.log("volvi de guardar el user")
-        });
-        console.log("Fin llamada controller usuario");
-    }
-}
-
-//TODO: INMUEBLE EDIT
-
-function llenarSelectConLocalidadesParaEditar() {
-
-    let uri = EndpointsEnum.LOCALIDAD;
+    var inmuebleNuevoParaGuardar = mapToJson($('#inmuebleAdd').serializeArray());
 
     var funcionAjax = $.ajax({
-        url: uri,
+        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/InmuebleController.php",
         method: "POST",
         data: {
-            action: "listarLocalidades"
+            action: "guardarInmuebleNuevo",
+            inmueble: inmuebleNuevoParaGuardar
         }
     });
 
     funcionAjax.done(function (retorno) {
-        fillDomEdit(retorno);
+        console.log(retorno);
+         location.href = "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/frontend/pages/inmuebles/inmueble.page.php";
     });
 
     funcionAjax.fail(function (retorno) {
-        console.log("Error al cargar Localidades")
+        console.log("error al guardar inmueble")
     });
-}
 
-function fillDomEdit(arrayLocalidad) {
-    arrayLocalidad = JSON.parse(arrayLocalidad);
-
-    let options = "";
-
-    for (var i = 0, l = arrayLocalidad.length; i < l; i++) {
-        options += optionsLocalidadEdit(arrayLocalidad[i]);
-    }
-    $("#editIdlocalidad").html(options);
-
-}
-
-function optionsLocalidadEdit(localidad) {
-    let option = "";
-    option += "<option value=" + localidad['idLocalidad'] + ">" + localidad['localidad'] + "</option>";
-    return option;
+    funcionAjax.always(function (retorno) {
+        console.log("volvi de guardar el user")
+    });
+    console.log("Fin llamada controller usuario");
 }
 
 function loadInmuebleData(id) {
-
-    let uri = EndpointsEnum.INMUEBLE;
-
     var funcionAjax = $.ajax({
-        url: uri,
+        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/InmuebleController.php",
         method: "POST",
         data: {
             action: "traerInmueblePorId",
@@ -296,16 +194,42 @@ function fillEditionForm(inmueble) {
     $("#editIdlocalidad").val(inmueble["idLocalidad"]);
 }
 
+function llenarSelectConLocalidadesParaEditar() {
+    var funcionAjax = $.ajax({
+        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/LocalidadController.php",
+        method: "POST",
+        data: {
+            action: "listar"
+        }
+    });
+
+    funcionAjax.done(function (retorno) {
+        fillDomEdit(retorno);
+    });
+
+    funcionAjax.fail(function (retorno) {
+        console.log("error al cargar select con alumnos")
+    });
+}
+
+function fillDomEdit(arrayLocalidad) {
+    arrayLocalidad = JSON.parse(arrayLocalidad);
+    console.log(arrayLocalidad);
+    let options = "";
+
+    for (var i = 0, l = arrayLocalidad.length; i < l; i++) {
+        options += optionsLocalidad(arrayLocalidad[i]);
+    }
+    $("#editIdlocalidad").html(options);
+
+}
+
 function guardarInmuebleEditado() {
 
-    var inmuebleEditado = mapToJson($('#inmuebleNuevoEdit').serializeArray());
-
-    let uri = EndpointsEnum.INMUEBLE;
-
-    let href = EndpointsEnum.VOLVER_INMUEBLES;
+    var inmuebleEditado = mapToJson($('#inmuebleEdit').serializeArray());
 
     var funcionAjax = $.ajax({
-        url: uri,
+        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/InmuebleController.php",
         method: "POST",
         data: {
             action: "guardarInmuebleEditado",
@@ -315,7 +239,7 @@ function guardarInmuebleEditado() {
 
     funcionAjax.done(function (retorno) {
         if (retorno != null) {
-            location.href = href;
+             location.href = "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/frontend/pages/inmuebles/inmueble.page.php";
         }
     });
 
@@ -329,12 +253,38 @@ function guardarInmuebleEditado() {
     console.log("Fin llamada controller usuario");
 }
 
-// TODO: LOCALIDADES LIST
+function demoFromHTML() {
+    var doc = new jsPDF();
+    doc.text(20, 20, 'Sharp Code COMPANY!');
+    doc.text(20, 30, 'Esto de imprimir en pdf es una cagada');
+
+
+    doc.setLineWidth(0.9);
+    doc.line(20, 25, 200, 25);
+    doc.setDrawColor(255,40,40); // draw red lines
+
+
+    doc.save('Recibo.pdf');
+}
+
+
+// TODO: LOCALIDADES
+
+// TODO: MOSTRAR FORMULARIO QUE LISTA LAS LOCALIDADES
+function mostrarFormLocalidadPpal() {
+     $("#inmuebleList").hide();
+     $("#inmuebleAdd").hide();
+     $("#inmuebleEdit").hide();
+     $("#localidadList").show();
+     $("#localidadAdd").hide();
+     $("#localidadEdit").hide();
+     loadLocalidadesGrid();
+}
 
 function loadLocalidadesGrid() {
     getAllLocalidades(fillLocalidadesGrid,
         {
-            action: "listarLocalidades",
+            action: "listar",
         }
     );
 }
@@ -346,10 +296,8 @@ function getAllLocalidades(doneFunction, data) {
     };
     data = data === undefined ? {action: "getAll"} : data;
 
-    let uri = EndpointsEnum.LOCALIDAD;
-
     let funcionAjax = $.ajax({
-        url: uri,
+        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/LocalidadController.php",
         method: "POST",
         data: data
     });
@@ -368,7 +316,7 @@ function getAllLocalidades(doneFunction, data) {
 function fillLocalidadesGrid(jsonLocalidades) {
 
     jsonLocalidades = JSON.parse(jsonLocalidades);
-
+    console.log(jsonLocalidades);
     let tableRaws = "";
 
     for (var i = 0, l = jsonLocalidades.length; i < l; i++) {
@@ -390,7 +338,7 @@ function buildRawFromLocalidades(loc) {
 
     raw += "<td>";
     raw += "<td>";
-    raw += "<button class='miBoton-icon' title='Editar Localidad' onclick='mostrarFormLocalidadEditar(" + loc['idLocalidad'] + ")'>" +
+    raw += "<button class='miBoton-5-C' title='Editar Localidad' onclick='mostrarFormLocalidadEditar(" + loc['idLocalidad'] + ")'>" +
         "<span class='glyphicon glyphicon-pencil'></span>";
     raw += "</button></td> ";
 
@@ -398,35 +346,21 @@ function buildRawFromLocalidades(loc) {
 
 }
 
-// TODO: LOCALIDADES ADD
 
-function cargarIdLocalidad() {
-
-    let uri = EndpointsEnum.LOCALIDAD;
-
-    var funcionAjax = $.ajax({
-        url: uri,
-        method: "POST",
-        data: {
-            action: "cargarIdLocalidadAutomatico",
-        }
-    });
-
-    funcionAjax.done(function (retorno) {
-        $("#idLocalidadADD").val(retorno);
-    });
-
-    funcionAjax.fail(function (retorno) {
-        console.error(retorno);
-    });
+// TODO: MOSTRAR FORMULARIO DE ALTA DE LOCALIDAD
+function mostrarFormLocalidadAdd() {
+    $("#inmuebleAdd").hide();
+    $("#inmuebleList").hide();
+    $("#inmuebleEdit").hide();
+    $("#localidadList").hide();
+    $("#localidadEdit").hide();
+    $("#localidadAdd").show();
+    llenarSelectConProvincias();
 }
 
 function llenarSelectConProvincias() {
-
-    let uri = EndpointsEnum.LOCALIDAD;
-
     var funcionAjax = $.ajax({
-        url: uri,
+        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/LocalidadController.php",
         method: "POST",
         data: {
             action: "cargarSelectConProvincias",
@@ -450,6 +384,7 @@ function llenarSelectConProvincias() {
 
 function fillDomProvincia(arrayProvincia) {
 
+    console.log(arrayProvincia);
     arrayProvincia = JSON.parse(arrayProvincia);
     let options = "";
 
@@ -469,15 +404,16 @@ function optionsProvincia(provincia) {
     let option = "";
     option += "<option value='" + provincia['idProvincia'] + "'>" + provincia['nombre'] + "</option>";
     return option;
+
 }
 
 function guardarLocalidad() {
-    var guardarLocalidad = mapToJson($('#localidadNuevoAdd').serializeArray()); //obtener el varlos de todos los input
 
-    let uri = EndpointsEnum.LOCALIDAD;
+    var guardarLocalidad = mapToJson($('#localidadAdd').serializeArray()); //obtener el varlos de todos los input
 
+    console.log("Guardando localidad: ", guardarLocalidad);
     var funcionAjax = $.ajax({
-        url: uri,
+        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/LocalidadController.php",
         method: "POST",
         data: {
             action: "datosParaGuardarLocalidad",
@@ -499,14 +435,18 @@ function guardarLocalidad() {
     console.log("Fin llamada controller rutina");
 }
 
-// TODO:LOCALIDADES EDIT
+// TODO: MOSTRAR FORMULARIO DE EDICION DE LOCALIDAD
+function mostrarFormLocalidadEditar(idLocalidad) {
+    $("#localidadAdd").hide();
+    $("#localidadList").hide();
+    $("#localidadEdit").show();
+    llenarSelectConProvinciasParaEditar();
+    cargarLocalidadParaEditar(idLocalidad);
+}
 
 function llenarSelectConProvinciasParaEditar() {
-
-    let uri = EndpointsEnum.LOCALIDAD;
-
     var funcionAjax = $.ajax({
-        url: uri,
+        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/LocalidadController.php",
         method: "POST",
         data: {
             action: "cargarSelectConProvincias",
@@ -542,10 +482,8 @@ function fillDomEditProvincia(arrayProvincia) {
 
 function cargarLocalidadParaEditar(idLocalidad) {
 
-    let uri = EndpointsEnum.LOCALIDAD;
-
     var funcionAjax = $.ajax({
-        url: uri,
+        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/LocalidadController.php",
         method: "POST",
         data: {
             action: "traerLocalidadPorId",
@@ -572,12 +510,11 @@ function llenarFormConLocalidad(localidad) {
 
 function guardarLocalidadEditada() {
 
-    var localidadEditadaParaGuardar = mapToJson($('#localidadNuevoEdit').serializeArray());
+    var localidadEditadaParaGuardar = mapToJson($('#localidadEdit').serializeArray());
 
-    let uri = EndpointsEnum.LOCALIDAD;
-
+    console.log(localidadEditadaParaGuardar);
     var funcionAjax = $.ajax({
-        url: uri,
+        url: "http://localhost:90/Sharp_Code/administracion_de_alquileres/app/backend/controller/LocalidadController.php",
         method: "POST",
         data: {
             action: "guardarLocalidadEditada",
@@ -601,3 +538,9 @@ function guardarLocalidadEditada() {
     });
     console.log("Fin llamada controller usuario");
 }
+
+
+
+
+
+

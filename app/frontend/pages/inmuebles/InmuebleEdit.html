@@ -1,5 +1,5 @@
-<form role="form" id="inmuebleNuevoEdit">
-    <div id="InmueblePDF2" class="contenedorAgregarPersona" style="margin: 3rem;">
+<form role="form" id="inmuebleEdit">
+    <div class="contenedorAgregarPersona" style="margin: 3rem;">
 
         <div class="row">
             <div class="col-md-2"></div>
@@ -23,7 +23,7 @@
                 <label>
                     <select id="editTipo" name='editTipo' class="inputTextConSombra" style="width: 191px;">
                         <option>Tipo de Inmueble</option>
-                        <option value="Particular">Vivienda</option>
+                        <option value="Particular">Particular</option>
                         <option value="Comercial">Comercial</option>
                     </select>
                 </label>
@@ -74,6 +74,7 @@
                 <label>
                     <select class="inputTextConSombra" id="editIdlocalidad" name="editIdlocalidad"style="width: 191px;"></select>
                 </label>
+<!--                    <a style="float: right">Agregar Localidad</a>-->
             </div>
             <div class="col-md-8"></div>
         </div>
@@ -87,7 +88,7 @@
                 </button>
             </div>
             <div class="col-md-1" style="width:100px">
-                <a><input class="miBoton-chico" type="button" onclick="mostrarListadoInmuebles()" value="Atras"></a>
+                <a><input class="miBoton-chico" type="button" onclick="mostrarFormInmueblePpal()" value="Atras"></a>
             </div>
             <div class="col-md-7"></div>
         </div>

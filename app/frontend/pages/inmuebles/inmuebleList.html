@@ -1,0 +1,35 @@
+<body class="fondoGris">
+<div class="container" id="inmuebleList">
+    <br>
+    <div><label class="miTitulo1">Inmuebles</label></div>
+    <br>
+    <div class="row table-responsive">
+        <table class="table table-striped">
+            <table class="table table-striped">
+
+            <thead class="thead-dark">
+            <tr>
+                <!--nombre de columnas -->
+                <th class="cabeceraTabla" hidden="true">N°</th>
+                <th class="cabeceraTabla">Tipo</th>
+                <th class="cabeceraTabla">Unidad Funcional</th>
+                <th class="cabeceraTabla">Piso</th>
+                <th class="cabeceraTabla">Departamento</th>
+                <th class="cabeceraTabla">Domicilio</th>
+                <th class="cabeceraTabla">Localidad</th>
+                <th class="cabeceraTabla" colspan="2">Acciones</th>
+            </tr>
+            </thead>
+            <tbody id="listado"></tbody>
+            </table>
+
+        </table>
+        <div>
+            <a href="../principal/menuPrincipal.page.php"><input class="miBoton-chico" type="button" value="Atras"></a>
+            <a><input class="miBoton-chico" type="button" onclick="mostrarFormInmuebleAdd()" value="Nuevo"></a>
+            <a><input class="miBoton-chico" type="button" onclick="demoFromHTML()" value="PDF" id="pdf" name="pdf"></a>
+        </div>
+    </div>
+</div>
+</body>
+

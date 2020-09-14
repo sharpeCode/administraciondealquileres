@@ -13,7 +13,8 @@ class InmuebleRepository
                 I.id_localidad as idLocalidad, L.localidad 
                     FROM inmuebles as I
                     INNER JOIN localidades as L 
-                    ON I.id_localidad = L.id_localidad";
+                    ON I.id_localidad = L.id_localidad
+                    ORDER BY I.id_inmueble DESC";
 
             $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
             $sentencia->execute();
