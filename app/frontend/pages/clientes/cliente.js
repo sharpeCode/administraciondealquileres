@@ -285,8 +285,17 @@ function loadClienteDataDetail(dni) {
 }
 
 function fillFormDetail(cliente) {
-    var fecha = cliente["fechaNacimiento"];
-    var fechaNac=fecha.split(" ")[0].split("/").reverse().join("/");
+    let fecha = cliente["fechaNacimiento"];
+    let fechaNac;
+
+    if (fecha !="0000-00-00")
+    {
+        fechaNac=fecha.split(" ")[0].split("/").reverse().join("/");
+    }
+    else
+    {
+        fechaNac = "";
+    }
 
     $("#detailFechaRegistro").val(cliente["fechaRegistro"]);
     $("#detailNombres").val(cliente["nombres"]);
@@ -296,7 +305,7 @@ function fillFormDetail(cliente) {
     $("#detailEmail").val(cliente["email"]);
     $("#detailFechaNacimiento").val(fechaNac);
     $("#detailDatosGarante").val(cliente["datosGarante"]);
-    $("#detailDomiciloLegal").val(cliente["domicilioLegal"]);
+    $("#detailDomicilioLegal").val(cliente["domicilioLegal"]);
 }
 
 // TODO: FORM PPAL
