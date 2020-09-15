@@ -123,10 +123,12 @@ function guardarVariable() {
     let variableNuevoParaGuardar = mapToJson($('#variableAdd').serializeArray());
     console.log(variableNuevoParaGuardar);
 
+    if(variableNuevoParaGuardar["idVariable"] == "-1"){
+        window.alert("debe seleccionar un tipo de variable");
+    }
+
     let uri = EndpointsEnum.VARIABLES;
-
     let href = EndpointsEnum.VOLVER_VARIABLES;
-
     var funcionAjax = $.ajax({
         url: uri,
         method: "POST",

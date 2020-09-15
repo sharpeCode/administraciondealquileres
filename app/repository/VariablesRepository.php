@@ -64,7 +64,8 @@ class VariablesRepository
 
         } catch (PDOException $ex) {
             print 'ERROR' . $ex->getMessage();
-            $inm = null;
+            //$inm = null;
+            return "ERROR";
         }
         return $inm;
     }

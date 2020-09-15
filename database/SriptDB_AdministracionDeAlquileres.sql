@@ -10,7 +10,7 @@ CREATE TABLE roles(
 
 
 CREATE TABLE usuarios(
-	id_usuario INT NOT NULL AUTO_INCREMENT,	
+	id_usuario INT NOT NULL,	
 	nombres VARCHAR(30) NOT NULL,
 	apellidos VARCHAR(30) NOT NULL,
 	dni VARCHAR(15) NOT NULL,
@@ -44,7 +44,7 @@ CREATE TABLE provincias(
 );
 
 CREATE TABLE localidades(
-	id_localidad INT NOT NULL AUTO_INCREMENT,	
+	id_localidad INT NOT NULL,	
 	localidad VARCHAR(50) NOT NULL,
 	cp VARCHAR(10),
 	id_provincia INT,
@@ -66,7 +66,7 @@ CREATE TABLE inmuebles(
 );
 
 CREATE TABLE variables(
-	id_variable INT,
+	id_variable INT NOT NULL,
 	variable VARCHAR(30),
 	PRIMARY KEY (id_variable)
 );
@@ -159,7 +159,7 @@ CREATE TABLE comprobantes_de_pagos(
 );
 
 CREATE TABLE fecha_pago(
-	id_fecha_pago INT NOT NULL AUTO_INCREMENT,
+	id_fecha_pago INT NOT NULL,
 	fecha INT,
 	PRIMARY KEY(id_fecha_pago)
 );
