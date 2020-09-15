@@ -68,7 +68,7 @@ CREATE TABLE `heroku_0852b66c3d788ad`.`variables`(
 );
 
 CREATE TABLE `heroku_0852b66c3d788ad`.`porcentaje_de_variables`(
-	`id` INT NOT NULL,
+	`id` INT NOT NULL AUTO_INCREMENT,
 	`id_variable` INT,
 	`porcentaje` INT NOT NULL,
 	`fecha_ingreso` DATETIME,
@@ -131,7 +131,7 @@ CREATE TABLE `heroku_0852b66c3d788ad`.`comprobantes_de_pagos`(
 	`numero_comprobante` VARCHAR(5) NOT NULL,
 	`fecha_comprobante` DATE NOT NULL,
 	`tipo_comprobante_de_pago` VARCHAR(10) NOT NULL, 
-    `tipo_recibo` VARCHAR(10), 	
+    	`tipo_recibo` VARCHAR(10), 	
 	`id_contrato` INT NOT NULL,
 	`id_registro_de_pago` INT NOT NULL,
 	`correspondiente_mes` INT NOT NULL,
