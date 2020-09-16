@@ -23,13 +23,16 @@
             <div class="col-md-2"></div>
             <div class="col-md-2" style="width: 208px;">
                 <input class="inputTextConSombra" id="fechaInicio" name="fechaInicio"
-                       title="Inicio Contrato" placeholder="Inicio" onfocus="(this.type='date')" style="width: 188px;">
+                       title="Inicio Contrato" placeholder="Inicio" onfocus="(this.type='date')" style="width: 188px;" onchange="validarContratoAntesDeGuardarlo();">
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2" style="width: 208px;">
                 <input class="inputTextConSombra" id="fechaFin" name="fechaFin" title="Fin Contrato"
-                       placeholder="Fin" onfocus="(this.type='date')" style="width: 188px;">
+                       placeholder="Fin" onfocus="(this.type='date')" style="width: 188px;" onchange="validarContratoAntesDeGuardarlo();">
             </div>
-            <div class="col-md-6"></div>
+            <div class="col-md-6">
+                <input class="labelSubtituloNormal" type="text" id="labelAnio" name="labelAnio"
+                       placeholder="Años" title="Años de contrato">
+            </div>
         </div>
         <br>
         <div class="row">
@@ -73,7 +76,8 @@
                        placeholder="Alquiler mens." title="Valor Alquiler Mensual" style="width: 120px;">
             </div>
             <div class="col-md-2">
-                <input class="inputTextConSombraNaranja" type="text" id="valorAlquilerNoOficial" name="valorAlquilerNoOficial"
+                <input class="inputTextConSombraNaranja" type="text" id="valorAlquilerNoOficial"
+                       name="valorAlquilerNoOficial"
                        placeholder="Alquiler mens." title="Valor Alquiler Mensual" style="width: 120px;">
             </div>
             <div class="col-md-6"></div>
@@ -96,7 +100,8 @@
             </div>
             <div class="col-md-1">
                 <label>
-                    <select class="inputTextConSombra" id="cantCuotasDeposito" name="cantCuotasDeposito" title="Cantidad Cuotas"  style="width: 80px;">
+                    <select class="inputTextConSombra" id="cantCuotasDeposito" name="cantCuotasDeposito"
+                            title="Cantidad Cuotas" style="width: 80px;">
                         <option value="-1">Cuot</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -150,11 +155,12 @@
                 <a><input class="miBoton-chico" type="button" onclick="Atras()" value="Atras"></a>
             </div>
             <div class="col-md-1" style="width:100px">
-                <button type="button" class="miBoton-chico" onclick="guardarContrato()" name="enviar" id="enviar">
+                <!-- <button type="button" class="miBoton-chico" onclick="guardarContrato()" name="enviar" id="enviar">-->
+                <button type="button" class="miBoton-chico" onclick="validarContratoAntesDeGuardarlo()" name="enviar" id="enviar">
                     Guardar
                 </button>
             </div>
-            <div class="col-md-7"></div>
+            <div class="col-md-8"></div>
         </div>
         <br>
     </div>

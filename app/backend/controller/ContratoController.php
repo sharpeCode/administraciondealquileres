@@ -22,6 +22,9 @@ switch ($action) {
     case "cargarSelectConFechaInicio":
         cargarSelectConFechaInicio();
         break;
+    case "validarContrato":
+        validarContrato();
+        break;
     case "guardarContratoNuevo":
         guardarContratoNuevo();
         break;
@@ -61,6 +64,105 @@ function cargarSelectConFechaInicio()
 
 }
 
+function validarContrato()
+{
+    $guardarContrato = $_POST["datosDelContrato"];
+
+    // Si no casteo no lo paso de array a objeto y no lo puedo usar
+    $contratoObject = (object)$guardarContrato;
+
+    // FECHAS SUBSTR=========================================================================
+    //guardo en variable la fecha de Inicio y Fin de contrato
+    $fechaInicio = $contratoObject->fechaInicio;
+    $fechaFin = $contratoObject->fechaFin;
+
+    //tomamos solo el dia
+    $diaInicio = substr($fechaInicio, -2, 2); //DD
+    $diaFin = substr($fechaFin, -2, 2); //DD
+
+    //tomamos solo el mes
+    $mesInicio = substr($fechaInicio, -5, 2); //MM
+    $mesFin = substr($fechaFin, -5, 2); //MM
+
+    //tomamos solo el año
+    $anioInicio = substr($fechaInicio, -10, 4); //AAAA
+    $anioFin = substr($fechaFin, -10, 4); //AAAA
+
+    // ======================================================================================
+    if ($fechaInicio == "") {
+        echo "falta cargar la fecha de inicio";
+
+    } else if ($fechaFin == "") {
+        echo "Falta cargar la fecha de Fin";
+    } else if ($fechaInicio == "" & $fechaFin == "") {
+        echo "Años";
+    } else if ($fechaInicio != "" & $fechaFin != "") {
+
+        if ($diaInicio == $diaFin) {
+            if ($mesInicio == $mesFin) {
+                if ($anioInicio > $anioFin) {
+                    echo "Fecha Fin es inferior al Inicio";
+                } else if ($anioInicio < $anioFin) {
+                    if ($mesInicio != $mesFin & $diaInicio != $diaFin) {
+                        echo "Error en los dias y meses";
+                    } else if ($mesInicio != $mesFin) {
+                        echo "Error en el mes";
+                    } else if ($mesInicio != $mesFin & $diaInicio == $diaFin) {
+                        echo "Error en los meses";
+                    } else if ($mesInicio == $mesFin & $diaInicio != $diaFin) {
+                        echo "Error en los dias";
+                    } else if ($mesInicio == $mesFin & $diaInicio == $diaFin) {
+                        $anios = $anioFin - $anioInicio;
+                        echo $anios;
+                    }
+
+                } else if ($anioInicio == $anioFin) {
+                    echo "El Inicio y Fin es el mismo";
+                } else if ($anioInicio == $anioFin & $mesInicio != $mesFin & $diaInicio != $diaFin) {
+                    echo "Error en el dia, mes y año";
+                } else if ($anioInicio == $anioFin & $mesInicio != $mesFin & $diaInicio == $diaFin) {
+                    echo "Error en el mes y año";
+                } else if ($anioInicio == $anioFin & $mesInicio == $mesFin & $diaInicio != $diaFin) {
+                    echo "Error en el año y mes";
+                }
+
+            } else if ($mesInicio != $mesFin) {
+                if ($mesInicio != $mesFin & $diaInicio != $diaFin) {
+                    echo "Error en los dias y meses";
+                } else if ($mesInicio != $mesFin) {
+                    echo "Error en el mes";
+                } else if ($mesInicio != $mesFin & $diaInicio == $diaFin) {
+                    echo "Error en los meses";
+                }
+            }
+        } else if ($diaInicio != $diaFin) {
+            if ($diaInicio != $diaFin & $mesInicio != $mesFin) {
+                echo "error en los dias y meses";
+            } else if ($diaInicio != $diaFin & $mesInicio != $mesFin) {
+                echo "error en los dias y meses";
+            } else if ($diaInicio != $diaFin) {
+                echo "error en los dias";
+            }
+
+
+        }else if ($anioInicio > $diaFin) {
+            if ($diaInicio != $diaFin & $mesInicio != $mesFin) {
+                echo "error en los dias, mes y año";
+            } else if ($mesInicio != $mesFin & $diaInicio == $diaFin) {
+                echo "error en el mes y año";
+            } else if ($mesInicio == $mesFin & $diaInicio == $diaFin) {
+                echo "error en el año";
+            }
+        }
+
+    }
+
+
+    //$registroPago = ContratoRepositorio::guardarContratoNuevo($contratoObject);
+    //echo json_encode($registroPago);
+
+}
+
 function guardarContratoNuevo()
 {
 
@@ -77,7 +179,7 @@ function guardarContratoNuevo()
 function cargarIdContratoAutomatico()
 {
     $contrato = ContratoRepositorio::traerUltimoIdContrato();
-    $id = (int) $contrato->idContrato;
+    $id = (int)$contrato->idContrato;
     $id = $id + 1;
     echo json_encode($id);
 

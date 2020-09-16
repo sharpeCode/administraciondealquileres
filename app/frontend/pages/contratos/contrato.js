@@ -592,6 +592,41 @@ function optionsFechas(fecha) {
     return option;
 }
 
+// VALIDACIONES PARA GUARDAR UN NUEVO CONTRATO
+function validarContratoAntesDeGuardarlo() {
+
+    var datosDelContrato = mapToJson($('#contratoAdd').serializeArray());
+
+    console.log("Validar contrato antes de guardarlo: ", datosDelContrato);
+
+    let uri = EndpointsEnum.CONTRATO;
+    console.log("Llamando a controller locatarios = " + uri);
+
+    var funcionAjax = $.ajax({
+        url: uri,
+        method: "POST",
+        data: {
+            action: "validarContrato",
+            datosDelContrato: datosDelContrato
+        }
+    });
+
+    funcionAjax.done(function (retorno) {
+        console.log(retorno);
+        $("#labelAnio").val(retorno);
+        //guardarRegistrosDePagos();
+    });
+
+    funcionAjax.fail(function (retorno) {
+        console.log("error al guardar user")
+    });
+
+    funcionAjax.always(function (retorno) {
+        console.log("volvi de guardar el user")
+    });
+    console.log("Fin llamada controller usuario");
+}
+
 // GUARDAR NUEVO CONTRATO
 function guardarContrato() {
 
