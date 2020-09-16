@@ -614,6 +614,7 @@ function validarContratoAntesDeGuardarlo() {
     funcionAjax.done(function (retorno) {
         console.log(retorno);
         $("#labelAnio").val(retorno);
+
         //guardarRegistrosDePagos();
     });
 
@@ -632,33 +633,58 @@ function guardarContrato() {
 
     var datosDelContrato = mapToJson($('#contratoAdd').serializeArray());
 
-    console.log("Guardando contrato: ", datosDelContrato);
 
-    let uri = EndpointsEnum.CONTRATO;
-    console.log("Llamando a controller locatarios = " + uri);
+    console.log ("validandooooooo fechas ");
+    console.log (datosDelContrato["labelAnio"]);
+    //var $tds;
+    //var cantidad = $tds.eq(2).find("#labelAnio").val();
+    var cantidad = 0;
+    var total_bultos = 0;
+    if (!isNaN(datosDelContrato["labelAnio"])) {
+        total_bultos = !isNaN(total_bultos) ? parseInt(total_bultos, 10) : 0; //si es una cadena vacia o cualquier cosa que no sea numero total = 0
+        total_bultos = parseInt(cantidad, 10) + parseInt(total_bultos, 10);
+        console.log(total_bultos);
+        //document.getElementById("total_bultos").value = total_bultos;
+        console.log("holaaaa");
+        //guardarContrato();
 
-    var funcionAjax = $.ajax({
-        url: uri,
-        method: "POST",
-        data: {
-            action: "guardarContratoNuevo",
-            contratoNuevoParaGuardar: datosDelContrato
-        }
-    });
+        console.log("Guardando contrato: ", datosDelContrato);
 
-    funcionAjax.done(function (retorno) {
-        console.log("guardarRegistrosDePagos");
-        guardarRegistrosDePagos();
-    });
+        let uri = EndpointsEnum.CONTRATO;
+        console.log("Llamando a controller locatarios = " + uri);
 
-    funcionAjax.fail(function (retorno) {
-        console.log("error al guardar user")
-    });
+        var funcionAjax = $.ajax({
+            url: uri,
+            method: "POST",
+            data: {
+                action: "guardarContratoNuevo",
+                contratoNuevoParaGuardar: datosDelContrato
+            }
+        });
 
-    funcionAjax.always(function (retorno) {
-        console.log("volvi de guardar el user")
-    });
-    console.log("Fin llamada controller usuario");
+        funcionAjax.done(function (retorno) {
+            console.log("guardarRegistrosDePagos");
+            guardarRegistrosDePagos();
+        });
+
+        funcionAjax.fail(function (retorno) {
+            console.log("error al guardar user")
+        });
+
+        funcionAjax.always(function (retorno) {
+            console.log("volvi de guardar el user")
+        });
+        console.log("Fin llamada controller usuario");
+
+
+    } else {
+        console.error('Error, cantidad no valida');
+        window.alert("Corregir las fechas!!!")
+    }
+
+
+
+
 }
 
 function guardarRegistrosDePagos() {
