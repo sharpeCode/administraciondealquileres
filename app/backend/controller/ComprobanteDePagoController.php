@@ -18,8 +18,8 @@ switch ($action) {
     case "guardarComprobanteDePagoSoloSaldo":
         guardarComprobanteDePagoSoloSaldo();
         break;
-    case "editarElTotalDelReciboPreCargado":
-        editarElTotalDelReciboPreCargado($_POST['interesPorMora'], $_POST['subTotal'], $_POST['otrosConceptos'], $_POST['saldoPendiente']);
+    case "EditarValorImporteRecibido":
+        EditarValorImporteRecibido($_POST['importeTotal'],$_POST['recibido']);
         break;
     case "EditarValoresReciboOficial":
         EditarValoresReciboOficial();
@@ -224,7 +224,7 @@ function cargarComprobanteDePago($idRegistroDePago)
     $CompDePagoConMora->otrosConceptos = 0;
     $CompDePagoConMora->saldoAnterior = $saldoAnterior;
     $CompDePagoConMora->totalImporteAPagar = $total;
-    $CompDePagoConMora->totalImporteRecibido = 0;
+    $CompDePagoConMora->totalImporteRecibido = $total;
     $CompDePagoConMora->saldoPendiente = $total - $CompDePagoConMora->totalImporteRecibido;
 
     $CompDePagoConMora->recibo = $registroDePago->recibo;
@@ -270,8 +270,8 @@ function sumarSaldoAnteriores($idRegistroDePago){
 function guardarComprobanteDePago()
 {
     $Comprobante = ComprobanteDePagoRepositorio::buscarUltimoIdComprobanteDePago();
-    $id = $Comprobante->idComprobantesDePago;
-    $idComprobantesDePago = $id + 1;
+    $id = $Comprobante->idComprobanteDePago;
+    $idComprobanteDePago = $id + 1;
 
     $numeroComprobante = $_POST['numeroComprobante'];
     $idRegistroPago = $_POST['idRegistroPago'];
@@ -293,6 +293,7 @@ function guardarComprobanteDePago()
     $totalImporteRecibido = (int)$_POST['totalImporteRecibido'];
     $saldoPendiente = $totalImporteAPagar - $totalImporteRecibido;
     $saldoPendienteSinModificar = $saldoPendiente;
+    $estado = $_POST['estado'];
 
     //validaciones a campos editables
     if ($expensas == "") {
@@ -314,16 +315,19 @@ function guardarComprobanteDePago()
     $correspondienteMes = $mes->idMes;
 
     //cambiar los valores siguientes de alguiler mensual si es que se modifico el actual
-    $valorRegistrado = RegistroPagoRepositorio::buscarValorActualAlquilerMensual($idRegistroPago);
-    $valorViejo = (int) $valorRegistrado->valorAlquiler;
-    $valorNuevo = (int) $alquilerMensual;
+    $valorRegistrado = RegistroPagoRepositorio::buscarValorActualAlquilerMensualyExpensas($idRegistroPago);
+    $valorViejoAlquiler = (int) $valorRegistrado->valorAlquiler;
+    $valorViejoExpensas = (int) $valorRegistrado->valorExpensas;
+    $valorNuevoAlquiler = (int) $alquilerMensual;
+    $valorNuevoExpensas = (int) $expensas;
 
-    if($valorViejo != $valorNuevo){
-        RegistroPagoRepositorio::actualizarNuevoValorAlquilerMensual($alquilerMensual,$idRegistroPago,$tipoComprobante,$idContrato);
+    //si el valor del alquiler cambio, que actulice el resto de los registros de pago
+    if($valorViejoAlquiler != $valorNuevoAlquiler or $valorViejoExpensas != $valorNuevoExpensas){
+        RegistroPagoRepositorio::actualizarNuevoValorAlquilerMensual($alquilerMensual, $expensas, $idRegistroPago,$tipoComprobante,$idContrato);
     }
 
     //guardar el comprobante de pago en la tabla "comprobante_de_pagos"
-    $registroDePago = ComprobanteDePagoRepositorio::guardarComprobanteDePago($idComprobantesDePago,$numeroComprobante, $tipoComprobante, $tipoRecibo, $idContrato, $idRegistroPago, $correspondienteMes, $correspondienteAnio, $alquilerMensual, $expensas, $gastosAdm, $deposito, $cuotas, $numCuota, $interesPorMora, $otrosConceptos, $saldoAnterior, $totalImporteAPagar, $totalImporteRecibido, $saldoPendiente, $saldoPendienteSinModificar);
+    $registroDePago = ComprobanteDePagoRepositorio::guardarComprobanteDePago($idComprobanteDePago,$numeroComprobante, $tipoComprobante, $tipoRecibo, $idContrato, $idRegistroPago, $correspondienteMes, $correspondienteAnio, $alquilerMensual, $expensas, $gastosAdm, $deposito, $cuotas, $numCuota, $interesPorMora, $otrosConceptos, $saldoAnterior, $totalImporteAPagar, $totalImporteRecibido, $saldoPendiente, $saldoPendienteSinModificar,$estado);
     echo json_encode($registroDePago);
 
      //cambiar la accion del recibo generado --> SI en registros de pago
@@ -343,7 +347,7 @@ function guardarComprobanteDePago()
     }
 }
 
-function editarElImporteRecibidoDelReciboPreCargado($total, $recibido)
+function EditarValorImporteRecibido($total, $recibido)
 {
     $saldoPendiente = $total - $recibido;
     echo json_encode($saldoPendiente);
@@ -361,15 +365,17 @@ function EditarValoresReciboOficial()
     $interesPorMora = $_POST['interesPorMora'];
     $otrosConceptos = $_POST['otrosConceptos'];
     $saldoAnterior = $_POST['saldoAnterior'];
-    $recibido = $_POST['recibido'];
+    //$recibido = $_POST['recibido'];
 
     $saldos = new Saldos();
 
     $subT = $alquilerMensual + $expensas + $gastosAdministrativos + $deposito;
     $total = $subT + $interesPorMora + $otrosConceptos + $saldoAnterior;
+    $recibido = $total;
     $salPendiente = $total - $recibido;
 
     $saldos->subTotal = $subT;
+    $saldos->totalImporteRecibido = $total;
     $saldos->totalImporteAPagar = $total;
     $saldos->saldoPendiente = $salPendiente;
 
@@ -460,8 +466,8 @@ function guardarComprobanteDePagoSoloSaldo()
 {
 
     $Comprobante = ComprobanteDePagoRepositorio::buscarUltimoIdComprobanteDePago();
-    $id = $Comprobante->idComprobantesDePago;
-    $idComprobantesDePago = $id + 1;
+    $id = $Comprobante->idComprobanteDePago;
+    $idComprobanteDePago = $id + 1;
 
     $numeroComprobante = $_POST['numeroComprobante'];
     $tipoComprobante = $_POST['tipoComprobante'];
@@ -483,16 +489,17 @@ function guardarComprobanteDePagoSoloSaldo()
     $totalImporteRecibido = $_POST['totalImporteRecibido'];
     $saldoPendiente = 0;
     $saldoPendienteSinModificar = 0;
+    $estado = $_POST['estado'];
 
     //buscar Id del mes
     $nombreMes = $correspMes;
     $mes = MesRepositorio::buscarIdMes($nombreMes);
     $correspondienteMes = $mes->idMes;
 
-    $registroDePago = ComprobanteDePagoRepositorio::guardarComprobanteDePago($idComprobantesDePago,$numeroComprobante, $tipoComprobante,
+    $registroDePago = ComprobanteDePagoRepositorio::guardarComprobanteDePago($idComprobanteDePago,$numeroComprobante, $tipoComprobante,
         $tipoRecibo, $idContrato, $idRegistroPago, $correspondienteMes, $correspondienteAnio, $alquilerMensual, $expensas,
         $gastosAdm, $deposito, $cuotas, $numCuota, $interesPorMora, $otrosConceptos, $saldoAnterior, $totalImporteAPagar,
-        $totalImporteRecibido, $saldoPendiente, $saldoPendienteSinModificar);
+        $totalImporteRecibido, $saldoPendiente, $saldoPendienteSinModificar,$estado);
 
     //poner 0 en el saldo pendiente anterior
     ComprobanteDePagoRepositorio::ponerSaldoCeroEnElAnteriorRegistro($idRegistroPago);

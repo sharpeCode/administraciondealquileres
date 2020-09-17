@@ -105,8 +105,9 @@ CREATE TABLE contratos(
 	gastos_administrativos INT,
 	valor_expensas INT,
 	cant_cuotas_deposito INT,
-	fecha_pago_inicio INT, #solo se agrega la fecha ejemplo 1
-	fecha_pago_fin INT, #solo se agrega la fecha ejemplo 10
+	fecha_pago_inicio INT, #solo se agrega la fecha vto ejemplo 1
+	fecha_pago_fin INT, #solo se agrega la fecha vto ejemplo 10
+	estado VARCHAR(10) NOT NULL, # Activo - Inactivo
 	PRIMARY KEY(id_contrato),
 	FOREIGN KEY (id_inmueble) REFERENCES inmuebles (id_inmueble)
 );
@@ -133,7 +134,7 @@ CREATE TABLE registros_de_pagos(
 
 # RECIBOS
 CREATE TABLE comprobantes_de_pagos(
-	id_comprobantes_de_pago INT NOT NULL,
+	id_comprobante_de_pago INT NOT NULL,
 	numero_comprobante VARCHAR(5) NOT NULL,
 	fecha_comprobante DATE NOT NULL,
 	tipo_comprobante_de_pago VARCHAR(10) NOT NULL,                            # Oficial - No Oficial
@@ -155,7 +156,8 @@ CREATE TABLE comprobantes_de_pagos(
 	total_importe_recibido INT,
 	saldo_pendiente INT,                         #este campo se pondria en cero cuando sea abonado
 	saldo_pendiente_sin_modificar INT,           #este campo queda guardo para que se refleje en el recibo de solo lectura
-	PRIMARY KEY(id_comprobantes_de_pago) 
+	estado VARCHAR(10) NOT NULL, # Activo - Inactivo 
+	PRIMARY KEY(id_comprobante_de_pago) 
 );
 
 CREATE TABLE fecha_pago(

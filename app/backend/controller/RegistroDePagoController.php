@@ -61,6 +61,10 @@ function generarRegistrosDePagos()
     $cantCuotasDep = (int)$contratoObject->cantCuotasDeposito; //3  NO SE TOCA NUNCA
     $numCuotasApagar = 1;
 
+    if($cantCuotasDep == "" or $cantCuotasDep == null){
+        $cantCuotasDep = 0;
+    }
+
     $valorAlquilerOficial = (int)$contratoObject->valorAlquilerOficial;
     $valorExpensasMensual = (int)$contratoObject->valorExpensas;
     $valorGastosAdministrativos = (int)$contratoObject->gastosAdministrativos;
@@ -80,6 +84,9 @@ function generarRegistrosDePagos()
             $valorAlquilerOficial = $valorAlquilerOficial;
 
             //RECIBO OFICIAL
+            $valorDeposito = 0;
+            $cantCuotasDeposito = 0;
+            $numCuotaAPagar = 0;
             $tipoRegistroDePago = "Oficial";
             $correspondienteMes = $mesInt;
             $correspondienteAnio = $anioInicioInt;

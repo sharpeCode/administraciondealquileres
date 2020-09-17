@@ -93,7 +93,7 @@ function ListadoDeRegistrosDePago() {
 }
 
 //TODO: REGISTRO DE PAGOS
-function listarRegistrosDePaso(idContrato) {
+function listarRegistrosDePagos(idContrato) {
     $("#contratoAdd").hide();
     $("#contratoList").hide();
     $("#contratoDatosCompletos").hide();
@@ -380,7 +380,7 @@ function contruirFilas(Contratos) {
     raw += "<td>" + Contratos['tipo'] + "</td>";
 
     raw += "<td>";
-    raw += "<button class='miBoton-icon' title='Registros de pagos' onclick='listarRegistrosDePaso(" + Contratos['idContrato'] + ")'>" +
+    raw += "<button class='miBoton-icon' title='Registros de pagos' onclick='listarRegistrosDePagos(" + Contratos['idContrato'] + ")'>" +
         "<span class='glyphicon glyphicon-usd'></span>";
     raw += "</td> ";
 
@@ -520,7 +520,7 @@ function optionsInmuebles(Inmuebles) {
 
 }
 
-// LLENAR SELECT CON FECHA INICIO Y FIN
+// LLENAR SELECT CON FECHA INICIO Y FIN DEL VENCIMIENTO
 function llenarSelectFechaInicioFin() {
 
     let uri = EndpointsEnum.CONTRATO;
@@ -557,7 +557,7 @@ function llenarDomInicio(arrayFechaInicio) {
     let options = "";
 
     //para agregarle placeholder a la lista desplegable
-    let optionDefault = "<option value='-1'>Inicio</option>";
+    let optionDefault = "<option value='1'>1</option>";
     options += optionDefault;
 
     for (var i = 0, l = arrayFechaInicio.length; i < l; i++) {
@@ -575,7 +575,7 @@ function llenarDomFin(arrayFechaFin) {
     let options = "";
 
     //para agregarle placeholder a la lista desplegable
-    let optionDefault = "<option value='-1'>Fin</option>";
+    let optionDefault = "<option value='10'>10</option>";
     options += optionDefault;
 
     for (var i = 0, l = arrayFechaFin.length; i < l; i++) {
@@ -610,18 +610,13 @@ function validarContratoAntesDeGuardarlo() {
             datosDelContrato: datosDelContrato
         }
     });
-
     funcionAjax.done(function (retorno) {
         console.log(retorno);
         $("#labelAnio").val(retorno);
-
-        //guardarRegistrosDePagos();
     });
-
     funcionAjax.fail(function (retorno) {
         console.log("error al guardar user")
     });
-
     funcionAjax.always(function (retorno) {
         console.log("volvi de guardar el user")
     });
@@ -633,26 +628,18 @@ function guardarContrato() {
 
     var datosDelContrato = mapToJson($('#contratoAdd').serializeArray());
 
-
-    console.log ("validandooooooo fechas ");
-    console.log (datosDelContrato["labelAnio"]);
-    //var $tds;
-    //var cantidad = $tds.eq(2).find("#labelAnio").val();
+    //primero validamos que esten ok las fechas inicio y fin antes de guardar
     var cantidad = 0;
-    var total_bultos = 0;
+    var anios = 0;
+    // isNaN -> esto valida si no es un string, para que solo entren los numeros
     if (!isNaN(datosDelContrato["labelAnio"])) {
-        total_bultos = !isNaN(total_bultos) ? parseInt(total_bultos, 10) : 0; //si es una cadena vacia o cualquier cosa que no sea numero total = 0
-        total_bultos = parseInt(cantidad, 10) + parseInt(total_bultos, 10);
-        console.log(total_bultos);
-        //document.getElementById("total_bultos").value = total_bultos;
-        console.log("holaaaa");
-        //guardarContrato();
+        anios = !isNaN(anios) ? parseInt(anios, 10) : 0; //si es una cadena vacia o cualquier cosa que no sea numero total = 0
+        anios = parseInt(cantidad, 10) + parseInt(anios, 10);
+        console.log(anios);
 
         console.log("Guardando contrato: ", datosDelContrato);
-
         let uri = EndpointsEnum.CONTRATO;
         console.log("Llamando a controller locatarios = " + uri);
-
         var funcionAjax = $.ajax({
             url: uri,
             method: "POST",
@@ -676,14 +663,10 @@ function guardarContrato() {
         });
         console.log("Fin llamada controller usuario");
 
-
     } else {
         console.error('Error, cantidad no valida');
         window.alert("Corregir las fechas!!!")
     }
-
-
-
 
 }
 
@@ -801,8 +784,8 @@ function contruirFilasRegistroDePagos(RPago) {
         raw += "<td style='color: red;'>" + RPago['valorExpensas'] + "</td>";
         raw += "<td style='color: red;'>" + RPago['gastosAdministrativos'] + "</td>";
         raw += "<td style='color: red;'>" + RPago['valorDeposito'] + "</td>";
-        raw += "<td style='color: red;'>" + RPago['cantCuotasDeposito'] + "</td>";
         raw += "<td style='color: red;'>" + RPago['numCuotaAPagar'] + "</td>";
+        raw += "<td style='color: red;'>" + RPago['cantCuotasDeposito'] + "</td>";
         raw += "<td style='color: red;'>" + RPago['recibo'] + "</td>";
         raw += "<td style='color: red;'>" + RPago['saldoPendiente'] + "</td>";
 
@@ -821,8 +804,8 @@ function contruirFilasRegistroDePagos(RPago) {
         raw += "<td>" + RPago['valorExpensas'] + "</td>";
         raw += "<td>" + RPago['gastosAdministrativos'] + "</td>";
         raw += "<td>" + RPago['valorDeposito'] + "</td>";
-        raw += "<td>" + RPago['cantCuotasDeposito'] + "</td>";
         raw += "<td>" + RPago['numCuotaAPagar'] + "</td>";
+        raw += "<td>" + RPago['cantCuotasDeposito'] + "</td>";
         raw += "<td>" + RPago['recibo'] + "</td>";
         raw += "<td>" + RPago['saldoPendiente'] + "</td>";
     }
@@ -1028,7 +1011,7 @@ function cargarDatosEnRecibo(datosParaCargarRecibo,ban) {
         $("#reciboOfiOtrosConceptos").val(datosParaCargarRecibo["otrosConceptos"]);
         $("#reciboOfiSaldoAnterior").val(datosParaCargarRecibo["saldoAnterior"]);
         $("#reciboOfiTotal").val(datosParaCargarRecibo["totalImporteAPagar"]);
-        $("#reciboOfiImporteRecibido").val(datosParaCargarRecibo["totalImporteRecibido"]);
+        $("#reciboOfiImporteRecibido").val(datosParaCargarRecibo["totalImporteAPagar"]);
         $("#reciboOfiSaldoPendiente").val(datosParaCargarRecibo["saldoPendiente"]);
 
 
@@ -1104,7 +1087,7 @@ function llenarDomSaldoAnterior(arraySaldoAnterior) {
     $("#reciboNoOfiSaldoAnterior").html(options);
 }
 
-// INPUTS FORM COMPROBANTE DE PAGO CON ONCHANGE
+// INPUTS FORM COMPROBANTE DE PAGO CON ONCHANGE OFICIAL
 function EditarValoresReciboOficial() {
 
     var alquilerMensual = document.getElementById("reciboOfiAlquilerMensual").value;
@@ -1171,6 +1154,7 @@ function EditarValoresReciboOficial() {
         $("#reciboOfiSubTotal").val(valores["subTotal"]);
         $("#reciboOfiTotal").val(valores["totalImporteAPagar"]);
         $("#reciboOfiSaldoPendiente").val(valores["saldoPendiente"]);
+        $("#reciboOfiImporteRecibido").val(valores["totalImporteRecibido"]);
     });
 
     funcionAjax.fail(function (retorno) {
@@ -1182,6 +1166,7 @@ function EditarValoresReciboOficial() {
     });
 }
 
+// INPUTS FORM COMPROBANTE DE PAGO CON ONCHANGE NO OFICIAL
 function EditarValoresReciboNoOficial() {
 
     var alquilerMensual = document.getElementById("reciboNoOfiAlquilerMensual").value;
@@ -1226,6 +1211,52 @@ function EditarValoresReciboNoOficial() {
     });
 }
 
+// INPUTS FORM COMPROBANTE DE PAGO CON ONCHANGE OFICIAL IMPORTE RECIBIDO
+function EditarValoresReciboOficialImporteRecibido() {
+
+
+    var importeTotal = document.getElementById("reciboOfiTotal").value;
+    var recibido = document.getElementById("reciboOfiImporteRecibido").value;
+
+    if (importeTotal == "") {
+        importeTotal = 0;
+    }
+    if (recibido == "") {
+        recibido = 0;
+    }
+
+    let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
+    console.log("Llamando a controller locatarios = " + uri);
+
+    var funcionAjax = $.ajax({
+        url: uri,
+        method: "POST",
+        data: {
+            action: "EditarValorImporteRecibido",
+            importeTotal: importeTotal,
+            recibido: recibido
+
+        }
+    });
+
+    funcionAjax.done(function (retorno) {
+
+        let valores = JSON.parse(retorno);
+        console.log(valores);
+
+        $("#reciboOfiSaldoPendiente").val(valores);
+
+    });
+
+    funcionAjax.fail(function (retorno) {
+        console.log("error al buscar el entrenado por dni")
+    });
+
+    funcionAjax.always(function (retorno) {
+        console.log("volvi de buscar el entrenado por dni")
+    });
+}
+
 // GUARDAR COMPROBANTE DE PAGO OFICIAL Y NO OFICIAL
 function GuardarComprobanteDePago(num) {
 
@@ -1251,6 +1282,7 @@ function GuardarComprobanteDePago(num) {
         var saldoAnterior = document.getElementById("reciboOfiSaldoAnterior").value;
         var totalImporteAPagar = document.getElementById("reciboOfiTotal").value;
         var totalImporteRecibido = document.getElementById("reciboOfiImporteRecibido").value;
+        var estado = 'Activo';
 
 
     } else if (num == 2) {  //RECIBO NO OFICIAL
@@ -1261,7 +1293,6 @@ function GuardarComprobanteDePago(num) {
         var idRegistroPago = document.getElementById("reciboNoOfiIdRegistroPago").value;
         var idContrato = document.getElementById("reciboNoOfiIdContrato").value;
         var tipoComprobante = document.getElementById("reciboNoOfiTipoComprobante").value;
-        console.log("voy a mostrar tipo de comprobante no ofi ",tipoComprobante);
         var tipoRecibo = 'Recibo';
         var alquilerMensual = document.getElementById("reciboNoOfiAlquilerMensual").value;
         var expensas = 0;
@@ -1274,10 +1305,11 @@ function GuardarComprobanteDePago(num) {
         var saldoAnterior = 0;
         var totalImporteAPagar = document.getElementById("reciboNoOfiTotal").value;
         var totalImporteRecibido = document.getElementById("reciboNoOfiTotal").value;
+        var estado = 'Activo';
     }
 
     console.log("Guardando comprobante de pago: ", numeroComprobante, idRegistroPago, idContrato, tipoComprobante, tipoRecibo, correspondienteMes, correspondienteAnio,
-        alquilerMensual, expensas, gastosAdm, deposito, cuotas, numCuota, interesPorMora, otrosConceptos, saldoAnterior, totalImporteAPagar, totalImporteRecibido);
+        alquilerMensual, expensas, gastosAdm, deposito, cuotas, numCuota, interesPorMora, otrosConceptos, saldoAnterior, totalImporteAPagar, totalImporteRecibido,estado);
 
     let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
     console.log("Llamando a controller comprobante de pagos = " + uri);
@@ -1305,6 +1337,7 @@ function GuardarComprobanteDePago(num) {
             saldoAnterior: saldoAnterior,
             totalImporteAPagar: totalImporteAPagar,
             totalImporteRecibido: totalImporteRecibido,
+            estado:estado
 
         }
     });
@@ -1708,6 +1741,7 @@ function GuardarComprobanteDePagoSoloSaldo() {
         var totalImporteAPagar = document.getElementById("saldoTotal").value;
         var totalImporteRecibido = document.getElementById("saldoTotalImporteRecibido").value;
         var saldoPendiente = 0;
+        var estado = 'Activo';
 
     }else if(fec == ""){
 
@@ -1730,6 +1764,7 @@ function GuardarComprobanteDePagoSoloSaldo() {
         var totalImporteAPagar = document.getElementById("saldo2Total").value;
         var totalImporteRecibido = document.getElementById("saldo2TotalImporteRecibido").value;
         var saldoPendiente = 0;
+        var estado = 'Activo'
     }
 
     let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
@@ -1756,7 +1791,8 @@ function GuardarComprobanteDePagoSoloSaldo() {
             otrosConceptos: otrosConceptos,
             totalImporteAPagar: totalImporteAPagar,
             totalImporteRecibido: totalImporteRecibido,
-            saldoPendiente: saldoPendiente
+            saldoPendiente: saldoPendiente,
+            estado: estado
         }
     });
 

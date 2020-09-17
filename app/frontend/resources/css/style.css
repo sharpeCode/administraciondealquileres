@@ -177,6 +177,16 @@ input:focus, input.form-control:focus, button:focus, select:focus {
 }
 
 /*====================================================================================
+ Labels color Amarillo
+====================================================================================*/
+.labelAmarillo {
+    color: #f9c000;
+    background-color: transparent;
+    font: normal 16px "Product Sans";
+    border-style: none;
+}
+
+/*====================================================================================
  Labels normal
 ====================================================================================*/
 .labelSubtituloNormal {
@@ -185,6 +195,7 @@ input:focus, input.form-control:focus, button:focus, select:focus {
     font: normal 18px "Product Sans";
     border-style: none;
 }
+
 
 /*====================================================================================
  Input tipo text que se vea como label

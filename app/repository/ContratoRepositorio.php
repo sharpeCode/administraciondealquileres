@@ -15,7 +15,7 @@ class ContratoRepositorio
                     I.tipo, I.torre, I.piso, I.departamento, I.domicilio, I.id_localidad AS idLocalidad, Loc.localidad, Loc.cp, Loc.id_provincia AS idProvincia,
                     C.valor_alquiler_oficial AS valorAlquilerOficial, C.valor_alquiler_no_oficial AS valorAlquilerNoOficial, C.valor_deposito AS valorDeposito, 
                     C.gastos_administrativos AS gastosAdministrativos, C.valor_expensas AS valorExpensas, C.cant_cuotas_deposito AS cantCuotasDeposito, 
-                    C.fecha_pago_inicio AS fechaPagoInicio, C.fecha_pago_fin AS fechaPagoFin
+                    C.fecha_pago_inicio AS fechaPagoInicio, C.fecha_pago_fin AS fechaPagoFin, C.estado
                     FROM contratos C INNER JOIN clientes L ON C.dni = L.dni
                     INNER JOIN inmuebles I ON C.id_inmueble = I.id_inmueble
                     INNER JOIN localidades Loc ON Loc.id_localidad = I.id_localidad
@@ -73,12 +73,13 @@ class ContratoRepositorio
     public static function guardarContratoNuevo($contratoObject)
     {
         $registroPago = null;
+        $estado = "Activo";
         try {
 
             $sql = "INSERT INTO contratos (id_contrato, fecha_inicio, fecha_fin, dni, id_inmueble, valor_alquiler_oficial, valor_alquiler_no_oficial, 
-                    valor_deposito, gastos_administrativos, valor_expensas, cant_cuotas_deposito, fecha_pago_inicio, fecha_pago_fin)
+                    valor_deposito, gastos_administrativos, valor_expensas, cant_cuotas_deposito, fecha_pago_inicio, fecha_pago_fin, estado)
                     VALUES(:id_contrato, :fecha_inicio, :fecha_fin, :dni, :id_inmueble, :valor_alquiler_oficial, :valor_alquiler_no_oficial, 
-                    :valor_deposito, :gastos_administrativos, :valor_expensas, :cant_cuotas_deposito, :fecha_pago_inicio, :fecha_pago_fin)";
+                    :valor_deposito, :gastos_administrativos, :valor_expensas, :cant_cuotas_deposito, :fecha_pago_inicio, :fecha_pago_fin, :estado)";
 
             $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
 
@@ -95,6 +96,7 @@ class ContratoRepositorio
             $sentencia->bindParam(':cant_cuotas_deposito', $contratoObject->cantCuotasDeposito, PDO::PARAM_INT);
             $sentencia->bindParam(':fecha_pago_inicio', $contratoObject->fechaPagoInicio, PDO::PARAM_INT);
             $sentencia->bindParam(':fecha_pago_fin', $contratoObject->fechaPagoFin, PDO::PARAM_INT);
+            $sentencia->bindParam(':estado', $estado, PDO::PARAM_STR);
 
             $sentencia->execute();
             $registroPago = $sentencia->fetchObject("Contrato");
@@ -115,7 +117,7 @@ class ContratoRepositorio
             $sql = "SELECT C.id_contrato AS idContrato, C.fecha_inicio AS fechaInicio, C.fecha_fin AS fechaFin, C.dni, L.nombres, L.apellidos, 
                     C.id_inmueble AS idInmueble, I.tipo, C.valor_alquiler_oficial AS valorAlquilerOficial, C.valor_alquiler_no_oficial AS 
                     valorAlquilerNoOficial, C.valor_deposito AS valorDeposito, C.gastos_administrativos AS gastosAdministrativos, C.valor_expensas 
-                    AS valorExpensas, C.cant_cuotas_deposito AS cantCuotasDeposito, C.fecha_pago_inicio AS fechaPagoInicio, C.fecha_pago_fin AS fechaPagoFin
+                    AS valorExpensas, C.cant_cuotas_deposito AS cantCuotasDeposito, C.fecha_pago_inicio AS fechaPagoInicio, C.fecha_pago_fin AS fechaPagoFin, C.estado
                     FROM contratos C INNER JOIN clientes L ON C.dni = L.dni
                     INNER JOIN inmuebles I ON C.id_inmueble = I.id_inmueble 
                     ORDER BY id_contrato DESC LIMIT 1";
@@ -139,7 +141,7 @@ class ContratoRepositorio
             $sql = "SELECT id_contrato AS idContrato, fecha_inicio AS fechaInicio, fecha_fin AS fechaFin, id_inmueble AS idInmueble,
                     valor_alquiler_oficial AS valorAlquilerOficial, valor_alquiler_no_oficial AS valorAlquilerNoOficial, valor_deposito AS 
                     valorDeposito, gastos_administrativos AS gastosAdministrativos, valor_expensas AS valorExpensas, cant_cuotas_deposito AS 
-                    cantCuotasDeposito, fecha_pago_inicio AS fechaPagoInicio, fecha_pago_fin AS fechaPagoFin
+                    cantCuotasDeposito, fecha_pago_inicio AS fechaPagoInicio, fecha_pago_fin AS fechaPagoFin, estado
                     FROM contratos
                     WHERE id_contrato = $idContrato";
 
@@ -166,11 +168,6 @@ class ContratoRepositorio
             $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
             $sentencia->execute();
             $contrato = $sentencia->fetchObject("Contrato");
-
-//            $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
-//            $sentencia->execute();
-//            $contrato = $sentencia->fetch(int|null);
-
 
         } catch (PDOException $ex) {
             print 'ERROR' . $ex->getMessage();

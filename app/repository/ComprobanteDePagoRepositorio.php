@@ -8,24 +8,24 @@ require_once 'BaseRepository.php';
 class ComprobanteDePagoRepositorio
 {
 
-    public static function guardarComprobanteDePago($idComprobantesDePago, $numeroComprobante, $tipoComprobante, $tipoRecibo, $idContrato, $idRegistroPago, $correspondienteMes, $correspondienteAnio, $alquilerMensual, $expensas, $gastosAdm, $deposito, $cuotas, $numCuota, $interesPorMora, $otrosConceptos, $saldoAnterior, $totalImporteAPagar, $totalImporteRecibido, $saldoPendiente, $saldoPendienteSinModificar)
+    public static function guardarComprobanteDePago($idComprobanteDePago, $numeroComprobante, $tipoComprobante, $tipoRecibo, $idContrato, $idRegistroPago, $correspondienteMes, $correspondienteAnio, $alquilerMensual, $expensas, $gastosAdm, $deposito, $cuotas, $numCuota, $interesPorMora, $otrosConceptos, $saldoAnterior, $totalImporteAPagar, $totalImporteRecibido, $saldoPendiente, $saldoPendienteSinModificar,$estado)
     {
 
         $resp = false;
         try {
 
-            $sql = "INSERT INTO comprobantes_de_pagos (id_comprobantes_de_pago,numero_comprobante, fecha_comprobante, tipo_comprobante_de_pago, tipo_recibo,  id_contrato, 
+            $sql = "INSERT INTO comprobantes_de_pagos (id_comprobante_de_pago,numero_comprobante, fecha_comprobante, tipo_comprobante_de_pago, tipo_recibo,  id_contrato, 
                     id_registro_de_pago, correspondiente_mes, correspondiente_anio, valor_alquiler, valor_expensas, valor_gastos_adm, 
                     valor_deposito, cant_cuotas_deposito, num_cuota_a_pagar, interes_por_mora, otros_conceptos, saldo_anterior, total_importe_a_pagar,
-                    total_importe_recibido, saldo_pendiente, saldo_pendiente_sin_modificar)
-                    VALUES(:id_comprobantes_de_pago,:numero_comprobante, NOW(), :tipo_comprobante_de_pago, :tipo_recibo, :id_contrato, :id_registro_de_pago,
+                    total_importe_recibido, saldo_pendiente, saldo_pendiente_sin_modificar, estado)
+                    VALUES(:id_comprobante_de_pago,:numero_comprobante, NOW(), :tipo_comprobante_de_pago, :tipo_recibo, :id_contrato, :id_registro_de_pago,
                     :correspondiente_mes, :correspondiente_anio, :valor_alquiler, :valor_expensas, :valor_gastos_adm, :valor_deposito, 
                     :cant_cuotas_deposito, :num_cuota_a_pagar, :interes_por_mora, :otros_conceptos, :saldo_anterior, :total_importe_a_pagar,
-                    :total_importe_recibido, :saldo_pendiente, :saldo_pendiente_sin_modificar)";
+                    :total_importe_recibido, :saldo_pendiente, :saldo_pendiente_sin_modificar, :estado)";
 
             $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
 
-            $sentencia->bindParam(':id_comprobantes_de_pago', $idComprobantesDePago, PDO::PARAM_STR);
+            $sentencia->bindParam(':id_comprobante_de_pago', $idComprobanteDePago, PDO::PARAM_STR);
             $sentencia->bindParam(':numero_comprobante', $numeroComprobante, PDO::PARAM_STR);
             $sentencia->bindParam(':tipo_comprobante_de_pago', $tipoComprobante, PDO::PARAM_STR);
             $sentencia->bindParam(':tipo_recibo', $tipoRecibo, PDO::PARAM_STR);
@@ -46,6 +46,7 @@ class ComprobanteDePagoRepositorio
             $sentencia->bindParam(':total_importe_recibido', $totalImporteRecibido, PDO::PARAM_INT);
             $sentencia->bindParam(':saldo_pendiente', $saldoPendiente, PDO::PARAM_INT);
             $sentencia->bindParam(':saldo_pendiente_sin_modificar', $saldoPendienteSinModificar, PDO::PARAM_INT);
+            $sentencia->bindParam(':estado', $estado, PDO::PARAM_STR);
 
 
             $sentencia->execute();
@@ -106,7 +107,7 @@ class ComprobanteDePagoRepositorio
             $sql = "SELECT total_importe_a_pagar AS totalImporteAPagar, total_importe_recibido AS totalImporteRecibido, 
                     SUM(saldo_pendiente) AS saldoPendiente
                     FROM comprobantes_de_pagos
-                    WHERE id_contrato = '$idContrato' AND tipo_comprobante_de_pago = '$tipo'";
+                    WHERE id_contrato = '$idContrato' AND tipo_comprobante_de_pago = '$tipo' AND estado = 'Activo'";
 
             $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
             $sentencia->execute();
@@ -134,7 +135,7 @@ class ComprobanteDePagoRepositorio
                     CP.interes_por_mora AS interesPorMora, CP.otros_conceptos AS otrosConceptos, CP.saldo_anterior AS saldoAnterior,
                      CP.total_importe_a_pagar AS 
                     totalImporteAPagar, CP.total_importe_recibido AS totalImporteRecibido, CP.saldo_pendiente AS saldoPendiente,
-                    CP.saldo_pendiente_sin_modificar AS saldoPendienteSinModificar
+                    CP.saldo_pendiente_sin_modificar AS saldoPendienteSinModificar, CP.saldo
                         FROM comprobantes_de_pagos CP LEFT JOIN meses M ON CP.correspondiente_mes = M.id_mes
                         WHERE CP.numero_comprobante <> '00000'";
 
@@ -153,11 +154,10 @@ class ComprobanteDePagoRepositorio
     public static function buscarComprobanteDePagoSoloSaldo($idRegistroDePago){
         $saldos = "";
         try {
-            $sql = "SELECT CP.id_comprobantes_de_pago AS idComprobantesDePago, 
-                    CP.tipo_comprobante_de_pago AS tipoComprobanteDePago,
+            $sql = "SELECT CP.id_comprobante_de_pago AS idComprobanteDePago, CP.tipo_comprobante_de_pago AS tipoComprobanteDePago,
                     CP.id_contrato AS idContrato, CP.id_registro_de_pago AS idRegistroDePago, CP.correspondiente_mes AS correspondienteMes, 
-                    M.mes_corto AS mesCorto, CP.correspondiente_anio AS correspondienteAnio,
-                    CP.total_importe_a_pagar AS totalImporteAPagar, CP.total_importe_recibido AS totalImporteRecibido, L.dni, L.nombres, L.apellidos,
+                    M.mes_corto AS mesCorto, CP.correspondiente_anio AS correspondienteAnio, CP.total_importe_a_pagar AS totalImporteAPagar, 
+                    CP.total_importe_recibido AS totalImporteRecibido, L.dni, L.nombres, L.apellidos,
                     LOC.localidad, LOC.cp, P.nombre,I.id_inmueble AS idInmueble,  I.tipo, I.torre, I.piso, I.departamento, I.domicilio
                         FROM comprobantes_de_pagos CP LEFT JOIN meses M ON CP.correspondiente_mes = M.id_mes
                         INNER JOIN contratos C ON C.id_contrato = CP.id_contrato
@@ -205,7 +205,7 @@ class ComprobanteDePagoRepositorio
             $sql = "SELECT COUNT(numero_comprobante) AS cantidadDeRecibos, id_registro_de_pago AS idRegistroDePago,
                     tipo_comprobante_de_pago AS tipoComprobanteDePago                    
                     FROM comprobantes_de_pagos
-                    WHERE id_registro_de_pago = '$idRegistroDePago'";
+                    WHERE id_registro_de_pago = '$idRegistroDePago' AND estado = 'Activo'";
 
             $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
             $sentencia->execute();
@@ -225,7 +225,7 @@ class ComprobanteDePagoRepositorio
             $sql = "SELECT tipo_comprobante_de_pago AS tipoComprobanteDePago, tipo_recibo AS tipoRecibo, numero_comprobante AS numeroComprobante, total_importe_a_pagar AS totalImporteAPagar,
                     valor_alquiler AS valorAlquiler, id_registro_de_pago AS idRegistroDePago
                     FROM comprobantes_de_pagos
-                    WHERE id_registro_de_pago = '$idRegistroDePago'";
+                    WHERE id_registro_de_pago = '$idRegistroDePago' AND estado = 'Activo'";
 
             $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
             $sentencia->execute();
@@ -244,7 +244,7 @@ class ComprobanteDePagoRepositorio
 
         $visualizar = null;
         try {
-            $sql = "SELECT CP.id_comprobantes_de_pago AS idComprobantesDePago, CP.numero_comprobante AS numeroComprobante, 
+            $sql = "SELECT CP.id_comprobante_de_pago AS idComprobantesDePago, CP.numero_comprobante AS numeroComprobante, 
                     CP.fecha_comprobante AS fechaComprobante, CP.tipo_comprobante_de_pago AS tipoComprobanteDePago,
                     CP.tipo_recibo AS tipoRecibo, CP.id_contrato AS idContrato, CP.id_registro_de_pago AS idRegistroDePago, 
                     CP.correspondiente_mes AS correspondienteMes, M.mes_corto AS mesCorto, CP.correspondiente_anio AS correspondienteAnio, 
@@ -314,7 +314,7 @@ class ComprobanteDePagoRepositorio
 
         $visualizar = null;
         try {
-            $sql = "SELECT CP.id_comprobantes_de_pago AS idComprobantesDePago, CP.numero_comprobante AS numeroComprobante, 
+            $sql = "SELECT CP.id_comprobante_de_pago AS idComprobanteDePago, CP.numero_comprobante AS numeroComprobante, 
                     CP.fecha_comprobante AS fechaComprobante, CP.tipo_comprobante_de_pago AS tipoComprobanteDePago,
                     CP.id_contrato AS idContrato, CP.id_registro_de_pago AS idRegistroDePago, CP.correspondiente_mes AS correspondienteMes, 
                     M.mes_corto AS mesCorto, CP.correspondiente_anio AS correspondienteAnio, CP.valor_alquiler AS valorAlquiler, 
@@ -348,7 +348,7 @@ class ComprobanteDePagoRepositorio
         try {
             $sql = "UPDATE comprobantes_de_pagos SET saldo_pendiente = 0
                     WHERE id_contrato = '$idContrato' AND id_registro_de_pago <> '$idRegistroPago'
-                    AND tipo_comprobante_de_pago = '$tipoComprobante'";
+                    AND tipo_comprobante_de_pago = '$tipoComprobante' AND estado = 'Activo'";
 
             $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
             $sentencia->execute();
@@ -369,7 +369,7 @@ class ComprobanteDePagoRepositorio
             $sql = "SELECT total_importe_a_pagar AS totalImporteAPagar, total_importe_recibido AS totalImporteRecibido, 
                     SUM(saldo_pendiente) AS saldoPendiente
                     FROM comprobantes_de_pagos
-                    WHERE id_contrato = '$idContrato' AND tipo_comprobante_de_pago = '$TipoComprobante'";
+                    WHERE id_contrato = '$idContrato' AND tipo_comprobante_de_pago = '$TipoComprobante' AND estado = 'Activo'";
 
             $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
             $sentencia->execute();
@@ -390,7 +390,7 @@ class ComprobanteDePagoRepositorio
             $sql = "SELECT total_importe_a_pagar AS totalImporteAPagar, total_importe_recibido AS totalImporteRecibido, 
                     SUM(saldo_anterior) AS saldoAnterior 
                     FROM comprobantes_de_pagos
-                    WHERE id_contrato = '$idContrato' AND tipo_comprobante_de_pago = '$TipoComprobante' AND id_registro_de_pago <> '$idRegistroPago'";
+                    WHERE id_contrato = '$idContrato' AND tipo_comprobante_de_pago = '$TipoComprobante' AND id_registro_de_pago <> '$idRegistroPago' AND estado = 'Activo'";
 
             $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
             $sentencia->execute();
@@ -428,9 +428,9 @@ class ComprobanteDePagoRepositorio
     public static function buscarUltimoIdComprobanteDePago(){
         $Comprobante = "";
         try {
-            $sql = "SELECT id_comprobantes_de_pago AS idComprobantesDePago 
+            $sql = "SELECT id_comprobante_de_pago AS idComprobanteDePago 
                     FROM comprobantes_de_pagos
-                    ORDER BY id_comprobantes_de_pago DESC LIMIT 1";
+                    ORDER BY id_comprobante_de_pago DESC LIMIT 1";
 
             $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
             $sentencia->execute();

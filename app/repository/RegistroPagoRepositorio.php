@@ -215,11 +215,11 @@ class RegistroPagoRepositorio
         return $saldos;
     }
 
-    public static function buscarValorActualAlquilerMensual($idRegistroDePago)
+    public static function buscarValorActualAlquilerMensualyExpensas($idRegistroDePago)
     {
         $valorRegistrado = null;
         try {
-            $sql = "SELECT valor_alquiler AS valorAlquiler
+            $sql = "SELECT valor_alquiler AS valorAlquiler, valor_expensas AS valorExpensas
             FROM registros_de_pagos 
             WHERE id_registro_de_pago = $idRegistroDePago";
 
@@ -235,11 +235,11 @@ class RegistroPagoRepositorio
         return $valorRegistrado;
     }
 
-    public static function actualizarNuevoValorAlquilerMensual($alquilerMensual,$idRegistroPago,$tipoComprobante,$idContrato)
+    public static function actualizarNuevoValorAlquilerMensual($alquilerMensual, $expensas, $idRegistroPago,$tipoComprobante,$idContrato)
     {
         $respuesta = null;
         try {
-            $sql = "UPDATE registros_de_pagos SET valor_alquiler = '$alquilerMensual'
+            $sql = "UPDATE registros_de_pagos SET valor_alquiler = '$alquilerMensual', valor_expensas = '$expensas'
             WHERE id_registro_de_pago >= '$idRegistroPago' 
             AND id_contrato = '$idContrato' 
             AND tipo_registro_de_pago = '$tipoComprobante'";

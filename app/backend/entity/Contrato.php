@@ -15,9 +15,10 @@ class Contrato
     public $cantCuotasDeposito;
     public $fechaPagoInicio;
     public $fechaPagoFin;
+    public $estado;
 
 
-    public function constructor($idContrato,$fechaInicio, $fechaFin, $dni,$idInmueble,$valorAlquilerOficial,$valorAlquilerNoOficial,$valorExpensas,$gastosAdministrativos,$valorDeposito,$cantCuotasDeposito,$fechaPagoInicio,$fechaPagoFin)
+    public function constructor($idContrato,$fechaInicio, $fechaFin, $dni,$idInmueble,$valorAlquilerOficial,$valorAlquilerNoOficial,$valorExpensas,$gastosAdministrativos,$valorDeposito,$cantCuotasDeposito,$fechaPagoInicio,$fechaPagoFin,$estado)
     {
         $this->idContrato = $idContrato;
         $this->fechaInicio = $fechaInicio;
@@ -32,6 +33,7 @@ class Contrato
         $this->cantCuotasDeposito = $cantCuotasDeposito;
         $this->fechaPagoInicio = $fechaPagoInicio;
         $this->fechaPagoFin = $fechaPagoFin;
+        $this->estado = $estado;
 
     }
 

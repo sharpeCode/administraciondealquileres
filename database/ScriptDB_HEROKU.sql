@@ -102,7 +102,8 @@ CREATE TABLE `heroku_0852b66c3d788ad`.`contratos`(
 	`valor_expensas` INT,
 	`cant_cuotas_deposito` INT,
 	`fecha_pago_inicio` INT, 
-	`fecha_pago_fin` INT, 
+	`fecha_pago_fin` INT,
+	`estado` VARCHAR(10) NOT NULL,
 	PRIMARY KEY(`id_contrato`),
 	FOREIGN KEY (`id_inmueble`) REFERENCES `heroku_0852b66c3d788ad`.`inmuebles`(`id_inmueble`)
 );
@@ -127,7 +128,7 @@ CREATE TABLE `heroku_0852b66c3d788ad`.`registros_de_pagos`(
 );
 
 CREATE TABLE `heroku_0852b66c3d788ad`.`comprobantes_de_pagos`(
-	`id_comprobantes_de_pago` INT NOT NULL,
+	`id_comprobante_de_pago` INT NOT NULL,
 	`numero_comprobante` VARCHAR(5) NOT NULL,
 	`fecha_comprobante` DATE NOT NULL,
 	`tipo_comprobante_de_pago` VARCHAR(10) NOT NULL, 
@@ -148,8 +149,9 @@ CREATE TABLE `heroku_0852b66c3d788ad`.`comprobantes_de_pagos`(
 	`total_importe_a_pagar` INT,
 	`total_importe_recibido` INT,
 	`saldo_pendiente` INT,                         
-	`saldo_pendiente_sin_modificar` INT,          
-	PRIMARY KEY(`id_comprobantes_de_pago`) 
+	`saldo_pendiente_sin_modificar` INT,
+	`estado` VARCHAR(10) NOT NULL,       
+	PRIMARY KEY(`id_comprobante_de_pago`) 
 );
 
 CREATE TABLE `heroku_0852b66c3d788ad`.`fecha_pago`(

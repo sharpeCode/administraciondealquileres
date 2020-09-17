@@ -97,7 +97,7 @@ INSERT INTO `variables` (`id_variable`,`variable`) VALUES (1,'Interés x vencimi
 INSERT INTO `porcentaje_de_variables` (`id_variable`,`porcentaje`,`fecha_ingreso`) VALUES (1,10,'2020-08-05');
 INSERT INTO `porcentaje_de_variables` (`id_variable`,`porcentaje`,`fecha_ingreso`) VALUES (1,15,'2020-08-08');
 
-INSERT INTO `comprobantes_de_pagos` (`id_comprobantes_de_pago`,`numero_comprobante`,`fecha_comprobante`,`tipo_comprobante_de_pago`,`saldo_pendiente`) 
-				     VALUES (1,'00000','0000-00-00','Oficial',0);
-INSERT INTO `comprobantes_de_pagos` (`id_comprobantes_de_pago`,`numero_comprobante`,`fecha_comprobante`,`tipo_comprobante_de_pago`,`saldo_pendiente`) 
-				     VALUES (2,'00000','0000-00-00','No Oficial',0);
+INSERT INTO `comprobantes_de_pagos` (`id_comprobante_de_pago`,`numero_comprobante`,`fecha_comprobante`,`tipo_comprobante_de_pago`,`saldo_pendiente`,`estado`) 
+				     VALUES (1,'00000','0000-00-00','Oficial',0,'Inactivo');
+INSERT INTO `comprobantes_de_pagos` (`id_comprobante_de_pago`,`numero_comprobante`,`fecha_comprobante`,`tipo_comprobante_de_pago`,`saldo_pendiente`,`estado`) 
+				     VALUES (2,'00000','0000-00-00','No Oficial',0,'Inactivo');

@@ -30,7 +30,7 @@
                        placeholder="Fin" onfocus="(this.type='date')" style="width: 188px;" onchange="validarContratoAntesDeGuardarlo();">
             </div>
             <div class="col-md-4">
-                <input class="labelSubtituloNormal" type="text" id="labelAnio" name="labelAnio"
+                <input class="labelAmarillo" type="text" id="labelAnio" name="labelAnio"
                        placeholder="Años" title="Años de contrato">
             </div>
             <div class="col-md-2"></div>
@@ -73,11 +73,11 @@
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-2" style="width: 280px;">
-                <input class="inputTextConSombra" type="text" id="valorAlquilerOficial" name="valorAlquilerOficial"
+                <input class="inputTextConSombra" type="number" min="1" max="999999" id="valorAlquilerOficial" name="valorAlquilerOficial"
                        placeholder="Alquiler mens." title="Valor Alquiler Mensual" style="width: 120px;">
             </div>
             <div class="col-md-2">
-                <input class="inputTextConSombraNaranja" type="text" id="valorAlquilerNoOficial"
+                <input class="inputTextConSombraNaranja" type="number" min="1" max="999999" id="valorAlquilerNoOficial"
                        name="valorAlquilerNoOficial"
                        placeholder="Alquiler mens." title="Valor Alquiler Mensual" style="width: 120px;">
             </div>
@@ -87,7 +87,7 @@
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-2">
-                <input class="inputTextConSombra" type="text" id="valorExpensas" name="valorExpensas"
+                <input class="inputTextConSombra" type="number" min="1" max="999999" id="valorExpensas" name="valorExpensas"
                        placeholder="Expensas" title="Valor Expensas" style="width: 120px;">
             </div>
             <div class="col-md-8"></div>
@@ -96,7 +96,7 @@
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-2" style="width: 140px;">
-                <input class="inputTextConSombra" type="text" id="valorDeposito" name="valorDeposito"
+                <input class="inputTextConSombra" type="number" min="1" max="999999" id="valorDeposito" name="valorDeposito"
                        placeholder="Depósito" title="Depósito" style="width: 120px;">
             </div>
             <div class="col-md-1">
@@ -117,7 +117,7 @@
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-2">
-                <input class="inputTextConSombra" type="text" id="gastosAdministrativos" name="gastosAdministrativos"
+                <input class="inputTextConSombra" type="number" min="1" max="999999" id="gastosAdministrativos" name="gastosAdministrativos"
                        placeholder="Gastos admin." title="Gastos Administrativos" style="width: 120px;">
             </div>
             <div class="col-md-8"></div>
