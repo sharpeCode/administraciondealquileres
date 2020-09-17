@@ -6,6 +6,7 @@ require_once '../../repository/VariableIpcRipteAnualRepositorio.php';
 require_once '../../repository/VariableIntAnualComercioRepositorio.php';
 require_once '../../repository/VariablePorcentajeImpoNoOficialRepositorio.php';
 require_once '../../repository/RegistroPagoRepositorio.php';
+require_once '../../repository/ComprobanteDePagoRepositorio.php';
 
 $action = $_POST['action'];
 
@@ -30,6 +31,9 @@ switch ($action) {
         break;
     case "cargarIdContratoAutomatico":
         cargarIdContratoAutomatico();
+        break;
+    case "eliminarInhabilitarContrato":
+        eliminarInhabilitarContrato($_POST["idContrato"]);
         break;
 
     default:
@@ -151,7 +155,6 @@ function validarContrato()
 
 function guardarContratoNuevo()
 {
-
     $guardarContrato = $_POST["contratoNuevoParaGuardar"];
 
     // Si no casteo no lo paso de array a objeto y no lo puedo usar
@@ -159,7 +162,6 @@ function guardarContratoNuevo()
 
     $registroPago = ContratoRepositorio::guardarContratoNuevo($contratoObject);
     echo json_encode($registroPago);
-
 }
 
 function cargarIdContratoAutomatico()
@@ -168,6 +170,23 @@ function cargarIdContratoAutomatico()
     $id = (int)$contrato->idContrato;
     $id = $id + 1;
     echo json_encode($id);
+
+}
+
+function eliminarInhabilitarContrato($idContrato)
+{
+    //preguntar antes de eliminar si tiene algun recibo hecho
+    $countRecibos = ComprobanteDePagoRepositorio::contarCuantosRecibosTieneUnMismoContrato($idContrato);
+
+    $count = (int) $countRecibos->cantidadDeRecibos;
+    //si tiene algun recibo con estado activo emitido, que no deje eliminar el contrato
+    if($count > 0){
+        echo 'ERROR';
+    }else{
+        RegistroPagoRepositorio::eliminarRegistrosDePagoDeUnContrato($idContrato);
+        ContratoRepositorio::eliminarContrato($idContrato);
+        echo 'OK';
+    }
 
 }
 

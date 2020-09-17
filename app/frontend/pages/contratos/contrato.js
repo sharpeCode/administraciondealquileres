@@ -113,7 +113,7 @@ function listarRegistrosDePagos(idContrato) {
 }
 
 //TODO: CARGAR COMPROBANTE DE PAGO OFICIAL
-function CagarReciboOficial(idRegistroDePago,ban) {
+function CagarReciboOficial(idRegistroDePago, ban) {
 
     $("#contratoAdd").hide();
     $("#contratoList").hide();
@@ -129,12 +129,12 @@ function CagarReciboOficial(idRegistroDePago,ban) {
     $("#visualizarReciboNoOficial").hide();
     $("#comprobDePagoSaldoNoOficial").hide();
     $("#visualizarReciboNoOficialSoloSaldo").hide();
-    llenarInputsRecibo(idRegistroDePago,ban);
+    llenarInputsRecibo(idRegistroDePago, ban);
     llenarSelectConOpcionesSaldoAnteriorRecibo(idRegistroDePago);
 }
 
 //TODO: CARGAR COMPROBANTE DE PAGO NO OFICIAL
-function CargarReciboNoOficial(idRegistroDePago,ban) {
+function CargarReciboNoOficial(idRegistroDePago, ban) {
 
     $("#contratoAdd").hide();
     $("#contratoList").hide();
@@ -150,7 +150,7 @@ function CargarReciboNoOficial(idRegistroDePago,ban) {
     $("#visualizarReciboNoOficial").hide();
     $("#comprobDePagoSaldoNoOficial").hide();
     $("#visualizarReciboNoOficialSoloSaldo").hide();
-    llenarInputsRecibo(idRegistroDePago,ban);
+    llenarInputsRecibo(idRegistroDePago, ban);
     //llenarSelectConOpcionesSaldoAnteriorRecibo(idRegistroDePago);
 }
 
@@ -384,6 +384,11 @@ function contruirFilas(Contratos) {
         "<span class='glyphicon glyphicon-usd'></span>";
     raw += "</td> ";
 
+    raw += "<td>";
+    raw += "<button class='miBoton-icon' title='Eliminar o Inhabilitar' onclick='EliminarInhabilitarContrato(" + Contratos['idContrato'] + ")'>" +
+        "<span class='glyphicon glyphicon-remove'></span>";
+    raw += "</td> ";
+
     return raw;
 
 }
@@ -612,6 +617,10 @@ function validarContratoAntesDeGuardarlo() {
     });
     funcionAjax.done(function (retorno) {
         console.log(retorno);
+        if (!isNaN(retorno)) {
+            console.log("holaaaaaa")
+            document.getElementById('labelTituloAnio').style.display = 'block';
+        }
         $("#labelAnio").val(retorno);
     });
     funcionAjax.fail(function (retorno) {
@@ -759,17 +768,17 @@ function contruirFilasRegistroDePagos(RPago) {
     var idCuota = RPago['idCompPorContrato'];
     var tipo = RPago['tipo'];
 
-    if(idCuota != 1){
-        if(tipo == "Particular"){
+    if (idCuota != 1) {
+        if (tipo == "Particular") {
             var resultado = (idCuota - 1) % 12;
-        }else if (tipo == "Comercial"){
+        } else if (tipo == "Comercial") {
             var resultado = (idCuota - 1) % 6;
         }
     }
 
     let raw = "";
 
-    if (resultado == 0){ //Que pinte la fila
+    if (resultado == 0) { //Que pinte la fila
 
         var ban = 1;
 
@@ -789,7 +798,7 @@ function contruirFilasRegistroDePagos(RPago) {
         raw += "<td style='color: red;'>" + RPago['recibo'] + "</td>";
         raw += "<td style='color: red;'>" + RPago['saldoPendiente'] + "</td>";
 
-    }else if (resultado !=0){
+    } else if (resultado != 0) {
 
         var ban = 2;
 
@@ -809,8 +818,6 @@ function contruirFilasRegistroDePagos(RPago) {
         raw += "<td>" + RPago['recibo'] + "</td>";
         raw += "<td>" + RPago['saldoPendiente'] + "</td>";
     }
-
-
 
 
     if (RPago['tipoRegistroDePago'] == "Oficial") {
@@ -937,14 +944,13 @@ function cargarDatosDeContrato(datosContrato) {
 
     $("#inputNombreApellido").val(datosContrato["nombres"] + " " + datosContrato["apellidos"] + ", Dni: " + datosContrato["dni"]);
 
-    $("#inputDomicilio").val(datosContrato["tipo"] +" - " + datosContrato["domicilio"] + ",  Piso: " + datosContrato["piso"] + ",  Dto.: " + datosContrato["departamento"] + ", " + datosContrato["localidad"] + ", " + datosContrato["nombre"]);
-
+    $("#inputDomicilio").val(datosContrato["tipo"] + " - " + datosContrato["domicilio"] + ",  Piso: " + datosContrato["piso"] + ",  Dto.: " + datosContrato["departamento"] + ", " + datosContrato["localidad"] + ", " + datosContrato["nombre"]);
 
 
 }
 
 // LLENAR INPUTS RECIBOS
-function llenarInputsRecibo(idRegistroDePago,ban) {
+function llenarInputsRecibo(idRegistroDePago, ban) {
     //console.debug("trayendo datos de registro de pago");
 
     let uri2 = EndpointsEnum.COMPROBANTE_DE_PAGO;
@@ -961,7 +967,7 @@ function llenarInputsRecibo(idRegistroDePago,ban) {
 
     funcionAjax.done(function (retorno) {
         console.debug("Done: ", retorno);
-        cargarDatosEnRecibo(JSON.parse(retorno),ban);
+        cargarDatosEnRecibo(JSON.parse(retorno), ban);
 
     });
 
@@ -970,14 +976,14 @@ function llenarInputsRecibo(idRegistroDePago,ban) {
     });
 }
 
-function cargarDatosEnRecibo(datosParaCargarRecibo,ban) {
+function cargarDatosEnRecibo(datosParaCargarRecibo, ban) {
 
-    if(ban == 1){
+    if (ban == 1) {
         console.log(ban);
         alert("Actualizar el valor del alquiler mensual");
         document.getElementById('reciboOfiAlquilerMensual').readOnly = false;
         document.getElementById('reciboNoOfiAlquilerMensual').readOnly = false;
-    }else if(ban == 2){
+    } else if (ban == 2) {
         console.log(ban);
         document.getElementById('reciboOfiAlquilerMensual').readOnly = true;
         document.getElementById('reciboNoOfiAlquilerMensual').readOnly = true;
@@ -1309,7 +1315,7 @@ function GuardarComprobanteDePago(num) {
     }
 
     console.log("Guardando comprobante de pago: ", numeroComprobante, idRegistroPago, idContrato, tipoComprobante, tipoRecibo, correspondienteMes, correspondienteAnio,
-        alquilerMensual, expensas, gastosAdm, deposito, cuotas, numCuota, interesPorMora, otrosConceptos, saldoAnterior, totalImporteAPagar, totalImporteRecibido,estado);
+        alquilerMensual, expensas, gastosAdm, deposito, cuotas, numCuota, interesPorMora, otrosConceptos, saldoAnterior, totalImporteAPagar, totalImporteRecibido, estado);
 
     let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
     console.log("Llamando a controller comprobante de pagos = " + uri);
@@ -1337,7 +1343,7 @@ function GuardarComprobanteDePago(num) {
             saldoAnterior: saldoAnterior,
             totalImporteAPagar: totalImporteAPagar,
             totalImporteRecibido: totalImporteRecibido,
-            estado:estado
+            estado: estado
 
         }
     });
@@ -1555,7 +1561,7 @@ function contruirFilasRecibos(Rec) {
             raw += "</td> ";
             return raw;
 
-        }else if (Rec['tipoRecibo'] == "Saldo"){
+        } else if (Rec['tipoRecibo'] == "Saldo") {
 
             raw += "<td>";
             raw += "<button class='miBoton-icon' title='Visualizar Recibo Saldo' onclick='visualizarReciboOficialSoloSaldo(" + Rec['idRegistroDePago'] + ")'>" +
@@ -1564,7 +1570,7 @@ function contruirFilasRecibos(Rec) {
             return raw;
         }
 
-    }else if (Rec['tipoComprobanteDePago'] == "No Oficial") {
+    } else if (Rec['tipoComprobanteDePago'] == "No Oficial") {
 
         if (Rec['tipoRecibo'] == "Recibo") {
 
@@ -1574,7 +1580,7 @@ function contruirFilasRecibos(Rec) {
             raw += "</td> ";
             return raw;
 
-        }else if (Rec['tipoRecibo'] == "Saldo"){
+        } else if (Rec['tipoRecibo'] == "Saldo") {
 
             raw += "<td>";
             raw += "<button class='miBoton-icon' title='Visualizar Recibo Saldo' onclick='visualizarReciboNoOficialSoloSaldo(" + Rec['idRegistroDePago'] + ")'>" +
@@ -1720,7 +1726,7 @@ function GuardarComprobanteDePagoSoloSaldo() {
     let fec = document.getElementById("saldoFecha").value;
     let fec2 = document.getElementById("saldo2Fecha").value;
 
-    if(fec2 == ""){
+    if (fec2 == "") {
 
         var numeroComprobante = document.getElementById("saldoNumeroComprobante").value;
 
@@ -1743,7 +1749,7 @@ function GuardarComprobanteDePagoSoloSaldo() {
         var saldoPendiente = 0;
         var estado = 'Activo';
 
-    }else if(fec == ""){
+    } else if (fec == "") {
 
         var numeroComprobante = document.getElementById("saldo2NumeroComprobante").value;
 
@@ -1812,6 +1818,39 @@ function GuardarComprobanteDePagoSoloSaldo() {
 
 }
 
+// ELIMINAR O INHABILITAR CONTRATO
+function EliminarInhabilitarContrato(idContrato) {
+
+    let uri = EndpointsEnum.CONTRATO;
+    console.log("Llamando a controller locatarios = " + uri);
+
+    if (!confirm('Desea eliminar el contrato?')) {
+        console.log("no se eliminara");
+    }else{
+        var funcionAjax = $.ajax({
+            url: uri,
+            method: "POST",
+            data: {
+                action: "eliminarInhabilitarContrato",
+                idContrato: idContrato
+            }
+        });
+        funcionAjax.done(function (retorno) {
+            console.debug("Done: ", retorno);
+            if(retorno == "ERROR"){
+                window.alert("El contrato no se puede eliminar, tiene recibos realizados");
+            }else if(retorno == "OK"){
+                window.alert("Contrato eliminado correctamente");
+                cargarContratosGrilla();
+            }
+        });
+        funcionAjax.fail(function (retorno) {
+            console.error(retorno);
+        });
+    }
+
+}
+
 // TODO: VISUALIZAR RECIBO OFICIAL solo SALDO
 function visualizarReciboOficialSaldo(idRegistroDePago) {
     //console.debug("trayendo datos de registro de pago");
@@ -1862,7 +1901,7 @@ function cargarVisualizacionReciboOficialSaldo(Saldo) {
         $("#visuTotal").val(Saldo["totalImporteAPagar"]);
         $("#visuTotalImporteRecibido").val(Saldo["totalImporteAPagar"]);
 
-    } else  if (Saldo['tipoComprobanteDePago'] == "No Oficial") {
+    } else if (Saldo['tipoComprobanteDePago'] == "No Oficial") {
 
 
         $("#saldo3Fecha").val(fechaHoy);
@@ -1892,7 +1931,7 @@ function printPdfReciboOficial() {
     var ratio = divHeight / divWidth;
     var body = document.getElementById('bodyReciboOficial');
     html2canvas(body)
-        .then(function(canvas){
+        .then(function (canvas) {
             document.body.appendChild(canvas);
             var imgData = canvas.toDataURL('image/png');
 
@@ -1900,7 +1939,7 @@ function printPdfReciboOficial() {
             var width = doc.internal.pageSize.getWidth();
             var height = doc.internal.pageSize.getHeight();
             height = ratio * width;
-            doc.addImage(imgData, 'JPEG', 0, 10, width+0, height+20);
+            doc.addImage(imgData, 'JPEG', 0, 10, width + 0, height + 20);
             doc.save('ReciboOficial-' + numeroComprobante + '.pdf');
         });
 }
@@ -1913,7 +1952,7 @@ function printPdfReciboNoOficial() {
     var ratio = divHeight / divWidth;
     var body = document.getElementById('bodyReciboNoOficial');
     html2canvas(body)
-        .then(function(canvas){
+        .then(function (canvas) {
             document.body.appendChild(canvas);
             var imgData = canvas.toDataURL('image/png');
 
@@ -1921,7 +1960,7 @@ function printPdfReciboNoOficial() {
             var width = doc.internal.pageSize.getWidth();
             var height = doc.internal.pageSize.getHeight();
             height = ratio * width;
-            doc.addImage(imgData, 'JPEG', 0, 10, width+0, height+20);
+            doc.addImage(imgData, 'JPEG', 0, 10, width + 0, height + 20);
             doc.save('ReciboNoOficial-' + numeroComprobante + '.pdf');
         });
 }
@@ -1934,7 +1973,7 @@ function printPdfReciboOficialSoloSaldo() {
     var ratio = divHeight / divWidth;
     var body = document.getElementById('bodyReciboOficialSoloSaldo');
     html2canvas(body)
-        .then(function(canvas){
+        .then(function (canvas) {
             document.body.appendChild(canvas);
             var imgData = canvas.toDataURL('image/png');
 
@@ -1942,7 +1981,7 @@ function printPdfReciboOficialSoloSaldo() {
             var width = doc.internal.pageSize.getWidth();
             var height = doc.internal.pageSize.getHeight();
             height = ratio * width;
-            doc.addImage(imgData, 'JPEG', 0, 10, width+0, height+20);
+            doc.addImage(imgData, 'JPEG', 0, 10, width + 0, height + 20);
             doc.save('ReciboOficialSoloSaldo-' + numeroComprobante + '.pdf');
         });
 }
@@ -1955,7 +1994,7 @@ function printPdfReciboNoOficialSoloSaldo() {
     var ratio = divHeight / divWidth;
     var body = document.getElementById('bodyReciboNoOficialSoloSaldo');
     html2canvas(body)
-        .then(function(canvas){
+        .then(function (canvas) {
             document.body.appendChild(canvas);
             var imgData = canvas.toDataURL('image/png');
 
@@ -1963,7 +2002,7 @@ function printPdfReciboNoOficialSoloSaldo() {
             var width = doc.internal.pageSize.getWidth();
             var height = doc.internal.pageSize.getHeight();
             height = ratio * width;
-            doc.addImage(imgData, 'JPEG', 0, 10, width+0, height+20);
+            doc.addImage(imgData, 'JPEG', 0, 10, width + 0, height + 20);
             doc.save('ReciboNoOficialSoloSaldoNumero-' + numeroComprobante + '.pdf');
         });
 }

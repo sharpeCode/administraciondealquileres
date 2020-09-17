@@ -274,4 +274,21 @@ class RegistroPagoRepositorio
         return $registroDePago;
     }
 
+    public static function eliminarRegistrosDePagoDeUnContrato($idContrato)
+    {
+        $respuesta = null;
+        try {
+            $sql = "DELETE FROM registros_de_pagos
+                    WHERE id_contrato = '$idContrato'";
+
+            $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
+            $respuesta = $sentencia->execute();
+
+        } catch (PDOException $ex) {
+            $respuesta = null;
+        }
+        return $respuesta;
+    }
+
+
 }

@@ -162,7 +162,7 @@ input:focus, input.form-control:focus, button:focus, select:focus {
  para OCULTAR inputs
 ====================================================================================*/
 .inputOculto {
-    visibility: hidden;
+    /*visibility: hidden;*/
     display: none;
 }
 

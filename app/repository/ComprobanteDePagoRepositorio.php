@@ -443,4 +443,23 @@ class ComprobanteDePagoRepositorio
 
         return $Comprobante;
     }
+
+    public static function contarCuantosRecibosTieneUnMismoContrato($idContrato){
+        $count = 0;
+        try {
+            $sql = "SELECT COUNT(numero_comprobante) AS cantidadDeRecibos, id_registro_de_pago AS idRegistroDePago,
+                    tipo_comprobante_de_pago AS tipoComprobanteDePago                    
+                    FROM comprobantes_de_pagos
+                    WHERE id_contrato = '$idContrato' AND estado = 'Activo'";
+
+            $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
+            $sentencia->execute();
+            $count = $sentencia->fetchObject("Count");
+
+        } catch (PDOException $ex) {
+            print 'ERROR' . $ex->getMessage();
+            $count = 0;
+        }
+        return $count;
+    }
 }

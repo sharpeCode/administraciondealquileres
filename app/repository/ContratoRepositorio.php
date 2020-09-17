@@ -177,4 +177,22 @@ class ContratoRepositorio
         return $contrato;
     }
 
+    public static function eliminarContrato($idContrato)
+    {
+        $respuesta = null;
+        try {
+
+            $sql = "DELETE FROM contratos
+                    WHERE id_contrato = '$idContrato'";
+
+            $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
+
+            $respuesta = $sentencia->execute();
+
+        } catch (PDOException $ex) {
+            $respuesta = null;
+        }
+        return $respuesta;
+    }
+
 }
