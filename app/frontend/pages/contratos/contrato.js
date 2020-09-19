@@ -114,7 +114,6 @@ function listarRegistrosDePagos(idContrato) {
 
 //TODO: CARGAR COMPROBANTE DE PAGO OFICIAL
 function CagarReciboOficial(idRegistroDePago, ban) {
-
     $("#contratoAdd").hide();
     $("#contratoList").hide();
     $("#contratoDatosCompletos").hide();
@@ -135,7 +134,6 @@ function CagarReciboOficial(idRegistroDePago, ban) {
 
 //TODO: CARGAR COMPROBANTE DE PAGO NO OFICIAL
 function CargarReciboNoOficial(idRegistroDePago, ban) {
-
     $("#contratoAdd").hide();
     $("#contratoList").hide();
     $("#contratoDatosCompletos").hide();
@@ -151,7 +149,6 @@ function CargarReciboNoOficial(idRegistroDePago, ban) {
     $("#comprobDePagoSaldoNoOficial").hide();
     $("#visualizarReciboNoOficialSoloSaldo").hide();
     llenarInputsRecibo(idRegistroDePago, ban);
-    //llenarSelectConOpcionesSaldoAnteriorRecibo(idRegistroDePago);
 }
 
 //TODO: CARGAR COMPROBANTE DE PAGO - SALDO OFICIAL
@@ -169,25 +166,6 @@ function ReciboOficialSaldo(idRegistroDePago) {
     $("#visualizarReciboOficialSoloSaldo").hide();
     $("#visualizarReciboNoOficial").hide();
     $("#comprobDePagoSaldoNoOficial").hide();
-    $("#visualizarReciboNoOficialSoloSaldo").hide();
-    llenarInputsReciboSoloSaldo(idRegistroDePago);
-}
-
-//TODO: CARGAR COMPROBANTE DE PAGO - SALDO NO OFICIAL
-function ReciboNoOficialSaldo(idRegistroDePago) {
-    $("#contratoAdd").hide();
-    $("#contratoList").hide();
-    $("#contratoDatosCompletos").hide();
-    $("#registroDePagoList").hide();
-    $("#comprobanteDePagoOficial").hide();
-    $("#recibosList").hide();
-    $("#comprobanteDePagoNoOficial").hide();
-    $("#visualizarReciboOficial").hide();
-    $("#visualizarReciboOficialCantidadDos").hide();
-    $("#comprobDePagoSaldoOficial").hide();
-    $("#visualizarReciboOficialSoloSaldo").hide();
-    $("#visualizarReciboNoOficial").hide();
-    $("#comprobDePagoSaldoNoOficial").show();
     $("#visualizarReciboNoOficialSoloSaldo").hide();
     llenarInputsReciboSoloSaldo(idRegistroDePago);
 }
@@ -212,7 +190,7 @@ function buscarCuantosRecibosTiene(idRegistroDePago) {
 }
 
 //TODO: VISUALIZAR RECIBO OFICIAL
-function visualizarUnRecibo(idRegistroDePago) {
+function visualizarReciboOficial(idRegistroDePago) {
     $("#contratoAdd").hide();
     $("#contratoList").hide();
     $("#contratoDatosCompletos").hide();
@@ -269,27 +247,8 @@ function visualizarReciboOficialSoloSaldo(idRegistroDePago) {
     visualizarReciboOficialSaldo(idRegistroDePago);
 }
 
-//TODO: VISUALIZAR RECIBO SOLO SALDO NO OFICIAL
-function visualizarReciboNoOficialSoloSaldo(idRegistroDePago) {
-    $("#contratoAdd").hide();
-    $("#contratoList").hide();
-    $("#contratoDatosCompletos").hide();
-    $("#registroDePagoList").hide();
-    $("#comprobanteDePagoOficial").hide();
-    $("#recibosList").hide();
-    $("#comprobanteDePagoNoOficial").hide();
-    $("#visualizarReciboOficial").hide();
-    $("#visualizarReciboOficialCantidadDos").hide();
-    $("#comprobDePagoSaldoOficial").hide();
-    $("#visualizarReciboNoOficial").hide();
-    $("#comprobDePagoSaldoNoOficial").hide();
-    $("#visualizarReciboOficialSoloSaldo").hide();
-    $("#visualizarReciboNoOficialSoloSaldo").show();
-    visualizarReciboOficialSaldo(idRegistroDePago);
-}
-
 //TODO: VISUALIZAR UN SOLO RECIBO NO OFICIAL
-function visualizarUnReciboNoOficial(idRegistroDePago) {
+function visualizarReciboNoOficial(idRegistroDePago) {
     $("#contratoAdd").hide();
     $("#contratoList").hide();
     $("#contratoDatosCompletos").hide();
@@ -852,7 +811,6 @@ function contruirFilasRegistroDePagos(RPago) {
                     "<span class='glyphicon glyphicon-share'></span>";
                 raw += "</td> ";
             }
-
         }
         return raw;
 
@@ -880,19 +838,10 @@ function contruirFilasRegistroDePagos(RPago) {
                 raw += "<button class='miBoton-icon-gris' title='Ya fue generado el recibo'>" +
                     "<span class='glyphicon glyphicon-share'></span>";
                 raw += "</td> ";
-
-            } else if (RPago['saldoPendiente'] > 0) {  //si le quedo algun saldo pendietne que el boton sea color rojo
-                raw += "<td>";
-                raw += "<button class='miBoton-icon-rojo' title='Generar Comprobante de pago' onclick='ReciboNoOficialSaldo(" + RPago['idRegistroDePago'] + ")'>" +
-                    "<span class='glyphicon glyphicon-share'></span>";
-                raw += "</td> ";
             }
-
-
         }
         return raw;
     }
-
 }
 
 // LLENAR INPUTS CON DATOS PERSONALES PARA REGISTRO DE PAGO
@@ -949,9 +898,8 @@ function cargarDatosDeContrato(datosContrato) {
 
 }
 
-// LLENAR INPUTS RECIBOS
+// LLENAR INPUTS RECIBOS OFICIAL Y NO OFICIAL
 function llenarInputsRecibo(idRegistroDePago, ban) {
-    //console.debug("trayendo datos de registro de pago");
 
     let uri2 = EndpointsEnum.COMPROBANTE_DE_PAGO;
     //console.log("Llamando a controller locatarios = " + uri);
@@ -978,13 +926,16 @@ function llenarInputsRecibo(idRegistroDePago, ban) {
 
 function cargarDatosEnRecibo(datosParaCargarRecibo, ban) {
 
+    /*====================================================
+    ban = 1 -> Fila en color rojo, paso periodo y se debe actualizar el valor del alquiler (c/6 meses comercial y c/12 vivienda)
+    ban = 2 -> Fila color normal, resto de los meses
+    =====================================================*/
+
     if (ban == 1) {
-        console.log(ban);
         alert("Actualizar el valor del alquiler mensual");
         document.getElementById('reciboOfiAlquilerMensual').readOnly = false;
         document.getElementById('reciboNoOfiAlquilerMensual').readOnly = false;
     } else if (ban == 2) {
-        console.log(ban);
         document.getElementById('reciboOfiAlquilerMensual').readOnly = true;
         document.getElementById('reciboNoOfiAlquilerMensual').readOnly = true;
     }
@@ -998,9 +949,12 @@ function cargarDatosEnRecibo(datosParaCargarRecibo, ban) {
         $("#reciboOfiFechaHoy").val(fechaHoy);
         $("#reciboOfiNumeroComprobante").val(datosParaCargarRecibo["numeroComprobante"]);
         $("#reciboOfiUnidadFuncional").val(datosParaCargarRecibo["torre"]);
+
+        //inputs ocultos
         $("#reciboOfiIdRegistroPago").val(datosParaCargarRecibo["idRegistroDePago"]);
         $("#reciboOfiIdContrato ").val(datosParaCargarRecibo["idContrato"]);
         $("#reciboOfiTipoComprobante ").val(datosParaCargarRecibo["tipoRegistroDePago"]);
+
         $("#reciboOfiDomicilio").val(datosParaCargarRecibo["domicilio"] + ",  Piso: " + datosParaCargarRecibo["piso"] + ",  Dto.: " + datosParaCargarRecibo["departamento"] + ",  Localidad: " + datosParaCargarRecibo["localidad"] + ", " + datosParaCargarRecibo["nombrePais"]);
         $("#reciboOfiCliente").val(datosParaCargarRecibo["nombres"] + " " + datosParaCargarRecibo["apellidos"] + ", DNI: " + datosParaCargarRecibo["dni"]);
         $("#reciboOfiCorrespondienteMes").val(datosParaCargarRecibo["mesCorto"]);
@@ -1035,13 +989,59 @@ function cargarDatosEnRecibo(datosParaCargarRecibo, ban) {
         $("#reciboNoOfiCorrespondienteAnio").val(datosParaCargarRecibo["correspondienteAnio"]);
         $("#reciboNoOfiAlquilerMensual").val(datosParaCargarRecibo["valorAlquiler"]);
         $("#reciboNoOfiSubTotal").val(datosParaCargarRecibo["subTotal"]);
-
         $("#reciboNoOfiInteresPorMora").val(datosParaCargarRecibo["interesPorMora"]);
-
         $("#reciboNoOfiTotal").val(datosParaCargarRecibo["totalImporteAPagar"]);
 
     }
 
+}
+
+// LLENAR INPUTS RECIBOS SOLO SALDO
+function llenarInputsReciboSoloSaldo(idRegistroDePago) {
+    //console.debug("trayendo datos de registro de pago");
+
+    let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
+    console.log("Llamando a controller locatarios = " + uri);
+
+    var funcionAjax = $.ajax({
+        url: uri,
+        method: "POST",
+        data: {
+            action: "cargarComprobanteDePagoSoloSaldo",
+            idRegistroDePago: idRegistroDePago
+        }
+    });
+
+    funcionAjax.done(function (retorno) {
+        console.debug("Done: ", retorno);
+        cargarDatosEnReciboSoloSaldoPendiente(JSON.parse(retorno));
+    });
+
+    funcionAjax.fail(function (retorno) {
+        console.error(retorno);
+    });
+}
+
+function cargarDatosEnReciboSoloSaldoPendiente(datosParaCargarReciboSaldo) {
+
+    var fecha = new Date();
+    var options = {day: 'numeric', month: 'numeric', year: 'numeric'};
+    var fechaHoy = fecha.toLocaleDateString("es-ES", options);
+
+    $("#saldoFecha").val(fechaHoy);
+    $("#saldoNumeroComprobante").val(datosParaCargarReciboSaldo["numeroComprobante"]);
+    $("#saldoUnidadFuncional").val(datosParaCargarReciboSaldo["torre"]);
+    $("#saldoIdRegistroPago").val(datosParaCargarReciboSaldo["idRegistroDePago"]);
+    $("#saldoIdContrato ").val(datosParaCargarReciboSaldo["idContrato"]);
+    $("#saldoTipoComprobante ").val(datosParaCargarReciboSaldo["tipoRegistroDePago"]);
+    $("#saldoDomicilio").val(datosParaCargarReciboSaldo["domicilio"] + ",  Piso: " + datosParaCargarReciboSaldo["piso"] + ",  Dto.: " + datosParaCargarReciboSaldo["departamento"] + ",  Localidad: " + datosParaCargarReciboSaldo["localidad"] + ", " + datosParaCargarReciboSaldo["nombrePais"]);
+    $("#saldoLocatario").val(datosParaCargarReciboSaldo["nombres"] + " " + datosParaCargarReciboSaldo["apellidos"] + ", DNI: " + datosParaCargarReciboSaldo["dni"]);
+    $("#saldoCorrespondienteMes").val(datosParaCargarReciboSaldo["mesCorto"]);
+    $("#saldoCorrespondienteAnio").val(datosParaCargarReciboSaldo["correspondienteAnio"]);
+
+    $("#saldoSaldoPendiente").val(datosParaCargarReciboSaldo["saldoAnterior"]);
+    $("#saldoTotal").val(datosParaCargarReciboSaldo["saldoAnterior"]);
+    $("#saldoTotalImporteRecibido").val(datosParaCargarReciboSaldo["saldoAnterior"]);
 }
 
 // LLENAR SELECT CON OPCIONES SALDO ANTERIOR RECIBO
@@ -1367,11 +1367,8 @@ function GuardarComprobanteDePago(num) {
 //BUSCAR CUANTOS RECIBOS TIENE UN MISMO REGISTRO DE PAGO
 function buscarCuantosRecibosTieneEsteRegistro(idRegistroDePago) {
 
-    console.log("buscar id registro de pago: ", idRegistroDePago);
-
     let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
     console.log("Llamando a controller locatarios = " + uri);
-
     var funcionAjax = $.ajax({
         url: uri,
         method: "POST",
@@ -1380,22 +1377,17 @@ function buscarCuantosRecibosTieneEsteRegistro(idRegistroDePago) {
             idRegistroDePago: idRegistroDePago
         }
     });
-
     funcionAjax.done(function (retorno) {
         console.debug("Done: ", retorno);
         visualizarRecibo(JSON.parse(retorno));
-
     });
-
     funcionAjax.fail(function (retorno) {
         console.log("error al guardar user")
     });
-
     funcionAjax.always(function (retorno) {
         console.log("volvi de guardar el user")
     });
     console.log("Fin llamada controller usuario");
-
 }
 
 function visualizarRecibo(retorno) {
@@ -1405,85 +1397,107 @@ function visualizarRecibo(retorno) {
 
     if (cant == 1) {
         if (tipo == "Oficial") {
-            visualizarUnRecibo(idRegistroDePago);
+            visualizarReciboOficial(idRegistroDePago);
         } else if (tipo == "No Oficial") {
-            visualizarUnReciboNoOficial(idRegistroDePago);
+            visualizarReciboNoOficial(idRegistroDePago);
         }
     } else if (cant == 2) {
         visualizarDosRecibos(idRegistroDePago);
     }
-
 }
 
-// TODO: VISUALIZAR RECIBO OFICIAL CANTIDAD UNO
-function visualizarReciboOficialCantidadUno(idRegistroDePago) {
-    //console.debug("trayendo datos de registro de pago");
+// GUARDAR COMPROBANTE DE PAGO solo SALDO
+function GuardarComprobanteDePagoSoloSaldo() {
+    var numeroComprobante = document.getElementById("saldoNumeroComprobante").value;
+    var idRegistroPago = document.getElementById("saldoIdRegistroPago").value;
+    var idContrato = document.getElementById("saldoIdContrato").value;
+    var tipoComprobante = document.getElementById("saldoTipoComprobante").value;
+    var tipoRecibo = 'Saldo';
+    var correspondienteMes = document.getElementById("saldoCorrespondienteMes").value;
+    var correspondienteAnio = document.getElementById("saldoCorrespondienteAnio").value;
+    var alquilerMensual = 0;
+    var expensas = 0;
+    var gastosAdm = 0;
+    var deposito = 0;
+    var cuotas = 0;
+    var numCuota = 0;
+    var interesPorMora = 0;
+    var otrosConceptos = 0;
+    var totalImporteAPagar = document.getElementById("saldoTotal").value;
+    var totalImporteRecibido = document.getElementById("saldoTotalImporteRecibido").value;
+    var saldoPendiente = 0;
+    var estado = 'Activo';
 
     let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
-    console.log("Llamando a controller locatarios = " + uri);
-
     var funcionAjax = $.ajax({
         url: uri,
         method: "POST",
         data: {
-            action: "visualizarRecibo",
-            idRegistroDePago: idRegistroDePago
+            action: "guardarComprobanteDePagoSoloSaldo",
+            numeroComprobante: numeroComprobante,
+            idRegistroPago: idRegistroPago,
+            idContrato: idContrato,
+            tipoComprobante: tipoComprobante,
+            tipoRecibo: tipoRecibo,
+            correspondienteMes: correspondienteMes,
+            correspondienteAnio: correspondienteAnio,
+            alquilerMensual: alquilerMensual,
+            expensas: expensas,
+            gastosAdm: gastosAdm,
+            deposito: deposito,
+            cuotas: cuotas,
+            numCuota: numCuota,
+            interesPorMora: interesPorMora,
+            otrosConceptos: otrosConceptos,
+            totalImporteAPagar: totalImporteAPagar,
+            totalImporteRecibido: totalImporteRecibido,
+            saldoPendiente: saldoPendiente,
+            estado: estado
         }
     });
-
     funcionAjax.done(function (retorno) {
         console.debug("Done: ", retorno);
-        cargarVisualizacionRecibo(JSON.parse(retorno));
+        ListadoDeRegistrosDePago();
     });
-
     funcionAjax.fail(function (retorno) {
-        console.error(retorno);
+        console.log("error al guardar user")
     });
+    funcionAjax.always(function (retorno) {
+        console.log("volvi de guardar el user")
+    });
+    console.log("Fin llamada controller usuario");
 }
 
-function cargarVisualizacionRecibo(datosParaCargarRecibo) {
+// ELIMINAR O INHABILITAR CONTRATO
+function EliminarInhabilitarContrato(idContrato) {
 
-    let alquilerMensual = datosParaCargarRecibo["valorAlquiler"];
-    let expensas = datosParaCargarRecibo["valorExpensas"];
-    let gasAdm = datosParaCargarRecibo["valorGastosAdm"];
-    let deposito = datosParaCargarRecibo["valorDeposito"];
-    let tipoComprobante = datosParaCargarRecibo["tipoComprobanteDePago"];
+    let uri = EndpointsEnum.CONTRATO;
+    console.log("Llamando a controller locatarios = " + uri);
 
-
-    let subTotal = alquilerMensual + expensas + gasAdm + deposito;
-
-    var fecha = new Date();
-    var options = {day: 'numeric', month: 'numeric', year: 'numeric'};
-    var fechaHoy = fecha.toLocaleDateString("es-ES", options);
-
-
-    //0============================
-
-
-    $("#visualizacionFecha").val(fechaHoy);
-    $("#visualizacionNumeroComprobante").val(datosParaCargarRecibo["numeroComprobante"]);
-    $("#visualizacionUnidadFuncional").val(datosParaCargarRecibo["torre"]);
-    $("#visualizacionIdRegistroPago").val(datosParaCargarRecibo["idRegistroDePago"]);
-    $("#visualizacionIdContrato ").val(datosParaCargarRecibo["idContrato"]);
-    $("#visualizacionTipoComprobante ").val(datosParaCargarRecibo["tipoRegistroDePago"]);
-    $("#visualizacionDomicilio").val(datosParaCargarRecibo["domicilio"] + ",  Piso: " + datosParaCargarRecibo["piso"] + ",  Dto.: " + datosParaCargarRecibo["departamento"] + ",  Localidad: " + datosParaCargarRecibo["localidad"] + ", " + datosParaCargarRecibo["nombre"]);
-    $("#visualizacionLocatario").val(datosParaCargarRecibo["nombres"] + " " + datosParaCargarRecibo["apellidos"] + ", DNI: " + datosParaCargarRecibo["dni"]);
-    $("#visualizacionCorrespondienteMes").val(datosParaCargarRecibo["mesCorto"]);
-    $("#visualizacionCorrespondienteAnio").val(datosParaCargarRecibo["correspondienteAnio"]);
-    $("#visualizacionAlquilerMensual").val("$ " + datosParaCargarRecibo["valorAlquiler"]);
-    $("#visualizacionExpensas").val("$ " + datosParaCargarRecibo["valorExpensas"]);
-    $("#visualizacionGastosAdministrativos").val("$ " + datosParaCargarRecibo["valorGastosAdm"]);
-    $("#visualizacionDeposito").val("$ " + datosParaCargarRecibo["valorDeposito"]);
-    $("#visualizacionCuota").val(datosParaCargarRecibo["cantCuotasDeposito"]);
-    $("#visualizacionNumCuota").val(datosParaCargarRecibo["numCuotaAPagar"]);
-    $("#visualizacionSubTotal").val("$ " + subTotal);
-    $("#visualizacionInteresPorMora").val("$ " + datosParaCargarRecibo["interesPorMora"]);
-    $("#visualizacionTotalDias").val(datosParaCargarRecibo["diasMora"]);
-    $("#visualizacionOtrosConceptos").val("$ " + datosParaCargarRecibo["otrosConceptos"]);
-    $("#visualizacionSaldoAnterior").val("$ " + datosParaCargarRecibo["saldoAnterior"]);
-    $("#visualizacionTotal").val("$ " + datosParaCargarRecibo["totalImporteAPagar"]);
-    $("#visualizacionImporteRecibido").val("$ " + datosParaCargarRecibo["totalImporteRecibido"]);
-    $("#visualizacionSaldoPendiente").val("$ " + datosParaCargarRecibo["saldoPendienteSinModificar"]);
+    if (!confirm('Desea eliminar el contrato?')) {
+        console.log("no se eliminara");
+    } else {
+        var funcionAjax = $.ajax({
+            url: uri,
+            method: "POST",
+            data: {
+                action: "eliminarInhabilitarContrato",
+                idContrato: idContrato
+            }
+        });
+        funcionAjax.done(function (retorno) {
+            console.debug("Done: ", retorno);
+            if (retorno == "ERROR") {
+                window.alert("El contrato no se puede eliminar, tiene recibos realizados");
+            } else if (retorno == "OK") {
+                window.alert("Contrato eliminado correctamente");
+                cargarContratosGrilla();
+            }
+        });
+        funcionAjax.fail(function (retorno) {
+            console.error(retorno);
+        });
+    }
 
 }
 
@@ -1554,15 +1568,13 @@ function contruirFilasRecibos(Rec) {
     if (Rec['tipoComprobanteDePago'] == "Oficial") {
 
         if (Rec['tipoRecibo'] == "Recibo") {
-
             raw += "<td>";
-            raw += "<button class='miBoton-icon' title='Visualizar Recibo' onclick='visualizarUnRecibo(" + Rec['idRegistroDePago'] + ")'>" +
+            raw += "<button class='miBoton-icon' title='Visualizar Recibo' onclick='visualizarReciboOficial(" + Rec['idRegistroDePago'] + ")'>" +
                 "<span class='glyphicon glyphicon-ok'></span>";
             raw += "</td> ";
             return raw;
 
         } else if (Rec['tipoRecibo'] == "Saldo") {
-
             raw += "<td>";
             raw += "<button class='miBoton-icon' title='Visualizar Recibo Saldo' onclick='visualizarReciboOficialSoloSaldo(" + Rec['idRegistroDePago'] + ")'>" +
                 "<span class='glyphicon glyphicon-ok'></span>";
@@ -1573,17 +1585,8 @@ function contruirFilasRecibos(Rec) {
     } else if (Rec['tipoComprobanteDePago'] == "No Oficial") {
 
         if (Rec['tipoRecibo'] == "Recibo") {
-
             raw += "<td>";
-            raw += "<button class='miBoton-icon' title='Visualizar Recibo' onclick='visualizarUnReciboNoOficial(" + Rec['idRegistroDePago'] + ")'>" +
-                "<span class='glyphicon glyphicon-ok'></span>";
-            raw += "</td> ";
-            return raw;
-
-        } else if (Rec['tipoRecibo'] == "Saldo") {
-
-            raw += "<td>";
-            raw += "<button class='miBoton-icon' title='Visualizar Recibo Saldo' onclick='visualizarReciboNoOficialSoloSaldo(" + Rec['idRegistroDePago'] + ")'>" +
+            raw += "<button class='miBoton-icon' title='Visualizar Recibo' onclick='visualizarReciboNoOficial(" + Rec['idRegistroDePago'] + ")'>" +
                 "<span class='glyphicon glyphicon-ok'></span>";
             raw += "</td> ";
             return raw;
@@ -1591,13 +1594,11 @@ function contruirFilasRecibos(Rec) {
     }
 }
 
-// TODO: VISUALIZAR RECIBO NO OFICIAL CANTIDAD UNO
-function visualizarReciboNoOficialCantidadUno(idRegistroDePago) {
-    //console.debug("trayendo datos de registro de pago");
-
+// TODO: VISUALIZAR RECIBO OFICIAL
+function visualizarReciboOficialCantidadUno(idRegistroDePago) {
+    console.log("hoy sabado ");
     let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
-    console.log("Llamando a controller locatarios = " + uri);
-
+    console.log("Llamando a controller Comprobante de pago = " + uri);
     var funcionAjax = $.ajax({
         url: uri,
         method: "POST",
@@ -1606,12 +1607,80 @@ function visualizarReciboNoOficialCantidadUno(idRegistroDePago) {
             idRegistroDePago: idRegistroDePago
         }
     });
+    funcionAjax.done(function (retorno) {
+        console.debug("Done: ", retorno);
+        cargarVisualizacionRecibo(JSON.parse(retorno));
+        convertirNumeroALetra(1);
+    });
+    funcionAjax.fail(function (retorno) {
+        console.error(retorno);
+    });
+}
 
+function cargarVisualizacionRecibo(datosParaCargarRecibo) {
+
+    let alquilerMensual = datosParaCargarRecibo["valorAlquiler"];
+    let expensas = datosParaCargarRecibo["valorExpensas"];
+    let gasAdm = datosParaCargarRecibo["valorGastosAdm"];
+    let deposito = datosParaCargarRecibo["valorDeposito"];
+    let tipoComprobante = datosParaCargarRecibo["tipoComprobanteDePago"];
+
+    let subTotal = alquilerMensual + expensas + gasAdm + deposito;
+
+    var fecha = new Date();
+    var options = {day: 'numeric', month: 'numeric', year: 'numeric'};
+    var fechaHoy = fecha.toLocaleDateString("es-ES", options);
+
+
+    $("#visualizacionFecha").val(fechaHoy);
+    $("#visualizacionNumeroComprobante").val(datosParaCargarRecibo["numeroComprobante"]);
+    $("#visualizacionUnidadFuncional").val(datosParaCargarRecibo["torre"]);
+
+    //inputs ocultos
+    $("#visualizacionIdRegistroPago").val(datosParaCargarRecibo["idRegistroDePago"]);
+    $("#visualizacionIdContrato ").val(datosParaCargarRecibo["idContrato"]);
+    $("#visualizacionTipoComprobante ").val(datosParaCargarRecibo["tipoRegistroDePago"]);
+    $("#visualizacionIdComprobanteDePago ").val(datosParaCargarRecibo["idComprobanteDePago"]);
+
+    $("#visualizacionDomicilio").val(datosParaCargarRecibo["domicilio"] + ",  Piso: " + datosParaCargarRecibo["piso"] + ",  Dto.: " + datosParaCargarRecibo["departamento"] + ",  Localidad: " + datosParaCargarRecibo["localidad"] + ", " + datosParaCargarRecibo["nombre"]);
+    $("#visualizacionLocatario").val(datosParaCargarRecibo["nombres"] + " " + datosParaCargarRecibo["apellidos"] + ", DNI: " + datosParaCargarRecibo["dni"]);
+    $("#visualizacionCorrespondienteMes").val(datosParaCargarRecibo["mesCorto"]);
+    $("#visualizacionCorrespondienteAnio").val(datosParaCargarRecibo["correspondienteAnio"]);
+    $("#visualizacionAlquilerMensual").val("$ " + datosParaCargarRecibo["valorAlquiler"]);
+    $("#visualizacionExpensas").val("$ " + datosParaCargarRecibo["valorExpensas"]);
+    $("#visualizacionGastosAdministrativos").val("$ " + datosParaCargarRecibo["valorGastosAdm"]);
+    $("#visualizacionDeposito").val("$ " + datosParaCargarRecibo["valorDeposito"]);
+    $("#visualizacionCuota").val(datosParaCargarRecibo["cantCuotasDeposito"]);
+    $("#visualizacionNumCuota").val(datosParaCargarRecibo["numCuotaAPagar"]);
+    $("#visualizacionSubTotal").val("$ " + subTotal);
+    $("#visualizacionInteresPorMora").val("$ " + datosParaCargarRecibo["interesPorMora"]);
+    $("#visualizacionTotalDias").val(datosParaCargarRecibo["diasMora"]);
+    $("#visualizacionOtrosConceptos").val("$ " + datosParaCargarRecibo["otrosConceptos"]);
+    $("#visualizacionSaldoAnterior").val("$ " + datosParaCargarRecibo["saldoAnterior"]);
+    $("#visualizacionTotal").val("$ " + datosParaCargarRecibo["totalImporteAPagar"]);
+    $("#visualizacionImporteRecibido").val("$ " + datosParaCargarRecibo["totalImporteRecibido"]);
+    $("#visualizacionSaldoPendiente").val("$ " + datosParaCargarRecibo["saldoPendienteSinModificar"]);
+
+}
+
+// TODO: VISUALIZAR RECIBO NO OFICIAL
+function visualizarReciboNoOficialCantidadUno(idRegistroDePago) {
+
+    let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
+    console.log("Llamando a controller locatarios = " + uri);
+    var funcionAjax = $.ajax({
+        url: uri,
+        method: "POST",
+        data: {
+            action: "visualizarRecibo",
+            idRegistroDePago: idRegistroDePago
+        }
+    });
     funcionAjax.done(function (retorno) {
         console.debug("Done: ", retorno);
         cargarVisualizacionReciboNoOficial(JSON.parse(retorno));
+        convertirNumeroALetra(2);
     });
-
     funcionAjax.fail(function (retorno) {
         console.error(retorno);
     });
@@ -1620,15 +1689,11 @@ function visualizarReciboNoOficialCantidadUno(idRegistroDePago) {
 function cargarVisualizacionReciboNoOficial(datosParaCargarRecibo) {
 
     let alquilerMensual = datosParaCargarRecibo["valorAlquiler"];
-
     let subTotal = alquilerMensual;
-
 
     var fecha = new Date();
     var options = {day: 'numeric', month: 'numeric', year: 'numeric'};
     var fechaHoy = fecha.toLocaleDateString("es-ES", options);
-
-    //if(datosParaCargarRecibo["tipoRegistroDePago"] == "Oficial"){
 
     $("#noOfiFecha").val(fechaHoy);
     $("#noOfiNumeroComprobante").val(datosParaCargarRecibo["numeroComprobante"]);
@@ -1636,6 +1701,7 @@ function cargarVisualizacionReciboNoOficial(datosParaCargarRecibo) {
     $("#noOfiIdRegistroPago").val(datosParaCargarRecibo["idRegistroDePago"]);
     $("#noOfiIdContrato ").val(datosParaCargarRecibo["idContrato"]);
     $("#noOfiTipoComprobante ").val(datosParaCargarRecibo["tipoRegistroDePago"]);
+    $("#noOfiIdComprobanteDePago ").val(datosParaCargarRecibo["idComprobanteDePago"]);
     $("#noOfiDomicilio").val(datosParaCargarRecibo["domicilio"] + ",  Piso: " + datosParaCargarRecibo["piso"] + ",  Dto.: " + datosParaCargarRecibo["departamento"] + ",  Localidad: " + datosParaCargarRecibo["localidad"] + ", " + datosParaCargarRecibo["nombre"]);
     $("#noOfiLocatario").val(datosParaCargarRecibo["nombres"] + " " + datosParaCargarRecibo["apellidos"] + ", DNI: " + datosParaCargarRecibo["dni"]);
     $("#noOfiCorrespondienteMes").val(datosParaCargarRecibo["mesCorto"]);
@@ -1649,211 +1715,10 @@ function cargarVisualizacionReciboNoOficial(datosParaCargarRecibo) {
     $("#noOfiSubTotal").val("$ " + subTotal);
     $("#noOfiInteresPorMora").val("$ " + datosParaCargarRecibo["interesPorMora"]);
     $("#noOfiTotal").val("$ " + datosParaCargarRecibo["totalImporteAPagar"]);
-
-}
-
-// LLENAR INPUTS RECIBOS solo SALDO
-function llenarInputsReciboSoloSaldo(idRegistroDePago) {
-    //console.debug("trayendo datos de registro de pago");
-
-    let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
-    console.log("Llamando a controller locatarios = " + uri);
-
-    var funcionAjax = $.ajax({
-        url: uri,
-        method: "POST",
-        data: {
-            action: "cargarComprobanteDePagoSoloSaldo",
-            idRegistroDePago: idRegistroDePago
-        }
-    });
-
-    funcionAjax.done(function (retorno) {
-        console.debug("Done: ", retorno);
-        cargarDatosEnReciboSoloSaldoPendiente(JSON.parse(retorno));
-    });
-
-    funcionAjax.fail(function (retorno) {
-        console.error(retorno);
-    });
-}
-
-function cargarDatosEnReciboSoloSaldoPendiente(datosParaCargarReciboSaldo) {
-
-    var fecha = new Date();
-    var options = {day: 'numeric', month: 'numeric', year: 'numeric'};
-    var fechaHoy = fecha.toLocaleDateString("es-ES", options);
-
-
-    if (datosParaCargarReciboSaldo["tipoRegistroDePago"] == "Oficial") {
-
-        $("#saldoFecha").val(fechaHoy);
-        $("#saldoNumeroComprobante").val(datosParaCargarReciboSaldo["numeroComprobante"]);
-        $("#saldoUnidadFuncional").val(datosParaCargarReciboSaldo["torre"]);
-        $("#saldoIdRegistroPago").val(datosParaCargarReciboSaldo["idRegistroDePago"]);
-        $("#saldoIdContrato ").val(datosParaCargarReciboSaldo["idContrato"]);
-        $("#saldoTipoComprobante ").val(datosParaCargarReciboSaldo["tipoRegistroDePago"]);
-        $("#saldoDomicilio").val(datosParaCargarReciboSaldo["domicilio"] + ",  Piso: " + datosParaCargarReciboSaldo["piso"] + ",  Dto.: " + datosParaCargarReciboSaldo["departamento"] + ",  Localidad: " + datosParaCargarReciboSaldo["localidad"] + ", " + datosParaCargarReciboSaldo["nombrePais"]);
-        $("#saldoLocatario").val(datosParaCargarReciboSaldo["nombres"] + " " + datosParaCargarReciboSaldo["apellidos"] + ", DNI: " + datosParaCargarReciboSaldo["dni"]);
-        $("#saldoCorrespondienteMes").val(datosParaCargarReciboSaldo["mesCorto"]);
-        $("#saldoCorrespondienteAnio").val(datosParaCargarReciboSaldo["correspondienteAnio"]);
-
-        $("#saldoSaldoPendiente").val(datosParaCargarReciboSaldo["saldoAnterior"]);
-        $("#saldoTotal").val(datosParaCargarReciboSaldo["saldoAnterior"]);
-        $("#saldoTotalImporteRecibido").val(datosParaCargarReciboSaldo["saldoAnterior"]);
-
-    } else if (datosParaCargarReciboSaldo["tipoRegistroDePago"] == "No Oficial") {
-
-        $("#saldo2Fecha").val(fechaHoy);
-        $("#saldo2NumeroComprobante").val(datosParaCargarReciboSaldo["numeroComprobante"]);
-        $("#saldo2UnidadFuncional").val(datosParaCargarReciboSaldo["torre"]);
-        $("#saldo2IdRegistroPago").val(datosParaCargarReciboSaldo["idRegistroDePago"]);
-        $("#saldo2IdContrato ").val(datosParaCargarReciboSaldo["idContrato"]);
-        $("#saldo2TipoComprobante ").val(datosParaCargarReciboSaldo["tipoRegistroDePago"]);
-        $("#saldo2Domicilio").val(datosParaCargarReciboSaldo["domicilio"] + ",  Piso: " + datosParaCargarReciboSaldo["piso"] + ",  Dto.: " + datosParaCargarReciboSaldo["departamento"] + ",  Localidad: " + datosParaCargarReciboSaldo["localidad"] + ", " + datosParaCargarReciboSaldo["nombrePais"]);
-        $("#saldo2Locatario").val(datosParaCargarReciboSaldo["nombres"] + " " + datosParaCargarReciboSaldo["apellidos"] + ", DNI: " + datosParaCargarReciboSaldo["dni"]);
-        $("#saldo2CorrespondienteMes").val(datosParaCargarReciboSaldo["mesCorto"]);
-        $("#saldo2CorrespondienteAnio").val(datosParaCargarReciboSaldo["correspondienteAnio"]);
-
-        $("#saldo2SaldoPendiente").val(datosParaCargarReciboSaldo["saldoAnterior"]);
-        $("#saldo2Total").val(datosParaCargarReciboSaldo["saldoAnterior"]);
-        $("#saldo2TotalImporteRecibido").val(datosParaCargarReciboSaldo["saldoAnterior"]);
-    }
-}
-
-// GUARDAR COMPROBANTE DE PAGO solo SALDO
-function GuardarComprobanteDePagoSoloSaldo() {
-    let fec = document.getElementById("saldoFecha").value;
-    let fec2 = document.getElementById("saldo2Fecha").value;
-
-    if (fec2 == "") {
-
-        var numeroComprobante = document.getElementById("saldoNumeroComprobante").value;
-
-        var idRegistroPago = document.getElementById("saldoIdRegistroPago").value;
-        var idContrato = document.getElementById("saldoIdContrato").value;
-        var tipoComprobante = document.getElementById("saldoTipoComprobante").value;
-        var tipoRecibo = 'Saldo';
-        var correspondienteMes = document.getElementById("saldoCorrespondienteMes").value;
-        var correspondienteAnio = document.getElementById("saldoCorrespondienteAnio").value;
-        var alquilerMensual = 0;
-        var expensas = 0;
-        var gastosAdm = 0;
-        var deposito = 0;
-        var cuotas = 0;
-        var numCuota = 0;
-        var interesPorMora = 0;
-        var otrosConceptos = 0;
-        var totalImporteAPagar = document.getElementById("saldoTotal").value;
-        var totalImporteRecibido = document.getElementById("saldoTotalImporteRecibido").value;
-        var saldoPendiente = 0;
-        var estado = 'Activo';
-
-    } else if (fec == "") {
-
-        var numeroComprobante = document.getElementById("saldo2NumeroComprobante").value;
-
-        var idRegistroPago = document.getElementById("saldo2IdRegistroPago").value;
-        var idContrato = document.getElementById("saldo2IdContrato").value;
-        var tipoComprobante = document.getElementById("saldo2TipoComprobante").value;
-        var tipoRecibo = 'Saldo';
-        var correspondienteMes = document.getElementById("saldo2CorrespondienteMes").value;
-        var correspondienteAnio = document.getElementById("saldo2CorrespondienteAnio").value;
-        var alquilerMensual = 0;
-        var expensas = 0;
-        var gastosAdm = 0;
-        var deposito = 0;
-        var cuotas = 0;
-        var numCuota = 0;
-        var interesPorMora = 0;
-        var otrosConceptos = 0;
-        var totalImporteAPagar = document.getElementById("saldo2Total").value;
-        var totalImporteRecibido = document.getElementById("saldo2TotalImporteRecibido").value;
-        var saldoPendiente = 0;
-        var estado = 'Activo'
-    }
-
-    let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
-
-    var funcionAjax = $.ajax({
-        url: uri,
-        method: "POST",
-        data: {
-            action: "guardarComprobanteDePagoSoloSaldo",
-            numeroComprobante: numeroComprobante,
-            idRegistroPago: idRegistroPago,
-            idContrato: idContrato,
-            tipoComprobante: tipoComprobante,
-            tipoRecibo: tipoRecibo,
-            correspondienteMes: correspondienteMes,
-            correspondienteAnio: correspondienteAnio,
-            alquilerMensual: alquilerMensual,
-            expensas: expensas,
-            gastosAdm: gastosAdm,
-            deposito: deposito,
-            cuotas: cuotas,
-            numCuota: numCuota,
-            interesPorMora: interesPorMora,
-            otrosConceptos: otrosConceptos,
-            totalImporteAPagar: totalImporteAPagar,
-            totalImporteRecibido: totalImporteRecibido,
-            saldoPendiente: saldoPendiente,
-            estado: estado
-        }
-    });
-
-    funcionAjax.done(function (retorno) {
-        console.debug("Done: ", retorno);
-        ListadoDeRegistrosDePago();
-    });
-
-    funcionAjax.fail(function (retorno) {
-        console.log("error al guardar user")
-    });
-
-    funcionAjax.always(function (retorno) {
-        console.log("volvi de guardar el user")
-    });
-    console.log("Fin llamada controller usuario");
-
-}
-
-// ELIMINAR O INHABILITAR CONTRATO
-function EliminarInhabilitarContrato(idContrato) {
-
-    let uri = EndpointsEnum.CONTRATO;
-    console.log("Llamando a controller locatarios = " + uri);
-
-    if (!confirm('Desea eliminar el contrato?')) {
-        console.log("no se eliminara");
-    }else{
-        var funcionAjax = $.ajax({
-            url: uri,
-            method: "POST",
-            data: {
-                action: "eliminarInhabilitarContrato",
-                idContrato: idContrato
-            }
-        });
-        funcionAjax.done(function (retorno) {
-            console.debug("Done: ", retorno);
-            if(retorno == "ERROR"){
-                window.alert("El contrato no se puede eliminar, tiene recibos realizados");
-            }else if(retorno == "OK"){
-                window.alert("Contrato eliminado correctamente");
-                cargarContratosGrilla();
-            }
-        });
-        funcionAjax.fail(function (retorno) {
-            console.error(retorno);
-        });
-    }
-
 }
 
 // TODO: VISUALIZAR RECIBO OFICIAL solo SALDO
 function visualizarReciboOficialSaldo(idRegistroDePago) {
-    //console.debug("trayendo datos de registro de pago");
 
     let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
     console.log("Llamando a controller locatarios = " + uri);
@@ -1870,6 +1735,7 @@ function visualizarReciboOficialSaldo(idRegistroDePago) {
     funcionAjax.done(function (retorno) {
         console.debug("Done: ", retorno);
         cargarVisualizacionReciboOficialSaldo(JSON.parse(retorno));
+        convertirNumeroALetra(3);
     });
 
     funcionAjax.fail(function (retorno) {
@@ -1883,46 +1749,25 @@ function cargarVisualizacionReciboOficialSaldo(Saldo) {
     var options = {day: 'numeric', month: 'numeric', year: 'numeric'};
     var fechaHoy = fecha.toLocaleDateString("es-ES", options);
 
-    if (Saldo['tipoComprobanteDePago'] == "Oficial") {
 
-
-        $("#visuFecha").val(fechaHoy);
-        $("#visuNumeroComprobante").val(Saldo["numeroComprobante"]);
-        $("#visuUnidadFuncional").val(Saldo["torre"]);
-        $("#visuIdRegistroPago").val(Saldo["idRegistroDePago"]);
-        $("#visuIdContrato ").val(Saldo["idContrato"]);
-        $("#visuTipoComprobante ").val(Saldo["tipoRegistroDePago"]);
-        $("#visuDomicilio").val(Saldo["domicilio"] + ",  Piso: " + Saldo["piso"] + ",  Dto.: " + Saldo["departamento"] + ",  Localidad: " + Saldo["localidad"] + ", " + Saldo["nombrePais"]);
-        $("#visuLocatario").val(Saldo["nombres"] + " " + Saldo["apellidos"] + ", DNI: " + Saldo["dni"]);
-        $("#visuCorrespondienteMes").val(Saldo["mesCorto"]);
-        $("#visuCorrespondienteAnio").val(Saldo["correspondienteAnio"]);
-
-        $("#visuSaldoPendiente").val(Saldo["totalImporteAPagar"]);
-        $("#visuTotal").val(Saldo["totalImporteAPagar"]);
-        $("#visuTotalImporteRecibido").val(Saldo["totalImporteAPagar"]);
-
-    } else if (Saldo['tipoComprobanteDePago'] == "No Oficial") {
-
-
-        $("#saldo3Fecha").val(fechaHoy);
-        $("#saldo3NumeroComprobante").val(Saldo["numeroComprobante"]);
-        $("#saldo3UnidadFuncional").val(Saldo["torre"]);
-        $("#saldo3IdRegistroPago").val(Saldo["idRegistroDePago"]);
-        $("#saldo3IdContrato ").val(Saldo["idContrato"]);
-        $("#saldo3TipoComprobante ").val(Saldo["tipoRegistroDePago"]);
-        $("#saldo3Domicilio").val(Saldo["domicilio"] + ",  Piso: " + Saldo["piso"] + ",  Dto.: " + Saldo["departamento"] + ",  Localidad: " + Saldo["localidad"] + ", " + Saldo["nombrePais"]);
-        $("#saldo3Locatario").val(Saldo["nombres"] + " " + Saldo["apellidos"] + ", DNI: " + Saldo["dni"]);
-        $("#saldo3CorrespondienteMes").val(Saldo["mesCorto"]);
-        $("#saldo3CorrespondienteAnio").val(Saldo["correspondienteAnio"]);
-
-        $("#saldo3SaldoPendiente").val(Saldo["totalImporteAPagar"]);
-        $("#saldo3Total").val(Saldo["totalImporteAPagar"]);
-        $("#saldo3TotalImporteRecibido").val(Saldo["totalImporteAPagar"]);
-    }
-
+    $("#visuFecha").val(fechaHoy);
+    $("#visuNumeroComprobante").val(Saldo["numeroComprobante"]);
+    $("#visuUnidadFuncional").val(Saldo["torre"]);
+    $("#visuIdRegistroPago").val(Saldo["idRegistroDePago"]);
+    $("#visuIdContrato ").val(Saldo["idContrato"]);
+    $("#visuTipoComprobante ").val(Saldo["tipoRegistroDePago"]);
+    $("#visuIdComprobanteDePago ").val(Saldo["idComprobanteDePago"]);
+    $("#visuDomicilio").val(Saldo["domicilio"] + ",  Piso: " + Saldo["piso"] + ",  Dto.: " + Saldo["departamento"] + ",  Localidad: " + Saldo["localidad"] + ", " + Saldo["nombrePais"]);
+    $("#visuLocatario").val(Saldo["nombres"] + " " + Saldo["apellidos"] + ", DNI: " + Saldo["dni"]);
+    $("#visuCorrespondienteMes").val(Saldo["mesCorto"]);
+    $("#visuCorrespondienteAnio").val(Saldo["correspondienteAnio"]);
+    $("#visuSaldoPendiente").val(Saldo["totalImporteAPagar"]);
+    $("#visuTotal").val(Saldo["totalImporteAPagar"]);
+    $("#visuTotalImporteRecibido").val(Saldo["totalImporteAPagar"]);
 
 }
 
+//PDF
 function printPdfReciboOficial() {
     var numeroComprobante = document.getElementById("visualizacionNumeroComprobante").value;
 
@@ -2006,3 +1851,79 @@ function printPdfReciboNoOficialSoloSaldo() {
             doc.save('ReciboNoOficialSoloSaldoNumero-' + numeroComprobante + '.pdf');
         });
 }
+
+// CONVERTIR NUMERO A LETRA RECIBO OFICIAL
+function convertirNumeroALetra(num) {
+
+    /* ===================================
+    num = 1 - Recibo Oficial
+    num = 2 - Recibo No Oficial
+    num = 3 - Recibo Oficial Saldo
+    =====================================*/
+
+    if (num == 1) {
+        var idComprobanteDePago = document.getElementById("visualizacionIdComprobanteDePago").value; //OFICIAL
+    } else if (num == 2) {
+        var idComprobanteDePago = document.getElementById("noOfiIdComprobanteDePago").value; //NO OFICIAL
+    } else if (num == 3) {
+        var idComprobanteDePago = document.getElementById("visuIdComprobanteDePago").value; //OFICIAL SALDO
+    }
+
+    console.log("mostrando importe para pasar a letra: ", idComprobanteDePago);
+    let uri = EndpointsEnum.CIFRALETRA;
+    console.log("Llamando a Importe en letra controller = " + uri);
+    var funcionAjax = $.ajax({
+        url: uri,
+        method: "POST",
+        data: {
+            action: "convertirCifraEnLetra",
+            idComprobanteDePago: idComprobanteDePago
+        }
+    });
+    funcionAjax.done(function (retorno) {
+        console.log(retorno);
+        if (num == 1) {
+            $("#visualizacionImporteRecibidoEnLetra").val(retorno); //OFICIAL
+        } else if (num == 2) {
+            $("#noOfiImporteRecibidoEnLetra").val(retorno);  //NO OFICIAL
+        } else if (num == 3) {
+            $("#visuImporteRecibidoEnLetra").val(retorno); //OFICIAL SALDO
+        }
+    });
+    funcionAjax.fail(function (retorno) {
+        console.log("error al guardar user")
+    });
+    funcionAjax.always(function (retorno) {
+        console.log("volvi de guardar el user")
+    });
+    console.log("Fin llamada controller usuario");
+}
+
+// CONVERTIR NUMERO A LETRA RECIBO NO OFICIAL
+// function convertirNumeroALetra() {
+//
+//     var idRegistroDePago = mapToJson($('#noOfiIdRegistroPago').serializeArray());
+//
+//     console.log("mostrando importe a letra: ", idRegistroDePago);
+//     let uri = EndpointsEnum.CIFRALETRA;
+//     console.log("Llamando a Importe en letra controller = " + uri);
+//     var funcionAjax = $.ajax({
+//         url: uri,
+//         method: "POST",
+//         data: {
+//             action: "convertirCifraEnLetra",
+//             idRegistroDePago: idRegistroDePago
+//         }
+//     });
+//     funcionAjax.done(function (retorno) {
+//         console.log(retorno);
+//         $("#noOfiImporteRecibidoEnLetra").val(retorno);
+//     });
+//     funcionAjax.fail(function (retorno) {
+//         console.log("error al guardar user")
+//     });
+//     funcionAjax.always(function (retorno) {
+//         console.log("volvi de guardar el user")
+//     });
+//     console.log("Fin llamada controller usuario");
+// }

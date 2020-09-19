@@ -8,7 +8,7 @@ require_once 'BaseRepository.php';
 class ComprobanteDePagoRepositorio
 {
 
-    public static function guardarComprobanteDePago($idComprobanteDePago, $numeroComprobante, $tipoComprobante, $tipoRecibo, $idContrato, $idRegistroPago, $correspondienteMes, $correspondienteAnio, $alquilerMensual, $expensas, $gastosAdm, $deposito, $cuotas, $numCuota, $interesPorMora, $otrosConceptos, $saldoAnterior, $totalImporteAPagar, $totalImporteRecibido, $saldoPendiente, $saldoPendienteSinModificar,$estado)
+    public static function guardarComprobanteDePago($idComprobanteDePago, $numeroComprobante, $tipoComprobante, $tipoRecibo, $idContrato, $idRegistroPago, $correspondienteMes, $correspondienteAnio, $alquilerMensual, $expensas, $gastosAdm, $deposito, $cuotas, $numCuota, $interesPorMora, $otrosConceptos, $saldoAnterior, $totalImporteAPagar, $totalImporteRecibido, $saldoPendiente, $saldoPendienteSinModificar, $estado)
     {
 
         $resp = false;
@@ -59,7 +59,8 @@ class ComprobanteDePagoRepositorio
         return $resp;
     }
 
-    public static function mostrarUltimoComprobanteCargado($tipo){
+    public static function mostrarUltimoComprobanteCargado($tipo)
+    {
         $ultimoNumComprobante = "";
         try {
             $sql = "SELECT numero_comprobante AS numeroComprobante FROM comprobantes_de_pagos
@@ -78,7 +79,8 @@ class ComprobanteDePagoRepositorio
         return $ultimoNumComprobante;
     }
 
-    public static function mostrarUltimoComprobanteDePagoDeUnContrato($idContrato,$tipo){
+    public static function mostrarUltimoComprobanteDePagoDeUnContrato($idContrato, $tipo)
+    {
 
         $saldos = "";
         try {
@@ -100,7 +102,8 @@ class ComprobanteDePagoRepositorio
         return $saldos;
     }
 
-    public static function sumarSaldosPendientesAnteriores($idContrato, $tipo){
+    public static function sumarSaldosPendientesAnteriores($idContrato, $tipo)
+    {
 
         $saldos = "";
         try {
@@ -151,7 +154,8 @@ class ComprobanteDePagoRepositorio
 
     }
 
-    public static function buscarComprobanteDePagoSoloSaldo($idRegistroDePago){
+    public static function buscarComprobanteDePagoSoloSaldo($idRegistroDePago)
+    {
         $saldos = "";
         try {
             $sql = "SELECT CP.id_comprobante_de_pago AS idComprobanteDePago, CP.tipo_comprobante_de_pago AS tipoComprobanteDePago,
@@ -179,7 +183,8 @@ class ComprobanteDePagoRepositorio
         return $saldos;
     }
 
-    public static function ponerSaldoCeroEnElAnteriorRegistro($idRegistroPago){
+    public static function ponerSaldoCeroEnElAnteriorRegistro($idRegistroPago)
+    {
 
         $saldos = "";
         try {
@@ -199,7 +204,8 @@ class ComprobanteDePagoRepositorio
         return $saldos;
     }
 
-    public static function contarCuantosRecibosTieneUnMismoRegistro($idRegistroDePago){
+    public static function contarCuantosRecibosTieneUnMismoRegistro($idRegistroDePago)
+    {
         $count = 0;
         try {
             $sql = "SELECT COUNT(numero_comprobante) AS cantidadDeRecibos, id_registro_de_pago AS idRegistroDePago,
@@ -219,7 +225,8 @@ class ComprobanteDePagoRepositorio
         return $count;
     }
 
-    public static function listarRecibosDeUnMismoRegistro($idRegistroDePago){
+    public static function listarRecibosDeUnMismoRegistro($idRegistroDePago)
+    {
         $recibos = 0;
         try {
             $sql = "SELECT tipo_comprobante_de_pago AS tipoComprobanteDePago, tipo_recibo AS tipoRecibo, numero_comprobante AS numeroComprobante, total_importe_a_pagar AS totalImporteAPagar,
@@ -244,7 +251,7 @@ class ComprobanteDePagoRepositorio
 
         $visualizar = null;
         try {
-            $sql = "SELECT CP.id_comprobante_de_pago AS idComprobantesDePago, CP.numero_comprobante AS numeroComprobante, 
+            $sql = "SELECT CP.id_comprobante_de_pago AS idComprobanteDePago, CP.numero_comprobante AS numeroComprobante, 
                     CP.fecha_comprobante AS fechaComprobante, CP.tipo_comprobante_de_pago AS tipoComprobanteDePago,
                     CP.tipo_recibo AS tipoRecibo, CP.id_contrato AS idContrato, CP.id_registro_de_pago AS idRegistroDePago, 
                     CP.correspondiente_mes AS correspondienteMes, M.mes_corto AS mesCorto, CP.correspondiente_anio AS correspondienteAnio, 
@@ -343,7 +350,8 @@ class ComprobanteDePagoRepositorio
 
     }
 
-    public static function ponerSaldoCeroEnLosSaldosPendientes($idContrato,$idRegistroPago,$tipoComprobante){
+    public static function ponerSaldoCeroEnLosSaldosPendientes($idContrato, $idRegistroPago, $tipoComprobante)
+    {
         $saldos = "";
         try {
             $sql = "UPDATE comprobantes_de_pagos SET saldo_pendiente = 0
@@ -362,7 +370,8 @@ class ComprobanteDePagoRepositorio
         return $saldos;
     }
 
-    public static function sumarSaldosPendientes($idContrato,$TipoComprobante){
+    public static function sumarSaldosPendientes($idContrato, $TipoComprobante)
+    {
 
         $saldos = "";
         try {
@@ -383,7 +392,8 @@ class ComprobanteDePagoRepositorio
         return $saldos;
     }
 
-    public static function sumarSaldosPendientesMenosRegistroActual($idContrato,$TipoComprobante,$idRegistroPago){
+    public static function sumarSaldosPendientesMenosRegistroActual($idContrato, $TipoComprobante, $idRegistroPago)
+    {
 
         $saldos = "";
         try {
@@ -425,7 +435,8 @@ class ComprobanteDePagoRepositorio
 
     }
 
-    public static function buscarUltimoIdComprobanteDePago(){
+    public static function buscarUltimoIdComprobanteDePago()
+    {
         $Comprobante = "";
         try {
             $sql = "SELECT id_comprobante_de_pago AS idComprobanteDePago 
@@ -444,7 +455,8 @@ class ComprobanteDePagoRepositorio
         return $Comprobante;
     }
 
-    public static function contarCuantosRecibosTieneUnMismoContrato($idContrato){
+    public static function contarCuantosRecibosTieneUnMismoContrato($idContrato)
+    {
         $count = 0;
         try {
             $sql = "SELECT COUNT(numero_comprobante) AS cantidadDeRecibos, id_registro_de_pago AS idRegistroDePago,
@@ -461,5 +473,23 @@ class ComprobanteDePagoRepositorio
             $count = 0;
         }
         return $count;
+    }
+
+    public static function mostrarImporteRecibidoComprobanteDePago($idComprobanteDePago)
+    {
+        $importe = null;
+        try {
+            $sql = "SELECT total_importe_recibido AS totalImporteRecibido
+                    FROM comprobantes_de_pagos 
+                    WHERE id_comprobante_de_pago = '$idComprobanteDePago'";
+
+            $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
+            $sentencia->execute();
+            $importe = $sentencia->fetchObject("Saldos");
+
+        } catch (PDOException $ex) {
+            print 'ERROR' . $ex->getMessage();
+        }
+        return $importe;
     }
 }

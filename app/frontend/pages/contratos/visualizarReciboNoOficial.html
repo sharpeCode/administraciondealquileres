@@ -88,20 +88,23 @@
                 </div>
                 <!-- ID REGISTRO DE PAGO - ESTA OCULTO-->
                 <div class="col-md-1">
-                    <input type="text" class="inputTextLabel" name="noOfiIdRegistroPago"
+                    <input type="text" class="inputTextLabel inputOculto" name="noOfiIdRegistroPago"
                            id="noOfiIdRegistroPago" readonly="readonly">
                 </div>
                 <!-- ID CONTRATO - ESTA OCULTO-->
                 <div class="col-md-1">
-                    <input type="text" class="inputTextLabel" name="noOfiIdContrato"
+                    <input type="text" class="inputTextLabel inputOculto" name="noOfiIdContrato"
                            id="noOfiIdContrato" readonly="readonly">
                 </div>
                 <!-- TIPO COMPROBANTE - ESTA OCULTO-->
                 <div class="col-md-1">
-                    <input type="text" class="inputTextLabel " name="noOfiTipoComprobante"
+                    <input type="text" class="inputTextLabel inputOculto" name="noOfiTipoComprobante"
                            id="noOfiTipoComprobante" readonly="readonly">
                 </div>
-                <div class="col-md-1"></div>
+                <div class="col-md-1">
+                    <input type="text" class="inputTextLabel inputOculto" name="noOfiIdComprobanteDePago"
+                           id="noOfiIdComprobanteDePago" readonly="readonly">
+                </div>
             </div>
             <br><br>
 
@@ -163,6 +166,14 @@
                            id="noOfiTotal" readonly="readonly">
                 </div>
                 <div class="col-md-1"></div>
+            </div>
+            <!-- IMPORTE EN LETRAS-->
+            <div class="row">
+                <div class="col-md-7"></div>
+                <div class="col-md-5">
+                    <input type="text" class="inputTextLabel" name="noOfiImporteRecibidoEnLetra"
+                           id="noOfiImporteRecibidoEnLetra">
+                </div>
             </div>
             <br><br>
 

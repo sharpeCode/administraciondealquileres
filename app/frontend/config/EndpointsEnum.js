@@ -1,5 +1,5 @@
-var API = "http://administraciondealquileres.herokuapp.com";
-//var API = "http://localhost:90/Sharp_Code/administracion_de_alquileres";
+//var API = "http://administraciondealquileres.herokuapp.com";
+var API = "http://localhost:90/Sharp_Code/administracion_de_alquileres";
 var BACKEND_CONTROLLERS = API + "/app/backend/controller";
 var VOLVER_PAGE = API + "/app/frontend/pages";
 var EndpointsEnum = {
@@ -16,6 +16,7 @@ var EndpointsEnum = {
     LOCALIDAD: BACKEND_CONTROLLERS + "/LocalidadController.php",
     LOGIN: BACKEND_CONTROLLERS + "/LoginController.php",
     VARIABLES: BACKEND_CONTROLLERS + "/VariableController.php",
+    CIFRALETRA: BACKEND_CONTROLLERS + "/ImporteEnLetraController.php",
 
     VOLVER_CLIENTES: VOLVER_PAGE + "/clientes/cliente.page.php",
     VOLVER_CONTRATOS: VOLVER_PAGE + "/contratos/contrato.page.php",
