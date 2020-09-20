@@ -26,7 +26,6 @@ switch ($action) {
     case "deleteCliente":
         eliminarCliente();
         break;
-        break;
     default:
         console . log("No se pudo acceder a la acción al controller");
         break;

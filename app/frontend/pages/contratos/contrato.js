@@ -1731,13 +1731,11 @@ function visualizarReciboOficialSaldo(idRegistroDePago) {
             idRegistroDePago: idRegistroDePago
         }
     });
-
     funcionAjax.done(function (retorno) {
         console.debug("Done: ", retorno);
         cargarVisualizacionReciboOficialSaldo(JSON.parse(retorno));
         convertirNumeroALetra(3);
     });
-
     funcionAjax.fail(function (retorno) {
         console.error(retorno);
     });
@@ -1748,7 +1746,6 @@ function cargarVisualizacionReciboOficialSaldo(Saldo) {
     var fecha = new Date();
     var options = {day: 'numeric', month: 'numeric', year: 'numeric'};
     var fechaHoy = fecha.toLocaleDateString("es-ES", options);
-
 
     $("#visuFecha").val(fechaHoy);
     $("#visuNumeroComprobante").val(Saldo["numeroComprobante"]);
@@ -1899,31 +1896,3 @@ function convertirNumeroALetra(num) {
     console.log("Fin llamada controller usuario");
 }
 
-// CONVERTIR NUMERO A LETRA RECIBO NO OFICIAL
-// function convertirNumeroALetra() {
-//
-//     var idRegistroDePago = mapToJson($('#noOfiIdRegistroPago').serializeArray());
-//
-//     console.log("mostrando importe a letra: ", idRegistroDePago);
-//     let uri = EndpointsEnum.CIFRALETRA;
-//     console.log("Llamando a Importe en letra controller = " + uri);
-//     var funcionAjax = $.ajax({
-//         url: uri,
-//         method: "POST",
-//         data: {
-//             action: "convertirCifraEnLetra",
-//             idRegistroDePago: idRegistroDePago
-//         }
-//     });
-//     funcionAjax.done(function (retorno) {
-//         console.log(retorno);
-//         $("#noOfiImporteRecibidoEnLetra").val(retorno);
-//     });
-//     funcionAjax.fail(function (retorno) {
-//         console.log("error al guardar user")
-//     });
-//     funcionAjax.always(function (retorno) {
-//         console.log("volvi de guardar el user")
-//     });
-//     console.log("Fin llamada controller usuario");
-// }

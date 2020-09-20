@@ -52,11 +52,11 @@ switch ($action) {
         listarRecibos();
         break;
     case "datosRecibo":
-        datosRecibo($_POST['idComprobantesDePago']);
+        datosRecibo($_POST['idComprobanteDePago']);
         break;
 
     default:
-        echo "NO SE QUE HACER VIEJA";
+        console . log("NO SE QUE HACER VIEJA");
         break;
 }
 
@@ -540,9 +540,10 @@ function listarRecibos()
     echo json_encode($listadoCompPagos);
 }
 
-function datosRecibo($idComprobantesDePago)
+function datosRecibo($idComprobanteDePago)
 {
-    $datos = ComprobanteDePagoRepositorio::datosRecibo($idComprobantesDePago);
+
+    $datos = ComprobanteDePagoRepositorio::datosRecibo($idComprobanteDePago);
     echo json_encode($datos);
 }
 
