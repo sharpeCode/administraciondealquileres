@@ -10,15 +10,15 @@ class BaseRepository
     {
         try {
 	     //  -- PARA LA CONEXION AL HOSTING
-//             $this->connection = new PDO('mysql:host=us-cdbr-east-02.cleardb.com;dbname=heroku_0852b66c3d788ad;charset=utf8;charset=utf8',
-//                'bc2dc009f0f85e', '052bcdbe',
-//                array(PDO::ATTR_EMULATE_PREPARES => false, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+             $this->connection = new PDO('mysql:host=us-cdbr-east-02.cleardb.com;dbname=heroku_0852b66c3d788ad;charset=utf8;charset=utf8',
+                'bc2dc009f0f85e', '052bcdbe',
+                array(PDO::ATTR_EMULATE_PREPARES => false, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 	     //   --------------------------------------------------------------------------------------------------------
 	
 //	       -- PARA LA CONEXION LOCAL
-            $this->connection = new PDO('mysql:host=localhost;dbname=db_administracion_de_alquileres;charset=utf8',
-                'root', '',
-                array(PDO::ATTR_EMULATE_PREPARES => false, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+//            $this->connection = new PDO('mysql:host=localhost;dbname=db_administracion_de_alquileres;charset=utf8',
+//                'root', '',
+//                array(PDO::ATTR_EMULATE_PREPARES => false, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
          //   --------------------------------------------------------------------------------------------------------
         } catch (PDOException $e) {
             print "Error!: " . $e->getMessage();
