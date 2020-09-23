@@ -12,7 +12,7 @@ class ComprobanteDePagoRepositorio
     {
         $resp = false;
         try {
-            $sql = "INSERT INTO comprobante_de_pagos (id_comprobante_de_pago,numero_comprobante, fecha_comprobante, tipo_comprobante_de_pago, tipo_recibo,  id_contrato, 
+            $sql = "INSERT INTO comprobantes_de_pagos (id_comprobante_de_pago,numero_comprobante, fecha_comprobante, tipo_comprobante_de_pago, tipo_recibo,  id_contrato, 
                     id_registro_de_pago, correspondiente_mes, correspondiente_anio, valor_alquiler, valor_expensas, valor_gastos_adm, 
                     valor_deposito, cant_cuotas_deposito, num_cuota_a_pagar, interes_por_mora, otros_conceptos, saldo_anterior, total_importe_a_pagar,
                     total_importe_recibido, saldo_pendiente, saldo_pendiente_sin_modificar, estado)

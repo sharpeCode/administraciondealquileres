@@ -192,7 +192,10 @@ function cargarReciboOficial(idComprobantesDePago) {
 
 function verReciboOficial(datosParaCargarRecibo) {
 
-    $("#unoFecha").val(datosParaCargarRecibo["fechaComprobante"]);
+    let fechaComprobante = datosParaCargarRecibo["fechaComprobante"];
+    var fechaFor = fechaComprobante.replace(/^(\d{4})-(\d{2})-(\d{2})$/g,'$3/$2/$1');
+
+    $("#unoFecha").val(fechaFor);
     $("#unoNumeroComprobante").val(datosParaCargarRecibo["numeroComprobante"]);
     $("#unoUnidadFuncional").val(datosParaCargarRecibo["torre"]);
     $("#unoIdRegistroPago").val(datosParaCargarRecibo["idRegistroDePago"]);
@@ -203,10 +206,10 @@ function verReciboOficial(datosParaCargarRecibo) {
     $("#unoLocatario").val(datosParaCargarRecibo["nombres"] + " " + datosParaCargarRecibo["apellidos"] + ", DNI: " + datosParaCargarRecibo["dni"]);
     $("#unoCorrespondienteMes").val(datosParaCargarRecibo["mesCorto"]);
     $("#unoCorrespondienteAnio").val(datosParaCargarRecibo["correspondienteAnio"]);
-    $("#unoAlquilerMensual").val(datosParaCargarRecibo["valorAlquiler"]);
-    $("#unoExpensas").val(datosParaCargarRecibo["valorExpensas"]);
-    $("#unoGastosAdministrativos").val(datosParaCargarRecibo["valorGastosAdm"]);
-    $("#unoDeposito").val(datosParaCargarRecibo["valorDeposito"]);
+    $("#unoAlquilerMensual").val("$ " + datosParaCargarRecibo["valorAlquiler"]);
+    $("#unoExpensas").val("$ " + datosParaCargarRecibo["valorExpensas"]);
+    $("#unoGastosAdministrativos").val("$ " + datosParaCargarRecibo["valorGastosAdm"]);
+    $("#unoDeposito").val("$ " + datosParaCargarRecibo["valorDeposito"]);
     $("#unoNumCuota").val(datosParaCargarRecibo["numCuotaAPagar"]);
     $("#unoCuota").val(datosParaCargarRecibo["cantCuotasDeposito"]);
 
@@ -217,16 +220,16 @@ function verReciboOficial(datosParaCargarRecibo) {
 
     var total = alquilerMensual + expensas + gasAdm + deposito;
 
-    $("#unoSubTotal").val(total);
+    $("#unoSubTotal").val("$ " + total);
 
     //$("#unoSubTotal").val(datosParaCargarRecibo["subTotal"]);
     $("#unoTotalDias").val(datosParaCargarRecibo["diasMora"]);
-    $("#unoInteresPorMora").val(datosParaCargarRecibo["interesPorMora"]);
-    $("#unoOtrosConceptos").val(datosParaCargarRecibo["otrosConceptos"]);
-    $("#unoSaldoAnterior").val(datosParaCargarRecibo["saldoAnterior"]);
-    $("#unoTotal").val(datosParaCargarRecibo["totalImporteAPagar"]);
-    $("#unoImporteRecibido").val(datosParaCargarRecibo["totalImporteRecibido"]);
-    $("#unoSaldoPendiente").val(datosParaCargarRecibo["saldoPendienteSinModificar"]);
+    $("#unoInteresPorMora").val("$ " + datosParaCargarRecibo["interesPorMora"]);
+    $("#unoOtrosConceptos").val("$ " + datosParaCargarRecibo["otrosConceptos"]);
+    $("#unoSaldoAnterior").val("$ " + datosParaCargarRecibo["saldoAnterior"]);
+    $("#unoTotal").val("$ " + datosParaCargarRecibo["totalImporteAPagar"]);
+    $("#unoImporteRecibido").val("$ " + datosParaCargarRecibo["totalImporteRecibido"]);
+    $("#unoSaldoPendiente").val("$ " + datosParaCargarRecibo["saldoPendienteSinModificar"]);
 
 }
 
@@ -257,7 +260,10 @@ function cargarReciboNoOficial(idComprobantesDePago) {
 
 function verReciboNoOficial(datosParaCargarRecibo) {
 
-    $("#dosFecha").val(datosParaCargarRecibo["fechaComprobante"]);
+    let fechaComprobante = datosParaCargarRecibo["fechaComprobante"];
+    var fechaFor = fechaComprobante.replace(/^(\d{4})-(\d{2})-(\d{2})$/g,'$3/$2/$1');
+
+    $("#dosFecha").val(fechaFor);
     $("#dosNumeroComprobante").val(datosParaCargarRecibo["numeroComprobante"]);
     $("#dosUnidadFuncional").val(datosParaCargarRecibo["torre"]);
     $("#dosIdRegistroPago").val(datosParaCargarRecibo["idRegistroDePago"]);
@@ -268,14 +274,14 @@ function verReciboNoOficial(datosParaCargarRecibo) {
     $("#dosLocatario").val(datosParaCargarRecibo["nombres"] + " " + datosParaCargarRecibo["apellidos"] + ", DNI: " + datosParaCargarRecibo["dni"]);
     $("#dosCorrespondienteMes").val(datosParaCargarRecibo["mesCorto"]);
     $("#dosCorrespondienteAnio").val(datosParaCargarRecibo["correspondienteAnio"]);
-    $("#dosAlquilerMensual").val(datosParaCargarRecibo["valorAlquiler"]);
+    $("#dosAlquilerMensual").val("$ " + datosParaCargarRecibo["valorAlquiler"]);
 
-    $("#dosSubTotal").val(datosParaCargarRecibo["valorAlquiler"]);
+    $("#dosSubTotal").val("$ " + datosParaCargarRecibo["valorAlquiler"]);
 
 
-    $("#dosInteresPorMora").val(datosParaCargarRecibo["interesPorMora"]);
+    $("#dosInteresPorMora").val("$ " + datosParaCargarRecibo["interesPorMora"]);
 
-    $("#dosTotal").val(datosParaCargarRecibo["totalImporteAPagar"]);
+    $("#dosTotal").val("$ " + datosParaCargarRecibo["totalImporteAPagar"]);
 
 
 }
@@ -307,20 +313,23 @@ function cargarReciboOficialSoloSaldo(idComprobantesDePago) {
 
 function verReciboOficialSoloSaldo(datosParaCargarRecibo) {
 
-    $("#tresFecha").val(datosParaCargarRecibo["fechaComprobante"]);
+    let fechaComprobante = datosParaCargarRecibo["fechaComprobante"];
+    var fechaFor = fechaComprobante.replace(/^(\d{4})-(\d{2})-(\d{2})$/g,'$3/$2/$1');
+
+    $("#tresFecha").val(fechaFor);
     $("#tresNumeroComprobante").val(datosParaCargarRecibo["numeroComprobante"]);
     $("#tresUnidadFuncional").val(datosParaCargarRecibo["torre"]);
     $("#tresIdRegistroPago").val(datosParaCargarRecibo["idRegistroDePago"]);
     $("#tresIdContrato ").val(datosParaCargarRecibo["idContrato"]);
     $("#tresTipoComprobante ").val(datosParaCargarRecibo["tipoRegistroDePago"]);
-    $("#tresIdComprobanteDePago ").val(Saldo["idComprobanteDePago"]);
+    $("#tresIdComprobanteDePago ").val(datosParaCargarRecibo["idComprobanteDePago"]);
     $("#tresDomicilio").val(datosParaCargarRecibo["domicilio"] + ",  Piso: " + datosParaCargarRecibo["piso"] + ",  Dto.: " + datosParaCargarRecibo["departamento"] + ",  Localidad: " + datosParaCargarRecibo["localidad"] + ", " + datosParaCargarRecibo["nombrePais"]);
     $("#tresLocatario").val(datosParaCargarRecibo["nombres"] + " " + datosParaCargarRecibo["apellidos"] + ", DNI: " + datosParaCargarRecibo["dni"]);
     $("#tresCorrespondienteMes").val(datosParaCargarRecibo["mesCorto"]);
     $("#tresCorrespondienteAnio").val(datosParaCargarRecibo["correspondienteAnio"]);
-    $("#tresSaldoPendiente").val(datosParaCargarRecibo["totalImporteAPagar"]);
-    $("#tresTotal").val(datosParaCargarRecibo["totalImporteAPagar"]);
-    $("#tresImporteRecibido").val(datosParaCargarRecibo["totalImporteRecibido"]);
+    $("#tresSaldoPendiente").val("$ " + datosParaCargarRecibo["totalImporteAPagar"]);
+    $("#tresTotal").val("$ " + datosParaCargarRecibo["totalImporteAPagar"]);
+    $("#tresImporteRecibido").val("$ " + datosParaCargarRecibo["totalImporteRecibido"]);
 
 }
 

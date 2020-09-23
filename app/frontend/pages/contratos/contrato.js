@@ -1741,11 +1741,10 @@ function visualizarReciboOficialSaldo(idRegistroDePago) {
 
 function cargarVisualizacionReciboOficialSaldo(Saldo) {
 
-    var fecha = new Date();
-    var options = {day: 'numeric', month: 'numeric', year: 'numeric'};
-    var fechaHoy = fecha.toLocaleDateString("es-ES", options);
+    let fechaComprobante = Saldo["fechaComprobante"];
+    var fechaFormato = fechaComprobante.replace(/^(\d{4})-(\d{2})-(\d{2})$/g,'$3/$2/$1');
 
-    $("#visuFecha").val(fechaHoy);
+    $("#visuFecha").val(fechaFormato);
     $("#visuNumeroComprobante").val(Saldo["numeroComprobante"]);
     $("#visuUnidadFuncional").val(Saldo["torre"]);
     $("#visuIdRegistroPago").val(Saldo["idRegistroDePago"]);
@@ -1756,9 +1755,9 @@ function cargarVisualizacionReciboOficialSaldo(Saldo) {
     $("#visuLocatario").val(Saldo["nombres"] + " " + Saldo["apellidos"] + ", DNI: " + Saldo["dni"]);
     $("#visuCorrespondienteMes").val(Saldo["mesCorto"]);
     $("#visuCorrespondienteAnio").val(Saldo["correspondienteAnio"]);
-    $("#visuSaldoPendiente").val(Saldo["totalImporteAPagar"]);
-    $("#visuTotal").val(Saldo["totalImporteAPagar"]);
-    $("#visuTotalImporteRecibido").val(Saldo["totalImporteAPagar"]);
+    $("#visuSaldoPendiente").val("$ " + Saldo["totalImporteAPagar"]);
+    $("#visuTotal").val("$ " + Saldo["totalImporteAPagar"]);
+    $("#visuTotalImporteRecibido").val("$ " + Saldo["totalImporteAPagar"]);
 
 }
 

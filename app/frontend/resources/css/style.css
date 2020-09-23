@@ -245,16 +245,6 @@ input:focus, input.form-control:focus, button:focus, select:focus {
     text-align: center;
 }
 
-/*====================================================================================
- Fondo Comprobante de pago - Marca de agua - Recibo Oficial - Con firma digital
-====================================================================================*/
-.fondoMarcaDeAguaConFirmaDigital {
-    background-image: url("../../resources/images/fondoHomeMarcaAgua.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-}
-
 /*====================================================================================*/
 /* Titulos Recibo */
 /*====================================================================================*/
@@ -290,25 +280,6 @@ input:focus, input.form-control:focus, button:focus, select:focus {
     line-height:normal;
 }
 
-/*====================================================================================
-  Container con borde y puntas redondeadas
-====================================================================================*/
-.miContainer {
-    background: none;
-    border: #3a5ba0 2px solid;
-    box-shadow: 0 0 6px #99cef4; /* Sombreado */
-    border-radius: 20px 20px 20px 20px; /*esquinas redondeadas*/
-}
-
-/*====================================================================================
-  Container con borde con puntas cuadradas
-====================================================================================*/
-.miContainer2 {
-    background: none;
-    border: #3a5ba0 1px solid;
-    box-shadow: 0 0 6px #99cef4; /* Sombreado */
-    /*border-radius: 20px 20px 20px 20px; /*esquinas redondeadas*/
-}
 
 .miTituloDetail {
     color: #3a5ba0;
@@ -408,6 +379,55 @@ input:focus, input.form-control:focus, button:focus, select:focus {
 }
 
 /*====================================================================================
+  Container con borde y puntas redondeadas RECIBO - NUEVO
+====================================================================================*/
+.miContainerReciboNuevo {
+    background-image: url("../../resources/images/fondoHomeMarcaAgua.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border: #3a5ba0 2px solid;
+    box-shadow: 0 0 6px #3a5ba0; /* Sombreado */
+    border-radius: 20px 20px 20px 20px; /*esquinas redondeadas*/
+}
+
+/*====================================================================================
+  Container con borde y puntas redondeadas RECIBO - NUEVO solo dibuja linea de abajo
+====================================================================================*/
+.miContainerRecibo4 {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-bottom: #3a5ba0 3px solid;
+    height: 100px;
+}
+
+
+/*====================================================================================
+  Container con borde y puntas redondeadas RECIBO - NUEVO solo dibuja linea de abajo
+====================================================================================*/
+.miContainerReciboNuevo-LineaAbajo {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-bottom: #3a5ba0 3px solid;
+    height: 100px;
+}
+
+/*====================================================================================
+  Container con borde y puntas redondeadas RECIBO NO OFICIAL - NUEVO
+====================================================================================*/
+.miContainerReciboNoOficialNuevo {
+    background-image: url("../../resources/images/fondoHomeMarcaAguaSinFirmaDigital.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border: #3a5ba0 2px solid;
+    box-shadow: 0 0 6px #3a5ba0; /* Sombreado */
+    border-radius: 20px 20px 20px 20px; /*esquinas redondeadas*/
+}
+
+/*====================================================================================
  Labels negrita RECIBO VISUALIZACION
 ====================================================================================*/
 .labelSubtituloRecibo {
@@ -491,7 +511,41 @@ input:focus, input.form-control:focus, button:focus, select:focus {
   Container con borde y puntas redondeadas RECIBO VISUALIZACION NO OFICIAL
 ====================================================================================*/
 .miContainerReciboNoOficial {
-    /*background-image: url("../../resources/images/fondoHomeMarcaAguaSinFirmaDigital.png");*/
+    background-image: url("../../resources/images/fondoHomeMarcaAguaSinFirmaDigital.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border: black 2px solid;
+    box-shadow: 0 0 6px black; /* Sombreado */
+    border-radius: 20px 20px 20px 20px; /*esquinas redondeadas*/
+}
+
+
+/*====================================================================================
+  Container con borde y puntas redondeadas
+====================================================================================*/
+.miContainer {
+    background: none;
+    border: #3a5ba0 2px solid;
+    box-shadow: 0 0 6px #99cef4; /* Sombreado */
+    border-radius: 20px 20px 20px 20px; /*esquinas redondeadas*/
+}
+
+/*====================================================================================
+  Container con borde con puntas cuadradas
+====================================================================================*/
+.miContainer2 {
+    background: none;
+    border: #3a5ba0 1px solid;
+    box-shadow: 0 0 6px #99cef4; /* Sombreado */
+    /*border-radius: 20px 20px 20px 20px; /*esquinas redondeadas*/
+}
+
+/*====================================================================================
+ Fondo Comprobante de pago - Marca de agua - Recibo Oficial - Con firma digital
+====================================================================================*/
+.fondoMarcaDeAguaConFirmaDigital {
+    background-image: url("../../resources/images/fondoHomeMarcaAgua.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

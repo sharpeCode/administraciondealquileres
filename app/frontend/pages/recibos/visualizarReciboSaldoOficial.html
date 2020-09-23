@@ -1,68 +1,74 @@
 <body>
 <div class="container" id="visualizarReciboSaldoOficial">
-    <div id="bodyReciboOficialSoloSaldo1">
-        <div class="imagenCabeceraRecibo centrarMiTituloRecibo">
-            <label class="miTituloRecibo">Recibo Gestión Home Saldo</label>
-        </div>
-        <br>
-        <div class="row">
+    <div class="container fondoMarcaDeAguaConFirmaDigital" id="bodyReciboOficialSoloSaldo1">
+        <div class="centrarMiTituloRecibo" style="position:relative; top: 0px;"><label
+                class="miTituloReciboReciboRecibo">Recibo</label></div>
+        <div class="centrarMiTituloRecibo2" style="position:relative; top: -15px;"><label
+                class="miTituloReciboReciboRecibo2"> Gestión Home</label></div>
+
+
+        <div class="row miContainerRecibo2">
             <!-- COLUMNA 1 -->
-            <div class="col-md-6">
+            <div class="col-md-6" style="position:relative; top: 5px;">
                 <!-- DATOS DE WALTER BENTANCOR -->
-                <p class="inputTextLabelCentrado">
+                <p class="inputTextLabelCentradoRecibo">
                     De Walter Bentancor <br>
-                    Primera Junta 979 1°, San Miguel, Bs. <br>
-                    Tel. 011 15-3849-3619
+                    Zuviria 955, San Miguel, Bs. As. <br>
                 </p>
+                <div class="inputTextLabelCentradoRecibo">
+                    <label style="position:relative; top: -10px;"><span class="icon-whatsapp"></span> 011
+                        15-3849-3619</label><br>
+                    <label style="position:relative; top: -18px;"><span class="icon-mail2"></span>
+                        walter_bentancor@hotmail.com</label>
+                </div>
             </div>
             <!-- COLUMNA 2 -->
             <div class="col-md-6">
                 <!-- FECHA-->
                 <div class="col-md-4"></div>
-                <div class="col-md-2">
-                    <label class="labelSubtitulo">Fecha</label>
+                <div class="col-md-2" style="position:relative; top: 30px;">
+                    <label class="labelSubtituloRecibo">Fecha</label>
                 </div>
-                <div class="col-md-6">
-                    <input class="inputTextLabel" id="tresFecha" name="tresFecha"
-                           title="Fecha Recibo" onfocus="(this.type='date')" style="width: 150px;">
+                <div class="col-md-6" style="position:relative; top: 30px;">
+                    <input type="text" class="inputTextLabelRecibo" name="tresFecha"
+                           id="tresFecha" readonly="readonly">
                 </div>
             </div>
         </div>
-        <br>
-        <div class="fondoMarcaDeAguaConFirmaDigital">
+        <div>
             <br>
             <div class="row">
                 <!-- NUMERO DE COMPROBANTE-->
                 <div class="col-md-1"></div>
                 <div class="col-md-1" style="width: 110px">
-                    <label class="labelSubtitulo">Recibo N°</label>
+                    <label class="labelSubtituloRecibo">Recibo N°</label>
                 </div>
                 <div class="col-md-2">
-                    <input type="text" class="inputTextLabel" name="tresNumeroComprobante"
+                    <input type="text" class="inputTextLabelRecibo" name="tresNumeroComprobante"
                            id="tresNumeroComprobante" readonly="readonly">
                 </div>
 
                 <!-- UNIDAD FUNCIONAL-->
                 <div class="col-md-2" style="width: 175px">
-                    <label class="labelSubtitulo">Unidad Funcional</label>
+                    <label class="labelSubtituloRecibo">Unidad Funcional</label>
                 </div>
                 <div class="col-md-1">
-                    <input type="text" class="inputTextLabel" name="tresUnidadFuncional"
+                    <input type="text" class="inputTextLabelRecibo" name="tresUnidadFuncional"
                            id="tresUnidadFuncional" readonly="readonly">
                 </div>
                 <!-- EL PAGO CORRESPONDE AL MES Y AÑO: -->
                 <div class="col-md-1" style="width: 115px">
-                    <label class="labelSubtitulo">Mes y Año</label>
+                    <label class="labelSubtituloRecibo">Mes y Año</label>
                 </div>
                 <div class="col-md-1" style="width: 50px">
-                    <input type="text" class="inputTextLabel" name="tresCorrespondienteMes"
+                    <input type="text" class="inputTextLabelRecibo" name="tresCorrespondienteMes"
                            id="tresCorrespondienteMes" readonly="readonly" style="width: 50px">
                 </div>
                 <div class="col-md-1" style="width: 20px">
-                    <label class="labelSubtitulo">/</label>
+                    <label class="labelSubtituloRecibo">/</label>
                 </div>
                 <div class="col-md-1">
-                    <input type="text" class="inputTextLabel" name="tresCorrespondienteAnio"
+                    <input type="text" class="inputTextLabelRecibo" name="tresCorrespondienteAnio"
                            id="tresCorrespondienteAnio" readonly="readonly">
                 </div>
                 <div class="col-md-1"></div>
@@ -72,10 +78,10 @@
                 <!-- INMUEBLE-->
                 <div class="col-md-1"></div>
                 <div class="col-md-1" style="width: 110px">
-                    <label class="labelSubtitulo">Inmueble</label>
+                    <label class="labelSubtituloRecibo">Inmueble</label>
                 </div>
                 <div class="col-md-9">
-                    <input type="text" class="inputTextLabel" name="tresDomicilio"
+                    <input type="text" class="inputTextLabelRecibo" name="tresDomicilio"
                            id="tresDomicilio" readonly="readonly">
                 </div>
             </div>
@@ -83,39 +89,38 @@
                 <!-- LOCATARIO-->
                 <div class="col-md-1"></div>
                 <div class="col-md-1" style="width: 110px">
-                    <label class="labelSubtitulo">Recibi de</label>
+                    <label class="labelSubtituloRecibo">Recibi de</label>
                 </div>
                 <div class="col-md-6" style="width: 490px">
-                    <input type="text" class="inputTextLabel" name="tresLocatario"
+                    <input type="text" class="inputTextLabelRecibo" name="tresLocatario"
                            id="tresLocatario" readonly="readonly">
                 </div>
                 <!-- ID REGISTRO DE PAGO - ESTA OCULTO-->
                 <div class="col-md-1">
-                    <input type="text" class="inputTextLabel inputOculto" name="tresIdRegistroPago"
+                    <input type="text" class="inputTextLabelRecibo inputOculto" name="tresIdRegistroPago"
                            id="tresIdRegistroPago" readonly="readonly">
                 </div>
                 <!-- ID CONTRATO - ESTA OCULTO-->
                 <div class="col-md-1">
-                    <input type="text" class="inputTextLabel inputOculto" name="tresIdContrato"
+                    <input type="text" class="inputTextLabelRecibo inputOculto" name="tresIdContrato"
                            id="tresIdContrato" readonly="readonly">
                 </div>
                 <!-- TIPO COMPROBANTE - ESTA OCULTO-->
                 <div class="col-md-1">
-                    <input type="text" class="inputTextLabel inputOculto" name="tresTipoComprobante"
+                    <input type="text" class="inputTextLabelRecibo inputOculto" name="tresTipoComprobante"
                            id="tresTipoComprobante" readonly="readonly">
                 </div>
                 <div class="col-md-1">
-                    <input type="text" class="inputTextLabel inputOculto" name="tresIdComprobanteDePago"
+                    <input type="text" class="inputTextLabelRecibo inputOculto" name="tresIdComprobanteDePago"
                            id="tresIdComprobanteDePago" readonly="readonly">
                 </div>
             </div>
-            <br><br>
-
+            <br>
             <!-- CONCEPTOS DE PAGOS----------------------------------------------------------------------->
             <div class="row">
                 <div class="col-md-1"></div>
                 <div class="col-md-11">
-                    <label class="labelSubtitulo">En concepto de pago</label>
+                    <label class="labelSubtituloRecibo">En concepto de pago</label>
                 </div>
             </div>
             <br>
@@ -123,13 +128,25 @@
                 <!-- SALDO PENDIENTE-->
                 <div class="col-md-1"></div>
                 <div class="col-md-2">
-                    <label class="labelSubtituloNormal">S. Pendiente $</label>
+                    <label class="labelSubtituloNormalRecibo">S. Pendiente $</label>
                 </div>
                 <div class="col-md-2">
-                    <input type="text" class="inputTextLabel" name="tresSaldoPendiente"
+                    <input type="text" class="inputTextLabelRecibo" name="tresSaldoPendiente"
                            id="tresSaldoPendiente" readonly="readonly">
                 </div>
                 <div class="col-md-7"></div>
+            </div>
+            <!-- IMPORTE EN LETRAS-->
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-2">
+                    <label class="labelSubtituloNormalRecibo">La suma de</label>
+                </div>
+                <div class="col-md-6" style="width: 400px;">
+                    <input type="text" class="labelSubtituloNormalRecibo" name="tresImporteRecibidoEnLetra"
+                           id="tresImporteRecibidoEnLetra" style="width: 400px;">
+                </div>
+                <div class="col-md-3"></div>
             </div>
 
             <br><br><br>
@@ -138,10 +155,10 @@
             <div class="row">
                 <div class="col-md-7"></div>
                 <div class="col-md-2">
-                    <label class="labelSubtitulo">Total $</label>
+                    <label class="labelSubtituloRecibo">Total $</label>
                 </div>
                 <div class="col-md-2">
-                    <input type="text" class="inputTextLabel" name="tresTotal"
+                    <input type="text" class="inputTextLabelRecibo" name="tresTotal"
                            id="tresTotal" readonly="readonly">
                 </div>
                 <div class="col-md-1"></div>
@@ -150,29 +167,19 @@
             <div class="row">
                 <div class="col-md-7"></div>
                 <div class="col-md-2">
-                    <label class="labelSubtitulo">Recibido $</label>
+                    <label class="labelSubtituloRecibo">Recibido $</label>
                 </div>
                 <div class="col-md-2">
-                    <input type="text" class="inputTextLabel" name="tresImporteRecibido"
+                    <input type="text" class="inputTextLabelRecibo" name="tresImporteRecibido"
                            id="tresImporteRecibido" readonly="readonly">
                 </div>
                 <div class="col-md-1"></div>
-            </div>
-            <!-- IMPORTE EN LETRAS-->
-            <div class="row">
-                <div class="col-md-7"></div>
-                <div class="col-md-5">
-                    <input type="text" class="inputTextLabel" name="tresImporteRecibidoEnLetra"
-                           id="tresImporteRecibidoEnLetra">
-                </div>
             </div>
             <br><br><br><br><br>
         </div>
 
     </div>
-
-    <br><br>
-
+    <br>
     <div class="row">
         <div class="col-md-9"></div>
         <div class="col-md-3">
@@ -181,10 +188,7 @@
                       id="pdf" name="pdf"></a>
         </div>
     </div>
-    <br><br><br><br><br>
-</div>
-
-</div>
+    <br><br><br>
 </div>
 </body>
 
