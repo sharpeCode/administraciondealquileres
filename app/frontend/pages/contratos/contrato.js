@@ -1690,11 +1690,10 @@ function cargarVisualizacionReciboNoOficial(datosParaCargarRecibo) {
     let alquilerMensual = datosParaCargarRecibo["valorAlquiler"];
     let subTotal = alquilerMensual;
 
-    var fecha = new Date();
-    var options = {day: 'numeric', month: 'numeric', year: 'numeric'};
-    var fechaHoy = fecha.toLocaleDateString("es-ES", options);
+    let fechaComprobante = datosParaCargarRecibo["fechaComprobante"];
+    var fechaFormato = fechaComprobante.replace(/^(\d{4})-(\d{2})-(\d{2})$/g,'$3/$2/$1');
 
-    $("#noOfiFecha").val(fechaHoy);
+    $("#noOfiFecha").val(fechaFormato);
     $("#noOfiNumeroComprobante").val(datosParaCargarRecibo["numeroComprobante"]);
     $("#noOfiUnidadFuncional").val(datosParaCargarRecibo["torre"]);
     $("#noOfiIdRegistroPago").val(datosParaCargarRecibo["idRegistroDePago"]);

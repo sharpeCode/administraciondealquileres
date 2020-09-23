@@ -463,7 +463,7 @@ class ComprobanteDePagoRepositorio
     {
         $importe = null;
         try {
-            $sql = "SELECT total_importe_recibido AS totalImporteRecibido
+            $sql = "SELECT total_importe_a_pagar AS totalImporteAPagar
                     FROM comprobantes_de_pagos 
                     WHERE id_comprobante_de_pago = '$idComprobanteDePago'";
 

@@ -255,26 +255,6 @@ input:focus, input.form-control:focus, button:focus, select:focus {
     background-size: cover;
 }
 
-/*====================================================================================
- Fondo Comprobante de pago - Marca de agua - Recibo Oficial - Con firma digital
-====================================================================================*/
-.fondoMarcaDeAguaConFirmaDigitalSaldos {
-    background-image: url("../../resources/images/fondoHomeMarcaAguaSaldos.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-}
-
-/*====================================================================================
- Fondo Comprobante de pago - Marca de agua - Sin firma digital
-====================================================================================*/
-.fondoMarcaDeAguaReiboSinFirmaDigital {
-    background-image: url("../../resources/images/fondoHomeMarcaAguaSinFirmaDigital.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-}
-
 /*====================================================================================*/
 /* Titulos Recibo */
 /*====================================================================================*/
@@ -308,18 +288,6 @@ input:focus, input.form-control:focus, button:focus, select:focus {
     display:inline-block;
     vertical-align:middle;
     line-height:normal;
-}
-
-/*====================================================================================
-  Fondo Comprobante de pago - Marca de agua
-====================================================================================*/
-.imagenCabeceraRecibo {
-    background-image: url("../../resources/images/encabezadoRecibo.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    height: 70px;
-    border-radius: 25px 25px 25px 25px; /*esquinas redondeadas*/
 }
 
 /*====================================================================================
@@ -520,6 +488,29 @@ input:focus, input.form-control:focus, button:focus, select:focus {
 }
 
 /*====================================================================================
+  Container con borde y puntas redondeadas RECIBO VISUALIZACION NO OFICIAL
+====================================================================================*/
+.miContainerReciboNoOficial {
+    /*background-image: url("../../resources/images/fondoHomeMarcaAguaSinFirmaDigital.png");*/
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border: black 2px solid;
+    box-shadow: 0 0 6px black; /* Sombreado */
+    border-radius: 20px 20px 20px 20px; /*esquinas redondeadas*/
+}
+
+/*====================================================================================
+ Fondo Comprobante de pago - Marca de agua - Recibo Oficial - Con firma digital
+====================================================================================*/
+.fondoMarcaDeAguaConFirmaDigitalSaldos {
+    background-image: url("../../resources/images/fondoHomeMarcaAguaSaldos.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+/*====================================================================================
   Container con borde y puntas redondeadas RECIBO VISUALIZACION
 ====================================================================================*/
 .miContainerRecibo2 {
@@ -527,6 +518,17 @@ input:focus, input.form-control:focus, button:focus, select:focus {
     background-position: center;
     background-size: cover;
     border-top: black 3px solid;
+    border-bottom: black 3px solid;
+    height: 100px;
+}
+
+/*====================================================================================
+  Container con borde y puntas redondeadas RECIBO VISUALIZACION solo dibuja linea de abajo
+====================================================================================*/
+.miContainerRecibo3 {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     border-bottom: black 3px solid;
     height: 100px;
 }

@@ -16,7 +16,7 @@ switch ($action) {
 function convertirCifraEnLetra($idComprobanteDePago)
 {
     $importe = ComprobanteDePagoRepositorio::mostrarImporteRecibidoComprobanteDePago($idComprobanteDePago);
-    $totalpagar = (int) $importe->totalImporteRecibido;
+    $totalpagar = (int) $importe->totalImporteAPagar;
 
     $v=new CifrasEnLetras();
     //Convertimos el total en letras

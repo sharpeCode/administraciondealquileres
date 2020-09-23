@@ -1,26 +1,32 @@
 <body>
 <div class="container" id="visualizarReciboNoOficial">
-    <div id="bodyReciboNoOficial">
-        <br>
-        <div class="row">
+    <br>
+    <div class="container miContainerReciboNoOficial" id="bodyReciboNoOficial">
+
+        <div class="row miContainerRecibo3">
             <!-- COLUMNA 1 -->
-            <div class="col-md-6">
+            <div class="col-md-6" style="position:relative; top: 5px;">
                 <!-- DATOS DE WALTER BENTANCOR -->
-                <p class="inputTextLabelCentrado">
+                <p class="inputTextLabelCentradoRecibo">
                     De Walter Bentancor <br>
-                    Primera Junta 979 1°, San Miguel, Bs. <br>
-                    Tel. 011 15-3849-3619
+                    Zuviria 955, San Miguel, Bs. <br>
                 </p>
+                <div class="inputTextLabelCentradoRecibo">
+                    <label style="position:relative; top: -10px;"><span class="icon-whatsapp"></span> 011
+                        15-3849-3619</label><br>
+                    <label style="position:relative; top: -18px;"><span class="icon-mail2"></span>
+                        walter_bentancor@hotmail.com</label>
+                </div>
             </div>
             <!-- COLUMNA 2 -->
             <div class="col-md-6">
                 <!-- FECHA-->
                 <div class="col-md-4"></div>
-                <div class="col-md-2">
-                    <label class="labelSubtitulo">Fecha</label>
+                <div class="col-md-2" style="position:relative; top: 30px;">
+                    <label class="labelSubtituloRecibo">Fecha</label>
                 </div>
-                <div class="col-md-6">
-                    <input type="text" class="inputTextLabel" name="noOfiFecha"
+                <div class="col-md-6" style="position:relative; top: 30px;">
+                    <input type="text" class="inputTextLabelRecibo" name="noOfiFecha"
                            id="noOfiFecha" readonly="readonly">
                 </div>
             </div>
@@ -32,77 +38,52 @@
                 <!-- NUMERO DE COMPROBANTE-->
                 <div class="col-md-1"></div>
                 <div class="col-md-1" style="width: 110px">
-                    <label class="labelSubtitulo">Recibo N°</label>
+                    <label class="labelSubtituloRecibo">Recibo N°</label>
                 </div>
                 <div class="col-md-2">
-                    <input type="text" class="inputTextLabel" name="noOfiNumeroComprobante"
+                    <input type="text" class="inputTextLabelRecibo" name="noOfiNumeroComprobante"
                            id="noOfiNumeroComprobante" readonly="readonly">
                 </div>
-
-                <!-- UNIDAD FUNCIONAL-->
-                <div class="col-md-2" style="width: 175px">
-                    <label class="labelSubtitulo">Unidad Funcional</label>
-                </div>
-                <div class="col-md-1">
-                    <input type="text" class="inputTextLabel" name="noOfiUnidadFuncional"
-                           id="noOfiUnidadFuncional" readonly="readonly">
-                </div>
-                <!-- EL PAGO CORRESPONDE AL MES Y AÑO: -->
-                <div class="col-md-1" style="width: 115px">
-                    <label class="labelSubtitulo">Mes y Año</label>
-                </div>
-                <div class="col-md-1" style="width: 50px">
-                    <input type="text" class="inputTextLabel" name="noOfiCorrespondienteMes"
-                           id="noOfiCorrespondienteMes" readonly="readonly" style="width: 50px">
-                </div>
-                <div class="col-md-1" style="width: 20px">
-                    <label class="labelSubtitulo">/</label>
-                </div>
-                <div class="col-md-1">
-                    <input type="text" class="inputTextLabel" name="noOfiCorrespondienteAnio"
-                           id="noOfiCorrespondienteAnio" readonly="readonly">
-                </div>
-                <div class="col-md-1"></div>
+                <div class="col-md-8"></div>
 
             </div>
             <div class="row">
                 <!-- INMUEBLE-->
                 <div class="col-md-1"></div>
                 <div class="col-md-1" style="width: 110px">
-                    <label class="labelSubtitulo">Inmueble</label>
+                    <label class="labelSubtituloRecibo">Inmueble</label>
                 </div>
                 <div class="col-md-9">
-                    <input type="text" class="inputTextLabel" name="noOfiDomicilio"
-                           id="noOfiDomicilio" readonly="readonly">
+                    <label class="inputTextLabelRecibo">Zuviria 955, San Miguel, Bs. As.</label>
                 </div>
             </div>
             <div class="row">
                 <!-- LOCATARIO-->
                 <div class="col-md-1"></div>
                 <div class="col-md-1" style="width: 110px">
-                    <label class="labelSubtitulo">Recibi de</label>
+                    <label class="labelSubtituloRecibo">Recibi de</label>
                 </div>
                 <div class="col-md-6" style="width: 490px">
-                    <input type="text" class="inputTextLabel" name="noOfiLocatario"
+                    <input type="text" class="inputTextLabelRecibo" name="noOfiLocatario"
                            id="noOfiLocatario" readonly="readonly">
                 </div>
                 <!-- ID REGISTRO DE PAGO - ESTA OCULTO-->
                 <div class="col-md-1">
-                    <input type="text" class="inputTextLabel inputOculto" name="noOfiIdRegistroPago"
+                    <input type="text" class="inputTextLabelRecibo inputOculto" name="noOfiIdRegistroPago"
                            id="noOfiIdRegistroPago" readonly="readonly">
                 </div>
                 <!-- ID CONTRATO - ESTA OCULTO-->
                 <div class="col-md-1">
-                    <input type="text" class="inputTextLabel inputOculto" name="noOfiIdContrato"
+                    <input type="text" class="inputTextLabelRecibo inputOculto" name="noOfiIdContrato"
                            id="noOfiIdContrato" readonly="readonly">
                 </div>
                 <!-- TIPO COMPROBANTE - ESTA OCULTO-->
                 <div class="col-md-1">
-                    <input type="text" class="inputTextLabel inputOculto" name="noOfiTipoComprobante"
+                    <input type="text" class="inputTextLabelRecibo inputOculto" name="noOfiTipoComprobante"
                            id="noOfiTipoComprobante" readonly="readonly">
                 </div>
                 <div class="col-md-1">
-                    <input type="text" class="inputTextLabel inputOculto" name="noOfiIdComprobanteDePago"
+                    <input type="text" class="inputTextLabelRecibo inputOculto" name="noOfiIdComprobanteDePago"
                            id="noOfiIdComprobanteDePago" readonly="readonly">
                 </div>
             </div>
@@ -112,7 +93,7 @@
             <div class="row">
                 <div class="col-md-1"></div>
                 <div class="col-md-11">
-                    <label class="labelSubtitulo">En concepto de pago</label>
+                    <label class="labelSubtituloRecibo">En concepto de pago</label>
                 </div>
             </div>
             <br>
@@ -120,13 +101,25 @@
                 <!-- ALQUILER MENSUAL-->
                 <div class="col-md-1"></div>
                 <div class="col-md-2">
-                    <label class="labelSubtituloNormal">Alquiler Mensual</label>
+                    <label class="labelSubtituloNormalRecibo">Conceptos Varios</label>
                 </div>
                 <div class="col-md-2">
-                    <input type="text" class="inputTextLabel" name="noOfiAlquilerMensual"
+                    <input type="text" class="inputTextLabelRecibo" name="noOfiAlquilerMensual"
                            id="noOfiAlquilerMensual" readonly="readonly">
                 </div>
                 <div class="col-md-7"></div>
+            </div>
+            <!-- IMPORTE EN LETRAS-->
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-2">
+                    <label class="labelSubtituloNormalRecibo">La suma de</label>
+                </div>
+                <div class="col-md-6" style="width: 400px;">
+                    <input type="text" class="labelSubtituloNormalRecibo" name="noOfiImporteRecibidoEnLetra"
+                           id="noOfiImporteRecibidoEnLetra" style="width: 400px;">
+                </div>
+                <div class="col-md-3"></div>
             </div>
             <br>
 
@@ -134,10 +127,10 @@
             <div class="row">
                 <div class="col-md-7"></div>
                 <div class="col-md-2">
-                    <label class="labelSubtitulo">Sub Total</label>
+                    <label class="labelSubtituloRecibo">Sub Total</label>
                 </div>
                 <div class="col-md-2">
-                    <input type="text" class="inputTextLabel" name="noOfiSubTotal"
+                    <input type="text" class="inputTextLabelRecibo" name="noOfiSubTotal"
                            id="noOfiSubTotal" readonly="readonly">
                 </div>
                 <div class="col-md-1"></div>
@@ -147,10 +140,10 @@
             <div class="row">
                 <div class="col-md-7"></div>
                 <div class="col-md-2">
-                    <label class="labelSubtituloNormal">Otros Conceptos</label>
+                    <label class="labelSubtituloNormalRecibo">Otros Conceptos</label>
                 </div>
                 <div class="col-md-2">
-                    <input type="text" class="inputTextLabel" name="noOfiInteresPorMora"
+                    <input type="text" class="inputTextLabelRecibo" name="noOfiInteresPorMora"
                            id="noOfiInteresPorMora" onchange="valorInteresPorMoraEditado(this.value);">
                 </div>
                 <div class="col-md-1"></div>
@@ -159,26 +152,20 @@
             <div class="row">
                 <div class="col-md-7"></div>
                 <div class="col-md-2">
-                    <label class="labelSubtitulo">Total</label>
+                    <label class="labelSubtituloRecibo">Total</label>
                 </div>
                 <div class="col-md-2">
-                    <input type="text" class="inputTextLabel" name="noOfiTotal"
+                    <input type="text" class="inputTextLabelRecibo" name="noOfiTotal"
                            id="noOfiTotal" readonly="readonly">
                 </div>
                 <div class="col-md-1"></div>
             </div>
-            <!-- IMPORTE EN LETRAS-->
-            <div class="row">
-                <div class="col-md-7"></div>
-                <div class="col-md-5">
-                    <input type="text" class="inputTextLabel" name="noOfiImporteRecibidoEnLetra"
-                           id="noOfiImporteRecibidoEnLetra">
-                </div>
-            </div>
             <br><br>
 
         </div>
+        <br><br><br><br><br>
     </div>
+    <br>
     <div class="row">
         <div class="col-md-9"></div>
         <div class="col-md-3">
