@@ -1625,14 +1625,13 @@ function cargarVisualizacionRecibo(datosParaCargarRecibo) {
     let deposito = datosParaCargarRecibo["valorDeposito"];
     let tipoComprobante = datosParaCargarRecibo["tipoComprobanteDePago"];
 
+
     let subTotal = alquilerMensual + expensas + gasAdm + deposito;
 
-    var fecha = new Date();
-    var options = {day: 'numeric', month: 'numeric', year: 'numeric'};
-    var fechaHoy = fecha.toLocaleDateString("es-ES", options);
+    let fechaComprobante = datosParaCargarRecibo["fechaComprobante"];
+    var fechaFormato = fechaComprobante.replace(/^(\d{4})-(\d{2})-(\d{2})$/g,'$3/$2/$1');
+    $("#visualizacionFecha").val(fechaFormato);
 
-
-    $("#visualizacionFecha").val(fechaHoy);
     $("#visualizacionNumeroComprobante").val(datosParaCargarRecibo["numeroComprobante"]);
     $("#visualizacionUnidadFuncional").val(datosParaCargarRecibo["torre"]);
 
@@ -1781,7 +1780,13 @@ function printPdfReciboOficial() {
             var width = doc.internal.pageSize.getWidth();
             var height = doc.internal.pageSize.getHeight();
             height = ratio * width;
-            doc.addImage(imgData, 'JPEG', 0, 10, width + 0, height + 20);
+            /*
+             Primer Numero (5) -> si es numero positivo le va a dar margen derecho, si es negativo, el recibo le sacaria parte del lado izuierdo
+             Segundo Numero (10) -> es para el margen de arriba
+             Tercer Numero (-10) -> le da margen derecho
+             Cuarto Numero (+7) -> si el numero es mas alto, el recibo se veria con letras mas estiradas horizontalmente
+            */
+            doc.addImage(imgData, 'JPEG', 5, 10, width + -10, height + 7);
             doc.save('ReciboOficial-' + numeroComprobante + '.pdf');
         });
 }
@@ -1802,6 +1807,12 @@ function printPdfReciboNoOficial() {
             var width = doc.internal.pageSize.getWidth();
             var height = doc.internal.pageSize.getHeight();
             height = ratio * width;
+            /*
+                Primer Numero (5) -> si es numero positivo le va a dar margen derecho, si es negativo, el recibo le sacaria parte del lado izuierdo
+                Segundo Numero (10) -> es para el margen de arriba
+                Tercer Numero (-10) -> le da margen derecho
+                Cuarto Numero (+7) -> si el numero es mas alto, el recibo se veria con letras mas estiradas horizontalmente
+            */
             doc.addImage(imgData, 'JPEG', 0, 10, width + 0, height + 20);
             doc.save('ReciboNoOficial-' + numeroComprobante + '.pdf');
         });
@@ -1823,29 +1834,14 @@ function printPdfReciboOficialSoloSaldo() {
             var width = doc.internal.pageSize.getWidth();
             var height = doc.internal.pageSize.getHeight();
             height = ratio * width;
+            /*
+                Primer Numero (5) -> si es numero positivo le va a dar margen derecho, si es negativo, el recibo le sacaria parte del lado izuierdo
+                Segundo Numero (10) -> es para el margen de arriba
+                Tercer Numero (-10) -> le da margen derecho
+                Cuarto Numero (+7) -> si el numero es mas alto, el recibo se veria con letras mas estiradas horizontalmente
+            */
             doc.addImage(imgData, 'JPEG', 0, 10, width + 0, height + 20);
             doc.save('ReciboOficialSoloSaldo-' + numeroComprobante + '.pdf');
-        });
-}
-
-function printPdfReciboNoOficialSoloSaldo() {
-    var numeroComprobante = document.getElementById("saldo3NumeroComprobante").value;
-
-    var divHeight = $('#bodyReciboNoOficialSoloSaldo').height();
-    var divWidth = $('#bodyReciboNoOficialSoloSaldo').width();
-    var ratio = divHeight / divWidth;
-    var body = document.getElementById('bodyReciboNoOficialSoloSaldo');
-    html2canvas(body)
-        .then(function (canvas) {
-            document.body.appendChild(canvas);
-            var imgData = canvas.toDataURL('image/png');
-
-            var doc = new jsPDF();
-            var width = doc.internal.pageSize.getWidth();
-            var height = doc.internal.pageSize.getHeight();
-            height = ratio * width;
-            doc.addImage(imgData, 'JPEG', 0, 10, width + 0, height + 20);
-            doc.save('ReciboNoOficialSoloSaldoNumero-' + numeroComprobante + '.pdf');
         });
 }
 

@@ -288,8 +288,21 @@ input:focus, input.form-control:focus, button:focus, select:focus {
 /* Centrar Titulos Recibo */
 /*====================================================================================*/
 .centrarMiTituloRecibo{
-    line-height:100px;
+    line-height:1px;
     text-align:center;
+}
+.centrarMiTituloRecibo>label {
+    display:inline-block;
+    /*vertical-align:middle;*/
+    line-height:normal;
+}
+/*====================================================================================*/
+/* Centrar Titulos Recibo */
+/*====================================================================================*/
+.centrarMiTituloRecibo2{
+    line-height:1px;
+    text-align:center;
+    height: 10px;
 }
 .centrarMiTituloRecibo>label {
     display:inline-block;
@@ -305,7 +318,7 @@ input:focus, input.form-control:focus, button:focus, select:focus {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    height: 130px;
+    height: 70px;
     border-radius: 25px 25px 25px 25px; /*esquinas redondeadas*/
 }
 
@@ -424,6 +437,137 @@ input:focus, input.form-control:focus, button:focus, select:focus {
     color: #3a5ba0;
     background-color: white;
     border: 2px solid #3a5ba0;
+}
+
+/*====================================================================================
+ Labels negrita RECIBO VISUALIZACION
+====================================================================================*/
+.labelSubtituloRecibo {
+    color: black;
+    background-color: transparent;
+    font: bold 18px "Product Sans";
+    border-style: none;
+}
+
+/*====================================================================================
+ Input tipo text que se vea como label CENTRADO RECIBO VISUALIZACION
+====================================================================================*/
+.inputTextLabelCentradoRecibo {
+    font: bold 16px "Product Sans";
+    width: 100%;
+    border: none;
+    background: none;
+    outline: 0; /*para que no se vea el borde al seleccionar la caja de texto*/
+    color: black; /*color a lo que escriba el usuario*/
+    text-align: center;
+}
+
+/*====================================================================================
+ Input tipo text que se vea como label RECIBO VISUALIZACION
+====================================================================================*/
+.inputTextLabelRecibo {
+    font-size: 18px;
+    font-weight: bold;
+    font: normal 16px "Product Sans";
+    width: 100%;
+    /*padding: .7em;*/
+    border: none;
+    background: none;
+    outline: 0; /*para que no se vea el borde al seleccionar la caja de texto*/
+    color: black; /*color a lo que escriba el usuario*/
+}
+
+/*====================================================================================
+ Labels normal RECIBO VISUALIZACION
+====================================================================================*/
+.labelSubtituloNormalRecibo {
+    color: black;
+    background-color: transparent;
+    font: normal 18px "Product Sans";
+    border-style: none;
+}
+
+/*====================================================================================*/
+/* Titulos Recibo RECIBO VISUALIZACION */
+/*====================================================================================*/
+.miTituloReciboReciboRecibo {
+    color: black;
+    font: bold 45px "Arial";
+    text-shadow: 3px 3px 2px gray;
+    text-align: center;
+}
+
+/*====================================================================================*/
+/* Titulos Recibo RECIBO VISUALIZACION */
+/*====================================================================================*/
+.miTituloReciboReciboRecibo2 {
+    color: black;
+    font: bold 20px "Arial";
+    text-align: center;
+}
+
+/*====================================================================================
+  Container con borde y puntas redondeadas RECIBO VISUALIZACION
+====================================================================================*/
+.miContainerRecibo {
+    background-image: url("../../resources/images/fondoGH.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border: black 2px solid;
+    box-shadow: 0 0 6px black; /* Sombreado */
+    border-radius: 20px 20px 20px 20px; /*esquinas redondeadas*/
+}
+
+/*====================================================================================
+  Container con borde y puntas redondeadas RECIBO VISUALIZACION
+====================================================================================*/
+.miContainerRecibo2 {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-top: black 3px solid;
+    border-bottom: black 3px solid;
+    height: 100px;
+}
+
+
+/*====================================================================================
+  ICONOS BAJADO DE LA SIGUIENTE PAGINA   https://icomoon.io/
+====================================================================================*/
+@font-face {
+    font-family: 'icomoon';
+    src:  url('../iconos/icomoon.eot?7bwcpl');
+    src:  url('../iconos/icomoon.eot?7bwcpl#iefix') format('embedded-opentype'),
+    url('../iconos/icomoon.ttf?7bwcpl') format('truetype'),
+    url('../iconos/icomoon.woff?7bwcpl') format('woff'),
+    url('../iconos/icomoon.svg?7bwcpl#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: revert;
+    /*speak: never;*/
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-mail2:before {
+    content: "\ea84";
+}
+.icon-whatsapp:before {
+    content: "\ea93";
 }
 
 
