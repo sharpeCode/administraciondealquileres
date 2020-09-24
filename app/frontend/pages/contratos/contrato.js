@@ -1891,3 +1891,259 @@ function convertirNumeroALetra(num) {
     console.log("Fin llamada controller usuario");
 }
 
+
+////////////////////////////////////////////////////////////////////////////////
+
+var paginador;            //Referencia el elemento
+var totalPaginas;         //Se debe calcular
+var itemsPorPagina = 4;   //Elementos a mostrar desde la base de datos
+var numerosPorPagina = 5; //Cantidad maxima de enlaces visibles en el paginador
+var current_paginator_item=1;
+
+
+function creaPaginador(totalItems, id)
+{
+    //Obtener la referencia el elemento
+    paginador = $(".pagination");
+
+    if (totalItems>24)
+    {
+        numerosPorPagina = 10;
+    }
+    else
+    {
+        numerosPorPagina = 5;
+    }
+
+    //Calcular el numero de paginas para el paginador
+    totalPaginas = Math.ceil(totalItems/itemsPorPagina);
+
+    ///Enlace que lleva a la primera página
+    $('<li class="page_item c"><a href="#" class="first_link"><</a></li>').appendTo(paginador);
+
+    //Enlace que lleva a la página previa
+    $('<li class="page_item prev_link"> <a href="#" aria-label="Previous" class="prev_link"> <span aria-hidden="true">&laquo;</span> </a> </li>').appendTo(paginador);
+
+
+    var pag = 0;
+    while(totalPaginas > pag)
+    {
+        //Enlace que lleva a la página seleccionada
+        $('<li class="page_item a"><a href="#" class="page_link">'+(pag+1)+'</a></li>').appendTo(paginador);
+        pag++;
+    }
+
+    //Enlace que lleva a la página siguiente
+    $('<li class="page_item next_link"> <a href="#" aria-label="Next" class="next_link"> <span aria-hidden="true">&raquo;</span> </a> </li>').appendTo(paginador);
+
+    //Enlace que lleva a la última página
+    $('<li class="page_item"><a href="#" class="last_link">></a></li>').appendTo(paginador);
+
+    //Añade la clase "active" al primer elemento del paginador que tenga la clase ".page_link"
+    paginador.find(".page_link:first").addClass("active");
+    //Añade la clase "active" al primer elemento de la lista de enlaces del paginador
+    paginador.find(".page_link:first").parents("li").addClass("active");
+
+    //Esconde el enlace a página previa
+     paginador.find(".prev_link").hide();
+
+    //Carga la página al hacer click en el enlace
+    paginador.find("li .page_link").click(function()
+    {
+        var irpagina =$(this).html().valueOf()-1;
+        cargaPagina(irpagina,id);
+        return false;
+    });
+
+    //Carga la primera página
+    paginador.find("li .first_link").click(function()
+    {
+        var irpagina =0;
+        cargaPagina(irpagina, id);
+        return false;
+    });
+
+    //Carga la página previa
+    paginador.find("li .prev_link").click(function()
+    {
+        var irpagina =parseInt(paginador.data("pag")) -1;
+        cargaPagina(irpagina, id);
+        return false;
+    });
+
+    //Carga la siguiente página
+    paginador.find("li .next_link").click(function()
+    {
+        var irpagina =parseInt(paginador.data("pag")) +1;
+        cargaPagina(irpagina, id);
+        return false;
+    });
+
+    //Carga la última página
+    paginador.find("li .last_link").click(function()
+    {
+        var irpagina =totalPaginas -1;
+        cargaPagina(irpagina, id);
+        return false;
+    });
+
+    cargaPagina(0, id);
+
+    $(".page_link").on("click", function(e)
+    {
+        //decir que se envia por ajax (evita que se recargue la pagina)
+        e.preventDefault();
+        //Quita la clase "active" de todos los elementos
+        $(".page_link").removeClass("active");
+        //Pone la clase "active" en el elemento cliqueado
+        $(this).addClass("active");
+
+        current_paginator_item=$(".page_link").index(this)+1;
+    });
+
+    $(".first_link").on("click", function(e)
+    {
+        e.preventDefault();
+        //Quita la clase "active" de todos los elementos
+        $(".page_link").removeClass("active");
+        $(".page_link:eq(0)").addClass("active");
+        current_paginator_item=1;
+    });
+
+    $(".last_link").on("click", function(e)
+    {
+        e.preventDefault();
+        //Quita la clase "active" de todos los elementos
+        $(".page_link").removeClass("active");
+        var n = $(".page_link").length;
+        $(".page_link:eq(" + (n-1)  + ")").addClass("active");
+        current_paginator_item=n;
+    });
+
+    $(".next_link").on("click", function(e)
+    {
+        e.preventDefault();
+        //Quita la clase "active" de todos los elementos
+        $(".page_link").removeClass("active");
+        $(".page_link:eq(" + current_paginator_item  + ")").addClass("active");
+        current_paginator_item++;
+    });
+
+    $(".prev_link").on("click", function(e)
+    {
+        e.preventDefault();
+        //Quita la clase "active" de todos los elementos
+        $(".page_link").removeClass("active");
+        current_paginator_item--;
+        $(".page_link:eq(" + (current_paginator_item-1)  + ")").addClass("active");
+    });
+}
+
+function cargaPagina(pagina, id)
+{
+    ///calcular desde donde se leerá la base de datos
+    var desde = pagina * itemsPorPagina;
+
+    let uri = EndpointsEnum.REGISTRO_DE_PAGO;
+
+    $.ajax({
+        url: uri,
+        method: "POST",
+        data: {
+            action: "listar",
+            idContrato: id,
+            limit:itemsPorPagina,
+            offset:desde
+        }
+    }).done(function(data)
+    {
+        llenarRegistroDePagoGrilla(data);
+
+    }).fail(function(jqXHR,textStatus,textError)
+    {
+        alert("Error al realizar la peticion dame " + textError);
+
+    });
+
+    if(pagina >= 1)
+    {
+        //Muestra el enlace a página previa
+        paginador.find(".prev_link").show();
+    }
+    else
+    {
+        //Oculta el enlace a página previa
+        paginador.find(".prev_link").hide();
+    }
+
+
+    if(pagina < totalPaginas - 1)
+    {
+        //Muestra el enlace a página siguiente
+        paginador.find(".next_link").show();
+    }
+    else
+    {
+        //Oculta el enlace a página siguiente
+        paginador.find(".next_link").hide();;
+    }
+
+    //Obtiene el número de página sellecionada (current)
+    paginador.data("pag",pagina);
+
+    if(numerosPorPagina>1)
+    {
+        //oculta todos los enlces
+        $(".page_link").hide();
+        $(".a").hide();
+
+        if(pagina < (totalPaginas - numerosPorPagina))
+        {
+            $(".page_link").slice(pagina,numerosPorPagina + pagina).show();
+            $(".a").slice(pagina,numerosPorPagina + pagina).show();
+        }
+        else
+        {
+            ///alert("2");
+            if(totalPaginas > numerosPorPagina)
+            {
+                $(".page_link").slice(totalPaginas - numerosPorPagina).show();
+                $(".a").slice(totalPaginas - numerosPorPagina).show();
+            }
+
+        }
+    }
+}
+
+function buscarCantidadDeRegistros(id)
+{
+    let uri = EndpointsEnum.REGISTRO_DE_PAGO;
+
+    let funcionAjax = $.ajax({
+        url: uri,
+        method: "POST",
+        data: {
+            action: "buscarCantidadDeRegistros",
+            idContrato:id
+        }
+    });
+
+    funcionAjax.done(function (retorno) {
+        let array = JSON.parse(retorno);
+        let count = array['cantidad'];
+        console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        console.log(count,id);
+        creaPaginador(count, id );
+    });
+
+    funcionAjax.fail(function (retorno) {
+        console.log("error al cargar select con alumnos")
+    });
+
+    funcionAjax.always(function (retorno) {
+        console.log("volvi de buscar a los alumnos")
+    });
+}
+
+
+
