@@ -87,7 +87,8 @@ function ListadoDeRegistrosDePago() {
     $("#visualizarReciboNoOficial").hide();
     $("#comprobDePagoSaldoNoOficial").hide();
     $("#visualizarReciboNoOficialSoloSaldo").hide();
-    listarRegDePago(idContrato);
+    //listarRegDePago(idContrato);
+    buscarCantidadDeRegistros(idContrato);
     llenarInputs(idContrato);
 
 }
@@ -108,7 +109,8 @@ function listarRegistrosDePagos(idContrato) {
     $("#visualizarReciboNoOficial").hide();
     $("#comprobDePagoSaldoNoOficial").hide();
     $("#visualizarReciboNoOficialSoloSaldo").hide();
-    listarRegDePago(idContrato);
+    //listarRegDePago(idContrato);
+    buscarCantidadDeRegistros(idContrato);
     llenarInputs(idContrato);
 }
 
@@ -283,7 +285,6 @@ function traerTodos(doneFunction, data) {
     data = data === undefined ? {action: "traerTodos"} : data;
 
     let uri = EndpointsEnum.CONTRATO;
-    console.log("Llamando a controller locatarios = " + uri);
 
     var funcionAjax = $.ajax({
         url: uri,

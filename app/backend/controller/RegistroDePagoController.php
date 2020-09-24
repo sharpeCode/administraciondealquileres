@@ -20,7 +20,9 @@ switch ($action) {
     case "mostrarDatosParaCabeceraDeRegistrosDePago":
         mostrarDatosParaCabeceraDeRegistrosDePago($_POST['idContrato']);
         break;
-
+    case "buscarCantidadDeRegistros":
+        buscarCantidadDeRegistros($_POST['idContrato']);
+        break;
     default:
         console . log("NO SE QUE HACER VIEJA");
         break;
@@ -162,12 +164,20 @@ function generarRegistrosDePagos()
 
 function traerRegistroDePago($idContrato)
 {
-    $registroDePagos = RegistroPagoRepositorio::listarRegistroDePagosPorIdContrato($idContrato);
+    $offset = $_POST['offset'];
+    $limit = $_POST['limit'];
+    $registroDePagos = RegistroPagoRepositorio::listarRegistroDePagosPorIdContrato($idContrato, $offset, $limit);
     echo json_encode($registroDePagos);
 }
 
 function mostrarDatosParaCabeceraDeRegistrosDePago($idContrato)
 {
     $datos = RegistroPagoRepositorio::mostrarDatosParaCabeceraDeRegistrosDePago($idContrato);
+    echo json_encode($datos);
+}
+
+function buscarCantidadDeRegistros($idContrato)
+{
+    $datos = RegistroPagoRepositorio::buscarCantidadDeRegistros($idContrato);
     echo json_encode($datos);
 }

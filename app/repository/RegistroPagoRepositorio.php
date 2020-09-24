@@ -2,6 +2,7 @@
 require_once '../entity/RegistroPago.php';
 require_once '../entity/Contrato.php';
 require_once '../entity/ComprobanteDePago.php';
+require_once '../entity/CantidadDeRegistrosPorContrato.php';
 require_once 'BaseRepository.php';
 
 class RegistroPagoRepositorio
@@ -49,7 +50,7 @@ class RegistroPagoRepositorio
 
     }
 
-    public static function listarRegistroDePagosPorIdContrato($idContrato)
+    public static function listarRegistroDePagosPorIdContrato($idContrato, $offset, $limit )
     {
         $registroDePagos = null;
         try {
@@ -66,7 +67,7 @@ class RegistroPagoRepositorio
             INNER JOIN localidades LOC ON LOC.id_localidad = I.id_localidad
             INNER JOIN provincias P ON P.id_provincia = LOC.id_provincia
             INNER JOIN  meses M ON M.id_mes = RP.correspondiente_mes
-            WHERE RP.id_contrato = $idContrato";
+            WHERE RP.id_contrato = $idContrato LIMIT $offset,$limit";
 
             $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
             $sentencia->execute();
@@ -290,5 +291,22 @@ class RegistroPagoRepositorio
         return $respuesta;
     }
 
+    public static function buscarCantidadDeRegistros($idContrato)
+    {
+        $datos = null;
+        try {
+            $sql = "SELECT COUNT(id_contrato) AS cantidad
+            FROM registros_de_pagos 
+            WHERE id_contrato = $idContrato";
 
+            $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
+            $sentencia->execute();
+            $datos = $sentencia->fetchObject("CantidadDeRegistrosPorContrato");
+
+        } catch (PDOException $ex) {
+            print 'ERROR' . $ex->getMessage();
+            $datos = null;
+        }
+        return $datos;
+    }
 }
