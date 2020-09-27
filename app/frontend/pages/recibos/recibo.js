@@ -3,6 +3,7 @@ $(function () {
     $("#visualizarReciboOficial").hide();
     $("#visualizarReciboNoOficial").hide();
     $("#visualizarReciboSaldoOficial").hide();
+    llenarSelectConInmueblesEnRecibos();
     listarRecibos();
 });
 
@@ -59,7 +60,6 @@ function listadoCompDePago(doneFunction, data) {
     data = data === undefined ? {action: "listadoCompDePago"} : data;
 
     let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
-    console.log("Llamando a comprobante de pago controller = " + uri);
 
     var funcionAjax = $.ajax({
         url: uri,
@@ -124,7 +124,6 @@ function contruirFilasComprobantesDePagos(compPagos) {
 function buscarDatosRecibo(idComprobanteDePago) {
 
     let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
-    console.log("Llamando a comprobante de pagos = " + uri);
 
     var funcionAjax = $.ajax({
         url: uri,
@@ -168,7 +167,6 @@ function cargarReciboOficial(idComprobantesDePago) {
     console.debug("trayendo datos de recibo");
 
     let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
-    console.log("Llamando a controller locatarios = " + uri);
 
     var funcionAjax = $.ajax({
         url: uri,
@@ -238,7 +236,6 @@ function cargarReciboNoOficial(idComprobantesDePago) {
     console.debug("trayendo datos de recibo");
 
     let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
-    console.log("Llamando a controller locatarios = " + uri);
 
     var funcionAjax = $.ajax({
         url: uri,
@@ -291,7 +288,6 @@ function cargarReciboOficialSoloSaldo(idComprobantesDePago) {
     console.debug("trayendo datos de recibo");
 
     let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
-    console.log("Llamando a controller locatarios = " + uri);
 
     var funcionAjax = $.ajax({
         url: uri,
@@ -451,5 +447,57 @@ function convertirNumeroALetra(num) {
     console.log("Fin llamada controller usuario");
 }
 
+function llenarSelectConInmueblesEnRecibos() {
+console.log("111111111111111111111111");
+    let uri = EndpointsEnum.CONTRATO;
 
+    var funcionAjax = $.ajax({
+        url: uri,
+        method: "POST",
+        data: {
+            action: "cargarSelectConInmueble",
+        }
+    });
+
+    funcionAjax.done(function (retorno) {
+        llenarDomInmuebles2(retorno);
+
+    });
+
+    funcionAjax.fail(function (retorno) {
+        console.log("error al cargar select con alumnos")
+    });
+
+    funcionAjax.always(function (retorno) {
+        console.log("volvi de buscar a los alumnos")
+    });
+}
+
+function llenarDomInmuebles2(arrayInmuebles) {
+    console.log("22222222222222222222222222222222222222222");
+    console.log(arrayInmuebles);
+    arrayInmuebles = JSON.parse(arrayInmuebles);
+    let options = "";
+
+    //para agregarle placeholder a la lista desplegable
+    let optionDefault = "<option value='-1'>Inmuebles</option>";
+    options += optionDefault;
+
+    for (var i = 0, l = arrayInmuebles.length; i < l; i++) {
+        options += optionsInmuebles2(arrayInmuebles[i]);
+    }
+    $("#idInmuebleRecibo").html(options);
+    //document.getElementById('provincia').selectedIndex = -1;
+
+}
+
+function optionsInmuebles2(Inmuebles){
+    console.log("33333333333333333333333333333333333");
+    let option = "";
+    option += "<option value='" + Inmuebles['idInmueble'] + "'>" +
+        Inmuebles['domicilio'] + ", Piso: " + Inmuebles['piso'] + ", Dto: " + Inmuebles['departamento'] +
+        ", " + Inmuebles['localidad'] + " - " + Inmuebles['tipo'] + "</option>";
+    return option;
+
+}
 

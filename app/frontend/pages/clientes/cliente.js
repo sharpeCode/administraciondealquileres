@@ -82,7 +82,6 @@ function getAll(doneFunction, data) {
     data = data === undefined ? {action: "getAll"} : data;
 
     let uri = EndpointsEnum.CLIENTE;
-    console.log("Llamando a controller clientes = " + uri);
 
     var funcionAjax = $.ajax({
         url: uri,
@@ -170,7 +169,6 @@ function showFormEdit(dni) {
 function loadClienteDataEdit(dni) {
 
     let uri = EndpointsEnum.CLIENTE;
-    console.log("Llamando a controller locatarios = " + uri);
 
     var funcionAjax = $.ajax({
         url: uri,
@@ -203,7 +201,6 @@ function fillFormEdit(cliente) {
     $("#editFechaNacimiento").val(fechaNac);
     $("#editDatosGarante").val(cliente["datosGarante"]);
     $("#editDomicilioLegal").val(cliente["domicilioLegal"]);
-    console.log($("#editDomicilioLegal").val(cliente["domicilioLegal"]));
 }
 
 function guardarClienteEditado() {
@@ -248,7 +245,6 @@ function showDetailForm(dni) {
 function loadClienteDataDetail(dni) {
 
     let uri = EndpointsEnum.CLIENTE;
-    console.log("Llamando a controller cliente = " + uri);
 
     var funcionAjax = $.ajax({
         url: uri,
@@ -328,9 +324,8 @@ function buscarLocatarioPorNombre(doneFunction, data) {
     data = data === undefined ? {action: "traerClientePorNombre"} : data;
 
     let uri = EndpointsEnum.CLIENTE;
-    console.log("Llamando a controller cliente = " + uri);
 
-    var funcionAjax = $.ajax({
+    let funcionAjax = $.ajax({
         url: uri,
         method: "POST",
         data: data
@@ -355,7 +350,6 @@ function locatarioFilter(doneFunction, data) {
     data = data === undefined ? {action: "locatarioFilter"} : data;
 
     let uri = EndpointsEnum.CLIENTE;
-    console.log("Llamando a controller cliente = " + uri);
 
     var funcionAjax = $.ajax({
         url: uri,

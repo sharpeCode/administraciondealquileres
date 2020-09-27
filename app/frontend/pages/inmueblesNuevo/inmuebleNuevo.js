@@ -191,7 +191,6 @@ function guardarInmueble() {
 
     if(inmuebleNuevoParaGuardar["tipo"] == "Tipo de Inmueble")
     {
-        console.log("ENTROOOO AL IFFFFF");
         window.alert("Debe ingresar el tipo de Inmueble.");
     }
     else {

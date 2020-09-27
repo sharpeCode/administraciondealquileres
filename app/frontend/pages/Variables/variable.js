@@ -76,7 +76,6 @@ function mostrarFormAdd() {
 
 function llenarSelectConVariables() {
     let uri = EndpointsEnum.VARIABLES;
-    console.log("Volver al listado de inmuebles = " + uri);
 
     var funcionAjax = $.ajax({
         url: uri,
@@ -121,7 +120,6 @@ function optionsVariable(variable) {
 
 function guardarVariable() {
     let variableNuevoParaGuardar = mapToJson($('#variableAdd').serializeArray());
-    console.log(variableNuevoParaGuardar);
 
     if(variableNuevoParaGuardar["idVariable"] == "-1"){
         window.alert("debe seleccionar un tipo de variable");

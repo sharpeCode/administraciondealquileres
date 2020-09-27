@@ -38,7 +38,6 @@ function validar() {
     //     }
     // });
     // funcionAjax.done(function (retorno) {
-    //     console.log("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEe");
     //     console.log(retorno);
     //     // console.debug("Done: ", retorno);
     //     // if (retorno == "ERROR1"){

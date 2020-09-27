@@ -57,8 +57,8 @@ CREATE TABLE inmuebles(
 	id_inmueble INT NOT NULL AUTO_INCREMENT,
 	tipo VARCHAR(10) NOT NULL, # Particular - Comercial
 	torre VARCHAR(15),
-	piso VARCHAR(2),
-	departamento VARCHAR(1),
+	piso VARCHAR(20),
+	departamento VARCHAR(20),
 	domicilio VARCHAR(50) NOT NULL,
 	id_localidad INT NOT NULL,
 	PRIMARY KEY(id_inmueble),
