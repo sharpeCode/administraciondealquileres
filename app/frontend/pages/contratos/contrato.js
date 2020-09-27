@@ -87,8 +87,8 @@ function ListadoDeRegistrosDePago() {
     $("#visualizarReciboNoOficial").hide();
     $("#comprobDePagoSaldoNoOficial").hide();
     $("#visualizarReciboNoOficialSoloSaldo").hide();
-    //listarRegDePago(idContrato);
-    buscarCantidadDeRegistros(idContrato);
+    listarRegDePago(idContrato);
+    //buscarCantidadDeRegistros(idContrato);
     llenarInputs(idContrato);
 
 }
@@ -551,10 +551,7 @@ function validarContratoAntesDeGuardarlo() {
 
     var datosDelContrato = mapToJson($('#contratoAdd').serializeArray());
 
-    console.log("Validar contrato antes de guardarlo: ", datosDelContrato);
-
     let uri = EndpointsEnum.CONTRATO;
-    console.log("Llamando a controller locatarios = " + uri);
 
     var funcionAjax = $.ajax({
         url: uri,
@@ -566,7 +563,6 @@ function validarContratoAntesDeGuardarlo() {
     });
     funcionAjax.done(function (retorno) {
         if (!isNaN(retorno)) {
-            console.log("holaaaaaa")
             document.getElementById('labelTituloAnio').style.display = 'block';
         }
         $("#labelAnio").val(retorno);
@@ -658,7 +654,9 @@ function listarRegDePago(idContrato) {
     traerRegistroDePago(llenarRegistroDePagoGrilla,
         {
             action: "listar",
-            idContrato: idContrato
+            idContrato: idContrato,
+            limit:itemsPorPagina,
+            offset:desde
         }
     );
 }
@@ -691,6 +689,7 @@ function traerRegistroDePago(doneFunction, data) {
 }
 
 function llenarRegistroDePagoGrilla(RegPago) {
+   console.log(RegPago);
     RegPago = JSON.parse(RegPago);
 
     let tableRaws = "";
@@ -776,7 +775,6 @@ function contruirFilasRegistroDePagos(RPago) {
             raw += "</td> ";
 
         } else if (RPago['recibo'] == "Si") {
-
             raw += "<td>";               //que aparezca el boton visualizar recibo
             raw += "<button class='miBoton-icon' title='Visualizar Recibo' onclick='buscarCuantosRecibosTiene(" + RPago['idRegistroDePago'] + ")'>" +
                 "<span class='glyphicon glyphicon-ok'></span>";
@@ -1560,10 +1558,8 @@ function contruirFilasRecibos(Rec) {
 
 // TODO: VISUALIZAR RECIBO OFICIAL
 function visualizarReciboOficialCantidadUno(idRegistroDePago) {
-    console.log("hoy sabado ");
     let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
-    console.log("Llamando a controller Comprobante de pago = " + uri);
-    var funcionAjax = $.ajax({
+    let funcionAjax = $.ajax({
         url: uri,
         method: "POST",
         data: {
@@ -1824,7 +1820,7 @@ function convertirNumeroALetra(num) {
 
     console.log("mostrando importe para pasar a letra: ", idComprobanteDePago);
     let uri = EndpointsEnum.CIFRALETRA;
-    console.log("Llamando a Importe en letra controller = " + uri);
+
     var funcionAjax = $.ajax({
         url: uri,
         method: "POST",
@@ -1860,6 +1856,7 @@ var totalPaginas;         //Se debe calcular
 var itemsPorPagina = 12;   //Elementos a mostrar desde la base de datos
 var numerosPorPagina = 1; //Cantidad maxima de enlaces visibles en el paginador
 var current_paginator_item=1;
+var desde;
 
 
 function creaPaginador(totalItems, id)
@@ -2004,7 +2001,7 @@ function creaPaginador(totalItems, id)
 function cargaPagina(pagina, id)
 {
     ///calcular desde donde se leerá la base de datos
-    var desde = pagina * itemsPorPagina;
+    desde = pagina * itemsPorPagina;
 
     let uri = EndpointsEnum.REGISTRO_DE_PAGO;
 
