@@ -304,7 +304,6 @@ function traerTodos(doneFunction, data) {
 }
 
 function llenarContratosGrilla(jsonContratos) {
-    console.log(jsonContratos);
     jsonContratos = JSON.parse(jsonContratos);
 
     let tableRaws = "";
@@ -357,7 +356,6 @@ function contruirFilas(Contratos) {
 function cargarIdContrato() {
 
     let uri = EndpointsEnum.CONTRATO;
-    console.log("Llamando a controller locatarios = " + uri);
 
     var funcionAjax = $.ajax({
         url: uri,
@@ -381,7 +379,6 @@ function cargarIdContrato() {
 function llenarSelectConLocatarios() {
 
     let uri = EndpointsEnum.CONTRATO;
-    console.log("Llamando a controller locatarios = " + uri);
 
     var funcionAjax = $.ajax({
         url: uri,
@@ -407,7 +404,6 @@ function llenarSelectConLocatarios() {
 
 function llenarDomLocatarios(arrayLocatarios) {
 
-    console.log(arrayLocatarios);
     arrayLocatarios = JSON.parse(arrayLocatarios);
     let options = "";
 
@@ -433,7 +429,6 @@ function optionsLocatarios(locatarios) {
 function llenarSelectConInmuebles() {
 
     let uri = EndpointsEnum.CONTRATO;
-    console.log("Llamando a controller locatarios = " + uri);
 
     var funcionAjax = $.ajax({
         url: uri,
@@ -444,7 +439,6 @@ function llenarSelectConInmuebles() {
     });
 
     funcionAjax.done(function (retorno) {
-        console.log(retorno);
         llenarDomInmuebles(retorno);
 
     });
@@ -460,7 +454,6 @@ function llenarSelectConInmuebles() {
 
 function llenarDomInmuebles(arrayInmuebles) {
 
-    console.log(arrayInmuebles);
     arrayInmuebles = JSON.parse(arrayInmuebles);
     let options = "";
 
@@ -489,7 +482,6 @@ function optionsInmuebles(Inmuebles) {
 function llenarSelectFechaInicioFin() {
 
     let uri = EndpointsEnum.CONTRATO;
-    console.log("Llamando a controller locatarios = " + uri);
 
     var funcionAjax = $.ajax({
         url: uri,
@@ -500,7 +492,6 @@ function llenarSelectFechaInicioFin() {
     });
 
     funcionAjax.done(function (retorno) {
-        console.log(retorno);
         llenarDomInicio(retorno);
         llenarDomFin(retorno);
 
@@ -517,7 +508,6 @@ function llenarSelectFechaInicioFin() {
 
 function llenarDomInicio(arrayFechaInicio) {
 
-    console.log(arrayFechaInicio);
     arrayFechaInicio = JSON.parse(arrayFechaInicio);
     let options = "";
 
@@ -535,7 +525,6 @@ function llenarDomInicio(arrayFechaInicio) {
 
 function llenarDomFin(arrayFechaFin) {
 
-    console.log(arrayFechaFin);
     arrayFechaFin = JSON.parse(arrayFechaFin);
     let options = "";
 
@@ -576,7 +565,6 @@ function validarContratoAntesDeGuardarlo() {
         }
     });
     funcionAjax.done(function (retorno) {
-        console.log(retorno);
         if (!isNaN(retorno)) {
             console.log("holaaaaaa")
             document.getElementById('labelTituloAnio').style.display = 'block';
@@ -604,11 +592,9 @@ function guardarContrato() {
     if (!isNaN(datosDelContrato["labelAnio"])) {
         anios = !isNaN(anios) ? parseInt(anios, 10) : 0; //si es una cadena vacia o cualquier cosa que no sea numero total = 0
         anios = parseInt(cantidad, 10) + parseInt(anios, 10);
-        console.log(anios);
 
-        console.log("Guardando contrato: ", datosDelContrato);
         let uri = EndpointsEnum.CONTRATO;
-        console.log("Llamando a controller locatarios = " + uri);
+
         var funcionAjax = $.ajax({
             url: uri,
             method: "POST",
@@ -619,7 +605,6 @@ function guardarContrato() {
         });
 
         funcionAjax.done(function (retorno) {
-            console.log("guardarRegistrosDePagos");
             guardarRegistrosDePagos();
         });
 
@@ -640,11 +625,9 @@ function guardarContrato() {
 }
 
 function guardarRegistrosDePagos() {
-    //console.log("ENTRO AL JS de guardarRegistrosDePagos");
 
     let uri = EndpointsEnum.REGISTRO_DE_PAGO;
     let href = EndpointsEnum.VOLVER_CONTRATOS;
-    console.log("Llamando a controller locatarios = " + uri);
 
     var funcionAjax = $.ajax({
         url: uri,
@@ -688,7 +671,7 @@ function traerRegistroDePago(doneFunction, data) {
     data = data === undefined ? {action: "traerRegistroDePago"} : data;
 
     let uri = EndpointsEnum.REGISTRO_DE_PAGO;
-    console.log("Llamando a controller locatarios = " + uri);
+
 
     var funcionAjax = $.ajax({
         url: uri,
@@ -708,7 +691,6 @@ function traerRegistroDePago(doneFunction, data) {
 }
 
 function llenarRegistroDePagoGrilla(RegPago) {
-
     RegPago = JSON.parse(RegPago);
 
     let tableRaws = "";
@@ -850,8 +832,6 @@ function llenarInputs(idContrato) {
     console.debug("trayendo datos de contrato");
 
     let uri = EndpointsEnum.REGISTRO_DE_PAGO;
-    console.log("Llamando a controller locatarios = " + uri);
-
 
     var funcionAjax = $.ajax({
         url: uri,
@@ -903,7 +883,6 @@ function cargarDatosDeContrato(datosContrato) {
 function llenarInputsRecibo(idRegistroDePago, ban) {
 
     let uri2 = EndpointsEnum.COMPROBANTE_DE_PAGO;
-    //console.log("Llamando a controller locatarios = " + uri);
 
     var funcionAjax = $.ajax({
         url: uri2,
@@ -999,10 +978,8 @@ function cargarDatosEnRecibo(datosParaCargarRecibo, ban) {
 
 // LLENAR INPUTS RECIBOS SOLO SALDO
 function llenarInputsReciboSoloSaldo(idRegistroDePago) {
-    //console.debug("trayendo datos de registro de pago");
 
     let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
-    console.log("Llamando a controller locatarios = " + uri);
 
     var funcionAjax = $.ajax({
         url: uri,
@@ -1049,7 +1026,6 @@ function cargarDatosEnReciboSoloSaldoPendiente(datosParaCargarReciboSaldo) {
 function llenarSelectConOpcionesSaldoAnteriorRecibo(idRegistroDePago) {
 
     let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
-    console.log("Llamando a controller locatarios = " + uri);
 
     var funcionAjax = $.ajax({
         url: uri,
@@ -1061,7 +1037,6 @@ function llenarSelectConOpcionesSaldoAnteriorRecibo(idRegistroDePago) {
     });
 
     funcionAjax.done(function (retorno) {
-        //console.log(retorno);
         llenarDomSaldoAnterior(retorno);
 
     });
@@ -1077,7 +1052,6 @@ function llenarSelectConOpcionesSaldoAnteriorRecibo(idRegistroDePago) {
 
 function llenarDomSaldoAnterior(arraySaldoAnterior) {
 
-    console.log(arraySaldoAnterior);
     arraySaldoAnterior = JSON.parse(arraySaldoAnterior);
 
     let options = "";
@@ -1134,7 +1108,6 @@ function EditarValoresReciboOficial() {
     }
 
     let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
-    console.log("Llamando a controller locatarios = " + uri);
 
     var funcionAjax = $.ajax({
         url: uri,
@@ -1156,7 +1129,6 @@ function EditarValoresReciboOficial() {
     funcionAjax.done(function (retorno) {
 
         let valores = JSON.parse(retorno);
-        console.log(valores);
 
         $("#reciboOfiSubTotal").val(valores["subTotal"]);
         $("#reciboOfiTotal").val(valores["totalImporteAPagar"]);
@@ -1187,7 +1159,6 @@ function EditarValoresReciboNoOficial() {
     }
 
     let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
-    console.log("Llamando a controller locatarios = " + uri);
 
     var funcionAjax = $.ajax({
         url: uri,
@@ -1202,7 +1173,6 @@ function EditarValoresReciboNoOficial() {
     funcionAjax.done(function (retorno) {
 
         let valores = JSON.parse(retorno);
-        console.log(valores);
 
         $("#reciboNoOfiSubTotal").val(valores["subTotal"]);
         $("#reciboNoOfiTotal").val(valores["totalImporteAPagar"]);
@@ -1233,7 +1203,6 @@ function EditarValoresReciboOficialImporteRecibido() {
     }
 
     let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
-    console.log("Llamando a controller locatarios = " + uri);
 
     var funcionAjax = $.ajax({
         url: uri,
@@ -1249,7 +1218,6 @@ function EditarValoresReciboOficialImporteRecibido() {
     funcionAjax.done(function (retorno) {
 
         let valores = JSON.parse(retorno);
-        console.log(valores);
 
         $("#reciboOfiSaldoPendiente").val(valores);
 
@@ -1266,8 +1234,6 @@ function EditarValoresReciboOficialImporteRecibido() {
 
 // GUARDAR COMPROBANTE DE PAGO OFICIAL Y NO OFICIAL
 function GuardarComprobanteDePago(num) {
-
-    console.log("voy a mostrar parametro", num);
 
     if (num == 1) { //RECIBO OFICIAL
 
@@ -1319,7 +1285,6 @@ function GuardarComprobanteDePago(num) {
         alquilerMensual, expensas, gastosAdm, deposito, cuotas, numCuota, interesPorMora, otrosConceptos, saldoAnterior, totalImporteAPagar, totalImporteRecibido, estado);
 
     let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
-    console.log("Llamando a controller comprobante de pagos = " + uri);
 
     var funcionAjax = $.ajax({
         url: uri,
@@ -1345,7 +1310,6 @@ function GuardarComprobanteDePago(num) {
             totalImporteAPagar: totalImporteAPagar,
             totalImporteRecibido: totalImporteRecibido,
             estado: estado
-
         }
     });
 
@@ -1369,7 +1333,7 @@ function GuardarComprobanteDePago(num) {
 function buscarCuantosRecibosTieneEsteRegistro(idRegistroDePago) {
 
     let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
-    console.log("Llamando a controller locatarios = " + uri);
+
     var funcionAjax = $.ajax({
         url: uri,
         method: "POST",
@@ -1473,7 +1437,6 @@ function GuardarComprobanteDePagoSoloSaldo() {
 function EliminarInhabilitarContrato(idContrato) {
 
     let uri = EndpointsEnum.CONTRATO;
-    console.log("Llamando a controller locatarios = " + uri);
 
     if (!confirm('Desea eliminar el contrato?')) {
         console.log("no se eliminara");
@@ -1626,7 +1589,6 @@ function cargarVisualizacionRecibo(datosParaCargarRecibo) {
     let deposito = datosParaCargarRecibo["valorDeposito"];
     let tipoComprobante = datosParaCargarRecibo["tipoComprobanteDePago"];
 
-
     let subTotal = alquilerMensual + expensas + gasAdm + deposito;
 
     let fechaComprobante = datosParaCargarRecibo["fechaComprobante"];
@@ -1667,7 +1629,7 @@ function cargarVisualizacionRecibo(datosParaCargarRecibo) {
 function visualizarReciboNoOficialCantidadUno(idRegistroDePago) {
 
     let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
-    console.log("Llamando a controller locatarios = " + uri);
+
     var funcionAjax = $.ajax({
         url: uri,
         method: "POST",
@@ -1720,7 +1682,6 @@ function cargarVisualizacionReciboNoOficial(datosParaCargarRecibo) {
 function visualizarReciboOficialSaldo(idRegistroDePago) {
 
     let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
-    console.log("Llamando a controller locatarios = " + uri);
 
     var funcionAjax = $.ajax({
         url: uri,
@@ -1896,8 +1857,8 @@ function convertirNumeroALetra(num) {
 
 var paginador;            //Referencia el elemento
 var totalPaginas;         //Se debe calcular
-var itemsPorPagina = 4;   //Elementos a mostrar desde la base de datos
-var numerosPorPagina = 5; //Cantidad maxima de enlaces visibles en el paginador
+var itemsPorPagina = 12;   //Elementos a mostrar desde la base de datos
+var numerosPorPagina = 1; //Cantidad maxima de enlaces visibles en el paginador
 var current_paginator_item=1;
 
 
@@ -1906,13 +1867,21 @@ function creaPaginador(totalItems, id)
     //Obtener la referencia el elemento
     paginador = $(".pagination");
 
-    if (totalItems>24)
+    if (totalItems==24)
     {
-        numerosPorPagina = 10;
+        numerosPorPagina = 2;//1 año
     }
-    else
+    else if (totalItems==48)
     {
-        numerosPorPagina = 5;
+        numerosPorPagina = 4;//2 años
+    }
+    else if (totalItems==72)
+    {
+        numerosPorPagina = 6;// 3 años
+    }
+    else if (totalItems==96)
+    {
+        numerosPorPagina = 8;// 4 años
     }
 
     //Calcular el numero de paginas para el paginador
@@ -1923,8 +1892,7 @@ function creaPaginador(totalItems, id)
 
     //Enlace que lleva a la página previa
     $('<li class="page_item prev_link"> <a href="#" aria-label="Previous" class="prev_link"> <span aria-hidden="true">&laquo;</span> </a> </li>').appendTo(paginador);
-
-
+    
     var pag = 0;
     while(totalPaginas > pag)
     {
@@ -1942,7 +1910,7 @@ function creaPaginador(totalItems, id)
     //Añade la clase "active" al primer elemento del paginador que tenga la clase ".page_link"
     paginador.find(".page_link:first").addClass("active");
     //Añade la clase "active" al primer elemento de la lista de enlaces del paginador
-    paginador.find(".page_link:first").parents("li").addClass("active");
+    //paginador.find(".page_link:first").parents("li").addClass("active");
 
     //Esconde el enlace a página previa
      paginador.find(".prev_link").hide();
@@ -1991,13 +1959,9 @@ function creaPaginador(totalItems, id)
 
     $(".page_link").on("click", function(e)
     {
-        //decir que se envia por ajax (evita que se recargue la pagina)
         e.preventDefault();
-        //Quita la clase "active" de todos los elementos
         $(".page_link").removeClass("active");
-        //Pone la clase "active" en el elemento cliqueado
         $(this).addClass("active");
-
         current_paginator_item=$(".page_link").index(this)+1;
     });
 
@@ -2013,9 +1977,8 @@ function creaPaginador(totalItems, id)
     $(".last_link").on("click", function(e)
     {
         e.preventDefault();
-        //Quita la clase "active" de todos los elementos
         $(".page_link").removeClass("active");
-        var n = $(".page_link").length;
+        let n = $(".page_link").length;
         $(".page_link:eq(" + (n-1)  + ")").addClass("active");
         current_paginator_item=n;
     });
@@ -2023,7 +1986,6 @@ function creaPaginador(totalItems, id)
     $(".next_link").on("click", function(e)
     {
         e.preventDefault();
-        //Quita la clase "active" de todos los elementos
         $(".page_link").removeClass("active");
         $(".page_link:eq(" + current_paginator_item  + ")").addClass("active");
         current_paginator_item++;
@@ -2076,7 +2038,6 @@ function cargaPagina(pagina, id)
         paginador.find(".prev_link").hide();
     }
 
-
     if(pagina < totalPaginas - 1)
     {
         //Muestra el enlace a página siguiente
@@ -2085,7 +2046,7 @@ function cargaPagina(pagina, id)
     else
     {
         //Oculta el enlace a página siguiente
-        paginador.find(".next_link").hide();;
+        paginador.find(".next_link").hide();
     }
 
     //Obtiene el número de página sellecionada (current)
@@ -2097,20 +2058,18 @@ function cargaPagina(pagina, id)
         $(".page_link").hide();
         $(".a").hide();
 
-        if(pagina < (totalPaginas - numerosPorPagina))
+        if(pagina <= (totalPaginas - numerosPorPagina))
         {
             $(".page_link").slice(pagina,numerosPorPagina + pagina).show();
             $(".a").slice(pagina,numerosPorPagina + pagina).show();
         }
         else
         {
-            ///alert("2");
-            if(totalPaginas > numerosPorPagina)
+            if(totalPaginas >= numerosPorPagina)
             {
                 $(".page_link").slice(totalPaginas - numerosPorPagina).show();
                 $(".a").slice(totalPaginas - numerosPorPagina).show();
             }
-
         }
     }
 }
@@ -2131,8 +2090,6 @@ function buscarCantidadDeRegistros(id)
     funcionAjax.done(function (retorno) {
         let array = JSON.parse(retorno);
         let count = array['cantidad'];
-        console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-        console.log(count,id);
         creaPaginador(count, id );
     });
 
