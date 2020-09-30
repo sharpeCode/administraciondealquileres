@@ -195,4 +195,49 @@ class ContratoRepositorio
         return $respuesta;
     }
 
+    public static function buscarContratoPorDni($dni)
+    {
+        $datosContrato = null;
+        try {
+            $sql = "SELECT id_contrato AS idContrato, fecha_inicio AS fechaInicio, fecha_fin AS fechaFin, dni, id_inmueble AS idInmueble,
+                    valor_alquiler_oficial AS valorAlquilerOficial, valor_alquiler_no_oficial AS valorAlquilerNoOficial, valor_deposito AS 
+                    valorDeposito, gastos_administrativos AS gastosAdministrativos, valor_expensas AS valorExpensas, cant_cuotas_deposito AS 
+                    cantCuotasDeposito, fecha_pago_inicio AS fechaPagoInicio, fecha_pago_fin AS fechaPagoFin, estado
+                    FROM contratos
+                    WHERE dni = $dni";
+
+            $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
+            $sentencia->execute();
+            $datosContrato = $sentencia->fetchObject("Contrato");
+
+        } catch (PDOException $ex) {
+            print 'ERROR' . $ex->getMessage();
+            $datosContrato = null;
+        }
+
+        return $datosContrato;
+    }
+
+    public static function buscarContratoActivo($dni)
+    {
+        $datosContrato = null;
+        try {
+            $sql = "SELECT id_contrato AS idContrato, fecha_inicio AS fechaInicio, fecha_fin AS fechaFin, dni, id_inmueble AS idInmueble,
+                    valor_alquiler_oficial AS valorAlquilerOficial, valor_alquiler_no_oficial AS valorAlquilerNoOficial, valor_deposito AS 
+                    valorDeposito, gastos_administrativos AS gastosAdministrativos, valor_expensas AS valorExpensas, cant_cuotas_deposito AS 
+                    cantCuotasDeposito, fecha_pago_inicio AS fechaPagoInicio, fecha_pago_fin AS fechaPagoFin, estado
+                    FROM contratos
+                    WHERE fecha_fin > Now()";
+
+            $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
+            $sentencia->execute();
+            $datosContrato = $sentencia->fetchObject("Contrato");
+
+        } catch (PDOException $ex) {
+            print 'ERROR' . $ex->getMessage();
+            $datosContrato = null;
+        }
+
+        return $datosContrato;
+    }
 }

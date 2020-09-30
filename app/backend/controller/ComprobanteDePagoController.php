@@ -54,7 +54,9 @@ switch ($action) {
     case "datosRecibo":
         datosRecibo($_POST['idComprobanteDePago']);
         break;
-
+    case "traerRecibosPorMes":
+        traerRecibosPorMes($_POST['mes']);
+        break;
     default:
         console . log("NO SE QUE HACER VIEJA");
         break;
@@ -62,7 +64,7 @@ switch ($action) {
 
 function cargarComprobanteDePago($idRegistroDePago)
 {
-      // obtener registro de pago completo por el id
+    // obtener registro de pago completo por el id
     $registroDePago = RegistroPagoRepositorio::buscarRegistroDePagoPorId($idRegistroDePago);
 
     // busco datos del contrato completo
@@ -109,8 +111,8 @@ function cargarComprobanteDePago($idRegistroDePago)
 
     //traer el ultimo aumneto agregado para la variable vencimiento x dia de atraso
     $nombreVariable = "Interés x vencimiento"; //el id 3 es --> Interes x vencimiento
-     $variableAumentoPorDia = VariablesRepository::getVariablesId($nombreVariable);
-	    
+    $variableAumentoPorDia = VariablesRepository::getVariablesId($nombreVariable);
+
     $porcAumento = (int)$variableAumentoPorDia->porcentaje;
     $alquiler = (int)$registroDePago->valorAlquiler;
     $valorInteresPorDia = ($alquiler * $porcAumento) / 100; //valor interes x dia en pesos
@@ -246,7 +248,7 @@ function cargarComprobanteDePago($idRegistroDePago)
 
     echo json_encode($CompDePagoConMora);
 
-   
+
 }
 
 function sumarSaldoAnteriores($idRegistroDePago){
@@ -330,8 +332,8 @@ function guardarComprobanteDePago()
     $registroDePago = ComprobanteDePagoRepositorio::guardarComprobanteDePago($idComprobanteDePago,$numeroComprobante, $tipoComprobante, $tipoRecibo, $idContrato, $idRegistroPago, $correspondienteMes, $correspondienteAnio, $alquilerMensual, $expensas, $gastosAdm, $deposito, $cuotas, $numCuota, $interesPorMora, $otrosConceptos, $saldoAnterior, $totalImporteAPagar, $totalImporteRecibido, $saldoPendiente, $saldoPendienteSinModificar,$estado);
     echo json_encode($registroDePago);
 
-     //cambiar la accion del recibo generado --> SI en registros de pago
-     RegistroPagoRepositorio::cambiarLaAccionDelRegistroRecibo($idRegistroPago);
+    //cambiar la accion del recibo generado --> SI en registros de pago
+    RegistroPagoRepositorio::cambiarLaAccionDelRegistroRecibo($idRegistroPago);
 
     //voy a cargar la columna SALDO_PENDIENTE de la tabla registros_de_pagos
     RegistroPagoRepositorio::cargarSaldoPendiente($idRegistroPago, $saldoPendiente);
@@ -544,6 +546,12 @@ function datosRecibo($idComprobanteDePago)
 {
 
     $datos = ComprobanteDePagoRepositorio::datosRecibo($idComprobanteDePago);
+    echo json_encode($datos);
+}
+
+function traerRecibosPorMes($mes)
+{
+    $datos = ComprobanteDePagoRepositorio::traerRecibosPorMes($mes);
     echo json_encode($datos);
 }
 

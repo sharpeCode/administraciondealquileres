@@ -8,30 +8,30 @@
 
         <div class="col-md-3">
             <label>
-                <select id="tipo" name='tipo' class="inputTextConSombraBuscador" style="padding: 7px">
-                    <option value="Activo">Activo</option>
-                    <option value="Inactivo">Inactivo</option>
+                <select id="buscarPorEstado" name='tipo' class="inputTextConSombraBuscador2" style="padding: 7px">
+                    <option value="1">Activo</option>
+                    <option value="0">Inactivo</option>
                 </select>
             </label>
-                <button class="botonBuscadorLupa" title="Buscar" onclick="buscarPorEstado()">
+                <button class="botonBuscadorLupa2" title="Buscar" onclick="buscarPorEstado()">
                     <span class="glyphicon glyphicon-search"></span>
                 </button>
         </div>
 
         <div class="col-md-3">
-            <a><input type="text" class="inputTextConSombraBuscador" id="buscarPorNombre" name="buscarPorNombre"
+            <a><input type="text" class="inputTextConSombraBuscador2" id="buscarPorNombre" name="buscarPorNombre"
                       placeholder="Buscar por Nombre" title="Buscar"></a>
 
-            <button class="botonBuscadorLupa" title="Buscar" onclick="buscarPorNombre()">
+            <button class="botonBuscadorLupa2" title="Buscar" onclick="buscarPorNombre()">
                 <span class="glyphicon glyphicon-search"></span>
             </button>
         </div>
 
         <div class="col-md-3">
-            <a><input type="text" class="inputTextConSombraBuscador" id="buscar" name="buscar"
+            <a><input type="text" class="inputTextConSombraBuscador2" id="buscar" name="buscar"
                       placeholder="Buscar por Dni" title="Buscar"></a>
 
-            <button class="botonBuscadorLupa" title="Buscar" onclick="buscarPorDni()">
+            <button class="botonBuscadorLupa2" title="Buscar" onclick="buscarPorDni()">
                 <span class="glyphicon glyphicon-search"></span>
             </button>
 
@@ -62,12 +62,11 @@
 
             </table>
 
-
         </table>
         <div>
             <a href="../principal/menuPrincipal.page.php">
-                <input class="miBoton-chico" type="button" value="Atras"></a>
-            <a><input class="miBoton-chico" type="button" onclick="showFormAdd()" value="Nuevo"></a>
+                <input class="miBoton-cliente" type="button" value="Atras"></a>
+            <a><input class="miBoton-cliente" type="button" onclick="showFormAdd()" value="Nuevo"></a>
         </div>
     </div>
 </div>

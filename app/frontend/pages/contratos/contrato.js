@@ -893,6 +893,7 @@ function llenarInputsRecibo(idRegistroDePago, ban) {
 
     funcionAjax.done(function (retorno) {
         console.debug("Done: ", retorno);
+
         cargarDatosEnRecibo(JSON.parse(retorno), ban);
 
     });
@@ -1857,7 +1858,6 @@ var itemsPorPagina = 12;   //Elementos a mostrar desde la base de datos
 var numerosPorPagina = 1; //Cantidad maxima de enlaces visibles en el paginador
 var current_paginator_item=1;
 var desde;
-
 
 function creaPaginador(totalItems, id)
 {

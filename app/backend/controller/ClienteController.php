@@ -1,5 +1,6 @@
 <?php
 require_once '../../repository/ClienteRepository.php';
+require_once '../../repository/ContratoRepositorio.php';
 require_once '../entity/Cliente.php';
 
 $action = $_POST['action'];
@@ -23,8 +24,14 @@ switch ($action) {
     case "traerClientePorNombre":
         traerClienteFiltradoPorNombre($_POST['nombre']);
         break;
+    case "traerClientesPorEstado":
+        traerClienteFiltradoPorEstado($_POST['estado']);
+        break;
     case "deleteCliente":
         eliminarCliente();
+        break;
+    case "activarCliente":
+        activarCliente();
         break;
     default:
         console . log("No se pudo acceder a la acción al controller");
@@ -41,7 +48,6 @@ function guardarClienteNuevo()
 {
     $guardarCliente = $_POST["cliente"];
 
-    // Si no casteo no lo paso de array a objeto y no lo puedo usar
     $clienteObject = (object)$guardarCliente;
 
     $dni = $clienteObject->dni;
@@ -49,14 +55,13 @@ function guardarClienteNuevo()
     //buscar que el cliente no exista
     $cliente = ClienteRepository::traerClienteParaEditar($dni);
 
-//    echo'entro al UNO';
-    if ($cliente != null) {
-        echo 'ERROR';
-    } else {
-    $cliente = ClienteRepository::guardarClienteNuevo($clienteObject);
-    echo json_encode($cliente);
+    if ($cliente == false) {
+        $cliente = ClienteRepository::guardarClienteNuevo($clienteObject);
+        echo json_encode($cliente);
     }
-
+    else {
+        echo 'ERROR';
+    }
 }
 
 function guardarClienteEditado()
@@ -71,7 +76,7 @@ function guardarClienteEditado()
 
 function traerClientesFiltradoPorDni($dni)
 {
-    $clientes = ClienteRepository::s($dni);
+    $clientes = ClienteRepository::traerClientesFiltradoPorDni($dni);
     echo json_encode($clientes);
 }
 
@@ -87,9 +92,43 @@ function traerClienteFiltradoPorNombre($nombre)
     echo json_encode($clientes);
 }
 
+function traerClienteFiltradoPorEstado($estado)
+{
+    $clientes = ClienteRepository::traerClientesFiltradoPorEstado($estado);
+    echo json_encode($clientes);
+}
+
 function eliminarCliente()
 {
     $dni = $_POST["dni"];
-    $clientes = ClienteRepository::eliminarCliente($dni);
+
+    //buscar que el cliente no tenga contrato asociado
+    $contrato = ContratoRepositorio::buscarContratoPorDni($dni);
+
+    if ($contrato == false) {
+        $clientes = ClienteRepository::eliminarCliente($dni);
+        echo json_encode($clientes);
+    }
+    else{
+        $contrato = ContratoRepositorio::buscarContratoActivo($dni);
+        if ($contrato == false) {
+            $clientes = ClienteRepository::eliminarCliente($dni);
+            echo json_encode($clientes);
+        }
+        else
+        {
+            echo 'ERROR';
+        }
+    }
+
+
+
+}
+
+function activarCliente()
+{
+    $dni = $_POST["dni"];
+    $clientes = ClienteRepository::activarCliente($dni);
     echo json_encode($clientes);
+
 }
