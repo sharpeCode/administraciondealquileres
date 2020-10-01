@@ -2096,8 +2096,6 @@ function llenarComprobantesDePagos(jsonCompPagos) {
 
     console.log(jsonCompPagos["idContrato"]);
     jsonCompPagos = JSON.parse(jsonCompPagos);
-
-
     let tableRaws = "";
 
     for (var i = 0, l = jsonCompPagos.length; i < l; i++) {

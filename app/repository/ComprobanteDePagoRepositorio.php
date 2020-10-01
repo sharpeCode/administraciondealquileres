@@ -506,4 +506,33 @@ class ComprobanteDePagoRepositorio
         return $listadoCompPagos;
 
     }
+
+    public static function listarComprobantesDePagoDeUnMismoContrato($idContrato)
+    {
+        $listadoCompPagos = null;
+        try {
+            $sql = "SELECT CP.id_comprobante_de_pago AS idComprobanteDePago, CP.numero_comprobante AS numeroComprobante, 
+                    CP.fecha_comprobante AS fechaComprobante, CP.tipo_comprobante_de_pago AS tipoComprobanteDePago, CP.tipo_recibo AS tipoRecibo,
+                    CP.id_contrato AS idContrato, CP.id_registro_de_pago AS idRegistroDePago, CP.correspondiente_mes AS correspondienteMes, 
+                    M.mes_corto AS mesCorto, CP.correspondiente_anio AS correspondienteAnio, CP.valor_alquiler AS valorAlquiler, 
+                    CP.valor_expensas AS valorExpensas, CP.valor_gastos_adm AS valorGastosAdm,  CP.valor_deposito 
+                    AS valorDeposito, CP.cant_cuotas_deposito AS cantCuotasDeposito, CP.num_cuota_a_pagar AS numCuotaAPagar,
+                    CP.interes_por_mora AS interesPorMora, CP.otros_conceptos AS otrosConceptos, CP.saldo_anterior AS saldoAnterior,
+                     CP.total_importe_a_pagar AS 
+                    totalImporteAPagar, CP.total_importe_recibido AS totalImporteRecibido, CP.saldo_pendiente AS saldoPendiente,
+                    CP.saldo_pendiente_sin_modificar AS saldoPendienteSinModificar, CP.estado
+                        FROM comprobantes_de_pagos CP LEFT JOIN meses M ON CP.correspondiente_mes = M.id_mes
+                        WHERE CP.id_contrato = '$idContrato' AND CP.numero_comprobante <> '00000'";
+
+            $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
+            $sentencia->execute();
+            $listadoCompPagos = $sentencia->fetchAll(PDO::FETCH_CLASS, "ComprobanteDePago");
+
+
+        } catch (PDOException $ex) {
+            print 'ERROR' . $ex->getMessage();
+        }
+        return $listadoCompPagos;
+
+    }
 }

@@ -1,5 +1,5 @@
 var API = "http://administraciondealquileres.herokuapp.com";
-// var API = "http://localhost:90/Sharp_Code/administracion_de_alquileres";
+//var API = "http://localhost:90/Sharp_Code/administracion_de_alquileres";
 var BACKEND_CONTROLLERS = API + "/app/backend/controller";
 var VOLVER_PAGE = API + "/app/frontend/pages";
 var EndpointsEnum = {
