@@ -1,47 +1,48 @@
 $(function () {
-    $("#listarRecibos").show();
-    $("#visualizarReciboOficial").hide();
-    $("#visualizarReciboNoOficial").hide();
-    $("#visualizarReciboSaldoOficial").hide();
+    $("#RlistarRecibos").show();
+    $("#RvisualizarReciboOficial").hide();
+    $("#RvisualizarReciboNoOficial").hide();
+    $("#RvisualizarReciboSaldoOficial").hide();
     llenarSelectConInmueblesEnRecibos();
     listarRecibos();
 });
 
 // TODO: Visualizar recibo Oficial
 function visualizarReciboOficial(idComprobantesDePago) {
-    $("#listarRecibos").hide();
-    $("#visualizarReciboOficial").show();
-    $("#visualizarReciboNoOficial").hide();
-    $("#visualizarReciboSaldoOficial").hide();
+    $("#RlistarRecibos").hide();
+    $("#RvisualizarReciboOficial").show();
+    $("#RvisualizarReciboNoOficial").hide();
+    $("#RvisualizarReciboSaldoOficial").hide();
     cargarReciboOficial(idComprobantesDePago);
 }
 
 // TODO: Visualizar recibo Oficial solo saldo
 function visualizarReciboOficialSoloSaldo(idComprobantesDePago) {
-    $("#listarRecibos").hide();
-    $("#visualizarReciboOficial").hide();
-    $("#visualizarReciboNoOficial").hide();
-    $("#visualizarReciboSaldoOficial").show();
+    $("#RlistarRecibos").hide();
+    $("#RvisualizarReciboOficial").hide();
+    $("#RvisualizarReciboNoOficial").hide();
+    $("#RvisualizarReciboSaldoOficial").show();
     cargarReciboOficialSoloSaldo(idComprobantesDePago);
 }
 
 // TODO: Visualizar recibo No Oficial
 function visualizarReciboNoOficial(idComprobantesDePago) {
-    $("#listarRecibos").hide();
-    $("#visualizarReciboOficial").hide();
-    $("#visualizarReciboNoOficial").show();
-    $("#visualizarReciboSaldoOficial").hide();
+    $("#RlistarRecibos").hide();
+    $("#RvisualizarReciboOficial").hide();
+    $("#RvisualizarReciboNoOficial").show();
+    $("#RvisualizarReciboSaldoOficial").hide();
     cargarReciboNoOficial(idComprobantesDePago);
 }
 
 // TODO: boton Atras
 function Atras() {
-    $("#listarRecibos").show();
-    $("#visualizarReciboOficial").hide();
-    $("#visualizarReciboNoOficial").hide();
-    $("#visualizarReciboSaldoOficial").hide();
+    $("#RlistarRecibos").show();
+    $("#RvisualizarReciboOficial").hide();
+    $("#RvisualizarReciboNoOficial").hide();
+    $("#RvisualizarReciboSaldoOficial").hide();
     listarRecibos();
 }
+
 
 // LISTAR COMPROBANTES DE PAGOS
 function listarRecibos() {
@@ -70,10 +71,10 @@ function listadoCompDePago(doneFunction, data) {
     funcionAjax.done(doneFunction);
 
     funcionAjax.fail(function (retorno) {
-        console.log("error al llamar back de locatarios")
+        console.log("error al llamar back de comprobantes de pago")
     });
     funcionAjax.always(function (retorno) {
-        console.log("always de promise locatarios")
+        console.log("always de promise comprobantes de pago")
     });
 }
 
@@ -87,11 +88,12 @@ function llenarComprobantesDePagosGrilla(jsonCompPagos) {
         tableRaws += contruirFilasComprobantesDePagos(jsonCompPagos[i]);
         tableRaws += "</tr>";
     }
-    $("#listadoCompDePago").html(tableRaws);
+    $("#listCompDePago").html(tableRaws);
 }
 
 function contruirFilasComprobantesDePagos(compPagos) {
 
+    $("#RlistarRecibos").show();
     let fc = compPagos['fechaComprobante'];
     var fecha = new Date(fc);
     var options = {day: 'numeric', month: 'numeric', year: 'numeric'};
@@ -164,7 +166,6 @@ function cargarDatosDeRecibo(datos) {
 
 // RECIBO OFICIAL
 function cargarReciboOficial(idComprobantesDePago) {
-    console.debug("trayendo datos de recibo");
 
     let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
 
@@ -469,7 +470,7 @@ function llenarSelectConInmueblesEnRecibos() {
 }
 
 function llenarDomInmuebles2(arrayInmuebles) {
-    console.log(arrayInmuebles);
+
     arrayInmuebles = JSON.parse(arrayInmuebles);
     let options = "";
 

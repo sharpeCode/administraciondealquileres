@@ -51,6 +51,9 @@ switch ($action) {
     case "listarRecibos":
         listarRecibos();
         break;
+    case "listarRecibosDelMismoContrato":
+        listarRecibosDelMismoContrato($_POST['idContrato']);
+        break;
     case "datosRecibo":
         datosRecibo($_POST['idComprobanteDePago']);
         break;
@@ -542,6 +545,13 @@ function listarRecibos()
     echo json_encode($listadoCompPagos);
 }
 
+function listarRecibosDelMismoContrato($idContrato)
+{
+
+    $listadoCompPagos = ComprobanteDePagoRepositorio::listarComprobantesDePagoDeUnMismoContrato($idContrato);
+    echo json_encode($listadoCompPagos);
+}
+
 function datosRecibo($idComprobanteDePago)
 {
 
@@ -554,6 +564,7 @@ function traerRecibosPorMes($mes)
     $datos = ComprobanteDePagoRepositorio::traerRecibosPorMes($mes);
     echo json_encode($datos);
 }
+
 
 
 
