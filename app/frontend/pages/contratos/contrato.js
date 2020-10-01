@@ -67,10 +67,8 @@ function ListadoDeRegistrosDePago() {
 
     $("#contratoAdd").hide();
     $("#contratoList").hide();
-    $("#contratoDatosCompletos").hide();
     $("#registroDePagoList").show();
     $("#comprobanteDePagoOficial").hide();
-    $("#recibosList").hide();
     $("#comprobanteDePagoNoOficial").hide();
     $("#visualizarReciboOficial").hide();
     $("#visualizarReciboOficialCantidadDos").hide();
@@ -81,6 +79,8 @@ function ListadoDeRegistrosDePago() {
     listarRegDePago(idContrato);
     llenarInputs(idContrato);
 }
+
+// TODO: ATRAS
 function irListadoRecibos() {
     var idContrato = document.getElementById("verIdContrato").value;
 
@@ -137,10 +137,8 @@ function CagarReciboOficial(idRegistroDePago, ban) {
 function CargarReciboNoOficial(idRegistroDePago, ban) {
     $("#contratoAdd").hide();
     $("#contratoList").hide();
-    $("#contratoDatosCompletos").hide();
     $("#registroDePagoList").hide();
     $("#comprobanteDePagoOficial").hide();
-    $("#recibosList").hide();
     $("#comprobanteDePagoNoOficial").show();
     $("#visualizarReciboOficial").hide();
     $("#visualizarReciboOficialCantidadDos").hide();
@@ -152,118 +150,318 @@ function CargarReciboNoOficial(idRegistroDePago, ban) {
 }
 
 //TODO: CARGAR COMPROBANTE DE PAGO - SALDO OFICIAL
-function ReciboOficialSaldo(idRegistroDePago) {
+function ReciboOficialSaldo(idRegistroDePago, list) {
     $("#contratoAdd").hide();
     $("#contratoList").hide();
-    $("#contratoDatosCompletos").hide();
     $("#registroDePagoList").hide();
     $("#comprobanteDePagoOficial").hide();
-    $("#recibosList").hide();
     $("#comprobanteDePagoNoOficial").hide();
     $("#visualizarReciboOficial").hide();
     $("#visualizarReciboOficialCantidadDos").hide();
     $("#comprobDePagoSaldoOficial").show();
     $("#visualizarReciboOficialSoloSaldo").hide();
     $("#visualizarReciboNoOficial").hide();
-    $("#comprobDePagoSaldoNoOficial").hide();
-    $("#visualizarReciboNoOficialSoloSaldo").hide();
-    llenarInputsReciboSoloSaldo(idRegistroDePago);
+    $("#listarRecibosPorContrato").hide();
+    llenarInputsReciboSoloSaldo(idRegistroDePago, list);
 }
 
 //TODO: VERIFICAR CUANTOS RECIBOS TIENE UN MISMO REGISTRO DE PAGO
 function buscarCuantosRecibosTiene(idRegistroDePago) {
     $("#contratoAdd").hide();
     $("#contratoList").hide();
-    $("#contratoDatosCompletos").hide();
     $("#registroDePagoList").hide();
     $("#comprobanteDePagoOficial").hide();
-    $("#recibosList").hide();
     $("#comprobanteDePagoNoOficial").hide();
     $("#visualizarReciboOficial").hide();
     $("#visualizarReciboOficialCantidadDos").hide();
     $("#comprobDePagoSaldoOficial").hide();
     $("#visualizarReciboOficialSoloSaldo").hide();
     $("#visualizarReciboNoOficial").hide();
-    $("#comprobDePagoSaldoNoOficial").hide();
-    $("#visualizarReciboNoOficialSoloSaldo").hide();
+    $("#listarRecibosPorContrato").hide();
     buscarCuantosRecibosTieneEsteRegistro(idRegistroDePago);
 }
 
 //TODO: VISUALIZAR RECIBO OFICIAL
-function visualizarReciboOficial(idRegistroDePago) {
+function visualizarReciboOficial(idRegistroDePago, list) {
     $("#contratoAdd").hide();
     $("#contratoList").hide();
-    $("#contratoDatosCompletos").hide();
     $("#registroDePagoList").hide();
     $("#comprobanteDePagoOficial").hide();
-    $("#recibosList").hide();
     $("#comprobanteDePagoNoOficial").hide();
     $("#visualizarReciboOficial").show();
     $("#visualizarReciboOficialCantidadDos").hide();
     $("#comprobDePagoSaldoOficial").hide();
     $("#visualizarReciboOficialSoloSaldo").hide();
     $("#visualizarReciboNoOficial").hide();
-    $("#comprobDePagoSaldoNoOficial").hide();
-    $("#visualizarReciboNoOficialSoloSaldo").hide();
-    visualizarReciboOficialCantidadUno(idRegistroDePago);
+    $("#listarRecibosPorContrato").hide();
+    visualizarReciboOficialCantidadUno(idRegistroDePago, list);
 }
 
 //TODO: VISUALIZAR RECIBOS DOS
 function visualizarDosRecibos(idRegistroDePago) {
     $("#contratoAdd").hide();
     $("#contratoList").hide();
-    $("#contratoDatosCompletos").hide();
     $("#registroDePagoList").hide();
     $("#comprobanteDePagoOficial").hide();
-    $("#recibosList").hide();
     $("#comprobanteDePagoNoOficial").hide();
     $("#visualizarReciboOficial").hide();
     $("#visualizarReciboOficialCantidadDos").show();
     $("#comprobDePagoSaldoOficial").hide();
     $("#visualizarReciboOficialSoloSaldo").hide();
     $("#visualizarReciboNoOficial").hide();
-    $("#comprobDePagoSaldoNoOficial").hide();
-    $("#visualizarReciboNoOficialSoloSaldo").hide();
+    $("#listarRecibosPorContrato").hide();
     cargarRecibosDeUnMismoRegistroGrilla(idRegistroDePago);
 
 }
 
 //TODO: VISUALIZAR RECIBO SOLO SALDO
-function visualizarReciboOficialSoloSaldo(idRegistroDePago) {
+function visualizarReciboOficialSoloSaldo(idRegistroDePago, list) {
     $("#contratoAdd").hide();
     $("#contratoList").hide();
-    $("#contratoDatosCompletos").hide();
     $("#registroDePagoList").hide();
     $("#comprobanteDePagoOficial").hide();
-    $("#recibosList").hide();
     $("#comprobanteDePagoNoOficial").hide();
     $("#visualizarReciboOficial").hide();
     $("#visualizarReciboOficialCantidadDos").hide();
     $("#comprobDePagoSaldoOficial").hide();
     $("#visualizarReciboNoOficial").hide();
-    $("#comprobDePagoSaldoNoOficial").hide();
     $("#visualizarReciboOficialSoloSaldo").show();
-    $("#visualizarReciboNoOficialSoloSaldo").hide();
-    visualizarReciboOficialSaldo(idRegistroDePago);
+    $("#listarRecibosPorContrato").hide();
+    visualizarReciboOficialSaldo(idRegistroDePago, list);
 }
 
 //TODO: VISUALIZAR UN SOLO RECIBO NO OFICIAL
-function visualizarReciboNoOficial(idRegistroDePago) {
+function visualizarReciboNoOficial(idRegistroDePago, list) {
     $("#contratoAdd").hide();
     $("#contratoList").hide();
-    $("#contratoDatosCompletos").hide();
     $("#registroDePagoList").hide();
     $("#comprobanteDePagoOficial").hide();
-    $("#recibosList").hide();
     $("#comprobanteDePagoNoOficial").hide();
     $("#visualizarReciboOficial").hide();
     $("#visualizarReciboOficialCantidadDos").hide();
     $("#comprobDePagoSaldoOficial").hide();
     $("#visualizarReciboOficialSoloSaldo").hide();
     $("#visualizarReciboNoOficial").show();
-    $("#comprobDePagoSaldoNoOficial").hide();
-    $("#visualizarReciboNoOficialSoloSaldo").hide();
-    visualizarReciboNoOficialCantidadUno(idRegistroDePago);
+    $("#listarRecibosPorContrato").hide();
+    visualizarReciboNoOficialCantidadUno(idRegistroDePago, list);
+}
+
+//TODO: LISTAR TODOS LOS RECIBOS DE PAGOS
+function listRecibos() {
+    $("#contratoAdd").hide();
+    $("#contratoList").hide();
+    $("#registroDePagoList").hide();
+    $("#comprobanteDePagoOficial").hide();
+    $("#comprobanteDePagoNoOficial").hide();
+    $("#visualizarReciboOficial").hide();
+    $("#visualizarReciboOficialCantidadDos").hide();
+    $("#comprobDePagoSaldoOficial").hide();
+    $("#visualizarReciboOficialSoloSaldo").hide();
+    $("#visualizarReciboNoOficial").hide();
+    $("#listarRecibosPorContrato").show();
+    var idContrato = document.getElementById("inputNumeroDeContrato").value;
+    listarRecibosPorContrato(idContrato);
+}
+
+function botonAtras() {
+
+    /*
+     *   1 =  listado -> registros de pago
+     *   2 =  listado -> de dos recibos para un mismo registro de pago
+     *   3 =  listado -> de recibos
+     *
+     *   Oficial 1      Ofi1
+     *   Oficial 2      Ofi2
+     *   Oficial 3      Ofi3
+     *   No Oficial 1   NoOfi1
+     *   No Oficial 2   NoOfi2
+     *   No Oficial 3   NoOfi3
+     *   Saldo 2        S2
+     *   Saldo 3        S3
+     */
+
+    var atras = "";
+
+    var atrasOficial = document.getElementById("visualizacionAtras").value; // OFICIAL
+    console.log("voy a mostrar input atrasOficial", atrasOficial);
+
+    var atrasNoOficial = document.getElementById("noOfiAtras").value;  // NO OFICIAL
+    console.log("voy a mostrar input atrasNoOficial", atrasNoOficial);
+
+    var atrasSaldo = document.getElementById("visuAtras").value;  // SALDO
+    console.log("voy a mostrar input atrasSaldo", atrasSaldo);
+
+    if (atrasOficial != "") {
+
+        if (atrasOficial == 1) {
+            atras = "Ofi1";
+            $("#visualizacionAtras").val("");
+            $("#noOfiAtras").val("");
+            $("#visuAtras").val("");
+        } else if (atrasOficial == 2) {
+            atras = "Ofi2";
+            $("#visualizacionAtras").val("");
+            $("#noOfiAtras").val("");
+            $("#visuAtras").val("");
+        } else if (atrasOficial == 3) {
+            atras = "Ofi3";
+            $("#visualizacionAtras").val("");
+            $("#noOfiAtras").val("");
+            $("#visuAtras").val("");
+        }
+    } else if (atrasNoOficial != "") {
+        if (atrasNoOficial == 1) {
+            atras = "NoOfi1";
+            $("#visualizacionAtras").val("");
+            $("#noOfiAtras").val("");
+            $("#visuAtras").val("");
+        } else if (atrasNoOficial == 2) {
+            atras = "NoOfi2";
+            $("#visualizacionAtras").val("");
+            $("#noOfiAtras").val("");
+            $("#visuAtras").val("");
+        } else if (atrasNoOficial == 3) {
+            atras = "NoOfi3";
+            $("#visualizacionAtras").val("");
+            $("#noOfiAtras").val("");
+            $("#visuAtras").val("");
+        }
+    } else if (atrasSaldo != "") {
+        if (atrasSaldo == 2) {
+            atras = "S2";
+            $("#visualizacionAtras").val("");
+            $("#noOfiAtras").val("");
+            $("#visuAtras").val("");
+        } else if (atrasSaldo == 3) {
+            atras = "S3";
+            $("#visualizacionAtras").val("");
+            $("#noOfiAtras").val("");
+            $("#visuAtras").val("");
+        }
+    }
+
+    if (atras == "Ofi1") { // listado registro de pagos
+        let idContrato = document.getElementById("visualizacionIdContrato").value;
+        $("#contratoAdd").hide();
+        $("#contratoList").hide();
+        $("#registroDePagoList").show();
+        $("#comprobanteDePagoOficial").hide();
+        $("#comprobanteDePagoNoOficial").hide();
+        $("#visualizarReciboOficial").hide();
+        $("#visualizarReciboOficialCantidadDos").hide();
+        $("#comprobDePagoSaldoOficial").hide();
+        $("#visualizarReciboOficialSoloSaldo").hide();
+        $("#visualizarReciboNoOficial").hide();
+        $("#listarRecibosPorContrato").hide();
+        buscarCantidadDeRegistros(idContrato);
+        llenarInputs(idContrato);
+
+    } else if (atras == "Ofi2") { // listado de dos recibos para un mismo registro de pago
+        let idRegistroDePago = document.getElementById("visualizacionIdRegistroPago").value;
+        $("#contratoAdd").hide();
+        $("#contratoList").hide();
+        $("#registroDePagoList").hide();
+        $("#comprobanteDePagoOficial").hide();
+        $("#comprobanteDePagoNoOficial").hide();
+        $("#visualizarReciboOficial").hide();
+        $("#visualizarReciboOficialCantidadDos").show();
+        $("#comprobDePagoSaldoOficial").hide();
+        $("#visualizarReciboOficialSoloSaldo").hide();
+        $("#visualizarReciboNoOficial").hide();
+        $("#listarRecibosPorContrato").hide();
+        cargarRecibosDeUnMismoRegistroGrilla(idRegistroDePago);
+
+    } else if (atras == "Ofi3") { // listado de recibos
+        $("#contratoAdd").hide();
+        $("#contratoList").hide();
+        $("#registroDePagoList").hide();
+        $("#comprobanteDePagoOficial").hide();
+        $("#comprobanteDePagoNoOficial").hide();
+        $("#visualizarReciboOficial").hide();
+        $("#visualizarReciboOficialCantidadDos").hide();
+        $("#comprobDePagoSaldoOficial").hide();
+        $("#visualizarReciboOficialSoloSaldo").hide();
+        $("#visualizarReciboNoOficial").hide();
+        $("#listarRecibosPorContrato").show();
+        var idContrato = document.getElementById("visualizacionIdContrato").value;
+        listarRecibosPorContrato(idContrato);
+
+    } else if (atras == "NoOfi1") { // listado registro de pagos
+        let idContrato = document.getElementById("noOfiIdContrato").value;
+        $("#contratoAdd").hide();
+        $("#contratoList").hide();
+        $("#registroDePagoList").show();
+        $("#comprobanteDePagoOficial").hide();
+        $("#comprobanteDePagoNoOficial").hide();
+        $("#visualizarReciboOficial").hide();
+        $("#visualizarReciboOficialCantidadDos").hide();
+        $("#comprobDePagoSaldoOficial").hide();
+        $("#visualizarReciboOficialSoloSaldo").hide();
+        $("#visualizarReciboNoOficial").hide();
+        $("#listarRecibosPorContrato").hide();
+        buscarCantidadDeRegistros(idContrato);
+        llenarInputs(idContrato);
+
+    } else if (atras == "NoOfi2") { // listado de dos recibos para un mismo registro de pago
+        let idRegistroDePago = document.getElementById("noOfiIdRegistroPago").value;
+        $("#contratoAdd").hide();
+        $("#contratoList").hide();
+        $("#registroDePagoList").hide();
+        $("#comprobanteDePagoOficial").hide();
+        $("#comprobanteDePagoNoOficial").hide();
+        $("#visualizarReciboOficial").hide();
+        $("#visualizarReciboOficialCantidadDos").show();
+        $("#comprobDePagoSaldoOficial").hide();
+        $("#visualizarReciboOficialSoloSaldo").hide();
+        $("#visualizarReciboNoOficial").hide();
+        $("#listarRecibosPorContrato").hide();
+        cargarRecibosDeUnMismoRegistroGrilla(idRegistroDePago);
+
+    } else if (atras == "NoOfi3") { // listado de recibos
+        $("#contratoAdd").hide();
+        $("#contratoList").hide();
+        $("#registroDePagoList").hide();
+        $("#comprobanteDePagoOficial").hide();
+        $("#comprobanteDePagoNoOficial").hide();
+        $("#visualizarReciboOficial").hide();
+        $("#visualizarReciboOficialCantidadDos").hide();
+        $("#comprobDePagoSaldoOficial").hide();
+        $("#visualizarReciboOficialSoloSaldo").hide();
+        $("#visualizarReciboNoOficial").hide();
+        $("#listarRecibosPorContrato").show();
+        var idContrato = document.getElementById("noOfiIdContrato").value;
+        listarRecibosPorContrato(idContrato);
+
+    } else if (atras == "S2") { // listado de dos recibos para un mismo registro de pago
+        let idRegistroDePago = document.getElementById("visuIdRegistroPago").value;
+        $("#contratoAdd").hide();
+        $("#contratoList").hide();
+        $("#registroDePagoList").hide();
+        $("#comprobanteDePagoOficial").hide();
+        $("#comprobanteDePagoNoOficial").hide();
+        $("#visualizarReciboOficial").hide();
+        $("#visualizarReciboOficialCantidadDos").show();
+        $("#comprobDePagoSaldoOficial").hide();
+        $("#visualizarReciboOficialSoloSaldo").hide();
+        $("#visualizarReciboNoOficial").hide();
+        $("#listarRecibosPorContrato").hide();
+        cargarRecibosDeUnMismoRegistroGrilla(idRegistroDePago);
+
+    } else if (atras == "S3") { // listado de recibos
+        $("#contratoAdd").hide();
+        $("#contratoList").hide();
+        $("#registroDePagoList").hide();
+        $("#comprobanteDePagoOficial").hide();
+        $("#comprobanteDePagoNoOficial").hide();
+        $("#visualizarReciboOficial").hide();
+        $("#visualizarReciboOficialCantidadDos").hide();
+        $("#comprobDePagoSaldoOficial").hide();
+        $("#visualizarReciboOficialSoloSaldo").hide();
+        $("#visualizarReciboNoOficial").hide();
+        $("#listarRecibosPorContrato").show();
+        var idContrato = document.getElementById("visuIdContrato").value;
+        listarRecibosPorContrato(idContrato);
+    }
 }
 
 // LISTAR CONTRATOS
@@ -653,8 +851,8 @@ function listarRegDePago(idContrato) {
         {
             action: "listar",
             idContrato: idContrato,
-            limit:itemsPorPagina,
-            offset:desde
+            limit: itemsPorPagina,
+            offset: desde
         }
     );
 }
@@ -687,7 +885,7 @@ function traerRegistroDePago(doneFunction, data) {
 }
 
 function llenarRegistroDePagoGrilla(RegPago) {
-   console.log(RegPago);
+    console.log(RegPago);
     RegPago = JSON.parse(RegPago);
 
     let tableRaws = "";
@@ -891,7 +1089,6 @@ function llenarInputsRecibo(idRegistroDePago, ban) {
 
     funcionAjax.done(function (retorno) {
         console.debug("Done: ", retorno);
-
         cargarDatosEnRecibo(JSON.parse(retorno), ban);
 
     });
@@ -974,10 +1171,11 @@ function cargarDatosEnRecibo(datosParaCargarRecibo, ban) {
 }
 
 // LLENAR INPUTS RECIBOS SOLO SALDO
-function llenarInputsReciboSoloSaldo(idRegistroDePago) {
+function llenarInputsReciboSoloSaldo(idRegistroDePago, list) {
 
+    //para programar el boton atras
+    // $("#visuAtras").val(list);
     let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
-
     var funcionAjax = $.ajax({
         url: uri,
         method: "POST",
@@ -1330,7 +1528,6 @@ function GuardarComprobanteDePago(num) {
 function buscarCuantosRecibosTieneEsteRegistro(idRegistroDePago) {
 
     let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
-
     var funcionAjax = $.ajax({
         url: uri,
         method: "POST",
@@ -1357,11 +1554,14 @@ function visualizarRecibo(retorno) {
     let idRegistroDePago = retorno["idRegistroDePago"];
     let tipo = retorno["tipoComprobanteDePago"];
 
+
     if (cant == 1) {
         if (tipo == "Oficial") {
-            visualizarReciboOficial(idRegistroDePago);
+            var list = 1;
+            visualizarReciboOficial(idRegistroDePago, list);
         } else if (tipo == "No Oficial") {
-            visualizarReciboNoOficial(idRegistroDePago);
+            var list = 1;
+            visualizarReciboNoOficial(idRegistroDePago, list);
         }
     } else if (cant == 2) {
         visualizarDosRecibos(idRegistroDePago);
@@ -1517,6 +1717,7 @@ function llenarRecGrilla(jsonRec) {
 
 function contruirFilasRecibos(Rec) {
 
+    var list = 2; //este parametro lo uso para programar el boton atras (list = 2 ->este list , list = 1 -> listado cronograma de pagos
     let raw = "";
     raw += "<td>" + Rec['tipoComprobanteDePago'] + "</td>";
     raw += "<td>" + Rec['tipoRecibo'] + "</td>";
@@ -1530,14 +1731,14 @@ function contruirFilasRecibos(Rec) {
 
         if (Rec['tipoRecibo'] == "Recibo") {
             raw += "<td>";
-            raw += "<button class='miBoton-icon' title='Visualizar Recibo' onclick='visualizarReciboOficial(" + Rec['idRegistroDePago'] + ")'>" +
+            raw += "<button class='miBoton-icon' title='Visualizar Recibo' onclick='visualizarReciboOficial(" + Rec['idRegistroDePago'] + "," + list + ")'>" +
                 "<span class='glyphicon glyphicon-ok'></span>";
             raw += "</td> ";
             return raw;
 
         } else if (Rec['tipoRecibo'] == "Saldo") {
             raw += "<td>";
-            raw += "<button class='miBoton-icon' title='Visualizar Recibo Saldo' onclick='visualizarReciboOficialSoloSaldo(" + Rec['idRegistroDePago'] + ")'>" +
+            raw += "<button class='miBoton-icon' title='Visualizar Recibo Saldo' onclick='visualizarReciboOficialSoloSaldo(" + Rec['idRegistroDePago'] + "," + list + ")'>" +
                 "<span class='glyphicon glyphicon-ok'></span>";
             raw += "</td> ";
             return raw;
@@ -1547,7 +1748,7 @@ function contruirFilasRecibos(Rec) {
 
         if (Rec['tipoRecibo'] == "Recibo") {
             raw += "<td>";
-            raw += "<button class='miBoton-icon' title='Visualizar Recibo' onclick='visualizarReciboNoOficial(" + Rec['idRegistroDePago'] + ")'>" +
+            raw += "<button class='miBoton-icon' title='Visualizar Recibo' onclick='visualizarReciboNoOficial(" + Rec['idRegistroDePago'] + "," + list + ")'>" +
                 "<span class='glyphicon glyphicon-ok'></span>";
             raw += "</td> ";
             return raw;
@@ -1556,7 +1757,11 @@ function contruirFilasRecibos(Rec) {
 }
 
 // TODO: VISUALIZAR RECIBO OFICIAL
-function visualizarReciboOficialCantidadUno(idRegistroDePago) {
+function visualizarReciboOficialCantidadUno(idRegistroDePago, list) {
+
+    //para programar el boton atras
+    $("#visualizacionAtras").val(list);
+
     let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
     let funcionAjax = $.ajax({
         url: uri,
@@ -1587,7 +1792,7 @@ function cargarVisualizacionRecibo(datosParaCargarRecibo) {
     let subTotal = alquilerMensual + expensas + gasAdm + deposito;
 
     let fechaComprobante = datosParaCargarRecibo["fechaComprobante"];
-    var fechaFormato = fechaComprobante.replace(/^(\d{4})-(\d{2})-(\d{2})$/g,'$3/$2/$1');
+    var fechaFormato = fechaComprobante.replace(/^(\d{4})-(\d{2})-(\d{2})$/g, '$3/$2/$1');
     $("#visualizacionFecha").val(fechaFormato);
 
     $("#visualizacionNumeroComprobante").val(datosParaCargarRecibo["numeroComprobante"]);
@@ -1621,10 +1826,12 @@ function cargarVisualizacionRecibo(datosParaCargarRecibo) {
 }
 
 // TODO: VISUALIZAR RECIBO NO OFICIAL
-function visualizarReciboNoOficialCantidadUno(idRegistroDePago) {
+function visualizarReciboNoOficialCantidadUno(idRegistroDePago, list) {
+
+    //para programar el boton atras
+    $("#noOfiAtras").val(list);
 
     let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
-
     var funcionAjax = $.ajax({
         url: uri,
         method: "POST",
@@ -1649,7 +1856,7 @@ function cargarVisualizacionReciboNoOficial(datosParaCargarRecibo) {
     let subTotal = alquilerMensual;
 
     let fechaComprobante = datosParaCargarRecibo["fechaComprobante"];
-    var fechaFormato = fechaComprobante.replace(/^(\d{4})-(\d{2})-(\d{2})$/g,'$3/$2/$1');
+    var fechaFormato = fechaComprobante.replace(/^(\d{4})-(\d{2})-(\d{2})$/g, '$3/$2/$1');
 
     $("#noOfiFecha").val(fechaFormato);
     $("#noOfiNumeroComprobante").val(datosParaCargarRecibo["numeroComprobante"]);
@@ -1674,10 +1881,12 @@ function cargarVisualizacionReciboNoOficial(datosParaCargarRecibo) {
 }
 
 // TODO: VISUALIZAR RECIBO OFICIAL solo SALDO
-function visualizarReciboOficialSaldo(idRegistroDePago) {
+function visualizarReciboOficialSaldo(idRegistroDePago, list) {
+
+    //para programar el boton atras
+    $("#visuAtras").val(list);
 
     let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
-
     var funcionAjax = $.ajax({
         url: uri,
         method: "POST",
@@ -1699,7 +1908,7 @@ function visualizarReciboOficialSaldo(idRegistroDePago) {
 function cargarVisualizacionReciboOficialSaldo(Saldo) {
 
     let fechaComprobante = Saldo["fechaComprobante"];
-    var fechaFormato = fechaComprobante.replace(/^(\d{4})-(\d{2})-(\d{2})$/g,'$3/$2/$1');
+    var fechaFormato = fechaComprobante.replace(/^(\d{4})-(\d{2})-(\d{2})$/g, '$3/$2/$1');
 
     $("#visuFecha").val(fechaFormato);
     $("#visuNumeroComprobante").val(Saldo["numeroComprobante"]);
@@ -1847,6 +2056,16 @@ function convertirNumeroALetra(num) {
     console.log("Fin llamada controller usuario");
 }
 
+// LISTAR RECIBOS
+function listarRecibosPorContrato(idContrato) {
+    $("#verIdContrato").val(idContrato);
+    listadoComprobantesDePago(llenarComprobantesDePagos,
+        {
+            action: "listarRecibosDelMismoContrato",
+            idContrato: idContrato
+        }
+    );
+}
 
 function listadoComprobantesDePago(doneFunction, data) {
 
@@ -2093,45 +2312,37 @@ var paginador;            //Referencia el elemento
 var totalPaginas;         //Se debe calcular
 var itemsPorPagina = 12;   //Elementos a mostrar desde la base de datos
 var numerosPorPagina = 1; //Cantidad maxima de enlaces visibles en el paginador
-var current_paginator_item=1;
+var current_paginator_item = 1;
 var desde;
 
-function creaPaginador(totalItems, id)
-{
+
+function creaPaginador(totalItems, id) {
     //Obtener la referencia el elemento
     paginador = $(".pagination");
 
-    if (totalItems==24)
-    {
+    if (totalItems == 24) {
         numerosPorPagina = 2;//1 año
-    }
-    else if (totalItems==48)
-    {
+    } else if (totalItems == 48) {
         numerosPorPagina = 4;//2 años
-    }
-    else if (totalItems==72)
-    {
+    } else if (totalItems == 72) {
         numerosPorPagina = 6;// 3 años
-    }
-    else if (totalItems==96)
-    {
+    } else if (totalItems == 96) {
         numerosPorPagina = 8;// 4 años
     }
 
     //Calcular el numero de paginas para el paginador
-    totalPaginas = Math.ceil(totalItems/itemsPorPagina);
+    totalPaginas = Math.ceil(totalItems / itemsPorPagina);
 
     ///Enlace que lleva a la primera página
     $('<li class="page_item c"><a href="#" class="first_link"><</a></li>').appendTo(paginador);
 
     //Enlace que lleva a la página previa
     $('<li class="page_item prev_link"> <a href="#" aria-label="Previous" class="prev_link"> <span aria-hidden="true">&laquo;</span> </a> </li>').appendTo(paginador);
-    
+
     var pag = 0;
-    while(totalPaginas > pag)
-    {
+    while (totalPaginas > pag) {
         //Enlace que lleva a la página seleccionada
-        $('<li class="page_item a"><a href="#" class="page_link">'+(pag+1)+'</a></li>').appendTo(paginador);
+        $('<li class="page_item a"><a href="#" class="page_link">' + (pag + 1) + '</a></li>').appendTo(paginador);
         pag++;
     }
 
@@ -2147,96 +2358,85 @@ function creaPaginador(totalItems, id)
     //paginador.find(".page_link:first").parents("li").addClass("active");
 
     //Esconde el enlace a página previa
-     paginador.find(".prev_link").hide();
+    paginador.find(".prev_link").hide();
 
     //Carga la página al hacer click en el enlace
-    paginador.find("li .page_link").click(function()
-    {
-        var irpagina =$(this).html().valueOf()-1;
-        cargaPagina(irpagina,id);
+    paginador.find("li .page_link").click(function () {
+        var irpagina = $(this).html().valueOf() - 1;
+        cargaPagina(irpagina, id);
         return false;
     });
 
     //Carga la primera página
-    paginador.find("li .first_link").click(function()
-    {
-        var irpagina =0;
+    paginador.find("li .first_link").click(function () {
+        var irpagina = 0;
         cargaPagina(irpagina, id);
         return false;
     });
 
     //Carga la página previa
-    paginador.find("li .prev_link").click(function()
-    {
-        var irpagina =parseInt(paginador.data("pag")) -1;
+    paginador.find("li .prev_link").click(function () {
+        var irpagina = parseInt(paginador.data("pag")) - 1;
         cargaPagina(irpagina, id);
         return false;
     });
 
     //Carga la siguiente página
-    paginador.find("li .next_link").click(function()
-    {
-        var irpagina =parseInt(paginador.data("pag")) +1;
+    paginador.find("li .next_link").click(function () {
+        var irpagina = parseInt(paginador.data("pag")) + 1;
         cargaPagina(irpagina, id);
         return false;
     });
 
     //Carga la última página
-    paginador.find("li .last_link").click(function()
-    {
-        var irpagina =totalPaginas -1;
+    paginador.find("li .last_link").click(function () {
+        var irpagina = totalPaginas - 1;
         cargaPagina(irpagina, id);
         return false;
     });
 
     cargaPagina(0, id);
 
-    $(".page_link").on("click", function(e)
-    {
+    $(".page_link").on("click", function (e) {
         e.preventDefault();
         $(".page_link").removeClass("active");
         $(this).addClass("active");
-        current_paginator_item=$(".page_link").index(this)+1;
+        current_paginator_item = $(".page_link").index(this) + 1;
     });
 
-    $(".first_link").on("click", function(e)
-    {
+    $(".first_link").on("click", function (e) {
         e.preventDefault();
         //Quita la clase "active" de todos los elementos
         $(".page_link").removeClass("active");
         $(".page_link:eq(0)").addClass("active");
-        current_paginator_item=1;
+        current_paginator_item = 1;
     });
 
-    $(".last_link").on("click", function(e)
-    {
+    $(".last_link").on("click", function (e) {
         e.preventDefault();
         $(".page_link").removeClass("active");
         let n = $(".page_link").length;
-        $(".page_link:eq(" + (n-1)  + ")").addClass("active");
-        current_paginator_item=n;
+        $(".page_link:eq(" + (n - 1) + ")").addClass("active");
+        current_paginator_item = n;
     });
 
-    $(".next_link").on("click", function(e)
-    {
+    $(".next_link").on("click", function (e) {
         e.preventDefault();
         $(".page_link").removeClass("active");
-        $(".page_link:eq(" + current_paginator_item  + ")").addClass("active");
+        $(".page_link:eq(" + current_paginator_item + ")").addClass("active");
         current_paginator_item++;
     });
 
-    $(".prev_link").on("click", function(e)
-    {
+    $(".prev_link").on("click", function (e) {
         e.preventDefault();
         //Quita la clase "active" de todos los elementos
         $(".page_link").removeClass("active");
         current_paginator_item--;
-        $(".page_link:eq(" + (current_paginator_item-1)  + ")").addClass("active");
+        $(".page_link:eq(" + (current_paginator_item - 1) + ")").addClass("active");
     });
 }
 
-function cargaPagina(pagina, id)
-{
+function cargaPagina(pagina, id) {
     ///calcular desde donde se leerá la base de datos
     desde = pagina * itemsPorPagina;
 
@@ -2248,59 +2448,46 @@ function cargaPagina(pagina, id)
         data: {
             action: "listar",
             idContrato: id,
-            limit:itemsPorPagina,
-            offset:desde
+            limit: itemsPorPagina,
+            offset: desde
         }
-    }).done(function(data)
-    {
+    }).done(function (data) {
         llenarRegistroDePagoGrilla(data);
 
-    }).fail(function(jqXHR,textStatus,textError)
-    {
+    }).fail(function (jqXHR, textStatus, textError) {
         alert("Error al realizar la peticion dame " + textError);
 
     });
 
-    if(pagina >= 1)
-    {
+    if (pagina >= 1) {
         //Muestra el enlace a página previa
         paginador.find(".prev_link").show();
-    }
-    else
-    {
+    } else {
         //Oculta el enlace a página previa
         paginador.find(".prev_link").hide();
     }
 
-    if(pagina < totalPaginas - 1)
-    {
+    if (pagina < totalPaginas - 1) {
         //Muestra el enlace a página siguiente
         paginador.find(".next_link").show();
-    }
-    else
-    {
+    } else {
         //Oculta el enlace a página siguiente
         paginador.find(".next_link").hide();
     }
 
     //Obtiene el número de página sellecionada (current)
-    paginador.data("pag",pagina);
+    paginador.data("pag", pagina);
 
-    if(numerosPorPagina>1)
-    {
+    if (numerosPorPagina > 1) {
         //oculta todos los enlces
         $(".page_link").hide();
         $(".a").hide();
 
-        if(pagina <= (totalPaginas - numerosPorPagina))
-        {
-            $(".page_link").slice(pagina,numerosPorPagina + pagina).show();
-            $(".a").slice(pagina,numerosPorPagina + pagina).show();
-        }
-        else
-        {
-            if(totalPaginas >= numerosPorPagina)
-            {
+        if (pagina <= (totalPaginas - numerosPorPagina)) {
+            $(".page_link").slice(pagina, numerosPorPagina + pagina).show();
+            $(".a").slice(pagina, numerosPorPagina + pagina).show();
+        } else {
+            if (totalPaginas >= numerosPorPagina) {
                 $(".page_link").slice(totalPaginas - numerosPorPagina).show();
                 $(".a").slice(totalPaginas - numerosPorPagina).show();
             }
@@ -2308,8 +2495,7 @@ function cargaPagina(pagina, id)
     }
 }
 
-function buscarCantidadDeRegistros(id)
-{
+function buscarCantidadDeRegistros(id) {
     let uri = EndpointsEnum.REGISTRO_DE_PAGO;
 
     let funcionAjax = $.ajax({
@@ -2317,14 +2503,14 @@ function buscarCantidadDeRegistros(id)
         method: "POST",
         data: {
             action: "buscarCantidadDeRegistros",
-            idContrato:id
+            idContrato: id
         }
     });
 
     funcionAjax.done(function (retorno) {
         let array = JSON.parse(retorno);
         let count = array['cantidad'];
-        creaPaginador(count, id );
+        creaPaginador(count, id);
     });
 
     funcionAjax.fail(function (retorno) {
