@@ -15,7 +15,7 @@ input:focus, input.form-control:focus, button:focus, select:focus {
 /*====================================================================================*/
 .miTitulo1 {
     color: #3a5ba0;
-    font: bold 22px "Product Sans";
+    font: bold 23px "Product Sans";
 }
 
 /*====================================================================================*/
@@ -158,6 +158,31 @@ input:focus, input.form-control:focus, button:focus, select:focus {
     border-radius: 0px 10px 10px 0px; /*esquinas redondeadas*/
 }
 
+.inputTextConSombraBuscador2 {
+    width: 180px;
+    height: 38px;
+    margin: 0px;
+    padding: 10px;
+    border: #3a5ba0 1px solid;
+    background: none;
+    color: #877c77; /*color a lo que escriba el usuario*/
+    box-shadow: 0 0 6px #99cef4; /* Sombreado */
+    border-radius: 10px 0px 0px 10px; /*esquinas redondeadas*/
+}
+
+.botonBuscadorLupa2 {
+    width: 40px;
+    height: 38px;
+    margin: 0px;
+    padding: 4px;
+    border: #3a5ba0 1px solid;
+    background: #3a5ba0;
+    /*border-bottom: 2px solid #06B1B8; para que se vea el borde VERDE*/
+    color: white; /*color a lo que escriba el usuario*/
+    /*box-shadow: 0 0 6px #99cef4; Sombreado */
+    border-radius: 0px 10px 10px 0px; /*esquinas redondeadas*/
+}
+
 /*====================================================================================
  para OCULTAR inputs
 ====================================================================================*/
@@ -283,7 +308,7 @@ input:focus, input.form-control:focus, button:focus, select:focus {
 
 .miTituloDetail {
     color: #3a5ba0;
-    font: bold 14px "Product Sans";
+    font: bold 16px "Product Sans";
 }
 
 
@@ -297,6 +322,19 @@ input:focus, input.form-control:focus, button:focus, select:focus {
     background: none;
     outline: 0; /*para que no se vea el borde al seleccionar la caja de texto*/
     color: #3a5ba0; /*color a lo que escriba el usuario*/
+}
+
+.inputTextAreaDetail {
+    font-size: 11px;
+    font-weight: bold;
+    font: normal 16px "Product Sans";
+    width: 100%;
+    /*padding: .7em;*/
+    border: none;
+    background: none;
+    outline: 0; /*para que no se vea el borde al seleccionar la caja de texto*/
+    color: #3a5ba0; /*color a lo que escriba el usuario*/
+    height: 80px;
 }
 
 /*====================================================================================
@@ -352,6 +390,24 @@ input:focus, input.form-control:focus, button:focus, select:focus {
     font: normal 16px sans-serif; /*negrita, tamaño, tipo de letra*/
 }
 .miBoton-index:hover{
+    color: #3a5ba0;
+    background-color: white;
+    border: 2px solid #3a5ba0;
+}
+
+.miBoton-cliente{
+    width: 140px;
+    height: 39px;
+    background-color: #3a5ba0;
+    /*padding: 10px 100px 70px 10px;  espacio con respecto al texto*/
+    border-radius: 8px 8px 8px 8px;
+    border: 0px solid #000000;
+    color: white; /*color de letra gris claro el mismo gris del fondo*/
+    /*position: absolute;*/
+    /*left: 0px;*/
+    font: normal 16px sans-serif; /*negrita, tamaño, tipo de letra*/
+}
+.miBoton-cliente:hover{
     color: #3a5ba0;
     background-color: white;
     border: 2px solid #3a5ba0;

@@ -1,54 +1,72 @@
 <body>
 <div class="container" id="listarRecibos">
-    <br><br><br>
+    <br><br>
     <div><label class="miTitulo1">Recibos</label></div>
+
+    <div>
+
+<!--        <a href="../principal/menuPrincipal.page.php"> </a>-->
+<!--&lt;!&ndash;            <input class="miBoton-chico" type="button" value="Atras"></a>&ndash;&gt;-->
+    </div>
+
     <br>
-
     <div class="row">
-        <div class="col-md-4"></div>
+        <div class="col-md-3"></div>
 
-        <div class="col-md-4"></div>
+        <div class="col-md-3"></div>
 
-    <div class="col-md-4">
+        <div class="col-md-3"></div>
+
+        <div class="col-md-3">
         <label>
-                <select id="idInmuebleRecibo" name="idInmuebleRecibo" class="inputTextConSombra" style="width: 300px;">
-                </select>
+            <select id="buscarPorMes" name='buscarPorMes' class="inputTextConSombraBuscador2">
+                <option value="0">Todos</option>
+                <option value="1">Enero</option>
+                <option value="2">Febrero</option>
+                <option value="3">Marzo</option>
+                <option value="4">Abril</option>
+                <option value="5">Mayo</option>
+                <option value="6">Junio</option>
+                <option value="7">Julio</option>
+                <option value="8">Agosto</option>
+                <option value="9">Septiembre</option>
+                <option value="10">Octubre</option>
+                <option value="11">Noviembre</option>
+                <option value="12">Diciembre</option>
+            </select>
         </label>
-        <button class="botonBuscadorLupa" title="Buscar" onclick="buscarPorInmueble()" style="height: 40px;">
+        <button class="botonBuscadorLupa2" title="Buscar" id ="BuscarPorInmueble" onclick="buscarPorInmueble()">
             <span class="glyphicon glyphicon-search"></span>
         </button>
     </div>
     </div>
-
-    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <a href="../principal/menuPrincipal.page.php" style="float: left">Volver al menú principal</a>
+        </div>
+    </div>
+<!--    <br>-->
     <div class="row table-responsive">
         <table class="table table-striped">
             <table class="table table-striped">
                 <thead class="thead-dark">
                 <tr>
-                    <th class="cabeceraTabla">Id</th>
                     <th class="cabeceraTabla">Num Comp.</th>
                     <th class="cabeceraTabla" style="visibility:hidden; display: none;">Contrato</th>
                     <th class="cabeceraTabla" style="visibility:hidden; display: none;">Id Reg Pag</th>
                     <th class="cabeceraTabla">Fecha</th>
                     <th class="cabeceraTabla">Tipo</th>
-                    <th class="cabeceraTabla">Tipo Recibo</th>
                     <th class="cabeceraTabla">Mes</th>
                     <th class="cabeceraTabla">Año</th>
                     <th class="cabeceraTabla">Total a pagar</th>
                     <th class="cabeceraTabla">Recibido</th>
                     <th class="cabeceraTabla">Saldo Pendiente</th>
-                    <th class="cabeceraTabla">Pendiente sin mod</th>
                     <th class="cabeceraTabla" colspan="3">Acciones</th>
                 </tr>
                 </thead>
                 <tbody id="listadoCompDePago"></tbody>
             </table>
         </table>
-        <div>
-            <a href="../principal/menuPrincipal.page.php">
-                <input class="miBoton-chico" type="button" value="Atras"></a>
-        </div>
     </div>
 </div>
 </body>

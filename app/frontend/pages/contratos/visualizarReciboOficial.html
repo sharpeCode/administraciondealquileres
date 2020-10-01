@@ -1,8 +1,10 @@
 <body>
 <div class="container" id="visualizarReciboOficial">
     <div class="container miContainerRecibo" id="bodyReciboOficial">
-        <div class="centrarMiTituloRecibo" style="position:relative; top: 0px;"><label class="miTituloReciboReciboRecibo">Recibo</label></div>
-        <div class="centrarMiTituloRecibo2" style="position:relative; top: -15px;"><label class="miTituloReciboReciboRecibo2"> Gestión Home</label></div>
+        <div class="centrarMiTituloRecibo" style="position:relative; top: 0px;"><label
+                class="miTituloReciboReciboRecibo">Recibo</label></div>
+        <div class="centrarMiTituloRecibo2" style="position:relative; top: -15px;"><label
+                class="miTituloReciboReciboRecibo2"> Gestión Home</label></div>
 
         <div class="row miContainerRecibo2">
             <!-- COLUMNA 1 -->
@@ -20,9 +22,13 @@
                 </div>
             </div>
             <!-- COLUMNA 2 -->
-            <div class="col-md-6">
+            <div class="col-md-6 inputOculto">
+                <!-- Este input se carga dependiendo de donde llamen al recibo para luego programar el boton ATRAS-->
+                <div class="col-md-4">
+                    <input type="text" class="inputTextLabelRecibo" name="visualizacionAtras"
+                           id="visualizacionAtras" readonly="readonly" placeholder="atras">
+                </div>
                 <!-- FECHA-->
-                <div class="col-md-4"></div>
                 <div class="col-md-2" style="position:relative; top: 30px;">
                     <label class="labelSubtituloRecibo">Fecha</label>
                 </div>
@@ -288,7 +294,7 @@
     <div class="row" style="position:relative; top: -10px;">
         <div class="col-md-9"></div>
         <div class="col-md-3">
-            <a><input class="miBoton-chico" type="button" onclick="ListadoDeRegistrosDePago()" value="Atras"></a>
+            <a><input class="miBoton-chico" type="button" onclick="botonAtras()" value="Atras"></a>
             <a><input class="miBoton-chico" type="button" onclick="printPdfReciboOficial()" value="PDF" id="pdf"
                       name="pdf"></a>
         </div>

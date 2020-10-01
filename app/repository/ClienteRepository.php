@@ -6,22 +6,22 @@ class ClienteRepository
 {
     public static function listarClientes()
     {
-        $locatarios = null;
+        $cliente = null;
         try {
-            $sql = "SELECT nombres, apellidos, dni, celular, email, fecha_nacimiento fechaNacimiento, fecha_registro as fechaRegistro,
-                        datos_garante datosGarante, domicilio_legal domicilioLegal
+            $sql = "SELECT dni, nombres, apellidos, celular, email, fecha_nacimiento fechaNacimiento, fecha_registro as fechaRegistro,
+                        datos_garante datosGarante, domicilio_legal domicilioLegal, estado
                         FROM clientes WHERE estado = '1'
                         ORDER BY fecha_registro DESC";
 
             $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
             $sentencia->execute();
-            $locatarios = $sentencia->fetchAll(PDO::FETCH_CLASS, "Cliente");
+            $cliente = $sentencia->fetchAll(PDO::FETCH_CLASS, "Cliente");
 
         } catch (PDOException $ex) {
             print 'ERROR' . $ex->getMessage();
         }
 
-        return $locatarios;
+        return $cliente;
     }
 
     public static function guardarClienteNuevo($clienteObject)
@@ -63,7 +63,7 @@ class ClienteRepository
             if ($dni <> "") {
 
                 $sql = "SELECT nombres, apellidos, dni, celular, email, fecha_nacimiento fechaNacimiento, fecha_registro as fechaRegistro,
-                        datos_garante datosGarante, domicilio_legal domicilioLegal
+                        datos_garante datosGarante, domicilio_legal domicilioLegal, estado
                         FROM clientes
                         WHERE estado = 1 AND dni = $dni
                         ORDER BY fecha_registro DESC";
@@ -75,7 +75,8 @@ class ClienteRepository
             } else {
                 $sql = "SELECT nombres, apellidos, dni, celular, email, fecha_nacimiento fechaNacimiento, fecha_registro as fechaRegistro,
                         datos_garante datosGarante, domicilio_legal domicilioLegal
-                        FROM clientes";
+                        FROM clientes
+                        WHERE estado = 1";
 
                 $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
                 $sentencia->execute();
@@ -99,7 +100,7 @@ class ClienteRepository
             if ($dni <> "") {
 
                 $sql = "SELECT nombres, apellidos, dni, celular, email, fecha_nacimiento fechaNacimiento, fecha_registro as fechaRegistro,
-                        datos_garante datosGarante, domicilio_legal domicilioLegal
+                        datos_garante datosGarante, domicilio_legal domicilioLegal, estado
                         FROM clientes
                         WHERE dni = $dni";
 
@@ -108,7 +109,8 @@ class ClienteRepository
                 $clientes = $sentencia-> fetchObject("Cliente");
 
             } else {
-                $sql = "SELECT nombres, apellidos, dni, celular, email, fecha_nacimiento fechaNacimiento, fecha_registro as fechaRegistro, datos_garante datosGarante
+                $sql = "SELECT nombres, apellidos, dni, celular, email, fecha_nacimiento fechaNacimiento, 
+                            fecha_registro as fechaRegistro, datos_garante datosGarante, estado
                         FROM clientes";
 
                 $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
@@ -131,7 +133,7 @@ class ClienteRepository
             if ($nombre <> "") {
 
                 $sql = "SELECT nombres, apellidos, dni, celular, email, fecha_nacimiento fechaNacimiento, fecha_registro as fechaRegistro,
-                        datos_garante datosGarante, domicilio_legal domicilioLegal
+                        datos_garante datosGarante, domicilio_legal domicilioLegal, estado
                         FROM clientes
                         WHERE estado = 1 AND nombres like '%$nombre%'
                         ORDER BY fecha_registro DESC";
@@ -142,8 +144,9 @@ class ClienteRepository
 
             } else {
                 $sql = "SELECT nombres, apellidos, dni, celular, email, fecha_nacimiento fechaNacimiento, fecha_registro as fechaRegistro,
-                        datos_garante datosGarante, domicilio_legal domicilioLegal
-                        FROM clientes";
+                        datos_garante datosGarante, domicilio_legal domicilioLegal, estado
+                        FROM clientes
+                        WHERE estado = 1";
 
                 $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
                 $sentencia->execute();
@@ -155,6 +158,39 @@ class ClienteRepository
             print 'ERROR' . $ex->getMessage();
         }
 
+        return $clientes;
+    }
+
+    public static function traerClientesFiltradoPorEstado($estado)
+    {
+        $clientes = null;
+        try {
+            if ($estado <> "") {
+
+                $sql = "SELECT nombres, apellidos, dni, celular, email, fecha_nacimiento fechaNacimiento, fecha_registro as fechaRegistro,
+                        datos_garante datosGarante, domicilio_legal domicilioLegal, estado
+                        FROM clientes
+                        WHERE estado = $estado";
+
+                $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
+                $sentencia->execute();
+                $clientes = $sentencia->fetchAll(PDO::FETCH_CLASS, "Cliente");
+
+            } else {
+                $sql = "SELECT dni, nombres, apellidos, celular, email, fecha_nacimiento fechaNacimiento, fecha_registro as fechaRegistro,
+                        datos_garante datosGarante, domicilio_legal domicilioLegal, estado
+                        FROM clientes
+                        WHERE estado = 1";
+
+                $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
+                $sentencia->execute();
+                $clientes = $sentencia->fetchAll(PDO::FETCH_CLASS, "Cliente");
+            }
+
+
+        } catch (PDOException $ex) {
+            print 'ERROR' . $ex->getMessage();
+        }
         return $clientes;
     }
 
@@ -225,7 +261,27 @@ class ClienteRepository
             $cliente = null;
         }
         return $cliente;
-
     }
 
+    public static function activarCliente($dni)
+    {
+        $cliente = null;
+        $estado = "1";
+        try {
+
+            $sql = "UPDATE clientes SET estado=:estado
+                    WHERE dni = '$dni'";
+
+            $sentencia = BaseRepository::getBaseRepository()->prepareQuery($sql);
+            $sentencia->bindParam(':estado',$estado , PDO::PARAM_STR);
+
+            $sentencia->execute();
+            $cliente = $sentencia->fetchObject("Cliente");
+
+        } catch (PDOException $ex) {
+            $cliente = null;
+        }
+        return $cliente;
+
+    }
 }

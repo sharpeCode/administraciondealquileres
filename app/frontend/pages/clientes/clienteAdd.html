@@ -1,6 +1,6 @@
 <!-- START - User Form Content -->
 <form role="form" id="clienteAdd">
-    <div class="contenedorAgregarPersona" style="margin: 3rem;">
+    <div class="contenedorAgregarPersona" style="margin: 2rem;">
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-3 nombreCampo">
@@ -9,89 +9,89 @@
             <div class="col-md-7"></div>
         </div>
 
-        <br>
         <div class="row">
             <div class="col-md-2"></div>
-            <div class="col-md-2">
-                <input type="text" class="inputTextConSombra" id="nombres" name="nombres" placeholder="Nombres" title="Nombres" maxlength="30">
+            <div class="col-md-3">
+                <input type="text" class="inputTextConSombra" id="nombres" name="nombres" placeholder="Nombres"
+                       title="Nombres" maxlength="30">
             </div>
-            <div class="col-md-8"></div>
+            <div class="col-md-7"></div>
         </div>
 
         <br>
         <div class="row">
             <div class="col-md-2"></div>
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <input type="text" class="inputTextConSombra" id="apellidos" name="apellidos" placeholder="Apellidos" title="Apellidos" maxlength="30">
             </div>
-            <div class="col-md-8"></div>
+            <div class="col-md-7"></div>
         </div>
 
         <br>
         <div class="row">
             <div class="col-md-2"></div>
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <input class="inputTextConSombra" type="text" id="dni" name="dni" placeholder="Dni" title="Dni" maxlength="15">
             </div>
-            <div class="col-md-8"></div>
+            <div class="col-md-7"></div>
         </div>
 
         <br>
         <div class="row">
             <div class="col-md-2"></div>
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <input class="inputTextConSombra" id="domicilioLegal"  name="domicilioLegal" placeholder="Domicilio Legal"></input>
             </div>
-            <div class="col-md-5"></div>
+            <div class="col-md-7"></div>
         </div>
 
         <br>
         <div class="row">
             <div class="col-md-2"></div>
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <input class="inputTextConSombra" type="text" id="celular" name="celular" placeholder="Celular" title="Celular" maxlength="15">
             </div>
-            <div class="col-md-8"></div>
+            <div class="col-md-7"></div>
         </div>
 
         <br>
         <div class="row">
             <div class="col-md-2"></div>
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <input class="inputTextConSombra" type="email" id="email" name="email" placeholder="Email" title="Email" maxlength="30">
             </div>
-            <div class="col-md-8"></div>
+            <div class="col-md-7"></div>
         </div>
 
         <br>
         <div class="row">
             <div class="col-md-2"></div>
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <input class="inputTextConSombra" id="fechaNacimiento"  name="fechaNacimiento" title="Fecha Nacimiento"
                        placeholder="Fecha Nacimiento" onfocus="(this.type='date')">
             </div>
-            <div class="col-md-5"></div>
+            <div class="col-md-7"></div>
         </div>
 
         <br>
         <div class="row">
             <div class="col-md-2"></div>
-            <div class="col-md-2">
-                <input class="inputTextConSombra" id="datosGarante"  name="datosGarante" placeholder="Datos del Garante"></input>
+            <div class="col-md-3">
+                <textarea class="inputTextConSombra" id="datosGarante"  name="datosGarante"
+                          placeholder="Datos del Garante" style="height: 80px"></textarea>
             </div>
-            <div class="col-md-5"></div>
+            <div class="col-md-7"></div>
         </div>
 
         <br>
         <div class="row">
             <div class="col-md-2"></div>
-            <div class="col-md-1" style="width:100px">
-                <button type="button" class="miBoton-chico" onclick="guardarCliente()" name="enviar" id="enviar">
+            <div class="col-md-3">
+                <a><input type="button" class="miBoton-cliente"  onclick="showListContainer()" value="Atras"></a>
+                <button type="button" class="miBoton-cliente" onclick="guardarCliente()" name="enviar" id="enviar">
                     Guardar
                 </button>
             </div>
-            <div class="col-md-1" style="width:100px">
-                <a><input class="miBoton-chico" type="button" onclick="showListContainer()" value="Atras"></a>
             </div>
             <div class="col-md-7"></div>
         </div>

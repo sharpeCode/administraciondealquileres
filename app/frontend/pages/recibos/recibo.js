@@ -1,47 +1,48 @@
 $(function () {
-    $("#listarRecibos").show();
-    $("#visualizarReciboOficial").hide();
-    $("#visualizarReciboNoOficial").hide();
-    $("#visualizarReciboSaldoOficial").hide();
+    $("#RlistarRecibos").show();
+    $("#RvisualizarReciboOficial").hide();
+    $("#RvisualizarReciboNoOficial").hide();
+    $("#RvisualizarReciboSaldoOficial").hide();
     llenarSelectConInmueblesEnRecibos();
     listarRecibos();
 });
 
 // TODO: Visualizar recibo Oficial
 function visualizarReciboOficial(idComprobantesDePago) {
-    $("#listarRecibos").hide();
-    $("#visualizarReciboOficial").show();
-    $("#visualizarReciboNoOficial").hide();
-    $("#visualizarReciboSaldoOficial").hide();
+    $("#RlistarRecibos").hide();
+    $("#RvisualizarReciboOficial").show();
+    $("#RvisualizarReciboNoOficial").hide();
+    $("#RvisualizarReciboSaldoOficial").hide();
     cargarReciboOficial(idComprobantesDePago);
 }
 
 // TODO: Visualizar recibo Oficial solo saldo
 function visualizarReciboOficialSoloSaldo(idComprobantesDePago) {
-    $("#listarRecibos").hide();
-    $("#visualizarReciboOficial").hide();
-    $("#visualizarReciboNoOficial").hide();
-    $("#visualizarReciboSaldoOficial").show();
+    $("#RlistarRecibos").hide();
+    $("#RvisualizarReciboOficial").hide();
+    $("#RvisualizarReciboNoOficial").hide();
+    $("#RvisualizarReciboSaldoOficial").show();
     cargarReciboOficialSoloSaldo(idComprobantesDePago);
 }
 
 // TODO: Visualizar recibo No Oficial
 function visualizarReciboNoOficial(idComprobantesDePago) {
-    $("#listarRecibos").hide();
-    $("#visualizarReciboOficial").hide();
-    $("#visualizarReciboNoOficial").show();
-    $("#visualizarReciboSaldoOficial").hide();
+    $("#RlistarRecibos").hide();
+    $("#RvisualizarReciboOficial").hide();
+    $("#RvisualizarReciboNoOficial").show();
+    $("#RvisualizarReciboSaldoOficial").hide();
     cargarReciboNoOficial(idComprobantesDePago);
 }
 
 // TODO: boton Atras
 function Atras() {
-    $("#listarRecibos").show();
-    $("#visualizarReciboOficial").hide();
-    $("#visualizarReciboNoOficial").hide();
-    $("#visualizarReciboSaldoOficial").hide();
+    $("#RlistarRecibos").show();
+    $("#RvisualizarReciboOficial").hide();
+    $("#RvisualizarReciboNoOficial").hide();
+    $("#RvisualizarReciboSaldoOficial").hide();
     listarRecibos();
 }
+
 
 // LISTAR COMPROBANTES DE PAGOS
 function listarRecibos() {
@@ -70,10 +71,10 @@ function listadoCompDePago(doneFunction, data) {
     funcionAjax.done(doneFunction);
 
     funcionAjax.fail(function (retorno) {
-        console.log("error al llamar back de locatarios")
+        console.log("error al llamar back de comprobantes de pago")
     });
     funcionAjax.always(function (retorno) {
-        console.log("always de promise locatarios")
+        console.log("always de promise comprobantes de pago")
     });
 }
 
@@ -87,30 +88,31 @@ function llenarComprobantesDePagosGrilla(jsonCompPagos) {
         tableRaws += contruirFilasComprobantesDePagos(jsonCompPagos[i]);
         tableRaws += "</tr>";
     }
-    $("#listadoCompDePago").html(tableRaws);
+    $("#listCompDePago").html(tableRaws);
 }
 
 function contruirFilasComprobantesDePagos(compPagos) {
 
+    $("#RlistarRecibos").show();
     let fc = compPagos['fechaComprobante'];
     var fecha = new Date(fc);
     var options = {day: 'numeric', month: 'numeric', year: 'numeric'};
     var fechaComprobante = fecha.toLocaleDateString("es-ES", options);
 
     let raw = "";
-    raw += "<td>" + compPagos['idComprobanteDePago'] + "</td>";
-    raw += "<td>" + compPagos['numeroComprobante'] + "</td>";
+    raw += "<td style = 'text-align: center;word-wrap: break-word;' hidden='true'>" + compPagos['idComprobanteDePago'] + "</td>";
+    raw += "<td style = 'text-align: center; word-wrap: break-word;'>" + compPagos['numeroComprobante'] + "</td>";
     raw += "<td style='visibility:hidden; display: none;'>" + compPagos['idContrato'] + "</td>";
     raw += "<td style='visibility:hidden; display: none;'>" + compPagos['idRegistroDePago'] + "</td>";
-    raw += "<td>" + fechaComprobante + "</td>";
-    raw += "<td>" + compPagos['tipoComprobanteDePago'] + "</td>";
-    raw += "<td>" + compPagos['tipoRecibo'] + "</td>";
-    raw += "<td>" + compPagos['mesCorto'] + "</td>";
-    raw += "<td>" + compPagos['correspondienteAnio'] + "</td>";
-    raw += "<td>" + compPagos['totalImporteAPagar'] + "</td>";
-    raw += "<td>" + compPagos['totalImporteRecibido'] + "</td>";
-    raw += "<td>" + compPagos['saldoPendiente'] + "</td>";
-    raw += "<td>" + compPagos['saldoPendienteSinModificar'] + "</td>";
+    raw += "<td style = 'text-align: center; word-wrap: break-word;'>" + fechaComprobante + "</td>";
+    raw += "<td style = 'text-align: center; word-wrap: break-word;'>" + compPagos['tipoComprobanteDePago'] + "</td>";
+    raw += "<td style = 'text-align: center;word-wrap: break-word;' hidden='true'>" + compPagos['tipoRecibo'] + "</td>";
+    raw += "<td style = 'text-align: center; word-wrap: break-word;'>" + compPagos['mesCorto'] + "</td>";
+    raw += "<td style = 'text-align: center; word-wrap: break-word;'>" + compPagos['correspondienteAnio'] + "</td>";
+    raw += "<td style = 'text-align: center; word-wrap: break-word;'>" + compPagos['totalImporteAPagar'] + "</td>";
+    raw += "<td style = 'text-align: center; word-wrap: break-word;'>" + compPagos['totalImporteRecibido'] + "</td>";
+    raw += "<td style = 'text-align: center; word-wrap: break-word;'>" + compPagos['saldoPendiente'] + "</td>";
+    raw += "<td td style = 'text-align: center;word-wrap: break-word;' hidden='true'>" + compPagos['saldoPendienteSinModificar'] + "</td>";
 
     raw += "<td>";
     raw += "<button class='miBoton-icon' title='Generar Comprobante de pago' onclick='buscarDatosRecibo(" + compPagos['idComprobanteDePago'] + ")'>" +
@@ -164,7 +166,6 @@ function cargarDatosDeRecibo(datos) {
 
 // RECIBO OFICIAL
 function cargarReciboOficial(idComprobantesDePago) {
-    console.debug("trayendo datos de recibo");
 
     let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
 
@@ -279,8 +280,6 @@ function verReciboNoOficial(datosParaCargarRecibo) {
     $("#dosInteresPorMora").val("$ " + datosParaCargarRecibo["interesPorMora"]);
 
     $("#dosTotal").val("$ " + datosParaCargarRecibo["totalImporteAPagar"]);
-
-
 }
 
 // RECIBO OFICIAL SALDO
@@ -289,7 +288,7 @@ function cargarReciboOficialSoloSaldo(idComprobantesDePago) {
 
     let uri = EndpointsEnum.COMPROBANTE_DE_PAGO;
 
-    var funcionAjax = $.ajax({
+    let funcionAjax = $.ajax({
         url: uri,
         method: "POST",
         data: {
@@ -310,7 +309,7 @@ function cargarReciboOficialSoloSaldo(idComprobantesDePago) {
 function verReciboOficialSoloSaldo(datosParaCargarRecibo) {
 
     let fechaComprobante = datosParaCargarRecibo["fechaComprobante"];
-    var fechaFor = fechaComprobante.replace(/^(\d{4})-(\d{2})-(\d{2})$/g,'$3/$2/$1');
+    let fechaFor = fechaComprobante.replace(/^(\d{4})-(\d{2})-(\d{2})$/g,'$3/$2/$1');
 
     $("#tresFecha").val(fechaFor);
     $("#tresNumeroComprobante").val(datosParaCargarRecibo["numeroComprobante"]);
@@ -326,12 +325,10 @@ function verReciboOficialSoloSaldo(datosParaCargarRecibo) {
     $("#tresSaldoPendiente").val("$ " + datosParaCargarRecibo["totalImporteAPagar"]);
     $("#tresTotal").val("$ " + datosParaCargarRecibo["totalImporteAPagar"]);
     $("#tresImporteRecibido").val("$ " + datosParaCargarRecibo["totalImporteRecibido"]);
-
 }
 
 //PDF
 function printPdfReciboOficial() {
-    //let uriPage = EndpointsEnum.VOLVER_RECIBOS;
     var numeroComprobante = document.getElementById("unoNumeroComprobante").value;
 
     var divHeight = $('#bodyReciboOficial1').height();
@@ -448,7 +445,6 @@ function convertirNumeroALetra(num) {
 }
 
 function llenarSelectConInmueblesEnRecibos() {
-console.log("111111111111111111111111");
     let uri = EndpointsEnum.CONTRATO;
 
     var funcionAjax = $.ajax({
@@ -474,8 +470,7 @@ console.log("111111111111111111111111");
 }
 
 function llenarDomInmuebles2(arrayInmuebles) {
-    console.log("22222222222222222222222222222222222222222");
-    console.log(arrayInmuebles);
+
     arrayInmuebles = JSON.parse(arrayInmuebles);
     let options = "";
 
@@ -492,12 +487,30 @@ function llenarDomInmuebles2(arrayInmuebles) {
 }
 
 function optionsInmuebles2(Inmuebles){
-    console.log("33333333333333333333333333333333333");
     let option = "";
     option += "<option value='" + Inmuebles['idInmueble'] + "'>" +
         Inmuebles['domicilio'] + ", Piso: " + Inmuebles['piso'] + ", Dto: " + Inmuebles['departamento'] +
         ", " + Inmuebles['localidad'] + " - " + Inmuebles['tipo'] + "</option>";
     return option;
-
 }
 
+function buscarPorInmueble()
+{
+    $mes = $("#buscarPorMes").val();
+    if($mes != 0) {
+        listadoCompDePago(llenarComprobantesDePagosGrilla,
+            {
+                action: "traerRecibosPorMes",
+                mes: $("#buscarPorMes").val()
+            }
+        );
+    }
+    else
+    {
+        listadoCompDePago(llenarComprobantesDePagosGrilla,
+            {
+                action: "listarRecibos",
+            }
+        );
+    }
+}

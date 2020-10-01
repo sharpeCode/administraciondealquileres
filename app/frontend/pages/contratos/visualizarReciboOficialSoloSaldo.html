@@ -23,8 +23,12 @@
             </div>
             <!-- COLUMNA 2 -->
             <div class="col-md-6">
+                <!-- Este input se carga dependiendo de donde llamen al recibo para luego programar el boton ATRAS-->
+                <div class="col-md-4 inputOculto">
+                    <input type="text" class="inputTextLabelRecibo" name="visuAtras"
+                           id="visuAtras" readonly="readonly" placeholder="atras">
+                </div>
                 <!-- FECHA-->
-                <div class="col-md-4"></div>
                 <div class="col-md-2" style="position:relative; top: 30px;">
                     <label class="labelSubtituloRecibo">Fecha</label>
                 </div>
@@ -182,7 +186,7 @@
     <div class="row">
         <div class="col-md-9"></div>
         <div class="col-md-3">
-            <a><input class="miBoton-chico" type="button" onclick="ListadoDeRegistrosDePago()" value="Atras"></a>
+            <a><input class="miBoton-chico" type="button" onclick="botonAtras()" value="Atras"></a>
             <a><input class="miBoton-chico" type="button" onclick="printPdfReciboOficialSoloSaldo()" value="PDF"
                       id="pdf" name="pdf"></a>
         </div>
