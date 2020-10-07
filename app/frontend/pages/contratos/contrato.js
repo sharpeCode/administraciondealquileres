@@ -1937,7 +1937,7 @@ function printPdfReciboOficial() {
     var body = document.getElementById('bodyReciboOficial');
     html2canvas(body)
         .then(function (canvas) {
-            document.body.appendChild(canvas);
+            //document.body.appendChild(canvas);
             var imgData = canvas.toDataURL('image/png');
 
             var doc = new jsPDF();
@@ -1964,7 +1964,7 @@ function printPdfReciboNoOficial() {
     var body = document.getElementById('bodyReciboNoOficial');
     html2canvas(body)
         .then(function (canvas) {
-            document.body.appendChild(canvas);
+            //document.body.appendChild(canvas);
             var imgData = canvas.toDataURL('image/png');
 
             var doc = new jsPDF();
@@ -1991,7 +1991,7 @@ function printPdfReciboOficialSoloSaldo() {
     var body = document.getElementById('bodyReciboOficialSoloSaldo');
     html2canvas(body)
         .then(function (canvas) {
-            document.body.appendChild(canvas);
+            //document.body.appendChild(canvas);
             var imgData = canvas.toDataURL('image/png');
 
             var doc = new jsPDF();
@@ -2006,7 +2006,9 @@ function printPdfReciboOficialSoloSaldo() {
             */
             doc.addImage(imgData, 'JPEG', 0, 10, width + 0, height + 20);
             doc.save('ReciboOficialSoloSaldo-' + numeroComprobante + '.pdf');
+
         });
+
 }
 
 // CONVERTIR NUMERO A LETRA RECIBO OFICIAL
@@ -2301,6 +2303,7 @@ function ver_ReciboOficialSaldo(idComprobantesDePago, list) {
     funcionAjax.fail(function (retorno) {
         console.error(retorno);
     });
+
 }
 
 

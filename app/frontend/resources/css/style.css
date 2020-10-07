@@ -205,9 +205,9 @@ input:focus, input.form-control:focus, button:focus, select:focus {
  Labels color Amarillo
 ====================================================================================*/
 .labelAmarillo {
-    color: #f9c000;
+    color: #3a5ba0;
     background-color: transparent;
-    font: normal 16px "Product Sans";
+    font: bold 13px "Product Sans";
     border-style: none;
 }
 
@@ -574,6 +574,17 @@ input:focus, input.form-control:focus, button:focus, select:focus {
     border: black 2px solid;
     box-shadow: 0 0 6px black; /* Sombreado */
     border-radius: 20px 20px 20px 20px; /*esquinas redondeadas*/
+}
+
+/*====================================================================================
+  Container menu principal
+====================================================================================*/
+.miContainerMenuPrincipal {
+    background-image: url("../../resources/images/fondoHomeMarcaAguaSinFirmaDigital.png");
+    background-size: cover;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 

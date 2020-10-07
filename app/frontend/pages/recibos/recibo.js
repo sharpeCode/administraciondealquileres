@@ -3,7 +3,6 @@ $(function () {
     $("#RvisualizarReciboOficial").hide();
     $("#RvisualizarReciboNoOficial").hide();
     $("#RvisualizarReciboSaldoOficial").hide();
-    llenarSelectConInmueblesEnRecibos();
     listarRecibos();
 });
 
@@ -46,6 +45,7 @@ function Atras() {
 
 // LISTAR COMPROBANTES DE PAGOS
 function listarRecibos() {
+    console.log("holaaaaa");
     listadoCompDePago(llenarComprobantesDePagosGrilla,
         {
             action: "listarRecibos",
@@ -88,7 +88,7 @@ function llenarComprobantesDePagosGrilla(jsonCompPagos) {
         tableRaws += contruirFilasComprobantesDePagos(jsonCompPagos[i]);
         tableRaws += "</tr>";
     }
-    $("#listCompDePago").html(tableRaws);
+    $("#listadoCompDePago").html(tableRaws);
 }
 
 function contruirFilasComprobantesDePagos(compPagos) {
@@ -337,7 +337,7 @@ function printPdfReciboOficial() {
     var body = document.getElementById('bodyReciboOficial1');
     html2canvas(body)
         .then(function (canvas) {
-            document.body.appendChild(canvas);
+            //document.body.appendChild(canvas);
             var imgData = canvas.toDataURL('image/png');
 
             var doc = new jsPDF();
@@ -360,7 +360,7 @@ function printPdfReciboNoOficial() {
     var body = document.getElementById('bodyReciboNoOficial1');
     html2canvas(body)
         .then(function (canvas) {
-            document.body.appendChild(canvas);
+            //document.body.appendChild(canvas);
             var imgData = canvas.toDataURL('image/png');
 
             var doc = new jsPDF();
@@ -384,7 +384,7 @@ function printPdfReciboOficialSoloSaldo() {
     var body = document.getElementById('bodyReciboOficialSoloSaldo1');
     html2canvas(body)
         .then(function (canvas) {
-            document.body.appendChild(canvas);
+            //document.body.appendChild(canvas);
             var imgData = canvas.toDataURL('image/png');
 
             var doc = new jsPDF();
@@ -444,57 +444,7 @@ function convertirNumeroALetra(num) {
     console.log("Fin llamada controller usuario");
 }
 
-function llenarSelectConInmueblesEnRecibos() {
-    let uri = EndpointsEnum.CONTRATO;
-
-    var funcionAjax = $.ajax({
-        url: uri,
-        method: "POST",
-        data: {
-            action: "cargarSelectConInmueble",
-        }
-    });
-
-    funcionAjax.done(function (retorno) {
-        llenarDomInmuebles2(retorno);
-
-    });
-
-    funcionAjax.fail(function (retorno) {
-        console.log("error al cargar select con alumnos")
-    });
-
-    funcionAjax.always(function (retorno) {
-        console.log("volvi de buscar a los alumnos")
-    });
-}
-
-function llenarDomInmuebles2(arrayInmuebles) {
-
-    arrayInmuebles = JSON.parse(arrayInmuebles);
-    let options = "";
-
-    //para agregarle placeholder a la lista desplegable
-    let optionDefault = "<option value='-1'>Inmuebles</option>";
-    options += optionDefault;
-
-    for (var i = 0, l = arrayInmuebles.length; i < l; i++) {
-        options += optionsInmuebles2(arrayInmuebles[i]);
-    }
-    $("#idInmuebleRecibo").html(options);
-    //document.getElementById('provincia').selectedIndex = -1;
-
-}
-
-function optionsInmuebles2(Inmuebles){
-    let option = "";
-    option += "<option value='" + Inmuebles['idInmueble'] + "'>" +
-        Inmuebles['domicilio'] + ", Piso: " + Inmuebles['piso'] + ", Dto: " + Inmuebles['departamento'] +
-        ", " + Inmuebles['localidad'] + " - " + Inmuebles['tipo'] + "</option>";
-    return option;
-}
-
-function buscarPorInmueble()
+function buscarPorMes()
 {
     $mes = $("#buscarPorMes").val();
     if($mes != 0) {

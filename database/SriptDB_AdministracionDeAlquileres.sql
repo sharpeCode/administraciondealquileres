@@ -74,7 +74,7 @@ CREATE TABLE variables(
 CREATE TABLE porcentaje_de_variables(
 	id INT NOT NULL AUTO_INCREMENT,
 	id_variable INT,
-	porcentaje INT NOT NULL,
+	porcentaje DECIMAL(3,2) NOT NULL,
 	fecha_ingreso DATETIME,
 	PRIMARY KEY (id),
 	FOREIGN KEY (id_variable) REFERENCES variables (id_variable)	

@@ -86,7 +86,8 @@ function cargarComprobanteDePago($idRegistroDePago)
     //CORROBORO SI LA FECHA A PAGAR ESTA VENCIDA =========================================================
 
     //capturar la fecha de hoy
-    $fechaHoy = date('Y-m-d');
+    $date = new DateTime("now", new DateTimeZone('America/Argentina/Buenos_Aires'));
+    $fechaHoy = $date->format('Y-m-d');
 
     //desglozo DD MM AAAA por separado
     $diaHoy = substr($fechaHoy, -2, 2);  // DD
@@ -116,7 +117,7 @@ function cargarComprobanteDePago($idRegistroDePago)
     $nombreVariable = "Interés x vencimiento"; //el id 3 es --> Interes x vencimiento
     $variableAumentoPorDia = VariablesRepository::getVariablesId($nombreVariable);
 
-    $porcAumento = (int)$variableAumentoPorDia->porcentaje;
+    $porcAumento = (float)$variableAumentoPorDia->porcentaje;
     $alquiler = (int)$registroDePago->valorAlquiler;
     $valorInteresPorDia = ($alquiler * $porcAumento) / 100; //valor interes x dia en pesos
 
